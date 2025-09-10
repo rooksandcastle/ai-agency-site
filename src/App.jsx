@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 // Simple inline components to get started
 function Navbar() {
@@ -27,7 +27,7 @@ function Home() {
             Build smarter, ship faster.
           </h1>
           <p className="text-xl text-brand-muted mb-8 max-w-2xl mx-auto">
-            We design and deploy AI systems that turn bottlenecks into leverage — from copilots to full-stack automation.
+            We design and deploy AI systems that turn bottlenecks into leverage â€" from copilots to full-stack automation.
           </p>
           <div className="space-x-4">
             <a href="/bookings" className="bg-brand-primary text-black px-6 py-3 rounded-full font-medium hover:opacity-90">
@@ -49,10 +49,10 @@ function Home() {
           </div>
           <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
             {[
-              { title: "AI Strategy & Roadmaps", description: "Identify high-ROI use cases and pragmatic delivery plans.", icon: "🤖" },
-              { title: "Custom Copilots & Agents", description: "Assistants integrated with your tools, data, and workflows.", icon: "🛠️" },
-              { title: "Data & Retrieval", description: "RAG pipelines, evaluation, guardrails, observability.", icon: "📚" },
-              { title: "Automation & MLOps", description: "From prototypes to production with CI/CD and monitoring.", icon: "⚙️" }
+              { title: "AI Strategy & Roadmaps", description: "Identify high-ROI use cases and pragmatic delivery plans.", icon: "ðŸ¤–" },
+              { title: "Custom Copilots & Agents", description: "Assistants integrated with your tools, data, and workflows.", icon: "ðŸ› ï¸" },
+              { title: "Data & Retrieval", description: "RAG pipelines, evaluation, guardrails, observability.", icon: "ðŸ"š" },
+              { title: "Automation & MLOps", description: "From prototypes to production with CI/CD and monitoring.", icon: "âš™ï¸" }
             ].map((service, idx) => (
               <div key={idx} className="rounded-2xl p-6 bg-brand-card border border-white/5">
                 <div className="text-3xl mb-3">{service.icon}</div>
@@ -96,7 +96,7 @@ function About() {
         <p className="text-brand-muted max-w-3xl mb-10">We're a senior team of engineers and designers building AI-native products and automations. Your results are our reputation.</p>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            { k: 'Markets', v: 'B2B SaaS, e‑commerce, ops-heavy' },
+            { k: 'Markets', v: 'B2B SaaS, eâ€'commerce, ops-heavy' },
             { k: 'Stack', v: 'OpenAI, Claude, vector DBs, orchestration, evals' },
             { k: 'Model ops', v: 'Guardrails, tracing, cost & performance tuning' }
           ].map((item, i) => (
@@ -128,15 +128,17 @@ function Bookings() {
 
 export default function App() {
   return (
-    <div className="min-h-screen">
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/bookings" element={<Bookings />} />
-        </Routes>
-      </main>
-    </div>
+    <Router>
+      <div className="min-h-screen">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/bookings" element={<Bookings />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   )
 }
