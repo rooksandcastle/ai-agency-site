@@ -96,7 +96,7 @@ function About() {
         <p className="text-brand-muted max-w-3xl mb-10">We're a senior team of engineers and designers building AI-native products and automations. Your results are our reputation.</p>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            { k: 'Markets', v: 'B2B SaaS, eâ€'commerce, ops-heavy' },
+            { k: 'Markets', v: 'B2B SaaS, e-commerce, ops-heavy' },
             { k: 'Stack', v: 'OpenAI, Claude, vector DBs, orchestration, evals' },
             { k: 'Model ops', v: 'Guardrails, tracing, cost & performance tuning' }
           ].map((item, i) => (
