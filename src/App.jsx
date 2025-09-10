@@ -39,30 +39,30 @@ function Home() {
           </div>
         </div>
       </section>
-
-      {/* Services Section */}
-      <section className="py-20 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold">What we do</h2>
-            <p className="text-brand-muted mt-3">Modular services to meet you where you are.</p>
-          </div>
-          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-            {[
-              { title: "AI Strategy & Roadmaps", description: "Identify high-ROI use cases and pragmatic delivery plans.", icon: "ðŸ¤–" },
-              { title: "Custom Copilots & Agents", description: "Assistants integrated with your tools, data, and workflows.", icon: "ðŸ› ï¸" },
-              { title: "Data & Retrieval", description: "RAG pipelines, evaluation, guardrails, observability.", icon: "ðŸ"š" },
-              { title: "Automation & MLOps", description: "From prototypes to production with CI/CD and monitoring.", icon: "âš™ï¸" }
-            ].map((service, idx) => (
-              <div key={idx} className="rounded-2xl p-6 bg-brand-card border border-white/5">
-                <div className="text-3xl mb-3">{service.icon}</div>
-                <h3 className="font-semibold text-lg">{service.title}</h3>
-                <p className="text-brand-muted mt-2">{service.description}</p>
-              </div>
-            ))}
-          </div>
+      
+{/* Services Section */}
+<section className="py-20 border-t border-white/5">
+  <div className="max-w-7xl mx-auto px-4">
+    <div className="text-center mb-12">
+      <h2 className="text-3xl sm:text-4xl font-bold">What we do</h2>
+      <p className="text-brand-muted mt-3">Modular services to meet you where you are.</p>
+    </div>
+    <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+      {[
+        { title: "AI Strategy & Roadmaps", description: "Identify high-ROI use cases and pragmatic delivery plans." },
+        { title: "Custom Copilots & Agents", description: "Assistants integrated with your tools, data, and workflows." },
+        { title: "Data & Retrieval", description: "RAG pipelines, evaluation, guardrails, observability." },
+        { title: "Automation & MLOps", description: "From prototypes to production with CI/CD and monitoring." }
+      ].map((service, idx) => (
+        <div key={idx} className="rounded-2xl p-6 bg-brand-card border border-white/5">
+          <h3 className="font-semibold text-lg">{service.title}</h3>
+          <p className="text-brand-muted mt-2">{service.description}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       {/* Contact Section */}
       <section className="py-20 border-t border-white/5">
