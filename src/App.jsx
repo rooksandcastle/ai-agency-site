@@ -1,5 +1,21 @@
 
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
+// Premium Components
+import PremiumHero from './components/PremiumHero';
+import ModernNavigation from './components/ModernNavigation';
+import EnhancedProcess from './components/EnhancedProcess';
+import ImprovedAssessment from './components/ImprovedAssessment';
+import ComprehensiveFooter from './components/ComprehensiveFooter';
+import CalendlyBooking from './components/CalendlyBooking';
+
+// Pages
+import Homepage from './pages/Homepage';
+import WhatWeThinkPage from './pages/WhatWeThinkPage';
+import WhoWeArePage from './pages/WhoWeArePage';
+import WhatWeDoPage from './pages/WhatWeDoPage';
 
 // Animated Background with Neural Network Effect
 const AnimatedBackground = () => {
@@ -59,34 +75,48 @@ const Logo = ({ size = 'normal' }) => {
   );
 };
 
-// Futuristic Button Component
+// Enhanced Futuristic Button Component
 const FuturisticButton = ({ children, variant = 'primary', className = '', onClick, ...props }) => {
   const variants = {
-    primary: 'bg-gradient-to-r from-green-400 to-green-500 text-black hover:from-green-500 hover:to-green-600 shadow-lg shadow-green-500/25 hover:shadow-green-500/40',
-    secondary: 'border-2 border-green-400 text-green-400 hover:bg-green-400/10 hover:border-green-300',
+    primary: 'bg-gradient-to-r from-green-400 to-green-500 text-cyber-black hover:from-green-500 hover:to-green-600 shadow-2xl shadow-green-500/25 hover:shadow-green-500/40',
+    secondary: 'border-2 border-green-400 text-green-400 hover:bg-green-400/10 hover:border-green-300 backdrop-blur-sm',
     ghost: 'text-green-400 hover:text-green-300 hover:bg-green-400/5'
   };
 
   return (
-    <button 
-      className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 relative overflow-hidden ${variants[variant]} ${className}`}
+    <motion.button
+      className={`px-6 py-3 rounded-xl font-semibold relative overflow-hidden ${variants[variant]} ${className}`}
       onClick={onClick}
+      whileHover={{ scale: 1.05, y: -2 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 400, damping: 17 }}
       {...props}
     >
       <span className="relative z-10">{children}</span>
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 -translate-x-full group-hover:animate-shimmer"></div>
-    </button>
+
+      {/* Enhanced shimmer effect */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+        initial={{ x: "-100%" }}
+        whileHover={{ x: "100%" }}
+        transition={{ duration: 0.6 }}
+      />
+    </motion.button>
   );
 };
 
-// Glowing Card Component
+// Enhanced Glowing Card Component
 const GlowCard = ({ children, className = '', hover = true }) => (
-  <div className={`bg-gray-900/50 backdrop-blur border border-gray-800 rounded-2xl p-6 relative overflow-hidden ${
-    hover ? 'hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/10' : ''
-  } transition-all duration-500 ${className}`}>
+  <motion.div
+    className={`bg-gray-900/30 backdrop-blur-xl border border-gray-800/50 rounded-2xl p-6 relative overflow-hidden ${
+      hover ? 'hover:border-green-500/50 hover:shadow-lg hover:shadow-green-500/10' : ''
+    } transition-all duration-500 ${className}`}
+    whileHover={hover ? { y: -5, scale: 1.02 } : {}}
+    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+  >
     <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
     <div className="relative z-10">{children}</div>
-  </div>
+  </motion.div>
 );
 
 // Sticky Navigation
@@ -107,28 +137,47 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-black/90 backdrop-blur-lg border-b border-green-500/20' : 'bg-transparent'
+      isScrolled ? 'bg-white/95 backdrop-blur-lg border-b border-gray-200 shadow-sm' : 'bg-white/90 backdrop-blur-sm'
     }`}>
-      <div className="max-w-7xl mx-auto px-4 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-6">
         <div className="flex items-center justify-between">
-          <Logo size="small" />
+          <div className="flex items-center h-10 group cursor-pointer">
+            <div className="relative">
+              <div className="bg-gradient-to-br from-green-400/20 via-green-500/20 to-green-600/20 p-2 rounded-2xl shadow-2xl shadow-green-500/30 group-hover:shadow-green-500/50 transition-all duration-500">
+                <img
+                  src="/logo.png"
+                  alt="Rooks & Castle Logo"
+                  className="w-6 h-8 object-contain filter drop-shadow-lg"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-br from-green-400/30 to-green-600/30 rounded-2xl blur-lg opacity-40 group-hover:opacity-60 transition-all duration-500"></div>
+            </div>
+            <div className="ml-3">
+              <div className={`font-bold text-lg tracking-tight leading-none transition-colors ${
+                isScrolled ? 'text-gray-900' : 'text-gray-900'
+              }`}>
+                Rooks & Castle
+              </div>
+              <div className="text-green-600 text-xs font-medium tracking-wide">
+                Ethical AI Consulting
+              </div>
+            </div>
+          </div>
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('home')} className="text-gray-300 hover:text-green-400 transition-colors">Home</button>
-            <button onClick={() => scrollToSection('process')} className="text-gray-300 hover:text-green-400 transition-colors">Process</button>
-            <button onClick={() => scrollToSection('about')} className="text-gray-300 hover:text-green-400 transition-colors">About</button>
-            <button onClick={() => scrollToSection('resources')} className="text-gray-300 hover:text-green-400 transition-colors">Resources</button>
-            <button onClick={() => scrollToSection('blog')} className="text-gray-300 hover:text-green-400 transition-colors">Blog</button>
-            <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-green-400 transition-colors">Contact</button>
+            <button onClick={() => scrollToSection('home')} className="text-gray-600 hover:text-green-600 transition-colors font-medium">Home</button>
+            <button onClick={() => scrollToSection('process')} className="text-gray-600 hover:text-green-600 transition-colors font-medium">Process</button>
+            <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-green-600 transition-colors font-medium">About</button>
+            <button onClick={() => scrollToSection('contact')} className="text-gray-600 hover:text-green-600 transition-colors font-medium">Contact</button>
             <FuturisticButton onClick={() => scrollToSection('assessment')}>
               Book Assessment
             </FuturisticButton>
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden text-white hover:text-green-400 transition-colors"
+          <button
+            className="md:hidden text-gray-600 hover:text-green-600 transition-colors"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -143,14 +192,12 @@ const Navigation = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 py-4 border-t border-gray-800">
+          <div className="md:hidden mt-6 py-6 border-t border-gray-200">
             <div className="flex flex-col space-y-4">
-              <button onClick={() => scrollToSection('home')} className="text-gray-300 hover:text-green-400 transition-colors text-left">Home</button>
-              <button onClick={() => scrollToSection('process')} className="text-gray-300 hover:text-green-400 transition-colors text-left">Process</button>
-              <button onClick={() => scrollToSection('about')} className="text-gray-300 hover:text-green-400 transition-colors text-left">About</button>
-              <button onClick={() => scrollToSection('resources')} className="text-gray-300 hover:text-green-400 transition-colors text-left">Resources</button>
-              <button onClick={() => scrollToSection('blog')} className="text-gray-300 hover:text-green-400 transition-colors text-left">Blog</button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-green-400 transition-colors text-left">Contact</button>
+              <button onClick={() => scrollToSection('home')} className="text-gray-600 hover:text-green-600 transition-colors text-left font-medium py-2">Home</button>
+              <button onClick={() => scrollToSection('process')} className="text-gray-600 hover:text-green-600 transition-colors text-left font-medium py-2">Process</button>
+              <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-green-600 transition-colors text-left font-medium py-2">About</button>
+              <button onClick={() => scrollToSection('contact')} className="text-gray-600 hover:text-green-600 transition-colors text-left font-medium py-2">Contact</button>
               <FuturisticButton onClick={() => scrollToSection('assessment')} className="mt-4 w-full">
                 Book Assessment
               </FuturisticButton>
@@ -176,72 +223,41 @@ const HeroSection = () => {
       <AnimatedBackground />
       
       <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-        {/* Animated Company Logo Entrance */}
-        <div className={`mb-12 transition-all duration-1500 transform ${
-          textVisible ? 'opacity-100 scale-100 rotate-0' : 'opacity-0 scale-75 rotate-12'
-        }`}>
-          <Logo size="large" />
-        </div>
-
-        {/* Marcus Aurelius Quote */}
-        <div className={`mb-8 transition-all duration-1000 delay-300 transform ${
+        {/* Main Value Proposition First */}
+        <div className={`transition-all duration-1000 delay-300 transform ${
           textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <blockquote className="text-green-400 text-lg md:text-xl italic mb-2">
-            "The best revenge is not to be like your enemy."
-          </blockquote>
-          <cite className="text-gray-400 text-sm">— Marcus Aurelius</cite>
-        </div>
-
-        {/* Mission Statement Quote */}
-        <div className={`mb-8 transition-all duration-1000 delay-500 transform ${
-          textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
-          <div className="bg-gray-900/30 rounded-2xl p-6 border border-green-500/20 max-w-2xl mx-auto">
-            <blockquote className="text-green-400 text-lg italic mb-2">
-              "Our mission is radical simplification of workflow processes"
-            </blockquote>
-            <div className="w-24 h-1 bg-gradient-to-r from-green-400 to-green-500 mx-auto rounded-full"></div>
-          </div>
-        </div>
-
-        {/* Main Headline */}
-        <div className={`transition-all duration-1000 delay-700 transform ${
-          textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
-          <h1 className="text-4xl md:text-7xl font-black text-white mb-6 leading-tight">
-            AI Implementation <br />
-            Doesn't Have To Be <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">Complex</span>
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight text-center">
+            Transform Your Business with <br className="hidden sm:block" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">AI That Actually Works</span>
           </h1>
         </div>
 
-        {/* Subheadline */}
-        <div className={`transition-all duration-1000 delay-900 transform ${
+        {/* Enhanced Value Proposition */}
+        <div className={`transition-all duration-1000 delay-500 transform ${
           textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed">
-            <span className="text-green-400 font-semibold">Any business can benefit from AI.</span><br />
-            We make cutting-edge automation accessible through psychology-informed implementation 
-            that your team actually adopts.
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed text-center px-4">
+            <span className="text-green-400 font-semibold">Psychology-informed AI implementation that your team actually adopts.</span><br className="hidden sm:block" />
+            <span className="sm:inline block mt-2 sm:mt-0">We make cutting-edge automation accessible and simple — starting from just £10/month.</span>
           </p>
         </div>
 
         {/* Urgency CTA */}
         <div className={`transition-all duration-1000 delay-1100 transform ${
           textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        } bg-red-900/20 border border-red-500/30 rounded-2xl p-6 mb-8 max-w-2xl mx-auto`}>
+        } bg-red-900/20 border border-red-500/30 rounded-2xl p-4 md:p-6 mb-8 max-w-2xl mx-auto`}>
           <p className="text-red-300 text-lg font-semibold mb-2">⚡ The Automation Gap is Widening</p>
           <p className="text-gray-300">
             While you're considering AI, your competitors are already automating. 
-            Don't get left behind—<span className="text-green-400 font-semibold">join the 15+ hour weekly savings revolution.</span>
+            Don't get left behind—<span className="text-green-400 font-semibold">start your AI transformation today.</span>
           </p>
         </div>
 
         {/* CTA Buttons */}
         <div className={`transition-all duration-1000 delay-1300 transform ${
           textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        } flex flex-col sm:flex-row gap-4 justify-center items-center mb-12`}>
+        } flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 px-4`}>
           <FuturisticButton className="text-lg px-8 py-4" onClick={() => document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth' })}>
             Start Free Assessment →
           </FuturisticButton>
@@ -254,7 +270,7 @@ const HeroSection = () => {
         <div className={`transition-all duration-1000 delay-1500 transform ${
           textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <div className="flex flex-wrap justify-center items-center gap-6 text-gray-400">
+          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-gray-400 px-4">
             <div className="flex items-center space-x-2">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
               <span>SMB Specialists</span>
@@ -281,19 +297,64 @@ const HeroSection = () => {
 // Ethics Quote Section
 const EthicsSection = () => (
   <section className="py-20 relative">
-    <div className="max-w-4xl mx-auto px-4 text-center">
-      <GlowCard className="border-green-500/30">
-        <div className="text-green-400 mb-4">
-          <svg className="w-12 h-12 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 12 5.5 15.5 8zM8.5 16L12 13.5 15.5 16 12 18.5 8.5 16z"/>
-          </svg>
+    <div className="max-w-6xl mx-auto px-4">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          Ethical <span className="text-green-400">AI Framework</span>
+        </h2>
+        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          Our ethical framework ensures AI feels like a trusted partner, not a replacement.
+          <span className="text-green-400 font-semibold"> Practical, ethical, and built to help you grow.</span>
+        </p>
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <GlowCard className="border-green-500/30">
+          <div className="text-green-400 mb-4">
+            <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.5 6L12 10.5 8.5 8 12 5.5 15.5 8zM8.5 16L12 13.5 15.5 16 12 18.5 8.5 16z"/>
+            </svg>
+          </div>
+          <h3 className="text-xl font-bold text-green-400 mb-3">Respect & Transparency</h3>
+          <p className="text-gray-300">
+            You'll always know what's automated, what's human, and how it fits together.
+            No black boxes or hidden processes—complete visibility into how your AI works.
+          </p>
+        </GlowCard>
+
+        <GlowCard className="border-green-500/30">
+          <div className="text-green-400 mb-4">
+            <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 className="text-xl font-bold text-green-400 mb-3">Results That Matter</h3>
+          <p className="text-gray-300">
+            We focus on what actually helps your business: saving time, reducing costs, and finding new opportunities.
+            Practical results, not flashy tech demos.
+          </p>
+        </GlowCard>
+      </div>
+
+      <div className="text-center">
+        <div className="relative max-w-4xl mx-auto">
+          <div className="absolute -top-4 -left-4 w-16 h-16 bg-gradient-to-br from-green-400/20 to-green-500/20 rounded-full blur-lg"></div>
+          <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-gradient-to-br from-blue-400/20 to-purple-500/20 rounded-full blur-lg"></div>
+          <GlowCard className="border-green-500/30 backdrop-blur-xl">
+            <blockquote className="text-2xl md:text-3xl text-white font-light leading-relaxed mb-6 text-center">
+              We believe in transparency, human centered AI, and enabling humans rather than replacing them.
+              Technology should amplify human potential, not diminish it. <span className="text-green-400 font-semibold">AI supports you, never replaces you.</span>
+            </blockquote>
+            <div className="text-center">
+              <div className="inline-flex items-center space-x-3">
+                <div className="w-8 h-0.5 bg-gradient-to-r from-transparent to-green-400"></div>
+                <div className="text-green-400 font-semibold tracking-wide">Rooks & Castle Ltd</div>
+                <div className="w-8 h-0.5 bg-gradient-to-l from-transparent to-green-400"></div>
+              </div>
+            </div>
+          </GlowCard>
         </div>
-        <blockquote className="text-2xl md:text-3xl text-white font-light italic leading-relaxed mb-6">
-          "We believe in transparency, human-centered AI, and enabling humans rather than replacing them. 
-          Technology should amplify human potential, not diminish it."
-        </blockquote>
-        <div className="text-green-400 font-semibold">— Our Philosophy</div>
-      </GlowCard>
+      </div>
     </div>
   </section>
 );
@@ -349,47 +410,87 @@ const ProcessSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {processes.map((process, idx) => (
-            <GlowCard key={idx} className="text-center group relative">
-              {/* Step Number */}
-              <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center text-2xl font-bold text-black mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                {process.step}
-              </div>
-              
-              <h3 className="font-bold text-xl text-white mb-2">{process.title}</h3>
-              <h4 className="text-green-400 font-semibold text-lg mb-4">{process.subtitle}</h4>
-              <p className="text-gray-300 mb-6">{process.description}</p>
-              
-              {/* Sub-steps */}
-              <div className="text-left">
-                <div className="text-sm font-semibold text-green-400 mb-3">What This Involves:</div>
-                <ul className="space-y-2">
-                  {process.subSteps.map((step, stepIdx) => (
-                    <li key={stepIdx} className="text-sm text-gray-400 flex items-start">
-                      <span className="w-2 h-2 bg-green-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span>{step}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+        {/* Interactive Process Flow */}
+        <div className="relative">
+          {/* Connection Line */}
+          <div className="hidden lg:block absolute top-20 left-1/2 w-full h-0.5 bg-gradient-to-r from-green-400/50 via-green-400 to-green-400/50 transform -translate-x-1/2"></div>
 
-              {/* Connection Line (Desktop) */}
-              {idx < 2 && (
-                <div className="hidden md:block absolute top-8 -right-4 w-8 h-0.5 bg-gradient-to-r from-green-400 to-transparent"></div>
-              )}
-            </GlowCard>
-          ))}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+            {processes.map((process, idx) => (
+              <GlowCard key={idx} className="text-center group relative transform transition-all duration-500 hover:scale-105 hover:-translate-y-2">
+                {/* Enhanced Step Number */}
+                <div className="w-20 h-20 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center text-3xl font-bold text-black mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg shadow-green-500/30 group-hover:shadow-green-500/50">
+                  {process.step}
+                </div>
+
+                <h3 className="font-bold text-xl md:text-2xl text-white mb-3 group-hover:text-green-400 transition-colors text-center">{process.title}</h3>
+                <h4 className="text-green-400 font-semibold text-lg md:text-xl mb-6 text-center">{process.subtitle}</h4>
+                <p className="text-gray-300 mb-8 text-base md:text-lg leading-relaxed text-center">{process.description}</p>
+
+                {/* Enhanced Sub-steps */}
+                <div className="text-left bg-gray-900/30 rounded-xl p-6">
+                  <div className="text-base font-semibold text-green-400 mb-4">What This Involves:</div>
+                  <ul className="space-y-3">
+                    {process.subSteps.map((step, stepIdx) => (
+                      <li key={stepIdx} className="text-gray-300 flex items-start group-hover:text-gray-200 transition-colors">
+                        <div className="w-3 h-3 bg-green-400 rounded-full mt-2 mr-4 flex-shrink-0 group-hover:animate-pulse"></div>
+                        <span className="text-sm leading-relaxed">{step}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Enhanced Connection Arrow */}
+                {idx < 2 && (
+                  <div className="hidden lg:block absolute top-10 -right-8 z-20">
+                    <div className="w-16 h-1 bg-gradient-to-r from-green-400 to-green-500 rounded-full"></div>
+                    <div className="absolute -right-1 -top-2 w-0 h-0 border-l-8 border-l-green-500 border-t-4 border-t-transparent border-b-4 border-b-transparent"></div>
+                  </div>
+                )}
+              </GlowCard>
+            ))}
+          </div>
         </div>
 
-        <div className="text-center mt-12">
-          <p className="text-lg text-gray-300 mb-6">
-            <span className="text-green-400 font-semibold">Timeline:</span> Most implementations complete within 4-12 weeks, 
-            depending on complexity and team size.
-          </p>
-          <FuturisticButton onClick={() => document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth' })}>
-            Start Your Assessment Today →
-          </FuturisticButton>
+        {/* Enhanced Timeline Section */}
+        <div className="text-center mt-20">
+          <div className="bg-gray-900/40 rounded-3xl p-6 md:p-12 border border-green-500/30 backdrop-blur-sm">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">Implementation Timeline</h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-10">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-green-400">4-6</span>
+                </div>
+                <h4 className="font-semibold text-white mb-2">Small Business</h4>
+                <p className="text-gray-400 text-sm">weeks for basic automation</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-green-400">8-10</span>
+                </div>
+                <h4 className="font-semibold text-white mb-2">Medium Business</h4>
+                <p className="text-gray-400 text-sm">weeks for complex workflows</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl font-bold text-green-400">12+</span>
+                </div>
+                <h4 className="font-semibold text-white mb-2">Enterprise</h4>
+                <p className="text-gray-400 text-sm">weeks for full transformation</p>
+              </div>
+            </div>
+
+            <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8">
+              <span className="text-green-400 font-semibold">Fast-track available:</span> Get results in as little as 2 weeks for urgent projects.
+            </p>
+
+            <FuturisticButton onClick={() => document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth' })} className="text-lg md:text-xl px-8 md:px-10 py-3 md:py-4">
+              Start Your Assessment Today →
+            </FuturisticButton>
+          </div>
         </div>
       </div>
     </section>
@@ -405,79 +506,478 @@ const AboutSection = () => (
           About <span className="text-green-400">Rooks & Castle</span>
         </h2>
         <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-          We're AI consultants with psychology backgrounds, specializing in automation that teams actually adopt. 
-          Our mission is making digital solutions accessible to all.
+          We believe AI should make life <span className="text-green-400 font-semibold">simpler, safer, and more successful</span> for small businesses and independent professionals.
+          Our job isn't just to deliver tools — it's to make sure you <span className="text-green-400 font-semibold">feel confident, in control, and supported</span> when using AI.
         </p>
-        <blockquote className="text-lg italic text-green-400 max-w-2xl mx-auto">
-          "Our mission is radical simplification of workflow processes through human-centered AI implementation."
-        </blockquote>
+        <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-12">
+          We're business consultants who understand what makes teams tick, specializing in building AI solutions that your staff actually enjoy using—because they're designed with psychology-informed principles that put people first.
+        </p>
+
+        <div className="relative max-w-4xl mx-auto">
+          <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-green-400/0 via-green-400 to-green-400/0"></div>
+          <div className="bg-gradient-to-r from-green-500/10 via-blue-500/5 to-purple-500/10 backdrop-blur-xl rounded-3xl p-12 border border-green-500/30 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-green-400/10 to-transparent rounded-full blur-2xl"></div>
+            <blockquote className="text-2xl md:text-4xl font-light text-white leading-relaxed text-center relative z-10">
+              <span className="text-green-400 text-5xl leading-none">"</span>We're here to make AI feel like a <span className="text-green-400 font-semibold">trusted partner in your business</span> — practical, ethical, and built to help you grow.<span className="text-green-400 text-5xl leading-none">"</span>
+            </blockquote>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-400/10 to-transparent rounded-full blur-2xl"></div>
+          </div>
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-12 mb-16">
         <GlowCard>
-          <h3 className="text-2xl font-bold text-green-400 mb-4">Our Mission</h3>
+          <h3 className="text-2xl font-bold text-green-400 mb-4">People First, Always</h3>
           <p className="text-gray-300 mb-4">
-            Radical simplification of workflow processes through human-centered AI implementation. 
-            We believe technology should amplify human potential, not replace it.
+            AI supports you, never replaces you. Every solution keeps your goals and customers at the center.
+            We understand what makes teams comfortable with new technology because we approach it with human psychology in mind.
           </p>
           <p className="text-gray-300">
-            Every business deserves access to cutting-edge automation, regardless of size or technical expertise.
-            We make digital solutions accessible to all.
+            No tech speak, no hidden tricks. We explain what AI does, how it helps, and what to expect, making sure you always feel in control.
           </p>
         </GlowCard>
 
         <GlowCard>
-          <h3 className="text-2xl font-bold text-green-400 mb-4">Our Approach</h3>
+          <h3 className="text-2xl font-bold text-green-400 mb-4">Safe & Accountable</h3>
           <p className="text-gray-300 mb-4">
-            Psychology-informed AI implementation ensures your team actually adopts new systems. 
-            We focus on organizational psychology and change management, not just technology.
+            No black boxes. We test, check, and stay accountable for everything we deliver. You'll always know what's automated, what's human, and how it fits together.
           </p>
           <p className="text-gray-300">
-            Average client saves 15+ hours weekly with 95% team adoption rates.
+            We use these same AI systems to run our own business. Everything we build for you has been tested in real-world conditions with complete transparency.
           </p>
         </GlowCard>
       </div>
 
-      <div className="bg-gray-900/30 rounded-2xl p-8">
-        <h3 className="text-2xl font-bold text-white mb-6 text-center">Our Ethical Framework & Good Practices</h3>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="text-center">
-            <div className="w-12 h-12 bg-green-400 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-              </svg>
-            </div>
-            <h4 className="font-semibold text-white mb-2">Anthropic's 4D Framework</h4>
-            <p className="text-gray-400 text-sm">Designing AI systems that are helpful, harmless, honest, and human-compatible.</p>
-          </div>
-          
-          <div className="text-center">
-            <div className="w-12 h-12 bg-green-400 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-            </div>
-            <h4 className="font-semibold text-white mb-2">Transparency First</h4>
-            <p className="text-gray-400 text-sm">Complete visibility into AI processes, no black boxes or hidden algorithms.</p>
-          </div>
-          
-          <div className="text-center">
-            <div className="w-12 h-12 bg-green-400 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-6 h-6 text-black" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-              </svg>
-            </div>
-            <h4 className="font-semibold text-white mb-2">Human Empowerment</h4>
-            <p className="text-gray-400 text-sm">AI augments human capabilities rather than replacing human judgment.</p>
-          </div>
-        </div>
-        
-        <div className="mt-8 text-center">
-          <p className="text-gray-300">
-            We follow established frameworks, ethical guidelines, and best practices to ensure 
-            responsible AI implementation that benefits businesses while protecting human interests.
+    </div>
+  </section>
+);
+
+// AI Responsibility Promise Section
+const AIResponsibilitySection = () => (
+  <section className="py-20 bg-gradient-to-b from-cyber-black to-gray-900 relative">
+    <div className="max-w-6xl mx-auto px-4">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          Our <span className="text-green-400">AI Responsibility Promise</span>
+        </h2>
+        <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          At Rooks & Castle, we believe AI should make life <span className="text-green-400 font-semibold">simpler, safer, and more successful</span> for small businesses and independent professionals.
+          Our job isn't just to deliver tools — it's to make sure you feel confident, in control, and supported when using AI.
+        </p>
+      </div>
+
+      {/* 6 Core Principles Grid */}
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <GlowCard className="text-center">
+          <div className="text-4xl mb-4">👥</div>
+          <h3 className="text-xl font-bold text-green-400 mb-3">People First, Always</h3>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            AI supports you, never replaces you. Every solution keeps your goals and customers at the center.
+          </p>
+        </GlowCard>
+
+        <GlowCard className="text-center">
+          <div className="text-4xl mb-4">💬</div>
+          <h3 className="text-xl font-bold text-green-400 mb-3">Straightforward & Honest</h3>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            No tech speak, no hidden tricks. We explain what AI does, how it helps, and what to expect.
+          </p>
+        </GlowCard>
+
+        <GlowCard className="text-center">
+          <div className="text-4xl mb-4">🛡️</div>
+          <h3 className="text-xl font-bold text-green-400 mb-3">Safe & Accountable</h3>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            No black boxes. We test, check, and stay accountable for everything we deliver.
+          </p>
+        </GlowCard>
+
+        <GlowCard className="text-center">
+          <div className="text-4xl mb-4">⚖️</div>
+          <h3 className="text-xl font-bold text-green-400 mb-3">Fair & Accessible</h3>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            AI shouldn't just be for big corporations. Affordable, practical, scalable solutions for any size business.
+          </p>
+        </GlowCard>
+
+        <GlowCard className="text-center">
+          <div className="text-4xl mb-4">🎯</div>
+          <h3 className="text-xl font-bold text-green-400 mb-3">Results That Matter</h3>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            Focus on what helps your business: saving time, reducing costs, finding opportunities.
+          </p>
+        </GlowCard>
+
+        <GlowCard className="text-center">
+          <div className="text-4xl mb-4">🤝</div>
+          <h3 className="text-xl font-bold text-green-400 mb-3">Respect & Transparency</h3>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            You'll always know what's automated, what's human, and how it fits together.
+          </p>
+        </GlowCard>
+      </div>
+
+      {/* Promise Statement */}
+      <div className="bg-gradient-to-r from-green-500/15 to-blue-500/10 backdrop-blur-xl rounded-3xl p-8 border border-green-500/30">
+        <div className="text-center">
+          <h3 className="text-2xl font-bold text-white mb-4">Our Promise</h3>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            We're here to make AI feel like a <span className="text-green-400 font-semibold">trusted partner in your business</span> —
+            practical, ethical, and built to help you grow.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
+);
+
+// Our Services Section
+const ServicesSection = () => {
+  const services = [
+    {
+      title: "Customer Analytics",
+      description: "Transform raw customer data into results that matter for your business growth.",
+      features: [
+        "Behavioural pattern analysis",
+        "Predictive customer lifetime value",
+        "Churn risk identification",
+        "Personalisation engine optimization"
+      ],
+      icon: "📊",
+      color: "blue"
+    },
+    {
+      title: "Answer Generator",
+      description: "Straightforward and honest AI that gives your team instant access to company knowledge. No tech speak, just practical answers.",
+      features: [
+        "Context-aware response generation",
+        "Multi-language support",
+        "Industry-specific terminology",
+        "Real-time knowledge updates"
+      ],
+      icon: "💬",
+      color: "green"
+    },
+    {
+      title: "Information Finder",
+      description: "Advanced search and retrieval systems that locate relevant information across all your data sources.",
+      features: [
+        "Cross-platform data discovery",
+        "Semantic search capabilities",
+        "Document relationship mapping",
+        "Automated categorisation"
+      ],
+      icon: "🔍",
+      color: "purple"
+    },
+    {
+      title: "Report Generator",
+      description: "Automated business intelligence that creates comprehensive reports from your operational data.",
+      features: [
+        "Dynamic dashboard creation",
+        "Scheduled report delivery",
+        "Visual data storytelling",
+        "Executive summary automation"
+      ],
+      icon: "📈",
+      color: "orange"
+    },
+    {
+      title: "AI Agents",
+      description: "People first, always—AI employees that support your team without replacing them. Fair & accessible automation for any business size.",
+      features: [
+        "Custom workflow automation",
+        "Decision tree processing",
+        "Integration orchestration",
+        "Continuous process optimization"
+      ],
+      icon: "🤖",
+      color: "cyan"
+    },
+    {
+      title: "Smart Communication Hub",
+      description: "Safe & accountable AI communication that helps you feel confident, in control, and supported in all customer interactions.",
+      features: [
+        "Email automation and responses",
+        "Appointment scheduling coordination",
+        "Lead nurturing sequences",
+        "Customer communication tracking"
+      ],
+      icon: "📧",
+      color: "indigo"
+    }
+  ];
+
+  const getColorClasses = (color) => {
+    const colors = {
+      blue: "border-blue-500/20 hover:border-blue-500/40",
+      green: "border-green-500/20 hover:border-green-500/40",
+      purple: "border-purple-500/20 hover:border-purple-500/40",
+      orange: "border-orange-500/20 hover:border-orange-500/40",
+      cyan: "border-cyan-500/20 hover:border-cyan-500/40",
+      indigo: "border-indigo-500/20 hover:border-indigo-500/40"
+    };
+    return colors[color] || colors.green;
+  };
+
+  return (
+    <section id="services" className="py-32 bg-gradient-to-br from-cyber-black to-gray-900 relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-400/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-2xl animate-pulse delay-1000" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        {/* Section Header */}
+        <motion.div
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.div
+            className="inline-flex items-center px-6 py-3 bg-green-500/10 border border-green-500/30 rounded-full backdrop-blur-sm mb-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <span className="w-2 h-2 bg-cyber-green rounded-full animate-pulse mr-3" />
+            <span className="text-green-400 font-medium text-sm tracking-wide uppercase">
+              Digital Assistants • Built Just For Your Business
+            </span>
+          </motion.div>
+
+          <h2 className="text-4xl lg:text-6xl font-black text-white mb-6 font-display">
+            Increase Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-green to-blue-400">
+              Operational Efficiency
+            </span>
+          </h2>
+
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            With affordable B2B solutions designed specifically for small businesses and their unique operational needs.
+          </p>
+        </motion.div>
+
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {services.map((service, idx) => (
+            <motion.div
+              key={idx}
+              className={`group relative bg-gray-900/30 backdrop-blur-xl border rounded-3xl p-8 hover:bg-gray-800/40 transition-all duration-500 ${getColorClasses(service.color)}`}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+              whileHover={{ y: -5, scale: 1.02 }}
+            >
+              {/* Service Icon */}
+              <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                {service.icon}
+              </div>
+
+              {/* Service Title */}
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-green-400 transition-colors">
+                {service.title}
+              </h3>
+
+              {/* Service Description */}
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                {service.description}
+              </p>
+
+              {/* Service Features */}
+              <ul className="space-y-2">
+                {service.features.map((feature, featureIdx) => (
+                  <li key={featureIdx} className="flex items-center text-sm text-gray-400">
+                    <span className="w-2 h-2 bg-green-400 rounded-full mr-3 flex-shrink-0" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Hover Effect Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-blue-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* CTA Section */}
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <motion.button
+            className="px-8 py-4 bg-gradient-to-r from-green-400 to-blue-500 text-black font-bold text-lg rounded-2xl shadow-2xl hover:shadow-green-500/25 transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Discover Which Services Your Business Needs
+          </motion.button>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// Performance Metrics Banner (Accenture Style)
+const PerformanceMetricsBanner = () => {
+  const metrics = [
+    {
+      percentage: "97%",
+      description: "of executives said AI agents will transform their company operations"
+    },
+    {
+      percentage: "67%",
+      description: "of organisations plan to increase spending in AI technology and automation"
+    },
+    {
+      percentage: "75%",
+      description: "of executives said that 'good quality training data' is the most valuable ingredient for AI success"
+    },
+    {
+      percentage: "10-15%",
+      description: "more revenue growth is achieved by AI-driven companies than by their peers"
+    }
+  ];
+
+  return (
+    <section className="py-16 bg-gradient-to-r from-green-500/10 via-blue-500/10 to-green-500/10 border-y border-green-500/20 backdrop-blur-xl relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <motion.div
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="text-2xl font-bold text-white mb-2">
+            Data and AI Performance
+          </h3>
+          <p className="text-green-400 font-medium">Industry Leading Metrics</p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {metrics.map((metric, idx) => (
+            <motion.div
+              key={idx}
+              className="text-center group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: idx * 0.1 }}
+            >
+              <div className="text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400 mb-4 group-hover:scale-110 transition-transform duration-300">
+                {metric.percentage}
+              </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                {metric.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Business Necessity Section
+const BusinessNecessitySection = () => (
+  <section className="py-20 bg-gradient-to-br from-gray-900 to-cyber-black relative overflow-hidden">
+    {/* Background Effects */}
+    <div className="absolute inset-0">
+      <div className="absolute top-1/3 left-1/4 w-80 h-80 bg-red-500/5 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-green-400/5 rounded-full blur-3xl animate-pulse delay-1000" />
+    </div>
+
+    <div className="max-w-6xl mx-auto px-4 relative z-10">
+      <div className="text-center mb-16">
+        <motion.div
+          className="inline-flex items-center px-6 py-3 bg-red-500/10 border border-red-500/30 rounded-full backdrop-blur-sm mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <span className="w-2 h-2 bg-red-400 rounded-full animate-pulse mr-3" />
+          <span className="text-red-400 font-medium text-sm tracking-wide uppercase">
+            The New Business Reality
+          </span>
+        </motion.div>
+
+        <h2 className="text-4xl lg:text-6xl font-black text-white mb-6 font-display">
+          Why <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-green-400">
+            Every Business
+          </span> Needs This Now
+        </h2>
+
+        <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-12">
+          For decades, only Fortune 500 companies could afford custom digital systems and dedicated tech teams.
+          <br className="hidden sm:block" />
+          Now every small business is expected to compete at that same level—and affordable consultancy solutions make it possible.
+        </p>
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-8 mb-12">
+        <GlowCard className="border-red-500/20">
+          <div className="text-center">
+            <div className="text-4xl mb-4">⚠️</div>
+            <h3 className="text-xl font-bold text-red-400 mb-4">The Pressure is Real</h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Customer expectations have skyrocketed. Response times that were acceptable 5 years ago now lose you business.
+              Manual processes that once worked are now competitive disadvantages.
+            </p>
+          </div>
+        </GlowCard>
+
+        <GlowCard className="border-orange-500/20">
+          <div className="text-center">
+            <div className="text-4xl mb-4">📈</div>
+            <h3 className="text-xl font-bold text-orange-400 mb-4">Scale or Fall Behind</h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Your competitors are already automating. Every month you delay is market share lost to businesses
+              that can serve more customers with the same team size.
+            </p>
+          </div>
+        </GlowCard>
+
+        <GlowCard className="border-green-500/20">
+          <div className="text-center">
+            <div className="text-4xl mb-4">🎯</div>
+            <h3 className="text-xl font-bold text-green-400 mb-4">The Solution is Here</h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              What once required millions in investment and years of development can now be implemented
+              in weeks for the cost of a part-time employee.
+            </p>
+          </div>
+        </GlowCard>
+      </div>
+
+      {/* Call to Action */}
+      <div className="bg-gradient-to-r from-red-500/10 via-orange-500/10 to-green-500/10 backdrop-blur-xl rounded-3xl p-8 border border-green-500/20 text-center">
+        <h3 className="text-2xl font-bold text-white mb-4">
+          Don't Let Anxiety About Scaling Hold You Back
+        </h3>
+        <p className="text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed">
+          The gap between corporate advantages and small business capabilities has never been smaller.
+          AI agents level the playing field—giving you the operational efficiency of enterprises
+          without the enterprise budget or complexity.
+        </p>
+        <motion.button
+          className="px-8 py-4 bg-gradient-to-r from-green-400 to-green-500 text-black font-bold text-lg rounded-2xl shadow-2xl shadow-green-500/25"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth' })}
+        >
+          See How We Can Help Your Business Scale
+        </motion.button>
       </div>
     </div>
   </section>
@@ -534,6 +1034,122 @@ const PricingSection = () => (
           </div>
         </div>
       </GlowCard>
+
+      {/* Frameworks & Principles We Follow */}
+      <div className="mt-16">
+        <div className="bg-black rounded-2xl p-8 border border-green-500/20">
+          <h3 className="text-3xl font-bold text-white mb-6 text-center">Frameworks & Principles We Follow</h3>
+
+          <div className="text-center mb-8">
+            <p className="text-gray-400 max-w-4xl mx-auto leading-relaxed">
+              We align our work with international AI ethics frameworks (EU AI Act, IEEE 2857™, GDPR, NIST AI Risk Management Framework) and actively engage with leading research communities (OECD AI Principles, Anthropic, OpenAI). This ensures our solutions are responsible, human centered, and built for long term trust.
+            </p>
+          </div>
+
+          {/* Logo Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
+
+            {/* EU AI Act */}
+            <div className="flex items-center justify-center">
+              <img
+                src="/logos/eu-ai-act.svg"
+                alt="EU AI Act"
+                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'block';
+                }}
+              />
+              <div className="text-2xl hidden">🇪🇺</div>
+            </div>
+
+            {/* GDPR */}
+            <div className="flex items-center justify-center">
+              <img
+                src="/logos/gdpr.svg"
+                alt="GDPR"
+                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'block';
+                }}
+              />
+              <div className="text-2xl hidden">🛡️</div>
+            </div>
+
+            {/* IEEE */}
+            <div className="flex items-center justify-center">
+              <img
+                src="/logos/ieee.svg"
+                alt="IEEE"
+                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'block';
+                }}
+              />
+              <div className="text-2xl hidden">⚡</div>
+            </div>
+
+            {/* NIST AI RMF */}
+            <div className="flex items-center justify-center">
+              <img
+                src="/logos/nist-ai-rmf.svg"
+                alt="NIST AI Risk Management Framework"
+                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'block';
+                }}
+              />
+              <div className="text-2xl hidden">🏛️</div>
+            </div>
+
+            {/* OECD */}
+            <div className="flex items-center justify-center">
+              <img
+                src="/logos/oecd.svg"
+                alt="OECD AI Principles"
+                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'block';
+                }}
+              />
+              <div className="text-2xl hidden">🌐</div>
+            </div>
+
+            {/* Anthropic */}
+            <div className="flex items-center justify-center">
+              <img
+                src="/logos/anthropic.svg"
+                alt="Anthropic"
+                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'block';
+                }}
+              />
+              <div className="text-2xl hidden">🧠</div>
+            </div>
+
+            {/* OpenAI */}
+            <div className="flex items-center justify-center">
+              <img
+                src="/logos/openai.svg"
+                alt="OpenAI"
+                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'block';
+                }}
+              />
+              <div className="text-2xl hidden">🤖</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 );
@@ -604,14 +1220,18 @@ const AssessmentQuiz = () => {
         <h3 className="text-2xl font-bold text-green-400 mb-4">Perfect! Let's Schedule Your Assessment</h3>
         <p className="text-gray-300 mb-6">Based on your answers, we'll prepare a customized consultation.</p>
         <div className="bg-gray-900/50 rounded-2xl p-8 border border-green-500/30">
-          {/* REPLACE THIS WITH YOUR CALENDLY WIDGET */}
           <div className="mb-4">
-            <p className="text-gray-400 mb-2">Your Calendly widget will go here</p>
-            <p className="text-sm text-gray-500">
-              Answers: {answers.industry} | {answers.size} | {answers.interest}
-            </p>
+            <p className="text-gray-400 mb-2">Integration Instructions:</p>
+            <div className="text-sm text-gray-500 mb-4">
+              <p className="mb-2">1. Create your Calendly booking page</p>
+              <p className="mb-2">2. Get your scheduling link</p>
+              <p className="mb-2">3. Replace the onClick URL below</p>
+              <p className="text-xs mt-4 p-3 bg-gray-800 rounded">
+                User answers: {answers.industry} | {answers.size} | {answers.interest}
+              </p>
+            </div>
           </div>
-          <FuturisticButton onClick={() => window.open('https://calendly.com/YOUR-LINK', '_blank')}>
+          <FuturisticButton onClick={() => window.open('https://calendly.com/your-link-here', '_blank')}>
             Schedule Your Free Consultation
           </FuturisticButton>
         </div>
@@ -671,7 +1291,7 @@ const AssessmentQuiz = () => {
   );
 };
 
-// Assessment Section
+// Enhanced Assessment Section
 const AssessmentSection = () => {
   return (
     <section id="assessment" className="py-20 relative">
@@ -681,13 +1301,13 @@ const AssessmentSection = () => {
             Start Your <span className="text-green-400">Free Assessment</span>
           </h2>
           <p className="text-xl text-gray-300">
-            Quick 3-question assessment to customize your consultation experience.
+            Quick assessment designed specifically for small businesses to customise your affordable consultancy experience.
           </p>
         </div>
 
-        <GlowCard className="border-green-500/30">
-          <AssessmentQuiz />
-        </GlowCard>
+        <div className="bg-gray-900/30 backdrop-blur-xl border border-green-500/30 rounded-2xl p-6 relative" style={{ overflow: 'visible' }}>
+          <ImprovedAssessment />
+        </div>
       </div>
     </section>
   );
@@ -726,15 +1346,10 @@ const ProjectsSection = () => (
 
       <div className="text-center mt-12">
         <div className="bg-gray-900/30 rounded-2xl p-8 max-w-md mx-auto">
-          <h3 className="text-xl font-bold text-green-400 mb-4">Get Notified</h3>
-          <p className="text-gray-300 mb-4">Be the first to see our latest case studies and results.</p>
-          <input 
-            type="email" 
-            placeholder="Your email address"
-            className="w-full p-3 bg-gray-800 border border-gray-700 rounded-xl text-white mb-4 focus:border-green-500 focus:outline-none"
-          />
-          <FuturisticButton className="w-full">
-            Notify Me
+          <h3 className="text-xl font-bold text-green-400 mb-4">Coming Soon</h3>
+          <p className="text-gray-300 mb-6">Real case studies with measurable results are on their way. Follow our journey above to stay updated.</p>
+          <FuturisticButton onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="w-full">
+            Book Your Assessment Instead
           </FuturisticButton>
         </div>
       </div>
@@ -782,7 +1397,7 @@ const ResourcesSection = () => (
         <GlowCard>
           <h3 className="text-xl font-bold text-green-400 mb-4">Ethics & Transparency</h3>
           <p className="text-gray-300 mb-4">
-            Our commitment to transparent AI implementation and human-centered design principles.
+            Our commitment to transparent AI implementation and human centered design principles.
           </p>
           <FuturisticButton variant="ghost">
             View Principles →
@@ -853,9 +1468,9 @@ const BlogSection = () => (
 );
 
 // Contact Section
-const ContactSection = () => {
+const ContactSection = ({ onCalendlyClick }) => {
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("Hi! I'm interested in learning more about AI automation for my business. Can we schedule a consultation?");
+    const message = encodeURIComponent("Hi! I'm interested in learning more about digital automation for my small business. Can we schedule a consultation?");
     // REPLACE THIS WITH YOUR ACTUAL WHATSAPP BUSINESS NUMBER
     const whatsappNumber = "447123456789"; // Replace with your real number
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
@@ -868,8 +1483,9 @@ const ContactSection = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Get In <span className="text-green-400">Touch</span>
           </h2>
-          <p className="text-xl text-gray-300">
-            Ready to transform your business with AI? Let's start the conversation.
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Ready to feel <span className="text-green-400 font-semibold">confident, in control, and supported</span> with AI for your business?
+            Let's have a straightforward conversation about how we can help you grow.
           </p>
         </div>
 
@@ -878,12 +1494,14 @@ const ContactSection = () => {
           <GlowCard>
             <h3 className="text-2xl font-bold text-green-400 mb-4">Book Your Free Consultation</h3>
             <p className="text-gray-300 mb-6">
-              30-minute strategic session to identify your highest-ROI automation opportunities.
+              30-minute strategic session to identify your highest-ROI automation opportunities for your small business.
             </p>
             <div className="bg-gray-900/50 rounded-xl p-6 text-center border border-green-500/20">
-              <p className="text-gray-400 mb-4">Your Calendly integration will be embedded here</p>
-              <FuturisticButton>
-                Schedule Consultation
+              <p className="text-gray-400 mb-4">Ready to schedule your consultation:</p>
+              <p className="text-sm text-gray-500 mb-4">• Free 30-minute strategy session<br/>• Discuss your business needs<br/>• Get personalised recommendations<br/>• No obligation or sales pressure</p>
+              <div className="text-green-400 text-4xl mb-4">📅</div>
+              <FuturisticButton onClick={onCalendlyClick}>
+                Schedule Free Consultation
               </FuturisticButton>
             </div>
           </GlowCard>
@@ -892,15 +1510,93 @@ const ContactSection = () => {
           <GlowCard>
             <h3 className="text-2xl font-bold text-green-400 mb-4">Quick Questions?</h3>
             <p className="text-gray-300 mb-6">
-              Get instant answers via WhatsApp. Perfect for quick queries or urgent automation needs.
+              Get instant answers via WhatsApp. Perfect for small business owners who need quick guidance on digital solutions.
             </p>
             <div className="bg-gray-900/50 rounded-xl p-6 text-center border border-green-500/20">
+              <p className="text-gray-400 mb-4">Direct line to our consultants:</p>
+              <p className="text-sm text-gray-500 mb-4">• Ask about affordable B2B solutions<br/>• Get quick project estimates<br/>• Discuss your specific business needs<br/>• Schedule urgent consultations</p>
               <div className="text-green-400 text-4xl mb-4">💬</div>
               <FuturisticButton onClick={handleWhatsAppClick}>
                 Message on WhatsApp
               </FuturisticButton>
             </div>
           </GlowCard>
+        </div>
+
+        {/* Enhanced Follow Our Journey Section */}
+        <div className="mt-16">
+          <div className="bg-gradient-to-r from-green-500/10 via-blue-500/10 to-purple-500/10 backdrop-blur-xl rounded-3xl p-8 border border-green-500/20 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-green-400/10 to-transparent rounded-full blur-2xl"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-400/10 to-transparent rounded-full blur-2xl"></div>
+
+            <div className="text-center relative z-10">
+              <div className="inline-flex items-center px-6 py-3 bg-green-500/10 border border-green-500/30 rounded-full backdrop-blur-sm mb-6">
+                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-3"></span>
+                <span className="text-green-400 font-medium text-sm tracking-wide uppercase">Stay Connected</span>
+              </div>
+
+              <h3 className="text-3xl font-bold text-white mb-4">Follow Our Journey</h3>
+              <p className="text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+                Behind-the-scenes insights, case studies, and practical AI automation tips.
+                Join our community of forward-thinking business owners.
+              </p>
+
+              {/* Social Links Grid */}
+              <div className="grid md:grid-cols-3 gap-4 mb-8">
+                <a
+                  href="https://twitter.com/rooksandcastle"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center space-x-3 px-6 py-4 bg-gray-800/50 border border-gray-700 rounded-xl hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300"
+                >
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                  </svg>
+                  <span className="text-white font-semibold group-hover:text-blue-400 transition-colors">Twitter</span>
+                </a>
+
+                <a
+                  href="https://instagram.com/rooksandcastle"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center space-x-3 px-6 py-4 bg-gray-800/50 border border-gray-700 rounded-xl hover:border-pink-500/50 hover:bg-pink-500/10 transition-all duration-300"
+                >
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-pink-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 6.62 5.367 11.987 11.988 11.987s11.987-5.367 11.987-11.987C24.004 5.367 18.637.001 12.017.001zM8.449 16.988c-1.297 0-2.448-.49-3.323-1.297C4.198 14.895 3.708 13.744 3.708 12.447s.49-2.448 1.418-3.323c.875-.807 2.026-1.297 3.323-1.297s2.448.49 3.323 1.297c.928.875 1.418 2.026 1.418 3.323s-.49 2.448-1.418 3.244c-.875.807-2.026 1.297-3.323 1.297zm7.83-9.758h-1.958V5.273h1.958v1.957zm-2.744 5.718c0-1.297-.49-2.447-1.297-3.323-.875-.807-2.026-1.297-3.323-1.297s-2.448.49-3.323 1.297c-.807.876-1.297 2.026-1.297 3.323s.49 2.448 1.297 3.323c.875.808 2.026 1.297 3.323 1.297s2.448-.49 3.323-1.297c.807-.875 1.297-2.026 1.297-3.323z"/>
+                  </svg>
+                  <span className="text-white font-semibold group-hover:text-pink-400 transition-colors">Instagram</span>
+                </a>
+
+                <a
+                  href="https://linkedin.com/company/rooksandcastle"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center space-x-3 px-6 py-4 bg-gray-800/50 border border-gray-700 rounded-xl hover:border-blue-600/50 hover:bg-blue-600/10 transition-all duration-300"
+                >
+                  <svg className="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  </svg>
+                  <span className="text-white font-semibold group-hover:text-blue-500 transition-colors">LinkedIn</span>
+                </a>
+              </div>
+
+              {/* Consolidated Email Subscription */}
+              <div className="bg-gray-900/50 rounded-xl p-6 max-w-md mx-auto">
+                <h4 className="text-lg font-semibold text-green-400 mb-3">Get Case Studies First</h4>
+                <p className="text-gray-400 text-sm mb-4">Real results, practical insights, no spam.</p>
+                <div className="flex gap-3">
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    className="flex-1 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white text-sm focus:border-green-500 focus:outline-none"
+                  />
+                  <FuturisticButton className="px-4 py-2 text-sm">
+                    Join
+                  </FuturisticButton>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -929,25 +1625,35 @@ const WhatsAppButton = () => {
   );
 };
 
-// Main App Component
+// Export all sections for Homepage component
+export {
+  ServicesSection,
+  PerformanceMetricsBanner,
+  AboutSection,
+  AIResponsibilitySection,
+  BusinessNecessitySection,
+  EthicsSection,
+  PricingSection,
+  AssessmentSection,
+  ContactSection,
+  ProjectsSection,
+  WhatsAppButton
+};
+
+// Main App Component with Router
 const App = () => {
   return (
-    <div className="min-h-screen bg-black text-white">
-      <Navigation />
-      <main className="relative">
-        <HeroSection />
-        <EthicsSection />
-        <ProcessSection />
-        <AboutSection />
-        <PricingSection />
-        <AssessmentSection />
-        <ProjectsSection />
-        <ResourcesSection />
-        <BlogSection />
-        <ContactSection />
-      </main>
-      <WhatsAppButton />
-    </div>
+    <Router>
+      <Routes>
+        {/* Homepage Route - Exact same content as before */}
+        <Route path="/" element={<Homepage />} />
+
+        {/* New Navigation Routes */}
+        <Route path="/what-we-think" element={<WhatWeThinkPage />} />
+        <Route path="/who-we-are" element={<WhoWeArePage />} />
+        <Route path="/what-we-do" element={<WhatWeDoPage />} />
+      </Routes>
+    </Router>
   );
 };
 
