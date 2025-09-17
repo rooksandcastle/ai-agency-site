@@ -19,7 +19,6 @@ import {
   PricingSection,
   AssessmentSection,
   ContactSection,
-  ProjectsSection,
   WhatsAppButton
 } from '../App';
 
@@ -41,7 +40,6 @@ const Homepage = () => {
         <PricingSection />
         <AssessmentSection />
         <ContactSection onCalendlyClick={() => setShowCalendlyModal(true)} />
-        <ProjectsSection />
       </main>
       <ComprehensiveFooter />
       <WhatsAppButton />

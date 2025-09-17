@@ -30,9 +30,9 @@ const ImprovedAssessment = () => {
   }, [showDropdown]);
 
   const industries = [
-    'Coffee Shop / QSR',
+    'Education',
     'Legal / Professional Services',
-    'Trades / Home Services',
+    'Small Businesses & Services',
     'E-commerce / Retail',
     'Healthcare / Medical',
     'Financial Services',

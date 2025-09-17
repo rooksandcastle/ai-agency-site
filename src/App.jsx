@@ -17,18 +17,22 @@ import WhatWeThinkPage from './pages/WhatWeThinkPage';
 import WhoWeArePage from './pages/WhoWeArePage';
 import WhatWeDoPage from './pages/WhatWeDoPage';
 
-// Animated Background with Neural Network Effect
+// Premium Animated Background
 const AnimatedBackground = () => {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
-      {/* Animated particles */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-green-400/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-green-300/5 rounded-full blur-2xl animate-ping"></div>
-      
-      {/* Grid overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,255,136,.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,255,136,.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-950 to-black"></div>
+
+      {/* Premium animated orbs */}
+      <div className="absolute top-1/5 left-1/5 w-[500px] h-[500px] lg:w-[800px] lg:h-[800px] bg-green-500/15 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-1/5 right-1/5 w-[400px] h-[400px] lg:w-[600px] lg:h-[600px] bg-green-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute top-1/2 left-1/2 w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] bg-green-300/8 rounded-full blur-2xl animate-ping"></div>
+
+      {/* Premium grid overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,.03)_1px,transparent_1px)] bg-[size:60px_60px] lg:bg-[size:80px_80px]"></div>
+
+      {/* Radial gradient overlay for depth */}
+      <div className="absolute inset-0 bg-radial-gradient from-transparent via-black/20 to-black/40"></div>
     </div>
   );
 };
@@ -75,32 +79,35 @@ const Logo = ({ size = 'normal' }) => {
   );
 };
 
-// Enhanced Futuristic Button Component
+// Premium Futuristic Button Component
 const FuturisticButton = ({ children, variant = 'primary', className = '', onClick, ...props }) => {
   const variants = {
-    primary: 'bg-gradient-to-r from-green-400 to-green-500 text-cyber-black hover:from-green-500 hover:to-green-600 shadow-2xl shadow-green-500/25 hover:shadow-green-500/40',
-    secondary: 'border-2 border-green-400 text-green-400 hover:bg-green-400/10 hover:border-green-300 backdrop-blur-sm',
-    ghost: 'text-green-400 hover:text-green-300 hover:bg-green-400/5'
+    primary: 'bg-gradient-to-r from-green-400 to-green-500 text-black hover:from-green-500 hover:to-green-600 shadow-2xl shadow-green-500/30 hover:shadow-green-500/50 active:from-green-600 active:to-green-700',
+    secondary: 'border-2 border-green-400 text-green-400 hover:bg-green-400/10 hover:border-green-300 active:bg-green-400/20 active:border-green-200 backdrop-blur-sm shadow-lg shadow-green-500/20',
+    ghost: 'text-green-400 hover:text-green-300 hover:bg-green-400/5 active:bg-green-400/10'
   };
 
   return (
     <motion.button
-      className={`px-6 py-3 rounded-xl font-semibold relative overflow-hidden ${variants[variant]} ${className}`}
+      className={`px-6 py-4 rounded-2xl font-semibold relative overflow-hidden transition-all duration-300 touch-manipulation min-h-[56px] sm:min-h-[64px] ${variants[variant]} ${className}`}
       onClick={onClick}
-      whileHover={{ scale: 1.05, y: -2 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={{ scale: 1.03, y: -2 }}
+      whileTap={{ scale: 0.97 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
       {...props}
     >
-      <span className="relative z-10">{children}</span>
+      <span className="relative z-10 font-medium tracking-wide">{children}</span>
 
       {/* Enhanced shimmer effect */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent"
         initial={{ x: "-100%" }}
         whileHover={{ x: "100%" }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.8 }}
       />
+
+      {/* Premium glow effect */}
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-400/20 to-green-500/20 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
     </motion.button>
   );
 };
@@ -119,7 +126,7 @@ const GlowCard = ({ children, className = '', hover = true }) => (
   </motion.div>
 );
 
-// Sticky Navigation
+// Premium Navigation - MacBook Pro & iPhone 15 Optimized
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -136,156 +143,178 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-lg border-b border-gray-200 shadow-sm' : 'bg-white/90 backdrop-blur-sm'
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      isScrolled ? 'bg-black/95 backdrop-blur-2xl border-b border-green-500/20 shadow-2xl shadow-green-500/10' : 'bg-black/80 backdrop-blur-xl'
     }`}>
-      <div className="max-w-7xl mx-auto px-6 py-6">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 py-4 sm:py-6 lg:py-8">
         <div className="flex items-center justify-between">
-          <div className="flex items-center h-10 group cursor-pointer">
+          <div className="flex items-center h-10 sm:h-12 lg:h-14 group cursor-pointer">
             <div className="relative">
-              <div className="bg-gradient-to-br from-green-400/20 via-green-500/20 to-green-600/20 p-2 rounded-2xl shadow-2xl shadow-green-500/30 group-hover:shadow-green-500/50 transition-all duration-500">
+              <div className="bg-gradient-to-br from-green-400/25 via-green-500/25 to-green-600/25 p-2 sm:p-2.5 lg:p-3 rounded-2xl shadow-2xl shadow-green-500/30 group-hover:shadow-green-500/50 transition-all duration-500">
                 <img
                   src="/logo.png"
                   alt="Rooks & Castle Logo"
-                  className="w-6 h-8 object-contain filter drop-shadow-lg"
+                  className="w-6 h-7 sm:w-7 sm:h-9 lg:w-8 lg:h-10 object-contain filter drop-shadow-lg"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-green-400/30 to-green-600/30 rounded-2xl blur-lg opacity-40 group-hover:opacity-60 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-green-400/40 to-green-600/40 rounded-2xl blur-xl opacity-40 group-hover:opacity-70 transition-all duration-500"></div>
             </div>
-            <div className="ml-3">
-              <div className={`font-bold text-lg tracking-tight leading-none transition-colors ${
-                isScrolled ? 'text-gray-900' : 'text-gray-900'
-              }`}>
+            <div className="ml-3 sm:ml-4">
+              <div className="font-black text-lg sm:text-xl lg:text-2xl tracking-tight leading-none text-white">
                 Rooks & Castle
               </div>
-              <div className="text-green-600 text-xs font-medium tracking-wide">
-                Ethical AI Consulting
+              <div className="text-green-400 text-xs sm:text-sm lg:text-base font-medium tracking-wide">
+                AI Made Simple
               </div>
             </div>
           </div>
-          
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('home')} className="text-gray-600 hover:text-green-600 transition-colors font-medium">Home</button>
-            <button onClick={() => scrollToSection('process')} className="text-gray-600 hover:text-green-600 transition-colors font-medium">Process</button>
-            <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-green-600 transition-colors font-medium">About</button>
-            <button onClick={() => scrollToSection('contact')} className="text-gray-600 hover:text-green-600 transition-colors font-medium">Contact</button>
-            <FuturisticButton onClick={() => scrollToSection('assessment')}>
+
+          {/* Desktop Menu - MacBook Pro Optimized */}
+          <div className="hidden lg:flex items-center space-x-8 xl:space-x-12">
+            <button onClick={() => scrollToSection('home')} className="text-gray-300 hover:text-green-400 transition-colors font-medium text-base xl:text-lg tracking-wide">Home</button>
+            <button onClick={() => scrollToSection('process')} className="text-gray-300 hover:text-green-400 transition-colors font-medium text-base xl:text-lg tracking-wide">Process</button>
+            <button onClick={() => scrollToSection('about')} className="text-gray-300 hover:text-green-400 transition-colors font-medium text-base xl:text-lg tracking-wide">About</button>
+            <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-green-400 transition-colors font-medium text-base xl:text-lg tracking-wide">Contact</button>
+            <FuturisticButton onClick={() => scrollToSection('assessment')} className="text-base xl:text-lg px-6 xl:px-8 py-3 xl:py-4">
               Book Assessment
             </FuturisticButton>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - iPhone 15 Optimized */}
           <button
-            className="md:hidden text-gray-600 hover:text-green-600 transition-colors"
+            className="lg:hidden text-gray-300 hover:text-green-400 transition-colors p-3 -mr-3 rounded-xl hover:bg-green-500/10"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
               {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - iPhone 15 Optimized */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-6 py-6 border-t border-gray-200">
-            <div className="flex flex-col space-y-4">
-              <button onClick={() => scrollToSection('home')} className="text-gray-600 hover:text-green-600 transition-colors text-left font-medium py-2">Home</button>
-              <button onClick={() => scrollToSection('process')} className="text-gray-600 hover:text-green-600 transition-colors text-left font-medium py-2">Process</button>
-              <button onClick={() => scrollToSection('about')} className="text-gray-600 hover:text-green-600 transition-colors text-left font-medium py-2">About</button>
-              <button onClick={() => scrollToSection('contact')} className="text-gray-600 hover:text-green-600 transition-colors text-left font-medium py-2">Contact</button>
-              <FuturisticButton onClick={() => scrollToSection('assessment')} className="mt-4 w-full">
+          <motion.div
+            className="lg:hidden mt-6 py-8 border-t border-green-500/20"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="flex flex-col space-y-6">
+              <button onClick={() => scrollToSection('home')} className="text-gray-300 hover:text-green-400 transition-colors text-left font-medium py-4 px-4 rounded-2xl hover:bg-green-500/10 text-lg">Home</button>
+              <button onClick={() => scrollToSection('process')} className="text-gray-300 hover:text-green-400 transition-colors text-left font-medium py-4 px-4 rounded-2xl hover:bg-green-500/10 text-lg">Process</button>
+              <button onClick={() => scrollToSection('about')} className="text-gray-300 hover:text-green-400 transition-colors text-left font-medium py-4 px-4 rounded-2xl hover:bg-green-500/10 text-lg">About</button>
+              <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-green-400 transition-colors text-left font-medium py-4 px-4 rounded-2xl hover:bg-green-500/10 text-lg">Contact</button>
+              <FuturisticButton onClick={() => scrollToSection('assessment')} className="mt-6 w-full text-lg py-5">
                 Book Assessment
               </FuturisticButton>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </nav>
   );
 };
 
-// Hero Section with Animated Entrance
+// Premium Hero Section - Framer-style Design
 const HeroSection = () => {
   const [textVisible, setTextVisible] = useState(false);
-  
+
   useEffect(() => {
     const timer = setTimeout(() => setTextVisible(true), 500);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen lg:min-h-[110vh] flex items-center justify-center overflow-hidden pt-20 sm:pt-16 lg:pt-0">
       <AnimatedBackground />
-      
-      <div className="relative z-10 max-w-6xl mx-auto px-4 text-center">
-        {/* Main Value Proposition First */}
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 text-center">
+        {/* Premium Badge */}
+        <div className={`transition-all duration-1000 delay-100 transform ${
+          textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
+          <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 bg-green-500/10 border border-green-500/30 rounded-full backdrop-blur-sm mb-6 sm:mb-8 lg:mb-10">
+            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-3" />
+            <span className="text-green-400 font-medium text-sm sm:text-base tracking-wide uppercase">
+              Premium AI Solutions • Small Business Ready
+            </span>
+          </div>
+        </div>
+
+        {/* Main Headline - Premium Framer Style */}
         <div className={`transition-all duration-1000 delay-300 transform ${
           textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight text-center">
-            Transform Your Business with <br className="hidden sm:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">AI That Actually Works</span>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black text-white mb-6 sm:mb-8 lg:mb-10 leading-[0.95] tracking-tight">
+            AI Made <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-green-500 to-green-600">Simple</span><br />for Your Team
           </h1>
         </div>
 
-        {/* Enhanced Value Proposition */}
+        {/* Premium Subheadline */}
         <div className={`transition-all duration-1000 delay-500 transform ${
           textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed text-center px-4">
-            <span className="text-green-400 font-semibold">Psychology-informed AI implementation that your team actually adopts.</span><br className="hidden sm:block" />
-            <span className="sm:inline block mt-2 sm:mt-0">We make cutting-edge automation accessible and simple — starting from just £10/month.</span>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-300 mb-8 sm:mb-10 lg:mb-12 max-w-5xl mx-auto leading-relaxed font-light">
+            <span className="text-green-400 font-medium">Psychology-driven technology</span> for seamless small business integration.
           </p>
         </div>
 
-        {/* Urgency CTA */}
-        <div className={`transition-all duration-1000 delay-1100 transform ${
-          textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        } bg-red-900/20 border border-red-500/30 rounded-2xl p-4 md:p-6 mb-8 max-w-2xl mx-auto`}>
-          <p className="text-red-300 text-lg font-semibold mb-2">⚡ The Automation Gap is Widening</p>
-          <p className="text-gray-300">
-            While you're considering AI, your competitors are already automating. 
-            Don't get left behind—<span className="text-green-400 font-semibold">start your AI transformation today.</span>
-          </p>
-        </div>
-
-        {/* CTA Buttons */}
-        <div className={`transition-all duration-1000 delay-1300 transform ${
-          textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        } flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 px-4`}>
-          <FuturisticButton className="text-lg px-8 py-4" onClick={() => document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth' })}>
-            Start Free Assessment →
-          </FuturisticButton>
-          <FuturisticButton variant="secondary" className="text-lg px-8 py-4" onClick={() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' })}>
-            See Our Process
-          </FuturisticButton>
-        </div>
-
-        {/* Trust Indicators */}
-        <div className={`transition-all duration-1000 delay-1500 transform ${
+        {/* Value Props */}
+        <div className={`transition-all duration-1000 delay-700 transform ${
           textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-gray-400 px-4">
-            <div className="flex items-center space-x-2">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-              <span>SMB Specialists</span>
+          <p className="text-lg sm:text-xl lg:text-2xl text-gray-400 mb-10 sm:mb-12 lg:mb-16 max-w-4xl mx-auto leading-relaxed">
+            Transform complex workflows into intuitive automation.<br className="hidden sm:block" />
+            <span className="text-white font-medium">From £10/month. ROI guaranteed.</span>
+          </p>
+        </div>
+
+        {/* Premium CTA Section */}
+        <div className={`transition-all duration-1000 delay-900 transform ${
+          textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 sm:mb-16 lg:mb-20">
+            <FuturisticButton
+              className="text-lg sm:text-xl lg:text-2xl px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 w-full sm:w-auto min-w-[280px] sm:min-w-[320px]"
+              onClick={() => document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Start Free Assessment →
+            </FuturisticButton>
+            <FuturisticButton
+              variant="secondary"
+              className="text-lg sm:text-xl lg:text-2xl px-8 sm:px-10 lg:px-12 py-4 sm:py-5 lg:py-6 w-full sm:w-auto min-w-[280px] sm:min-w-[320px]"
+              onClick={() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              See How It Works
+            </FuturisticButton>
+          </div>
+        </div>
+
+        {/* Premium Trust Indicators */}
+        <div className={`transition-all duration-1000 delay-1100 transform ${
+          textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 text-gray-400 max-w-4xl mx-auto">
+            <div className="flex flex-col items-center space-y-2">
+              <span className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
+              <span className="text-sm sm:text-base lg:text-lg font-medium">SMB Specialists</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-              <span>Ethics First</span>
+            <div className="flex flex-col items-center space-y-2">
+              <span className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
+              <span className="text-sm sm:text-base lg:text-lg font-medium">Ethics First</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-              <span>ROI Guaranteed</span>
+            <div className="flex flex-col items-center space-y-2">
+              <span className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
+              <span className="text-sm sm:text-base lg:text-lg font-medium">ROI Guaranteed</span>
             </div>
-            <div className="flex items-center space-x-2">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-              <span>From £10/month</span>
+            <div className="flex flex-col items-center space-y-2">
+              <span className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></span>
+              <span className="text-sm sm:text-base lg:text-lg font-medium">From £10/month</span>
             </div>
           </div>
         </div>
@@ -293,6 +322,16 @@ const HeroSection = () => {
     </section>
   );
 };
+
+// Premium divider component
+const PremiumDivider = () => (
+  <div className="relative py-20 lg:py-32">
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-500/5 to-transparent"></div>
+    <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16">
+      <div className="h-px bg-gradient-to-r from-transparent via-green-500/30 to-transparent"></div>
+    </div>
+  </div>
+);
 
 // Ethics Quote Section
 const EthicsSection = () => (
@@ -398,14 +437,14 @@ const ProcessSection = () => {
   ];
 
   return (
-    <section id="process" className="py-20 relative">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+    <section id="process" className="py-12 sm:py-16 lg:py-20 relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
             Our <span className="text-green-400">'Business in Flow'</span> Process
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Three strategic phases that transform chaos into streamlined automation. 
+          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto px-2">
+            Three strategic phases that transform chaos into streamlined automation.
             Timeline varies by business complexity, but our framework remains consistent.
           </p>
         </div>
@@ -415,26 +454,26 @@ const ProcessSection = () => {
           {/* Connection Line */}
           <div className="hidden lg:block absolute top-20 left-1/2 w-full h-0.5 bg-gradient-to-r from-green-400/50 via-green-400 to-green-400/50 transform -translate-x-1/2"></div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 relative z-10">
             {processes.map((process, idx) => (
               <GlowCard key={idx} className="text-center group relative transform transition-all duration-500 hover:scale-105 hover:-translate-y-2">
                 {/* Enhanced Step Number */}
-                <div className="w-20 h-20 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center text-3xl font-bold text-black mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg shadow-green-500/30 group-hover:shadow-green-500/50">
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center text-2xl sm:text-3xl font-bold text-black mx-auto mb-4 sm:mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg shadow-green-500/30 group-hover:shadow-green-500/50">
                   {process.step}
                 </div>
 
-                <h3 className="font-bold text-xl md:text-2xl text-white mb-3 group-hover:text-green-400 transition-colors text-center">{process.title}</h3>
-                <h4 className="text-green-400 font-semibold text-lg md:text-xl mb-6 text-center">{process.subtitle}</h4>
-                <p className="text-gray-300 mb-8 text-base md:text-lg leading-relaxed text-center">{process.description}</p>
+                <h3 className="font-bold text-lg sm:text-xl lg:text-2xl text-white mb-2 sm:mb-3 group-hover:text-green-400 transition-colors text-center">{process.title}</h3>
+                <h4 className="text-green-400 font-semibold text-base sm:text-lg lg:text-xl mb-4 sm:mb-6 text-center">{process.subtitle}</h4>
+                <p className="text-gray-300 mb-6 sm:mb-8 text-sm sm:text-base lg:text-lg leading-relaxed text-center px-2">{process.description}</p>
 
                 {/* Enhanced Sub-steps */}
-                <div className="text-left bg-gray-900/30 rounded-xl p-6">
-                  <div className="text-base font-semibold text-green-400 mb-4">What This Involves:</div>
-                  <ul className="space-y-3">
+                <div className="text-left bg-gray-900/30 rounded-xl p-4 sm:p-6">
+                  <div className="text-sm sm:text-base font-semibold text-green-400 mb-3 sm:mb-4">What This Involves:</div>
+                  <ul className="space-y-2 sm:space-y-3">
                     {process.subSteps.map((step, stepIdx) => (
                       <li key={stepIdx} className="text-gray-300 flex items-start group-hover:text-gray-200 transition-colors">
-                        <div className="w-3 h-3 bg-green-400 rounded-full mt-2 mr-4 flex-shrink-0 group-hover:animate-pulse"></div>
-                        <span className="text-sm leading-relaxed">{step}</span>
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-400 rounded-full mt-1.5 sm:mt-2 mr-3 sm:mr-4 flex-shrink-0 group-hover:animate-pulse"></div>
+                        <span className="text-xs sm:text-sm leading-relaxed">{step}</span>
                       </li>
                     ))}
                   </ul>
@@ -453,41 +492,41 @@ const ProcessSection = () => {
         </div>
 
         {/* Enhanced Timeline Section */}
-        <div className="text-center mt-20">
-          <div className="bg-gray-900/40 rounded-3xl p-6 md:p-12 border border-green-500/30 backdrop-blur-sm">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">Implementation Timeline</h3>
+        <div className="text-center mt-12 sm:mt-16 lg:mt-20">
+          <div className="bg-gray-900/40 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-12 border border-green-500/30 backdrop-blur-sm">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-6 sm:mb-8">Implementation Timeline</h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8 lg:mb-10">
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-green-400">4-6</span>
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <span className="text-lg sm:text-2xl font-bold text-green-400">4-6</span>
                 </div>
-                <h4 className="font-semibold text-white mb-2">Small Business</h4>
-                <p className="text-gray-400 text-sm">weeks for basic automation</p>
+                <h4 className="font-semibold text-white mb-1 sm:mb-2 text-sm sm:text-base">Small Business</h4>
+                <p className="text-gray-400 text-xs sm:text-sm">weeks for basic automation</p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-green-400">8-10</span>
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <span className="text-lg sm:text-2xl font-bold text-green-400">8-10</span>
                 </div>
-                <h4 className="font-semibold text-white mb-2">Medium Business</h4>
-                <p className="text-gray-400 text-sm">weeks for complex workflows</p>
+                <h4 className="font-semibold text-white mb-1 sm:mb-2 text-sm sm:text-base">Medium Business</h4>
+                <p className="text-gray-400 text-xs sm:text-sm">weeks for complex workflows</p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-green-400">12+</span>
+                <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <span className="text-lg sm:text-2xl font-bold text-green-400">12+</span>
                 </div>
-                <h4 className="font-semibold text-white mb-2">Enterprise</h4>
-                <p className="text-gray-400 text-sm">weeks for full transformation</p>
+                <h4 className="font-semibold text-white mb-1 sm:mb-2 text-sm sm:text-base">Enterprise</h4>
+                <p className="text-gray-400 text-xs sm:text-sm">weeks for full transformation</p>
               </div>
             </div>
 
-            <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8">
+            <p className="text-sm sm:text-base lg:text-xl text-gray-300 mb-6 sm:mb-8 px-2">
               <span className="text-green-400 font-semibold">Fast-track available:</span> Get results in as little as 2 weeks for urgent projects.
             </p>
 
-            <FuturisticButton onClick={() => document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth' })} className="text-lg md:text-xl px-8 md:px-10 py-3 md:py-4">
+            <FuturisticButton onClick={() => document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth' })} className="text-base sm:text-lg lg:text-xl px-6 sm:px-8 lg:px-10 py-3 sm:py-4 w-full sm:w-auto">
               Start Your Assessment Today →
             </FuturisticButton>
           </div>
@@ -728,45 +767,45 @@ const ServicesSection = () => {
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-2xl animate-pulse delay-1000" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            className="inline-flex items-center px-6 py-3 bg-green-500/10 border border-green-500/30 rounded-full backdrop-blur-sm mb-6"
+            className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-green-500/10 border border-green-500/30 rounded-full backdrop-blur-sm mb-4 sm:mb-6"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <span className="w-2 h-2 bg-cyber-green rounded-full animate-pulse mr-3" />
-            <span className="text-green-400 font-medium text-sm tracking-wide uppercase">
+            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2 sm:mr-3" />
+            <span className="text-green-400 font-medium text-xs sm:text-sm tracking-wide uppercase">
               Digital Assistants • Built Just For Your Business
             </span>
           </motion.div>
 
-          <h2 className="text-4xl lg:text-6xl font-black text-white mb-6 font-display">
-            Increase Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-green to-blue-400">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-black text-white mb-4 sm:mb-6 font-display px-2">
+            Increase Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
               Operational Efficiency
             </span>
           </h2>
 
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-2">
             With affordable B2B solutions designed specifically for small businesses and their unique operational needs.
           </p>
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
           {services.map((service, idx) => (
             <motion.div
               key={idx}
-              className={`group relative bg-gray-900/30 backdrop-blur-xl border rounded-3xl p-8 hover:bg-gray-800/40 transition-all duration-500 ${getColorClasses(service.color)}`}
+              className={`group relative bg-gray-900/30 backdrop-blur-xl border rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 hover:bg-gray-800/40 transition-all duration-500 ${getColorClasses(service.color)}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -774,32 +813,32 @@ const ServicesSection = () => {
               whileHover={{ y: -5, scale: 1.02 }}
             >
               {/* Service Icon */}
-              <div className="text-4xl mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-2xl sm:text-3xl lg:text-4xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
 
               {/* Service Title */}
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-green-400 transition-colors">
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4 group-hover:text-green-400 transition-colors">
                 {service.title}
               </h3>
 
               {/* Service Description */}
-              <p className="text-gray-300 mb-6 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">
                 {service.description}
               </p>
 
               {/* Service Features */}
-              <ul className="space-y-2">
+              <ul className="space-y-1.5 sm:space-y-2">
                 {service.features.map((feature, featureIdx) => (
-                  <li key={featureIdx} className="flex items-center text-sm text-gray-400">
-                    <span className="w-2 h-2 bg-green-400 rounded-full mr-3 flex-shrink-0" />
+                  <li key={featureIdx} className="flex items-center text-xs sm:text-sm text-gray-400">
+                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-400 rounded-full mr-2 sm:mr-3 flex-shrink-0" />
                     {feature}
                   </li>
                 ))}
               </ul>
 
               {/* Hover Effect Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-blue-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-blue-500/5 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             </motion.div>
           ))}
         </div>
@@ -1060,7 +1099,7 @@ const PricingSection = () => (
                   e.target.nextSibling.style.display = 'block';
                 }}
               />
-              <div className="text-2xl hidden">🇪🇺</div>
+             
             </div>
 
             {/* GDPR */}
@@ -1074,7 +1113,7 @@ const PricingSection = () => (
                   e.target.nextSibling.style.display = 'block';
                 }}
               />
-              <div className="text-2xl hidden">🛡️</div>
+             
             </div>
 
             {/* IEEE */}
@@ -1088,7 +1127,7 @@ const PricingSection = () => (
                   e.target.nextSibling.style.display = 'block';
                 }}
               />
-              <div className="text-2xl hidden">⚡</div>
+              
             </div>
 
             {/* NIST AI RMF */}
@@ -1102,7 +1141,7 @@ const PricingSection = () => (
                   e.target.nextSibling.style.display = 'block';
                 }}
               />
-              <div className="text-2xl hidden">🏛️</div>
+              
             </div>
 
             {/* OECD */}
@@ -1116,7 +1155,7 @@ const PricingSection = () => (
                   e.target.nextSibling.style.display = 'block';
                 }}
               />
-              <div className="text-2xl hidden">🌐</div>
+              
             </div>
 
             {/* Anthropic */}
@@ -1130,7 +1169,7 @@ const PricingSection = () => (
                   e.target.nextSibling.style.display = 'block';
                 }}
               />
-              <div className="text-2xl hidden">🧠</div>
+             
             </div>
 
             {/* OpenAI */}
@@ -1144,7 +1183,7 @@ const PricingSection = () => (
                   e.target.nextSibling.style.display = 'block';
                 }}
               />
-              <div className="text-2xl hidden">🤖</div>
+              
             </div>
 
           </div>
@@ -1166,9 +1205,9 @@ const AssessmentQuiz = () => {
       id: 'industry',
       question: 'What industry is your business in?',
       options: [
-        'Coffee Shop / QSR',
+        'Education',
         'Legal / Professional Services',
-        'Trades / Home Services',
+        'Small Businesses & Services',
         'E-commerce / Retail',
         'Healthcare / Medical',
         'Other'
@@ -1477,30 +1516,30 @@ const ContactSection = ({ onCalendlyClick }) => {
   };
 
   return (
-    <section id="contact" className="py-20 relative">
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+    <section id="contact" className="py-12 sm:py-16 lg:py-20 relative">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
             Get In <span className="text-green-400">Touch</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto px-2">
             Ready to feel <span className="text-green-400 font-semibold">confident, in control, and supported</span> with AI for your business?
             Let's have a straightforward conversation about how we can help you grow.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {/* Calendar Booking */}
           <GlowCard>
-            <h3 className="text-2xl font-bold text-green-400 mb-4">Book Your Free Consultation</h3>
-            <p className="text-gray-300 mb-6">
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-green-400 mb-3 sm:mb-4">Book Your Free Consultation</h3>
+            <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6">
               30-minute strategic session to identify your highest-ROI automation opportunities for your small business.
             </p>
-            <div className="bg-gray-900/50 rounded-xl p-6 text-center border border-green-500/20">
-              <p className="text-gray-400 mb-4">Ready to schedule your consultation:</p>
-              <p className="text-sm text-gray-500 mb-4">• Free 30-minute strategy session<br/>• Discuss your business needs<br/>• Get personalised recommendations<br/>• No obligation or sales pressure</p>
-              <div className="text-green-400 text-4xl mb-4">📅</div>
-              <FuturisticButton onClick={onCalendlyClick}>
+            <div className="bg-gray-900/50 rounded-xl p-4 sm:p-6 text-center border border-green-500/20">
+              <p className="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">Ready to schedule your consultation:</p>
+              <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">• Free 30-minute strategy session<br/>• Discuss your business needs<br/>• Get personalised recommendations<br/>• No obligation or sales pressure</p>
+              <div className="text-green-400 text-2xl sm:text-4xl mb-3 sm:mb-4">📅</div>
+              <FuturisticButton onClick={onCalendlyClick} className="w-full sm:w-auto">
                 Schedule Free Consultation
               </FuturisticButton>
             </div>
@@ -1508,15 +1547,15 @@ const ContactSection = ({ onCalendlyClick }) => {
 
           {/* WhatsApp Contact */}
           <GlowCard>
-            <h3 className="text-2xl font-bold text-green-400 mb-4">Quick Questions?</h3>
-            <p className="text-gray-300 mb-6">
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-green-400 mb-3 sm:mb-4">Quick Questions?</h3>
+            <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6">
               Get instant answers via WhatsApp. Perfect for small business owners who need quick guidance on digital solutions.
             </p>
-            <div className="bg-gray-900/50 rounded-xl p-6 text-center border border-green-500/20">
-              <p className="text-gray-400 mb-4">Direct line to our consultants:</p>
-              <p className="text-sm text-gray-500 mb-4">• Ask about affordable B2B solutions<br/>• Get quick project estimates<br/>• Discuss your specific business needs<br/>• Schedule urgent consultations</p>
-              <div className="text-green-400 text-4xl mb-4">💬</div>
-              <FuturisticButton onClick={handleWhatsAppClick}>
+            <div className="bg-gray-900/50 rounded-xl p-4 sm:p-6 text-center border border-green-500/20">
+              <p className="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">Direct line to our consultants:</p>
+              <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">• Ask about affordable B2B solutions<br/>• Get quick project estimates<br/>• Discuss your specific business needs<br/>• Schedule urgent consultations</p>
+              <div className="text-green-400 text-2xl sm:text-4xl mb-3 sm:mb-4">💬</div>
+              <FuturisticButton onClick={handleWhatsAppClick} className="w-full sm:w-auto">
                 Message on WhatsApp
               </FuturisticButton>
             </div>
@@ -1615,10 +1654,10 @@ const WhatsAppButton = () => {
   return (
     <button
       onClick={handleWhatsAppClick}
-      className="fixed bottom-6 right-6 z-40 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all duration-300 transform hover:scale-110"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 bg-green-500 hover:bg-green-600 active:bg-green-700 text-white p-3 sm:p-4 rounded-full shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all duration-300 transform hover:scale-110 active:scale-95 touch-manipulation"
       aria-label="Contact us on WhatsApp"
     >
-      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+      <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
       </svg>
     </button>
