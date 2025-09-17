@@ -514,7 +514,7 @@ const ImprovedAssessment = () => {
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   placeholder="Company name (optional)"
                   className="w-full p-4 bg-gray-900/50 border border-gray-700 rounded-xl text-white placeholder-gray-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20"
-                  autoComplete="organization"
+                  autoComplete="organisation"
                 />
               </div>
 

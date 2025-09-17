@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { hoverScale } from './AnimationWrapper';
 
@@ -7,7 +7,6 @@ const ModernNavigation = ({ onCalendlyClick }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -156,8 +155,7 @@ const ModernNavigation = ({ onCalendlyClick }) => {
                       }
                     } else if (location.pathname !== '/') {
                       // If not on homepage, navigate to homepage first then scroll
-                      navigate(`/#${item.id}`);
-                      setTimeout(() => scrollToSection(item.id), 100);
+                      window.location.href = `/#${item.id}`;
                     } else {
                       // If on homepage, scroll to section
                       scrollToSection(item.id);
@@ -344,8 +342,7 @@ const ModernNavigation = ({ onCalendlyClick }) => {
                           }
                         } else if (location.pathname !== '/') {
                           // If not on homepage, navigate to homepage first then scroll
-                          navigate(`/#${item.id}`);
-                          setTimeout(() => scrollToSection(item.id), 100);
+                          window.location.href = `/#${item.id}`;
                         } else {
                           // If on homepage, scroll to section
                           scrollToSection(item.id);
@@ -392,8 +389,7 @@ const ModernNavigation = ({ onCalendlyClick }) => {
                           onCalendlyClick();
                         } else if (location.pathname !== '/') {
                           // If not on homepage, navigate to homepage first then scroll
-                          navigate('/#assessment');
-                          setTimeout(() => scrollToSection('assessment'), 100);
+                          window.location.href = '/#assessment';
                         } else {
                           // If on homepage, scroll to section
                           scrollToSection('assessment');

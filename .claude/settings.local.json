@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npm run dev:*)",
       "WebFetch(domain:brainpool.ai)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []

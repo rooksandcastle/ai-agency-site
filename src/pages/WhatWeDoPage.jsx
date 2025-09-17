@@ -112,7 +112,7 @@ const WhatWeDoPage = () => {
               </div>
 
               <p className="text-gray-300 text-lg leading-relaxed text-center">
-                Our process typically takes 4-12 weeks depending on complexity, with ongoing support and optimization included in all packages.
+                Our process typically takes 4-12 weeks depending on complexity, with ongoing support and optimisation included in all packages.
               </p>
             </div>
 
@@ -134,12 +134,12 @@ const WhatWeDoPage = () => {
 
                 <div className="bg-gray-800/50 rounded-xl p-6">
                   <h3 className="text-lg font-bold text-white mb-3">🏪 Small Businesses & Services</h3>
-                  <p className="text-gray-300 text-sm">Appointment scheduling, customer communication, payment processing, inventory management, and service delivery optimization.</p>
+                  <p className="text-gray-300 text-sm">Appointment scheduling, customer communication, payment processing, inventory management, and service delivery optimisation.</p>
                 </div>
 
                 <div className="bg-gray-800/50 rounded-xl p-6">
                   <h3 className="text-lg font-bold text-white mb-3">🛒 E-commerce & Retail</h3>
-                  <p className="text-gray-300 text-sm">Inventory automation, customer service chatbots, personalized marketing, and supply chain optimization.</p>
+                  <p className="text-gray-300 text-sm">Inventory automation, customer service chatbots, personalised marketing, and supply chain optimisation.</p>
                 </div>
 
                 <div className="bg-gray-800/50 rounded-xl p-6">
@@ -212,10 +212,10 @@ const WhatWeDoPage = () => {
                 <div>
                   <h3 className="text-xl font-bold text-white mb-4">🔄 Ongoing Partnership</h3>
                   <p className="text-gray-300 mb-4">
-                    This isn't a one-and-done consulting project. We become your ongoing AI partner, continuously optimizing and expanding your automation capabilities.
+                    This isn't a one-and-done consulting project. We become your ongoing AI partner, continuously optimising and expanding your automation capabilities.
                   </p>
                   <ul className="text-gray-300 space-y-2 text-sm">
-                    <li>• Monthly optimization reviews</li>
+                    <li>• Monthly optimisation reviews</li>
                     <li>• Quarterly strategy sessions</li>
                     <li>• 24/7 technical support</li>
                     <li>• Continuous improvement mindset</li>

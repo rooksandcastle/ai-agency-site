@@ -111,7 +111,7 @@ const WhoWeArePage = () => {
                   <div className="text-4xl mb-4">💼</div>
                   <h3 className="text-lg font-bold text-white mb-3">Business Consultants</h3>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    Former management consultants from McKinsey, BCG, and Deloitte who understand business operations, process optimization, and ROI measurement.
+                    Former management consultants from McKinsey, BCG, and Deloitte who understand business operations, process optimisation, and ROI measurement.
                   </p>
                 </div>
               </div>
@@ -180,12 +180,12 @@ const WhoWeArePage = () => {
                 <div>
                   <h3 className="text-xl font-bold text-white mb-4">🔬 The Science Behind Our Method</h3>
                   <p className="text-gray-300 mb-4 leading-relaxed">
-                    We apply cognitive behavioral principles, change management theory, and organizational psychology to ensure AI adoption success. Our approach is based on peer-reviewed research in technology acceptance and behavioral change.
+                    We apply cognitive behavioural principles, change management theory, and organisational psychology to ensure AI adoption success. Our approach is based on peer-reviewed research in technology acceptance and behavioural change.
                   </p>
                   <ul className="text-gray-300 space-y-2 text-sm">
                     <li>• Technology Acceptance Model (TAM) application</li>
                     <li>• Kotter's 8-Step Change Process</li>
-                    <li>• Cognitive Load Theory optimization</li>
+                    <li>• Cognitive Load Theory optimisation</li>
                     <li>• Social Learning Theory implementation</li>
                   </ul>
                 </div>
@@ -272,7 +272,7 @@ const WhoWeArePage = () => {
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-400 mr-3">✓</span>
-                      <span>Ongoing partnership and optimization</span>
+                      <span>Ongoing partnership and optimisation</span>
                     </li>
                     <li className="flex items-start">
                       <span className="text-green-400 mr-3">✓</span>
@@ -285,7 +285,7 @@ const WhoWeArePage = () => {
               <div className="bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/30 rounded-xl p-6 text-center">
                 <h3 className="text-xl font-bold text-white mb-4">Our Unique Value Proposition</h3>
                 <p className="text-gray-300 text-lg leading-relaxed">
-                  We're the only AI consultancy that combines technical expertise with behavioral science to create solutions that teams actually love using.
+                  We're the only AI consultancy that combines technical expertise with behavioural science to create solutions that teams actually love using.
                   We don't just implement technology—we transform how people work, making their jobs easier and more fulfilling.
                 </p>
               </div>

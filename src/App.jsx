@@ -13,9 +13,9 @@ import CalendlyBooking from './components/CalendlyBooking';
 
 // Pages
 import Homepage from './pages/Homepage';
-import WhatWeThinkPage from './pages/WhatWeThinkPage';
-import WhoWeArePage from './pages/WhoWeArePage';
-import WhatWeDoPage from './pages/WhatWeDoPage';
+import WhatWeThinkPageFixed from './pages/WhatWeThinkPageFixed';
+import WhoWeArePageFixed from './pages/WhoWeArePageFixed';
+import WhatWeDoPageFixed from './pages/WhatWeDoPageFixed';
 
 // Premium Animated Background
 const AnimatedBackground = () => {
@@ -405,7 +405,7 @@ const ProcessSection = () => {
       step: "01",
       title: "Assessment & Discovery",
       subtitle: "Understanding Your Business DNA",
-      description: "We don't just analyze your processes—we understand your team's psychology and resistance points.",
+      description: "We don't just analyse your processes—we understand your team's psychology and resistance points.",
       subSteps: [
         "Business Process Audit: Map current workflows and identify bottlenecks",
         "Team Psychology Assessment: Understand change readiness and adoption barriers", 
@@ -425,12 +425,12 @@ const ProcessSection = () => {
     },
     {
       step: "03",
-      title: "Results & Optimization", 
-      subtitle: "Measuring Success, Maximizing ROI",
-      description: "Continuous monitoring and optimization ensure sustained results and growing returns.",
+      title: "Results & Optimisation", 
+      subtitle: "Measuring Success, Maximising ROI",
+      description: "Continuous monitoring and optimisation ensure sustained results and growing returns.",
       subSteps: [
         "Performance Monitoring: Track time saved, efficiency gains, and ROI metrics",
-        "System Optimization: Refine workflows based on real-world usage patterns",
+        "System Optimisation: Refine workflows based on real-world usage patterns",
         "Scaling Strategy: Identify additional automation opportunities as you grow"
       ]
     }
@@ -680,7 +680,7 @@ const ServicesSection = () => {
         "Behavioural pattern analysis",
         "Predictive customer lifetime value",
         "Churn risk identification",
-        "Personalisation engine optimization"
+        "Personalisation engine optimisation"
       ],
       icon: "📊",
       color: "blue"
@@ -728,7 +728,7 @@ const ServicesSection = () => {
         "Custom workflow automation",
         "Decision tree processing",
         "Integration orchestration",
-        "Continuous process optimization"
+        "Continuous process optimisation"
       ],
       icon: "🤖",
       color: "cyan"
@@ -1257,7 +1257,7 @@ const AssessmentQuiz = () => {
     return (
       <div className="text-center">
         <h3 className="text-2xl font-bold text-green-400 mb-4">Perfect! Let's Schedule Your Assessment</h3>
-        <p className="text-gray-300 mb-6">Based on your answers, we'll prepare a customized consultation.</p>
+        <p className="text-gray-300 mb-6">Based on your answers, we'll prepare a customised consultation.</p>
         <div className="bg-gray-900/50 rounded-2xl p-8 border border-green-500/30">
           <div className="mb-4">
             <p className="text-gray-400 mb-2">Integration Instructions:</p>
@@ -1688,9 +1688,9 @@ const App = () => {
         <Route path="/" element={<Homepage />} />
 
         {/* New Navigation Routes */}
-        <Route path="/what-we-think" element={<WhatWeThinkPage />} />
-        <Route path="/who-we-are" element={<WhoWeArePage />} />
-        <Route path="/what-we-do" element={<WhatWeDoPage />} />
+        <Route path="/what-we-think" element={<WhatWeThinkPageFixed />} />
+        <Route path="/who-we-are" element={<WhoWeArePageFixed />} />
+        <Route path="/what-we-do" element={<WhatWeDoPageFixed />} />
       </Routes>
     </Router>
   );
