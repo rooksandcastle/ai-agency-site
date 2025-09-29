@@ -12,10 +12,11 @@ import ComprehensiveFooter from './components/ComprehensiveFooter';
 import CalendlyBooking from './components/CalendlyBooking';
 
 // Pages
-import Homepage from './pages/Homepage';
-import WhatWeThinkPageFixed from './pages/WhatWeThinkPageFixed';
-import WhoWeArePageFixed from './pages/WhoWeArePageFixed';
-import WhatWeDoPageFixed from './pages/WhatWeDoPageFixed';
+import CallCaptureHome from './pages/CallCaptureHome';
+// import Homepage from './pages/Homepage';
+// import WhatWeThinkPageFixed from './pages/WhatWeThinkPageFixed';
+// import WhoWeArePageFixed from './pages/WhoWeArePageFixed';
+// import WhatWeDoPageFixed from './pages/WhatWeDoPageFixed';
 
 // Premium Animated Background
 const AnimatedBackground = () => {
@@ -1684,13 +1685,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Homepage Route - Exact same content as before */}
-        <Route path="/" element={<Homepage />} />
-
-        {/* New Navigation Routes */}
-        <Route path="/what-we-think" element={<WhatWeThinkPageFixed />} />
-        <Route path="/who-we-are" element={<WhoWeArePageFixed />} />
-        <Route path="/what-we-do" element={<WhatWeDoPageFixed />} />
+        <Route path="/" element={<CallCaptureHome />} />
       </Routes>
     </Router>
   );
