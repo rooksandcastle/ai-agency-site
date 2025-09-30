@@ -1026,52 +1026,189 @@ const BusinessNecessitySection = () => (
 // Pricing Section
 const PricingSection = () => (
   <section className="py-20 relative">
-    <div className="max-w-4xl mx-auto px-4 text-center">
-      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-        Pricing That Makes <span className="text-green-400">Sense</span>
-      </h2>
-      <p className="text-xl text-gray-300 mb-12">
-        Custom solutions tailored to your business needs and current status. We don't get paid until you see results.
-      </p>
+    <div className="max-w-7xl mx-auto px-4">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          Investment <span className="text-green-400">Tiers</span>
+        </h2>
+        <p className="text-xl text-gray-300 mb-4">
+          Tailored pricing revealed after your free audit
+        </p>
+        <p className="text-sm text-gray-400 max-w-2xl mx-auto">
+          Like Johnny Walker's Red, Black & Blue—each tier offers distinct value. Your exact pricing is determined after we understand your business needs.
+        </p>
+      </div>
 
-      <GlowCard className="border-green-500/30">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h3 className="text-2xl font-bold text-green-400 mb-4">Our Pricing Philosophy</h3>
-            <ul className="text-left space-y-3 text-gray-300">
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
-                Solutions starting from £10/month
+      <div className="grid md:grid-cols-3 gap-8 mb-12">
+        {/* Essential Tier */}
+        <GlowCard className="border-gray-500/30 hover:border-gray-400/50 transition-all duration-300">
+          <div className="p-8">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-2xl font-bold text-gray-300">Essential</h3>
+              <span className="text-3xl">🥈</span>
+            </div>
+            <p className="text-gray-400 text-sm mb-6">Perfect for small businesses starting their AI journey</p>
+
+            <div className="mb-6">
+              <div className="text-4xl font-bold text-white mb-2">
+                Custom
+              </div>
+              <p className="text-sm text-gray-400">Price after audit</p>
+            </div>
+
+            <ul className="space-y-3 text-gray-300 text-sm mb-8">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-gray-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Single AI solution</span>
               </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
-                ROI-based pricing—we succeed when you succeed
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-gray-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Basic workflow automation</span>
               </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
-                Free consultation, assessment & workflow mapping
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-gray-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Email support</span>
               </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
-                Custom pricing based on company size & needs
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-gray-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Quarterly reviews</span>
               </li>
-              <li className="flex items-center">
-                <span className="w-2 h-2 bg-green-400 rounded-full mr-3"></span>
-                Only start paying once ROI is achieved
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-gray-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Standard implementation</span>
               </li>
             </ul>
+
+            <p className="text-xs text-gray-500 italic">Best for: Startups, solo entrepreneurs</p>
           </div>
-          
-          <div className="bg-gradient-to-br from-green-400/10 to-green-600/5 rounded-xl p-6">
-            <h4 className="text-xl font-bold text-white mb-4">What's Included Free:</h4>
-            <div className="text-green-400 text-3xl font-bold mb-2">£0</div>
-            <ul className="text-sm text-gray-300 space-y-2">
-              <li>• Business Process Assessment</li>
-              <li>• Workflow Mapping & Analysis</li>
-              <li>• ROI Opportunity Identification</li>
-              <li>• Implementation Roadmap</li>
+        </GlowCard>
+
+        {/* Professional Tier - Featured */}
+        <GlowCard className="border-green-500/50 hover:border-green-400/70 transition-all duration-300 transform md:scale-105 relative">
+          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-black px-4 py-1 rounded-full text-xs font-bold">
+            MOST POPULAR
+          </div>
+          <div className="p-8">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-2xl font-bold text-green-400">Professional</h3>
+              <span className="text-3xl">🥇</span>
+            </div>
+            <p className="text-gray-300 text-sm mb-6">Comprehensive AI solutions for growing companies</p>
+
+            <div className="mb-6">
+              <div className="text-4xl font-bold text-green-400 mb-2">
+                Custom
+              </div>
+              <p className="text-sm text-gray-400">Price after audit</p>
+            </div>
+
+            <ul className="space-y-3 text-gray-300 text-sm mb-8">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Multiple AI solutions</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Advanced automation & integrations</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Priority support</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Monthly strategy sessions</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Dedicated account manager</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Custom training & documentation</span>
+              </li>
             </ul>
+
+            <p className="text-xs text-gray-400 italic">Best for: SMEs, scaling businesses</p>
           </div>
+        </GlowCard>
+
+        {/* Enterprise Tier */}
+        <GlowCard className="border-blue-500/30 hover:border-blue-400/50 transition-all duration-300">
+          <div className="p-8">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-2xl font-bold text-blue-400">Enterprise</h3>
+              <span className="text-3xl">💎</span>
+            </div>
+            <p className="text-gray-400 text-sm mb-6">Bespoke AI transformation for large organisations</p>
+
+            <div className="mb-6">
+              <div className="text-4xl font-bold text-blue-400 mb-2">
+                Bespoke
+              </div>
+              <p className="text-sm text-gray-400">Price after audit</p>
+            </div>
+
+            <ul className="space-y-3 text-gray-300 text-sm mb-8">
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Full AI ecosystem</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Enterprise-grade infrastructure</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
+                <span>24/7 white-glove support</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Weekly strategy & optimisation</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Dedicated team & technical lead</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Compliance & security audit</span>
+              </li>
+              <li className="flex items-start">
+                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
+                <span>Custom SLAs & guarantees</span>
+              </li>
+            </ul>
+
+            <p className="text-xs text-gray-500 italic">Best for: Large enterprises, corporations</p>
+          </div>
+        </GlowCard>
+      </div>
+
+      {/* What's Always Free */}
+      <GlowCard className="border-green-500/30 max-w-4xl mx-auto">
+        <div className="p-8 text-center">
+          <h3 className="text-2xl font-bold text-green-400 mb-4">What's Always Free</h3>
+          <div className="text-5xl font-bold text-green-400 mb-6">£0</div>
+          <div className="grid md:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
+            <div className="flex items-start">
+              <span className="text-green-400 mr-2">✓</span>
+              <span className="text-gray-300">Business Process Assessment</span>
+            </div>
+            <div className="flex items-start">
+              <span className="text-green-400 mr-2">✓</span>
+              <span className="text-gray-300">Workflow Mapping & Analysis</span>
+            </div>
+            <div className="flex items-start">
+              <span className="text-green-400 mr-2">✓</span>
+              <span className="text-gray-300">ROI Opportunity Identification</span>
+            </div>
+            <div className="flex items-start">
+              <span className="text-green-400 mr-2">✓</span>
+              <span className="text-gray-300">Custom Implementation Roadmap</span>
+            </div>
+          </div>
+          <p className="text-sm text-gray-400 mt-6">No commitment required. See exactly what we can do for your business before making any investment.</p>
         </div>
       </GlowCard>
 

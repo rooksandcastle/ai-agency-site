@@ -63,7 +63,7 @@ const CallCaptureHome = () => {
           >
             <span className="w-2 h-2 bg-red-400 rounded-full animate-pulse mr-3" />
             <span className="text-red-400 font-medium text-sm tracking-wide">
-              MISSING CALLS = LOSING £5,000+ MONTHLY
+              MISSING CALLS = LOSING £££ MONTHLY
             </span>
           </motion.div>
 
@@ -85,7 +85,7 @@ const CallCaptureHome = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl sm:text-2xl text-gray-300 mb-4 leading-relaxed"
           >
-            AI assistant captures leads 24/7 when you're on job sites.
+            Your AI phone assistant handles calls 24/7—even when you can't.
           </motion.p>
 
           <motion.p
@@ -94,7 +94,7 @@ const CallCaptureHome = () => {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="text-lg text-green-400 font-semibold mb-12"
           >
-            Built for trades, salons, and home services • £1,500 setup • 2-week implementation
+            Out-of-hours coverage • Smart call-back system • Custom greetings • AI insights
           </motion.p>
 
           <motion.div
@@ -147,32 +147,79 @@ const CallCaptureHome = () => {
         </div>
       </section>
 
-      {/* Solution */}
+      {/* What You Get */}
       <section className="py-20 bg-gradient-to-b from-transparent to-gray-900/50 relative">
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              How It <span className="text-green-400">Works</span>
+              Your AI Phone Bot <span className="text-green-400">Can Handle</span>
             </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              More than just answering calls—it's your 24/7 business partner
+            </p>
           </div>
 
-          <div className="max-w-3xl mx-auto space-y-8">
+          <div className="grid md:grid-cols-2 gap-6 mb-16">
             {[
-              { step: '1', title: 'Call Comes In', desc: 'Customer calls while you\'re busy' },
-              { step: '2', title: 'AI Captures Lead', desc: 'System records their details and needs' },
-              { step: '3', title: 'You Get Texted', desc: 'Full lead info in 30 seconds' },
-              { step: '4', title: 'You Close Deal', desc: 'Call back when convenient' }
+              {
+                icon: '🌙',
+                title: 'Out-of-Hours Coverage',
+                desc: '9am-5pm? Not anymore. Capture leads while you sleep, on weekends, during holidays.'
+              },
+              {
+                icon: '📞',
+                title: 'Intelligent Call-Back System',
+                desc: 'AI prioritises urgent calls, schedules callbacks, and keeps customers informed automatically.'
+              },
+              {
+                icon: '🎤',
+                title: 'Custom Business Greetings',
+                desc: 'Your brand voice, your script. Sounds professional, feels personal—every single time.'
+              },
+              {
+                icon: '📊',
+                title: 'Real-Time AI Insights',
+                desc: 'Track call patterns, peak times, common questions. Make data-driven decisions instantly.'
+              },
+              {
+                icon: '💬',
+                title: 'Instant SMS Notifications',
+                desc: 'Get full lead details texted to you in 30 seconds. Name, number, reason for call, urgency level.'
+              },
+              {
+                icon: '🔄',
+                title: 'Multiple Task Handling',
+                desc: 'Bookings, quotes, FAQs, appointment changes—handles it all without breaking a sweat.'
+              }
             ].map((item, idx) => (
-              <div key={idx} className="flex gap-6 items-start bg-gray-900/50 border border-green-500/20 rounded-2xl p-6">
-                <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center text-black font-bold text-2xl">
-                  {item.step}
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-gray-400">{item.desc}</p>
-                </div>
+              <div key={idx} className="bg-gray-900/50 border border-green-500/20 rounded-2xl p-8 hover:border-green-400/40 transition-all duration-300">
+                <div className="text-4xl mb-4">{item.icon}</div>
+                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
+                <p className="text-gray-400">{item.desc}</p>
               </div>
             ))}
+          </div>
+
+          <div className="max-w-3xl mx-auto">
+            <h3 className="text-3xl font-bold text-white mb-8 text-center">See It In <span className="text-green-400">Action</span></h3>
+            <div className="space-y-6">
+              {[
+                { step: '1', title: 'Call Arrives', desc: 'Customer calls at 11pm on Sunday—you\'re off the clock' },
+                { step: '2', title: 'AI Answers Professionally', desc: 'Custom greeting, captures details, assesses urgency' },
+                { step: '3', title: 'You Get Instant Alert', desc: 'SMS with full lead info: name, contact, needs, urgency score' },
+                { step: '4', title: 'You Call Back & Close', desc: 'Follow up when it suits you—customer already impressed' }
+              ].map((item, idx) => (
+                <div key={idx} className="flex gap-6 items-start bg-gradient-to-r from-green-500/5 to-green-600/5 border border-green-500/30 rounded-2xl p-6">
+                  <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center text-black font-bold text-2xl shadow-lg shadow-green-500/30">
+                    {item.step}
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
+                    <p className="text-gray-300">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
           <div className="mt-16 max-w-2xl mx-auto bg-gradient-to-br from-green-500/10 to-green-600/5 border border-green-500/30 rounded-2xl p-8">
@@ -195,41 +242,93 @@ const CallCaptureHome = () => {
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* Investment */}
       <section className="py-20 relative">
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Simple <span className="text-green-400">Pricing</span>
+              Your <span className="text-green-400">Investment</span>
             </h2>
-            <p className="text-xl text-gray-300">One-time setup. No long contracts.</p>
+            <p className="text-xl text-gray-300 mb-3">Tailored pricing based on your business needs</p>
+            <p className="text-sm text-gray-400 max-w-2xl mx-auto">
+              Every business is different. We'll calculate your exact cost and ROI during your free audit.
+            </p>
           </div>
 
-          <div className="bg-gradient-to-br from-green-500/10 to-green-600/5 border-2 border-green-500/50 rounded-3xl p-12 text-center">
-            <h3 className="text-3xl font-bold text-white mb-4">Call Capture System</h3>
-            <div className="text-6xl font-black text-green-400 mb-6">£1,500</div>
-            <p className="text-xl text-gray-300 mb-8">Complete setup + 30-day support</p>
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            {/* Value Highlight 1 */}
+            <div className="bg-gray-900/50 border border-gray-500/30 rounded-2xl p-8 text-center">
+              <div className="text-5xl mb-4">⚡</div>
+              <h3 className="text-2xl font-bold text-white mb-3">Quick Setup</h3>
+              <p className="text-gray-400 mb-4">Live in 2 weeks or less</p>
+              <div className="text-3xl font-bold text-gray-300">Fast</div>
+            </div>
 
-            <ul className="text-left max-w-md mx-auto space-y-4 mb-8">
+            {/* Value Highlight 2 - Featured */}
+            <div className="bg-gradient-to-br from-green-500/20 to-green-600/10 border-2 border-green-500/50 rounded-2xl p-8 text-center transform md:scale-105 relative shadow-2xl shadow-green-500/20">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-black px-4 py-1 rounded-full text-xs font-bold">
+                MOST POPULAR
+              </div>
+              <div className="text-5xl mb-4">💰</div>
+              <h3 className="text-2xl font-bold text-green-400 mb-3">ROI Guaranteed</h3>
+              <p className="text-gray-300 mb-4">Typical payback period</p>
+              <div className="text-3xl font-bold text-green-400">4-8 weeks</div>
+              <p className="text-xs text-gray-400 mt-3">Or we refund 50%</p>
+            </div>
+
+            {/* Value Highlight 3 */}
+            <div className="bg-gray-900/50 border border-gray-500/30 rounded-2xl p-8 text-center">
+              <div className="text-5xl mb-4">🎯</div>
+              <h3 className="text-2xl font-bold text-white mb-3">No Risk</h3>
+              <p className="text-gray-400 mb-4">Cancel anytime</p>
+              <div className="text-3xl font-bold text-gray-300">Flexible</div>
+            </div>
+          </div>
+
+          {/* What's Included */}
+          <div className="bg-gradient-to-br from-green-500/10 to-green-600/5 border border-green-500/30 rounded-3xl p-10 max-w-4xl mx-auto">
+            <h3 className="text-3xl font-bold text-white mb-8 text-center">What's Always Included</h3>
+
+            <div className="grid md:grid-cols-2 gap-6 mb-10">
               {[
-                'AI call capture + SMS alerts',
-                'Lead tracking dashboard',
-                '2-week implementation',
-                'Staff training included',
-                'ROI guarantee: 5+ leads or 50% refund'
-              ].map((feature, idx) => (
-                <li key={idx} className="flex items-center text-gray-300">
-                  <span className="w-2 h-2 bg-green-400 rounded-full mr-3" />
-                  {feature}
-                </li>
+                { icon: '🤖', text: 'Full AI phone bot setup' },
+                { icon: '🎤', text: 'Custom greetings & scripts' },
+                { icon: '📱', text: 'SMS notification system' },
+                { icon: '📊', text: 'AI insights dashboard' },
+                { icon: '🌙', text: '24/7 out-of-hours coverage' },
+                { icon: '📞', text: 'Intelligent call-back routing' },
+                { icon: '👥', text: 'Full team training' },
+                { icon: '🛡️', text: '30-day support guarantee' }
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3">
+                  <span className="text-2xl">{item.icon}</span>
+                  <span className="text-gray-300 font-medium">{item.text}</span>
+                </div>
               ))}
-            </ul>
+            </div>
 
-            <CTAButton onClick={handleCalendly} className="text-xl px-12 py-5">
-              Book Free Audit →
-            </CTAButton>
+            <div className="text-center border-t border-green-500/20 pt-8">
+              <p className="text-xl text-white font-semibold mb-6">
+                Want to know your exact price?
+              </p>
+              <CTAButton onClick={handleCalendly} className="text-xl px-12 py-5">
+                Get Your Custom Quote (Free) →
+              </CTAButton>
+              <p className="text-sm text-gray-400 mt-4">15-minute audit • No obligation • Instant ROI calculation</p>
+            </div>
+          </div>
 
-            <p className="text-sm text-gray-500 mt-6">Optional monthly management from £150/month</p>
+          {/* Social Proof */}
+          <div className="mt-12 text-center">
+            <p className="text-gray-400 mb-4">Trusted by businesses like yours</p>
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
+              <span>✓ Plumbers</span>
+              <span>✓ Electricians</span>
+              <span>✓ Hair Salons</span>
+              <span>✓ Beauty Clinics</span>
+              <span>✓ Home Services</span>
+              <span>✓ Tradespeople</span>
+            </div>
           </div>
         </div>
       </section>
@@ -246,27 +345,35 @@ const CallCaptureHome = () => {
           <div className="space-y-6">
             {[
               {
-                q: 'How long does setup take?',
-                a: '2 weeks from contract signing to go-live. We handle everything - you just approve the setup and test it works.'
+                q: 'How much does it actually cost?',
+                a: 'Investment depends on your call volume, features needed, and business size. Most small businesses pay back the setup within 4-8 weeks from new leads alone. We\'ll calculate your exact cost and ROI in your free audit.'
               },
               {
-                q: 'What if it doesn\'t work?',
-                a: 'ROI guarantee: if we don\'t capture at least 5 quality leads in first 30 days, you get 50% refund. No questions asked.'
+                q: 'How long does setup take?',
+                a: '2 weeks or less. We handle everything—custom greetings, call routing, SMS alerts, dashboard setup. You just test it and approve.'
+              },
+              {
+                q: 'What if it doesn\'t capture enough leads?',
+                a: 'ROI guarantee: If we don\'t help you capture at least 5 quality leads in the first 30 days, you get 50% of your investment back. No questions, no hassle.'
               },
               {
                 q: 'Do I need technical knowledge?',
-                a: 'Zero technical knowledge required. We handle all setup and training. You just answer texts with lead details.'
+                a: 'Zero. We set up everything, train your team, and provide 30 days of support. You just receive SMS alerts and call leads back.'
               },
               {
-                q: 'What happens to my existing phone number?',
-                a: 'Nothing changes. We add smart call forwarding that only activates when you can\'t answer. You keep your same number.'
+                q: 'What about my existing phone number?',
+                a: 'Keep it. We add intelligent call forwarding that only activates when you\'re unavailable. Nothing changes from your customers\' perspective.'
               },
               {
-                q: 'Can I cancel anytime?',
-                a: 'One-time setup fee with no long-term contract. Optional monthly management is month-to-month, cancel anytime.'
+                q: 'Can the AI handle my specific business needs?',
+                a: 'Yes. Custom greetings, industry-specific FAQs, booking systems, quote requests—we tailor everything to your exact business. That\'s why we do the audit first.'
+              },
+              {
+                q: 'Are there long-term contracts?',
+                a: 'No. Flexible month-to-month after setup. Cancel anytime if you\'re not seeing value (though most clients stay because it pays for itself).'
               }
             ].map((item, idx) => (
-              <div key={idx} className="bg-gray-900/50 border border-green-500/20 rounded-2xl p-6">
+              <div key={idx} className="bg-gray-900/50 border border-green-500/20 rounded-2xl p-6 hover:border-green-400/40 transition-all duration-300">
                 <h3 className="text-xl font-bold text-white mb-3">{item.q}</h3>
                 <p className="text-gray-400">{item.a}</p>
               </div>
