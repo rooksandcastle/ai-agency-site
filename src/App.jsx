@@ -1648,8 +1648,7 @@ const BlogSection = () => (
 const ContactSection = ({ onCalendlyClick }) => {
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent("Hi! I'm interested in learning more about digital automation for my small business. Can we schedule a consultation?");
-    // REPLACE THIS WITH YOUR ACTUAL WHATSAPP BUSINESS NUMBER
-    const whatsappNumber = "447123456789"; // Replace with your real number
+    const whatsappNumber = "447533595684";
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
   };
 
@@ -1784,8 +1783,7 @@ const ContactSection = ({ onCalendlyClick }) => {
 const WhatsAppButton = () => {
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent("Hi! I'm interested in learning more about AI automation for my business. Can we schedule a consultation?");
-    // REPLACE THIS WITH YOUR ACTUAL WHATSAPP BUSINESS NUMBER
-    const whatsappNumber = "447123456789"; // Replace with your real number
+    const whatsappNumber = "447533595684";
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
   };
 
