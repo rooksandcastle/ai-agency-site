@@ -1,28 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-// Animated Background
+// Animated Background - Sophisticated McKinsey-style
 const AnimatedBackground = () => (
   <div className="fixed inset-0 overflow-hidden pointer-events-none">
-    <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-950 to-black"></div>
-    <div className="absolute top-1/5 left-1/5 w-[500px] h-[500px] lg:w-[800px] lg:h-[800px] bg-green-500/15 rounded-full blur-3xl animate-pulse"></div>
-    <div className="absolute bottom-1/5 right-1/5 w-[400px] h-[400px] lg:w-[600px] lg:h-[600px] bg-green-400/10 rounded-full blur-3xl animate-pulse"></div>
-    <div className="absolute inset-0 bg-[linear-gradient(rgba(34,197,94,.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,197,94,.03)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+    {/* Base gradient - subtle and professional */}
+    <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-black to-gray-950"></div>
+
+    {/* Subtle color accents */}
+    <motion.div
+      className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-green-500/8 via-blue-500/5 to-transparent rounded-full blur-3xl"
+      animate={{
+        scale: [1, 1.1, 1],
+        opacity: [0.3, 0.5, 0.3],
+      }}
+      transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+    />
+
+    <motion.div
+      className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-gradient-to-tr from-purple-500/6 via-green-500/4 to-transparent rounded-full blur-3xl"
+      animate={{
+        scale: [1.1, 1, 1.1],
+        opacity: [0.4, 0.6, 0.4],
+      }}
+      transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+    />
+
+    {/* Minimal grid overlay - very subtle */}
+    <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.015)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+
+    {/* Radial gradient for depth */}
+    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.05),transparent_50%)]"></div>
   </div>
 );
 
-// Button Component
+// Button Component - Premium styling
 const CTAButton = ({ children, variant = 'primary', onClick, className = '' }) => {
   const styles = variant === 'primary'
-    ? 'bg-gradient-to-r from-green-400 to-green-500 text-black hover:from-green-500 hover:to-green-600 shadow-2xl shadow-green-500/30'
-    : 'border-2 border-green-400 text-green-400 hover:bg-green-400/10';
+    ? 'bg-gradient-to-r from-green-400 to-green-500 text-black hover:from-green-500 hover:to-green-600 shadow-lg shadow-green-500/20 hover:shadow-green-500/40'
+    : 'border border-white/20 text-white hover:bg-white/5 hover:border-white/30 backdrop-blur-sm';
 
   return (
     <motion.button
-      className={`px-8 py-4 rounded-2xl font-semibold transition-all duration-300 ${styles} ${className}`}
+      className={`px-8 py-4 rounded-xl font-medium transition-all duration-300 ${styles} ${className}`}
       onClick={onClick}
-      whileHover={{ scale: 1.03, y: -2 }}
-      whileTap={{ scale: 0.97 }}
+      whileHover={{ scale: 1.02, y: -1 }}
+      whileTap={{ scale: 0.98 }}
     >
       {children}
     </motion.button>
@@ -55,70 +78,31 @@ const CallCaptureHome = () => {
       {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center px-6 py-20">
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center px-6 py-3 bg-red-500/10 border border-red-500/30 rounded-full backdrop-blur-sm mb-8"
-          >
-            <span className="w-2 h-2 bg-red-400 rounded-full animate-pulse mr-3" />
-            <span className="text-red-400 font-medium text-sm tracking-wide">
-              MISSING CALLS = LOSING £££ MONTHLY
-            </span>
-          </motion.div>
-
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-5xl sm:text-6xl lg:text-7xl font-black text-white mb-8 leading-tight"
           >
-            Never Miss Another<br />
+            24/7 AI Front Desk<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
-              Customer
+              For Your Business
             </span>
           </motion.h1>
 
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-green-500/10 border border-white/20 rounded-full backdrop-blur-md mb-6"
+            className="text-xl sm:text-2xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto"
           >
-            <span className="text-white font-medium text-lg">Out-of-Hours Phone Coverage for Your Business</span>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl sm:text-2xl text-gray-300 mb-4 leading-relaxed"
-          >
-            Every call is answered professionally, every lead is captured, every booking is automated. 24/7—even when you can't.
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-lg text-gray-400 mb-4"
-          >
-            Essential operational infrastructure for modern small businesses
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-base text-gray-300 mb-12"
-          >
-            Your business is now open 24/7. For less than the cost of one part-time shift weekly.
+            Professional call answering, appointment booking, and lead capture—even when you can't pick up.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
           >
             <CTAButton onClick={handleCalendly}>
@@ -132,7 +116,7 @@ const CallCaptureHome = () => {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: visible ? 1 : 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
             className="text-sm text-gray-500"
           >
             Psychology-informed AI implementation • Human-centered • Ethical by design
@@ -273,102 +257,186 @@ const CallCaptureHome = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
             {/* Essential Front Desk */}
-            <div className="bg-gradient-to-br from-green-500/20 to-green-600/10 border-2 border-green-500/50 rounded-2xl p-8 transform md:scale-105 relative shadow-2xl shadow-green-500/20">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-black px-4 py-1 rounded-full text-xs font-bold">
-                MOST POPULAR
-              </div>
-              <h3 className="text-2xl font-bold text-green-400 mb-2">Essential Front Desk</h3>
-              <p className="text-gray-300 text-sm mb-6">Mobile trades, solo consultants, small service providers</p>
+            <motion.div
+              className="bg-gradient-to-br from-gray-900/80 via-gray-900/60 to-gray-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-500"
+              whileHover={{ y: -4 }}
+            >
+              <h3 className="text-2xl font-semibold text-white mb-2">Essential Front Desk</h3>
+              <p className="text-gray-400 text-sm mb-6">Mobile trades, solo consultants, small service providers</p>
 
-              <div className="mb-6">
+              <div className="mb-8 pb-8 border-b border-white/10">
                 <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-4xl font-bold text-green-400">£500</span>
-                  <span className="text-gray-400 text-lg">setup</span>
+                  <span className="text-5xl font-bold text-white">£500</span>
+                  <span className="text-gray-500">setup</span>
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-semibold text-white">£150</span>
-                  <span className="text-gray-400">/month</span>
+                  <span className="text-2xl font-semibold text-gray-300">£150</span>
+                  <span className="text-gray-500">/month</span>
                 </div>
               </div>
 
-              <ul className="space-y-3 text-gray-300 text-sm mb-8">
-                <li>✓ 24/7 call answering with natural voice</li>
-                <li>✓ Appointment booking (Google Calendar/Calendly)</li>
-                <li>✓ Basic FAQ handling (5-10 questions)</li>
-                <li>✓ Lead notification via SMS/email</li>
-                <li>✓ 2-week setup, 30-day optimisation</li>
+              <ul className="space-y-4 text-gray-300 text-sm mb-8">
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>24/7 call answering with natural voice</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Appointment booking (Google Calendar/Calendly)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Basic FAQ handling (5-10 questions)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Lead notification via SMS/email</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>2-week setup, 30-day optimisation</span>
+                </li>
               </ul>
 
-              <p className="text-xs text-gray-400 italic">For solo operators & 2-3 person teams • £100k-£300k revenue</p>
+              <p className="text-xs text-gray-500 mb-6">Solo operators & 2-3 person teams • £100k-£300k revenue</p>
 
-              <CTAButton onClick={handleCalendly} className="w-full mt-6">
+              <CTAButton variant="secondary" onClick={handleCalendly} className="w-full">
                 Get Started →
               </CTAButton>
-            </div>
+            </motion.div>
 
             {/* Professional Front Desk */}
-            <div className="bg-gray-900/50 border border-gray-500/30 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-2">Professional Front Desk</h3>
+            <motion.div
+              className="bg-gradient-to-br from-green-500/15 via-green-600/10 to-green-500/15 backdrop-blur-xl border-2 border-green-500/30 rounded-3xl p-8 transform md:scale-105 relative shadow-2xl shadow-green-500/10 hover:border-green-500/50 transition-all duration-500"
+              whileHover={{ y: -6, boxShadow: "0 25px 50px -12px rgba(34, 197, 94, 0.25)" }}
+            >
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-400 to-green-500 text-black px-6 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                MOST POPULAR
+              </div>
+              <h3 className="text-2xl font-semibold text-green-400 mb-2">Professional Front Desk</h3>
               <p className="text-gray-300 text-sm mb-6">Growing teams, multi-location, or higher volume</p>
 
-              <div className="mb-6">
+              <div className="mb-8 pb-8 border-b border-green-500/20">
                 <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-4xl font-bold text-white">£800</span>
-                  <span className="text-gray-400 text-lg">setup</span>
+                  <span className="text-5xl font-bold text-green-400">£800</span>
+                  <span className="text-gray-500">setup</span>
                 </div>
                 <div className="flex items-baseline gap-2">
                   <span className="text-2xl font-semibold text-white">£200</span>
-                  <span className="text-gray-400">/month</span>
+                  <span className="text-gray-500">/month</span>
                 </div>
               </div>
 
-              <ul className="space-y-3 text-gray-300 text-sm mb-8">
-                <li>✓ Everything in Essential, plus:</li>
-                <li>✓ CRM integration (Zapier, custom API)</li>
-                <li>✓ Advanced call routing (team availability)</li>
-                <li>✓ Extended FAQ library (20+ questions)</li>
-                <li>✓ Monthly performance review & tuning</li>
+              <ul className="space-y-4 text-gray-200 text-sm mb-8">
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Everything in Essential, plus:</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>CRM integration (Zapier, custom API)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Advanced call routing (team availability)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Extended FAQ library (20+ questions)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Monthly performance review & tuning</span>
+                </li>
               </ul>
 
-              <p className="text-xs text-gray-400 italic">For 4-10 person teams • £300k-£750k revenue</p>
+              <p className="text-xs text-gray-400 mb-6">4-10 person teams • £300k-£750k revenue</p>
 
-              <CTAButton variant="secondary" onClick={handleCalendly} className="w-full mt-6">
-                Learn More →
+              <CTAButton onClick={handleCalendly} className="w-full">
+                Get Started →
               </CTAButton>
-            </div>
+            </motion.div>
 
             {/* Enterprise Front Desk */}
-            <div className="bg-gray-900/50 border border-gray-500/30 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-2">Enterprise Front Desk</h3>
-              <p className="text-gray-300 text-sm mb-6">Multi-site operations, complex workflows</p>
+            <motion.div
+              className="bg-gradient-to-br from-gray-900/80 via-gray-900/60 to-gray-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-500"
+              whileHover={{ y: -4 }}
+            >
+              <h3 className="text-2xl font-semibold text-white mb-2">Enterprise Front Desk</h3>
+              <p className="text-gray-400 text-sm mb-6">Multi-site operations, complex workflows</p>
 
-              <div className="mb-6">
+              <div className="mb-8 pb-8 border-b border-white/10">
                 <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-4xl font-bold text-white">£1,200</span>
-                  <span className="text-gray-400 text-lg">setup</span>
+                  <span className="text-5xl font-bold text-white">£1,200</span>
+                  <span className="text-gray-500">setup</span>
                 </div>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-semibold text-white">£300</span>
-                  <span className="text-gray-400">/month</span>
+                  <span className="text-2xl font-semibold text-gray-300">£300</span>
+                  <span className="text-gray-500">/month</span>
                 </div>
               </div>
 
-              <ul className="space-y-3 text-gray-300 text-sm mb-8">
-                <li>✓ Everything in Professional, plus:</li>
-                <li>✓ Multi-location support (unified or separate)</li>
-                <li>✓ Custom integrations & workflows</li>
-                <li>✓ Priority support (2-hour response SLA)</li>
-                <li>✓ Bi-weekly performance analytics calls</li>
+              <ul className="space-y-4 text-gray-300 text-sm mb-8">
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Everything in Professional, plus:</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Multi-location support (unified or separate)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Custom integrations & workflows</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Priority support (2-hour response SLA)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
+                  </svg>
+                  <span>Bi-weekly performance analytics calls</span>
+                </li>
               </ul>
 
-              <p className="text-xs text-gray-400 italic">For 10+ person teams • £750k+ revenue</p>
+              <p className="text-xs text-gray-500 mb-6">10+ person teams • £750k+ revenue</p>
 
-              <CTAButton variant="secondary" onClick={handleCalendly} className="w-full mt-6">
+              <CTAButton variant="secondary" onClick={handleCalendly} className="w-full">
                 Contact Sales →
               </CTAButton>
-            </div>
+            </motion.div>
           </div>
 
           {/* Enhanced Social Proof */}
