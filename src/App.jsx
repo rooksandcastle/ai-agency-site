@@ -538,56 +538,50 @@ const ProcessSection = () => {
 };
 
 // About Section
+// Why Rooks & Castle Section
 const AboutSection = () => (
   <section id="about" className="py-20 relative">
     <div className="max-w-6xl mx-auto px-4">
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-          About <span className="text-green-400">Rooks & Castle</span>
+          Why <span className="text-green-400">Rooks & Castle</span>
         </h2>
-        <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
-          We believe AI should make life <span className="text-green-400 font-semibold">simpler, safer, and more successful</span> for small businesses and independent professionals.
-          Our job isn't just to deliver tools — it's to make sure you <span className="text-green-400 font-semibold">feel confident, in control, and supported</span> when using AI.
+        <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          Most AI agencies build systems people hate using. We're different.
         </p>
-        <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-12">
-          We're business consultants who understand what makes teams tick, specializing in building AI solutions that your staff actually enjoy using—because they're designed with psychology-informed principles that put people first.
-        </p>
+      </div>
 
-        <div className="relative max-w-4xl mx-auto">
-          <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-gradient-to-r from-green-400/0 via-green-400 to-green-400/0"></div>
-          <div className="bg-gradient-to-r from-green-500/10 via-blue-500/5 to-purple-500/10 backdrop-blur-xl rounded-3xl p-12 border border-green-500/30 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-green-400/10 to-transparent rounded-full blur-2xl"></div>
-            <blockquote className="text-2xl md:text-4xl font-light text-white leading-relaxed text-center relative z-10">
-              <span className="text-green-400 text-5xl leading-none">"</span>We're here to make AI feel like a <span className="text-green-400 font-semibold">trusted partner in your business</span> — practical, ethical, and built to help you grow.<span className="text-green-400 text-5xl leading-none">"</span>
-            </blockquote>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-400/10 to-transparent rounded-full blur-2xl"></div>
+      <div className="grid md:grid-cols-3 gap-8">
+        {/* Psychology Expertise */}
+        <GlowCard className="border-deep-purple-500/30">
+          <div className="p-8">
+            <h3 className="text-2xl font-bold text-deep-purple-400 mb-4">Psychology Expertise</h3>
+            <p className="text-gray-300 leading-relaxed">
+              Most AI agencies build systems people hate using. I design for human behaviour first, technology second. That's why my clients see <span className="text-deep-purple-400 font-semibold">90%+ adoption rates</span>.
+            </p>
           </div>
-        </div>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-12 mb-16">
-        <GlowCard>
-          <h3 className="text-2xl font-bold text-green-400 mb-4">People First, Always</h3>
-          <p className="text-gray-300 mb-4">
-            AI supports you, never replaces you. Every solution keeps your goals and customers at the center.
-            We understand what makes teams comfortable with new technology because we approach it with human psychology in mind.
-          </p>
-          <p className="text-gray-300">
-            No tech speak, no hidden tricks. We explain what AI does, how it helps, and what to expect, making sure you always feel in control.
-          </p>
         </GlowCard>
 
-        <GlowCard>
-          <h3 className="text-2xl font-bold text-green-400 mb-4">Safe & Accountable</h3>
-          <p className="text-gray-300 mb-4">
-            No black boxes. We test, check, and stay accountable for everything we deliver. You'll always know what's automated, what's human, and how it fits together.
-          </p>
-          <p className="text-gray-300">
-            We use these same AI systems to run our own business. Everything we build for you has been tested in real-world conditions with complete transparency.
-          </p>
+        {/* Ethics-First Approach */}
+        <GlowCard className="border-green-500/30">
+          <div className="p-8">
+            <h3 className="text-2xl font-bold text-green-400 mb-4">Ethics-First Approach</h3>
+            <p className="text-gray-300 leading-relaxed">
+              Transparent, GDPR-compliant AI with human oversight. Your customers know they're talking to AI. That <span className="text-green-400 font-semibold">builds trust</span>, not confusion.
+            </p>
+          </div>
+        </GlowCard>
+
+        {/* SMB Specialisation */}
+        <GlowCard className="border-green-500/30">
+          <div className="p-8">
+            <h3 className="text-2xl font-bold text-green-400 mb-4">SMB Specialisation</h3>
+            <p className="text-gray-300 leading-relaxed">
+              Built specifically for small businesses. <span className="text-green-400 font-semibold">No enterprise complexity. No 6-month implementations.</span> Just simple systems that work.
+            </p>
+          </div>
         </GlowCard>
       </div>
-
     </div>
   </section>
 );
@@ -672,195 +666,118 @@ const AIResponsibilitySection = () => (
 );
 
 // Our Services Section
-const ServicesSection = () => {
-  const services = [
+// Who We Help Section
+const WhoWeHelpSection = () => {
+  const industries = [
     {
-      title: "Customer Analytics",
-      description: "Transform raw customer data into results that matter for your business growth.",
-      features: [
-        "Behavioural pattern analysis",
-        "Predictive customer lifetime value",
-        "Churn risk identification",
-        "Personalisation engine optimisation"
-      ],
-      icon: "📊",
-      color: "blue"
-    },
-    {
-      title: "Answer Generator",
-      description: "Straightforward and honest AI that gives your team instant access to company knowledge. No tech speak, just practical answers.",
-      features: [
-        "Context-aware response generation",
-        "Multi-language support",
-        "Industry-specific terminology",
-        "Real-time knowledge updates"
-      ],
-      icon: "💬",
+      title: "Trades & Mobile Services",
+      description: "Plumbers, electricians, HVAC technicians",
+      pain: "Missing calls while on jobs",
+      result: "Never lose a customer to a missed call",
+      stat: "95%",
+      statLabel: "of calls captured, even when on-site",
+      icon: "🔧",
       color: "green"
     },
     {
-      title: "Information Finder",
-      description: "Advanced search and retrieval systems that locate relevant information across all your data sources.",
-      features: [
-        "Cross-platform data discovery",
-        "Semantic search capabilities",
-        "Document relationship mapping",
-        "Automated categorisation"
-      ],
-      icon: "🔍",
+      title: "Salons & Personal Services",
+      description: "Hair salons, beauty clinics, massage therapists",
+      pain: "Booking admin takes time from clients",
+      result: "Automated booking + 40% fewer no-shows",
+      stat: "12+",
+      statLabel: "hours saved weekly on scheduling",
+      icon: "✂️",
       color: "purple"
     },
     {
-      title: "Report Generator",
-      description: "Automated business intelligence that creates comprehensive reports from your operational data.",
-      features: [
-        "Dynamic dashboard creation",
-        "Scheduled report delivery",
-        "Visual data storytelling",
-        "Executive summary automation"
-      ],
-      icon: "📈",
-      color: "orange"
-    },
-    {
-      title: "AI Agents",
-      description: "People first, always—AI employees that support your team without replacing them. Fair & accessible automation for any business size.",
-      features: [
-        "Custom workflow automation",
-        "Decision tree processing",
-        "Integration orchestration",
-        "Continuous process optimisation"
-      ],
-      icon: "🤖",
-      color: "cyan"
-    },
-    {
-      title: "Smart Communication Hub",
-      description: "Safe & accountable AI communication that helps you feel confident, in control, and supported in all customer interactions.",
-      features: [
-        "Email automation and responses",
-        "Appointment scheduling coordination",
-        "Lead nurturing sequences",
-        "Customer communication tracking"
-      ],
-      icon: "📧",
-      color: "indigo"
+      title: "Professional Services",
+      description: "Consultants, accountants, small law firms",
+      pain: "Professional image on small budget",
+      result: "Enterprise-level front desk at fraction of cost",
+      stat: "<£200",
+      statLabel: "per month for professional receptionist 24/7",
+      icon: "💼",
+      color: "purple"
     }
   ];
 
   const getColorClasses = (color) => {
     const colors = {
-      blue: "border-blue-500/20 hover:border-blue-500/40",
-      green: "border-green-500/20 hover:border-green-500/40",
-      purple: "border-purple-500/20 hover:border-purple-500/40",
-      orange: "border-orange-500/20 hover:border-orange-500/40",
-      cyan: "border-cyan-500/20 hover:border-cyan-500/40",
-      indigo: "border-indigo-500/20 hover:border-indigo-500/40"
+      blue: "border-blue-500/30 hover:border-blue-500/50",
+      green: "border-green-500/30 hover:border-green-500/50",
+      purple: "border-deep-purple-500/30 hover:border-deep-purple-500/50"
     };
     return colors[color] || colors.green;
   };
 
   return (
-    <section id="services" className="py-32 bg-gradient-to-br from-cyber-black to-gray-900 relative overflow-hidden">
+    <section id="who-we-help" className="py-20 relative">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-green-400/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-2xl animate-pulse delay-1000" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-deep-purple-500/5 rounded-full blur-2xl animate-pulse delay-1000" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <motion.div
-            className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-green-500/10 border border-green-500/30 rounded-full backdrop-blur-sm mb-4 sm:mb-6"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse mr-2 sm:mr-3" />
-            <span className="text-green-400 font-medium text-xs sm:text-sm tracking-wide uppercase">
-              Digital Assistants • Built Just For Your Business
-            </span>
-          </motion.div>
-
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-black text-white mb-4 sm:mb-6 font-display px-2">
-            Increase Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-400">
-              Operational Efficiency
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 font-display">
+            Who We <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-deep-purple-400">
+              Help
             </span>
           </h2>
-
-          <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-2">
-            With affordable B2B solutions designed specifically for small businesses and their unique operational needs.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            AI Front Desk built for small businesses who can't afford to miss calls
           </p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-16">
-          {services.map((service, idx) => (
+        {/* Industries Grid */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {industries.map((industry, idx) => (
             <motion.div
               key={idx}
-              className={`group relative bg-gray-900/30 backdrop-blur-xl border rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 hover:bg-gray-800/40 transition-all duration-500 ${getColorClasses(service.color)}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
             >
-              {/* Service Icon */}
-              <div className="text-2xl sm:text-3xl lg:text-4xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
-              </div>
+              <GlowCard className={`h-full ${getColorClasses(industry.color)}`}>
+                <div className="p-8">
+                  {/* Icon */}
+                  <div className="text-5xl mb-6">{industry.icon}</div>
 
-              {/* Service Title */}
-              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-4 group-hover:text-green-400 transition-colors">
-                {service.title}
-              </h3>
+                  {/* Title & Description */}
+                  <h3 className="text-2xl font-bold text-white mb-2">{industry.title}</h3>
+                  <p className="text-gray-400 text-sm mb-6">{industry.description}</p>
 
-              {/* Service Description */}
-              <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6 leading-relaxed">
-                {service.description}
-              </p>
+                  {/* Pain Point */}
+                  <div className="mb-6">
+                    <p className="text-red-400 text-sm mb-2 font-semibold">Pain:</p>
+                    <p className="text-gray-300 text-sm">{industry.pain}</p>
+                  </div>
 
-              {/* Service Features */}
-              <ul className="space-y-1.5 sm:space-y-2">
-                {service.features.map((feature, featureIdx) => (
-                  <li key={featureIdx} className="flex items-center text-xs sm:text-sm text-gray-400">
-                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-400 rounded-full mr-2 sm:mr-3 flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+                  {/* Result */}
+                  <div className="mb-6">
+                    <p className="text-green-400 text-sm mb-2 font-semibold">Result:</p>
+                    <p className="text-gray-300 text-sm">{industry.result}</p>
+                  </div>
 
-              {/* Hover Effect Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-blue-500/5 rounded-2xl sm:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  {/* Stat */}
+                  <div className="pt-6 border-t border-gray-700">
+                    <div className="text-4xl font-bold text-green-400 mb-2">{industry.stat}</div>
+                    <p className="text-gray-400 text-sm">{industry.statLabel}</p>
+                  </div>
+                </div>
+              </GlowCard>
             </motion.div>
           ))}
         </div>
-
-        {/* CTA Section */}
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <motion.button
-            className="px-8 py-4 bg-gradient-to-r from-green-400 to-blue-500 text-black font-bold text-lg rounded-2xl shadow-2xl hover:shadow-green-500/25 transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Discover Which Services Your Business Needs
-          </motion.button>
-        </motion.div>
       </div>
     </section>
   );
@@ -1025,308 +942,202 @@ const BusinessNecessitySection = () => (
 
 // Pricing Section
 const PricingSection = () => (
-  <section className="py-20 relative">
+  <section id="pricing" className="py-20 relative">
     <div className="max-w-7xl mx-auto px-4">
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-          Investment <span className="text-green-400">Tiers</span>
+          Simple, Transparent <span className="text-green-400">Pricing</span>
         </h2>
         <p className="text-xl text-gray-300 mb-4">
-          Tailored pricing revealed after your free audit
+          24/7 AI Front Desk — Essential Business Infrastructure
         </p>
         <p className="text-sm text-gray-400 max-w-2xl mx-auto">
-          Like Johnny Walker's Red, Black & Blue—each tier offers distinct value. Your exact pricing is determined after we understand your business needs.
+          Choose the package that fits your team size. All tiers include psychology-informed design and guaranteed ROI tracking.
         </p>
       </div>
 
       <div className="grid md:grid-cols-3 gap-8 mb-12">
-        {/* Essential Tier */}
-        <GlowCard className="border-gray-500/30 hover:border-gray-400/50 transition-all duration-300">
-          <div className="p-8">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-2xl font-bold text-gray-300">Essential</h3>
-              <span className="text-3xl">🥈</span>
-            </div>
-            <p className="text-gray-400 text-sm mb-6">Perfect for small businesses starting their AI journey</p>
-
-            <div className="mb-6">
-              <div className="text-4xl font-bold text-white mb-2">
-                Custom
-              </div>
-              <p className="text-sm text-gray-400">Price after audit</p>
-            </div>
-
-            <ul className="space-y-3 text-gray-300 text-sm mb-8">
-              <li className="flex items-start">
-                <span className="w-2 h-2 bg-gray-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Single AI solution</span>
-              </li>
-              <li className="flex items-start">
-                <span className="w-2 h-2 bg-gray-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Basic workflow automation</span>
-              </li>
-              <li className="flex items-start">
-                <span className="w-2 h-2 bg-gray-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Email support</span>
-              </li>
-              <li className="flex items-start">
-                <span className="w-2 h-2 bg-gray-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Quarterly reviews</span>
-              </li>
-              <li className="flex items-start">
-                <span className="w-2 h-2 bg-gray-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Standard implementation</span>
-              </li>
-            </ul>
-
-            <p className="text-xs text-gray-500 italic">Best for: Startups, solo entrepreneurs</p>
-          </div>
-        </GlowCard>
-
-        {/* Professional Tier - Featured */}
+        {/* Essential Front Desk */}
         <GlowCard className="border-green-500/50 hover:border-green-400/70 transition-all duration-300 transform md:scale-105 relative">
           <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-black px-4 py-1 rounded-full text-xs font-bold">
             MOST POPULAR
           </div>
           <div className="p-8">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-2xl font-bold text-green-400">Professional</h3>
-              <span className="text-3xl">🥇</span>
+              <h3 className="text-2xl font-bold text-green-400">Essential Front Desk</h3>
             </div>
-            <p className="text-gray-300 text-sm mb-6">Comprehensive AI solutions for growing companies</p>
+            <p className="text-gray-300 text-sm mb-6">Mobile trades, solo consultants, small service providers</p>
 
             <div className="mb-6">
-              <div className="text-4xl font-bold text-green-400 mb-2">
-                Custom
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-4xl font-bold text-green-400">£500</span>
+                <span className="text-gray-400 text-lg">setup</span>
               </div>
-              <p className="text-sm text-gray-400">Price after audit</p>
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-semibold text-white">£150</span>
+                <span className="text-gray-400">/month</span>
+              </div>
             </div>
 
             <ul className="space-y-3 text-gray-300 text-sm mb-8">
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Multiple AI solutions</span>
+                <span className="text-green-400 mr-2">✓</span>
+                <span>24/7 call answering with natural voice</span>
               </li>
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Advanced automation & integrations</span>
+                <span className="text-green-400 mr-2">✓</span>
+                <span>Appointment booking (Google Calendar/Calendly)</span>
               </li>
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Priority support</span>
+                <span className="text-green-400 mr-2">✓</span>
+                <span>Basic FAQ handling (5-10 questions)</span>
               </li>
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Monthly strategy sessions</span>
+                <span className="text-green-400 mr-2">✓</span>
+                <span>Lead notification via SMS/email</span>
               </li>
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Dedicated account manager</span>
-              </li>
-              <li className="flex items-start">
-                <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Custom training & documentation</span>
+                <span className="text-green-400 mr-2">✓</span>
+                <span>2-week setup, 30-day optimisation</span>
               </li>
             </ul>
 
-            <p className="text-xs text-gray-400 italic">Best for: SMEs, scaling businesses</p>
+            <p className="text-xs text-gray-400 italic">For solo operators & 2-3 person teams • £100k-£300k revenue</p>
           </div>
         </GlowCard>
 
-        {/* Enterprise Tier */}
-        <GlowCard className="border-blue-500/30 hover:border-blue-400/50 transition-all duration-300">
+        {/* Professional Front Desk */}
+        <GlowCard className="border-gray-500/30 hover:border-gray-400/50 transition-all duration-300">
           <div className="p-8">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-2xl font-bold text-blue-400">Enterprise</h3>
-              <span className="text-3xl">💎</span>
+              <h3 className="text-2xl font-bold text-gray-300">Professional Front Desk</h3>
             </div>
-            <p className="text-gray-400 text-sm mb-6">Bespoke AI transformation for large organisations</p>
+            <p className="text-gray-400 text-sm mb-6">Salons, small clinics, multi-person trades, local professional services</p>
 
             <div className="mb-6">
-              <div className="text-4xl font-bold text-blue-400 mb-2">
-                Bespoke
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-4xl font-bold text-white">£800</span>
+                <span className="text-gray-400 text-lg">setup</span>
               </div>
-              <p className="text-sm text-gray-400">Price after audit</p>
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-semibold text-white">£200</span>
+                <span className="text-gray-400">/month</span>
+              </div>
             </div>
 
             <ul className="space-y-3 text-gray-300 text-sm mb-8">
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Full AI ecosystem</span>
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>Everything in Essential, PLUS:</span>
               </li>
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Enterprise-grade infrastructure</span>
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>Advanced FAQs (20+ responses, price quotes)</span>
               </li>
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
-                <span>24/7 white-glove support</span>
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>Booking confirmations & 24hr reminders</span>
               </li>
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Weekly strategy & optimisation</span>
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>Cancellation & rescheduling handling</span>
               </li>
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Dedicated team & technical lead</span>
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>Post-service follow-ups & feedback</span>
               </li>
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Compliance & security audit</span>
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>Multiple staff booking & coordination</span>
               </li>
               <li className="flex items-start">
-                <span className="w-2 h-2 bg-blue-400 rounded-full mr-3 mt-1.5"></span>
-                <span>Custom SLAs & guarantees</span>
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>3-week setup, 60-day optimisation</span>
               </li>
             </ul>
 
-            <p className="text-xs text-gray-500 italic">Best for: Large enterprises, corporations</p>
+            <p className="text-xs text-gray-500 italic">For 3-7 person teams • £250k-£500k revenue</p>
+          </div>
+        </GlowCard>
+
+        {/* Enterprise Front Desk */}
+        <GlowCard className="border-gray-500/30 hover:border-gray-400/50 transition-all duration-300">
+          <div className="p-8">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-2xl font-bold text-gray-300">Enterprise Front Desk</h3>
+            </div>
+            <p className="text-gray-400 text-sm mb-6">Multi-location clinics, established service chains, professional firms</p>
+
+            <div className="mb-6">
+              <div className="flex items-baseline gap-2 mb-2">
+                <span className="text-4xl font-bold text-white">£1,200</span>
+                <span className="text-gray-400 text-lg">setup</span>
+              </div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-semibold text-white">£300</span>
+                <span className="text-gray-400">/month</span>
+              </div>
+            </div>
+
+            <ul className="space-y-3 text-gray-300 text-sm mb-8">
+              <li className="flex items-start">
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>Everything in Professional, PLUS:</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>Platform integration (Fresha, Jobber, HubSpot, etc.)</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>Multi-location support & routing</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>Lead scoring & VIP identification</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>Real-time analytics dashboard</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>Monthly strategy reviews & priority support</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-gray-400 mr-2">✓</span>
+                <span>4-6 week setup, 90-day optimisation</span>
+              </li>
+            </ul>
+
+            <p className="text-xs text-gray-500 italic">For 5-15 person teams • £500k-£1M+ revenue</p>
           </div>
         </GlowCard>
       </div>
 
-      {/* What's Always Free */}
+      {/* ROI Guarantee */}
       <GlowCard className="border-green-500/30 max-w-4xl mx-auto">
         <div className="p-8 text-center">
-          <h3 className="text-2xl font-bold text-green-400 mb-4">What's Always Free</h3>
-          <div className="text-5xl font-bold text-green-400 mb-6">£0</div>
-          <div className="grid md:grid-cols-2 gap-4 text-left max-w-2xl mx-auto">
-            <div className="flex items-start">
-              <span className="text-green-400 mr-2">✓</span>
-              <span className="text-gray-300">Business Process Assessment</span>
+          <h3 className="text-2xl font-bold text-green-400 mb-4">Guaranteed ROI or We Fix It</h3>
+          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+            Every package includes ROI tracking. You'll see exactly how many calls captured, appointments booked, and revenue recovered. If you're not seeing results, we optimise until you do.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 text-left max-w-3xl mx-auto mt-8">
+            <div className="text-center">
+              <div className="text-4xl font-bold text-green-400 mb-2">95%</div>
+              <p className="text-sm text-gray-300">Calls captured even when busy</p>
             </div>
-            <div className="flex items-start">
-              <span className="text-green-400 mr-2">✓</span>
-              <span className="text-gray-300">Workflow Mapping & Analysis</span>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-green-400 mb-2">40%</div>
+              <p className="text-sm text-gray-300">Reduction in no-shows</p>
             </div>
-            <div className="flex items-start">
-              <span className="text-green-400 mr-2">✓</span>
-              <span className="text-gray-300">ROI Opportunity Identification</span>
-            </div>
-            <div className="flex items-start">
-              <span className="text-green-400 mr-2">✓</span>
-              <span className="text-gray-300">Custom Implementation Roadmap</span>
+            <div className="text-center">
+              <div className="text-4xl font-bold text-green-400 mb-2">12+</div>
+              <p className="text-sm text-gray-300">Hours saved weekly on admin</p>
             </div>
           </div>
-          <p className="text-sm text-gray-400 mt-6">No commitment required. See exactly what we can do for your business before making any investment.</p>
         </div>
       </GlowCard>
-
-      {/* Frameworks & Principles We Follow */}
-      <div className="mt-16">
-        <div className="bg-black rounded-2xl p-8 border border-green-500/20">
-          <h3 className="text-3xl font-bold text-white mb-6 text-center">Frameworks & Principles We Follow</h3>
-
-          <div className="text-center mb-8">
-            <p className="text-gray-400 max-w-4xl mx-auto leading-relaxed">
-              We align our work with international AI ethics frameworks (EU AI Act, IEEE 2857™, GDPR, NIST AI Risk Management Framework) and actively engage with leading research communities (OECD AI Principles, Anthropic, OpenAI). This ensures our solutions are responsible, human centered, and built for long term trust.
-            </p>
-          </div>
-
-          {/* Logo Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 items-center justify-items-center">
-
-            {/* EU AI Act */}
-            <div className="flex items-center justify-center">
-              <img
-                src="/logos/eu-ai-act.svg"
-                alt="EU AI Act"
-                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block';
-                }}
-              />
-             
-            </div>
-
-            {/* GDPR */}
-            <div className="flex items-center justify-center">
-              <img
-                src="/logos/gdpr.svg"
-                alt="GDPR"
-                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block';
-                }}
-              />
-             
-            </div>
-
-            {/* IEEE */}
-            <div className="flex items-center justify-center">
-              <img
-                src="/logos/ieee.svg"
-                alt="IEEE"
-                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block';
-                }}
-              />
-              
-            </div>
-
-            {/* NIST AI RMF */}
-            <div className="flex items-center justify-center">
-              <img
-                src="/logos/nist-ai-rmf.svg"
-                alt="NIST AI Risk Management Framework"
-                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block';
-                }}
-              />
-              
-            </div>
-
-            {/* OECD */}
-            <div className="flex items-center justify-center">
-              <img
-                src="/logos/oecd.svg"
-                alt="OECD AI Principles"
-                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block';
-                }}
-              />
-              
-            </div>
-
-            {/* Anthropic */}
-            <div className="flex items-center justify-center">
-              <img
-                src="/logos/anthropic.svg"
-                alt="Anthropic"
-                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block';
-                }}
-              />
-             
-            </div>
-
-            {/* OpenAI */}
-            <div className="flex items-center justify-center">
-              <img
-                src="/logos/openai.svg"
-                alt="OpenAI"
-                className="max-h-12 object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'block';
-                }}
-              />
-              
-            </div>
-
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 );
@@ -1647,7 +1458,7 @@ const BlogSection = () => (
 // Contact Section
 const ContactSection = ({ onCalendlyClick }) => {
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("Hi! I'm interested in learning more about digital automation for my small business. Can we schedule a consultation?");
+    const message = encodeURIComponent("Hi! I'm interested in learning more about the AI Front Desk for my business. Can we schedule a strategy call?");
     const whatsappNumber = "447533595684";
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
   };
@@ -1657,27 +1468,26 @@ const ContactSection = ({ onCalendlyClick }) => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
-            Get In <span className="text-green-400">Touch</span>
+            Ready to Stop <span className="text-green-400">Missing Customers?</span>
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto px-2">
-            Ready to feel <span className="text-green-400 font-semibold">confident, in control, and supported</span> with AI for your business?
-            Let's have a straightforward conversation about how we can help you grow.
+            Book a free 15-minute strategy call. We'll calculate exactly how much revenue you're losing to missed calls and show you how AI Front Desk solves it.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {/* Calendar Booking */}
           <GlowCard>
-            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-green-400 mb-3 sm:mb-4">Book Your Free Consultation</h3>
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-green-400 mb-3 sm:mb-4">Book Free Strategy Call</h3>
             <p className="text-sm sm:text-base text-gray-300 mb-4 sm:mb-6">
-              30-minute strategic session to identify your highest-ROI automation opportunities for your small business.
+              15-minute call to calculate your missed revenue and show you the solution.
             </p>
             <div className="bg-gray-900/50 rounded-xl p-4 sm:p-6 text-center border border-green-500/20">
-              <p className="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">Ready to schedule your consultation:</p>
-              <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">• Free 30-minute strategy session<br/>• Discuss your business needs<br/>• Get personalised recommendations<br/>• No obligation or sales pressure</p>
+              <p className="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">On this call we'll:</p>
+              <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">• Calculate your current missed revenue<br/>• Show you how AI Front Desk works<br/>• Design your custom implementation<br/>• Answer all your questions</p>
               <div className="text-green-400 text-2xl sm:text-4xl mb-3 sm:mb-4">📅</div>
               <FuturisticButton onClick={onCalendlyClick} className="w-full sm:w-auto">
-                Schedule Free Consultation
+                Book Strategy Call
               </FuturisticButton>
             </div>
           </GlowCard>
@@ -1802,7 +1612,7 @@ const WhatsAppButton = () => {
 
 // Export all sections for Homepage component
 export {
-  ServicesSection,
+  WhoWeHelpSection,
   PerformanceMetricsBanner,
   AboutSection,
   AIResponsibilitySection,

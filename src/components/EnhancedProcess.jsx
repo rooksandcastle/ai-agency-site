@@ -6,48 +6,48 @@ const EnhancedProcess = () => {
   const processes = [
     {
       step: "01",
-      title: "Learning About Your Business",
-      subtitle: "Teaching Your Assistant How You Work",
-      description: "We learn about your business - your processes, your documents, your way of doing things - so we can build a digital assistant that fits perfectly.",
+      title: "Assessment",
+      subtitle: "Psychology-Informed Discovery",
+      description: "We map your current call and booking process to identify where AI saves the most time. Then we calculate your specific ROI so you know exactly what to expect.",
       features: [
-        "Review your current processes",
-        "Understand your team's workflow",
-        "Learn your company language",
-        "Map out what tasks take too much time"
+        "Map your current call/booking process",
+        "Identify where AI saves most time",
+        "Calculate ROI specific to your business",
+        "Design for team adoption (not just tech)"
       ],
-      icon: "🧠",
-      duration: "1-2 weeks",
-      deliverables: "Clear picture of your business, list of opportunities"
+      icon: "📋",
+      duration: "Week 1",
+      deliverables: "Process map, ROI projection, implementation plan"
     },
     {
       step: "02",
-      title: "Building Your Digital Assistant",
-      subtitle: "Creating Your New Team Member",
-      description: "We build a smart digital assistant trained on your business. Like hiring someone who instantly knows your company and how you like things done.",
+      title: "Implementation",
+      subtitle: "Ethical AI Deployment",
+      description: "We build your custom AI front desk and integrate it with your calendar and systems. Then we train your team to work alongside it smoothly.",
       features: [
-        "Build your custom digital assistant",
-        "Train it on your specific business",
-        "Connect it to your existing tools",
-        "Make it easy for your team to use"
+        "Build your custom AI front desk",
+        "Integrate with your calendar/systems",
+        "Train your team for smooth adoption",
+        "Test with real scenarios from your business"
       ],
-      icon: "🤖",
-      duration: "2-4 weeks",
-      deliverables: "Working digital assistant, ready to use"
+      icon: "⚙️",
+      duration: "Weeks 2-4",
+      deliverables: "Live AI front desk, team training, documentation"
     },
     {
       step: "03",
-      title: "Getting Smarter Over Time",
-      subtitle: "Your Assistant Learns and Improves",
-      description: "Your digital assistant learns from every interaction, getting better at helping your business. Like a new employee who gets more helpful every day.",
+      title: "Optimisation",
+      subtitle: "Continuous Improvement",
+      description: "We monitor performance and results, then optimise based on real data. Guaranteed ROI or we troubleshoot until it works.",
       features: [
-        "Learns from daily use",
-        "Gets better at understanding your needs",
-        "Updates its knowledge automatically",
-        "Shows you how much time it's saving"
+        "Monitor performance and results",
+        "Regular optimisation based on data",
+        "Guaranteed ROI or we fix it",
+        "Monthly reports on calls captured & revenue saved"
       ],
       icon: "📈",
       duration: "Ongoing",
-      deliverables: "Continuously improving assistant, monthly progress reports"
+      deliverables: "ROI tracking, monthly optimisations, performance reports"
     }
   ];
 
@@ -74,20 +74,20 @@ const EnhancedProcess = () => {
           >
             <span className="w-2 h-2 bg-cyber-green rounded-full animate-pulse mr-3" />
             <span className="text-green-400 font-medium text-sm tracking-wide uppercase">
-              How We Build Your Digital Assistant
+              Simple 3-Step Process
             </span>
           </motion.div>
 
           <h2 className="text-4xl lg:text-6xl font-black text-white mb-6 font-display">
-            From <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-green to-green-400">
-              Your Business
-            </span> to Digital Employee
+            How <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-green to-green-400">
+              It Works
+            </span>
           </h2>
 
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            We turn your company knowledge into a smart digital assistant that works alongside your team.
+            From discovery to deployment to optimisation—we handle everything.
             <br />
-            <span className="text-green-400 font-semibold">Like hiring someone who knows your business and never takes a day off</span>
+            <span className="text-green-400 font-semibold">You focus on your business, we make sure your AI Front Desk delivers results</span>
           </p>
         </motion.div>
 

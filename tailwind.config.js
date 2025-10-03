@@ -20,14 +20,21 @@ export default {
         // Enhanced cyber theme
         cyber: {
           green: '#00ff41',    // Neon green as requested
-          black: '#0a0a0a',    // Cyber black as requested  
+          black: '#0a0a0a',    // Cyber black as requested
           gray: '#1a1a1a',
           dark: '#0d0d0d',
         },
         // Keep your existing green variants
         'green-400': '#4ade80',
-        'green-500': '#22c55e', 
+        'green-500': '#22c55e',
         'green-600': '#16a34a',
+        // Deep purple tertiary accent
+        'deep-purple': {
+          400: '#a78bfa',
+          500: '#8b5cf6',
+          600: '#7c3aed',
+          700: '#6d28d9',
+        },
       },
       fontFamily: {
         'display': ['Playfair Display', 'serif'],

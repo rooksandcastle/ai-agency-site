@@ -10,7 +10,7 @@ import CalendlyBooking from '../components/CalendlyBooking';
 
 // Import all sections from the original App.jsx
 import {
-  ServicesSection,
+  WhoWeHelpSection,
   PerformanceMetricsBanner,
   AboutSection,
   AIResponsibilitySection,
@@ -30,14 +30,12 @@ const Homepage = () => {
       <ModernNavigation onCalendlyClick={() => setShowCalendlyModal(true)} />
       <main className="relative">
         <PremiumHero onCalendlyClick={() => setShowCalendlyModal(true)} />
-        <ServicesSection />
-        <PerformanceMetricsBanner />
+        <WhoWeHelpSection />
         <EnhancedProcess />
+        <PricingSection />
         <AboutSection />
         <AIResponsibilitySection />
-        <BusinessNecessitySection />
         <EthicsSection />
-        <PricingSection />
         <AssessmentSection />
         <ContactSection onCalendlyClick={() => setShowCalendlyModal(true)} />
       </main>

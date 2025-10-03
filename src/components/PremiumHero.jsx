@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp, fadeInLeft, staggerContainer, scrollReveal, hoverScale } from './AnimationWrapper';
 
-const PremiumHero = () => {
+const PremiumHero = ({ onCalendlyClick }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   // Mouse tracking for interactive elements
@@ -87,10 +87,10 @@ const PremiumHero = () => {
             variants={fadeInUp}
             className="text-4xl sm:text-5xl lg:text-7xl xl:text-8xl font-black leading-none"
           >
-            <span className="block text-white mb-2 font-display">Get Your Own</span>
+            <span className="block text-white mb-2 font-display">Never Miss Another</span>
             <span className="block">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-green via-green-400 to-green-500 animate-pulse-glow">
-                AI Employee
+                Customer
               </span>
             </span>
           </motion.h1>
@@ -100,39 +100,33 @@ const PremiumHero = () => {
             variants={fadeInUp}
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-green-500/10 border border-white/20 rounded-full backdrop-blur-md mb-8"
           >
-            <span className="text-white font-medium text-lg">Free Consultation • Tailored Solutions • Proven Results</span>
+            <span className="text-white font-medium text-lg">Out-of-Hours Phone Coverage for Your Business</span>
           </motion.div>
 
           {/* Enhanced Subtitle */}
           <motion.p
             variants={fadeInUp}
-            className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light"
+            className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light mb-4"
           >
-            We build AI solutions that make your business <span className="font-semibold text-green-400">simpler, safer, and more successful</span>.
-            <br className="hidden sm:block" />
-            Your <span className="text-green-400 font-semibold">trusted partner</span> for practical, ethical AI that helps you grow. No tech speak, no hidden tricks.
+            Every call is answered professionally, every lead is captured, every booking is automated. 24/7—even when you can't.
           </motion.p>
 
-          {/* Trust Indicators */}
+          {/* Subheading */}
+          <motion.p
+            variants={fadeInUp}
+            className="text-lg text-gray-400 max-w-3xl mx-auto mb-6"
+          >
+            Essential operational infrastructure for modern small businesses
+          </motion.p>
+
+          {/* Psychological Hook */}
           <motion.div
             variants={fadeInUp}
-            className="flex flex-wrap justify-center items-center gap-8 text-sm text-gray-400 py-6"
+            className="max-w-3xl mx-auto mb-8"
           >
-            {[
-              { icon: "🤝", text: "People First, Always", highlight: true },
-              { icon: "💬", text: "Straightforward & Honest" },
-              { icon: "🛡️", text: "Safe & Accountable" },
-              { icon: "⚖️", text: "Fair & Accessible" },
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                className={`flex items-center space-x-2 ${item.highlight ? 'text-green-400' : ''}`}
-                whileHover={{ scale: 1.05 }}
-              >
-                <span className="text-lg">{item.icon}</span>
-                <span className="font-medium">{item.text}</span>
-              </motion.div>
-            ))}
+            <p className="text-base text-gray-300 leading-relaxed">
+              Your business is now open 24/7. For less than the cost of one part-time shift weekly.
+            </p>
           </motion.div>
 
           {/* Premium CTA Section */}
@@ -144,10 +138,10 @@ const PremiumHero = () => {
             <motion.button
               {...hoverScale}
               className="group relative px-8 py-4 bg-gradient-to-r from-green-400 to-green-500 text-black font-bold text-lg rounded-2xl overflow-hidden shadow-2xl shadow-green-500/25"
-              onClick={() => document.getElementById('assessment')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <span className="relative z-10 flex items-center">
-                Start Free Assessment
+                See How It Works
                 <motion.span
                   className="ml-2 group-hover:translate-x-1 transition-transform"
                   animate={{ x: [0, 5, 0] }}
@@ -170,9 +164,9 @@ const PremiumHero = () => {
             <motion.button
               {...hoverScale}
               className="group px-8 py-4 border-2 border-green-400/50 text-green-400 font-semibold text-lg rounded-2xl backdrop-blur-sm hover:border-green-400 hover:bg-green-400/10 transition-all duration-300"
-              onClick={() => document.getElementById('process')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={onCalendlyClick}
             >
-              View Our Process
+              Book Free Strategy Call
             </motion.button>
           </motion.div>
 

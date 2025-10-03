@@ -85,7 +85,7 @@ const CallCaptureHome = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl sm:text-2xl text-gray-300 mb-4 leading-relaxed"
           >
-            Your AI phone assistant handles calls 24/7—even when you can't.
+            Your AI Front Desk handles calls 24/7—even when you can't.
           </motion.p>
 
           <motion.p
@@ -152,7 +152,7 @@ const CallCaptureHome = () => {
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Your AI Phone Bot <span className="text-green-400">Can Handle</span>
+              Your AI Front Desk <span className="text-green-400">Can Handle</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               More than just answering calls—it's your 24/7 business partner
@@ -291,7 +291,7 @@ const CallCaptureHome = () => {
 
             <div className="grid md:grid-cols-2 gap-6 mb-10">
               {[
-                { icon: '🤖', text: 'Full AI phone bot setup' },
+                { icon: '🤖', text: 'Full AI Front Desk setup' },
                 { icon: '🎤', text: 'Custom greetings & scripts' },
                 { icon: '📱', text: 'SMS notification system' },
                 { icon: '📊', text: 'AI insights dashboard' },
@@ -318,16 +318,27 @@ const CallCaptureHome = () => {
             </div>
           </div>
 
-          {/* Social Proof */}
-          <div className="mt-12 text-center">
-            <p className="text-gray-400 mb-4">Trusted by businesses like yours</p>
-            <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-500">
-              <span>✓ Plumbers</span>
-              <span>✓ Electricians</span>
-              <span>✓ Hair Salons</span>
-              <span>✓ Beauty Clinics</span>
-              <span>✓ Home Services</span>
-              <span>✓ Tradespeople</span>
+          {/* Enhanced Social Proof */}
+          <div className="mt-16">
+            <div className="bg-gradient-to-r from-green-500/10 via-blue-500/5 to-green-500/10 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-green-500/20">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 text-center">
+                Trusted by Businesses Like Yours
+              </h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
+                {[
+                  { icon: '🔧', label: 'Plumbers' },
+                  { icon: '⚡', label: 'Electricians' },
+                  { icon: '✂️', label: 'Hair Salons' },
+                  { icon: '💆', label: 'Beauty Clinics' },
+                  { icon: '🏠', label: 'Home Services' },
+                  { icon: '🛠️', label: 'Tradespeople' }
+                ].map((item, idx) => (
+                  <div key={idx} className="text-center p-4 bg-gray-900/50 rounded-xl border border-gray-700 hover:border-green-500/50 transition-all duration-300">
+                    <div className="text-3xl sm:text-4xl mb-2">{item.icon}</div>
+                    <p className="text-gray-300 text-sm font-semibold">{item.label}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

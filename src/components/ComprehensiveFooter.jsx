@@ -147,8 +147,7 @@ const ComprehensiveFooter = () => {
             </div>
 
             <p className="text-gray-300 mb-6 leading-relaxed">
-              AI consultants with backgrounds in psychology and behavioural science,
-              specialising in automation that teams actually adopt.
+              Rooks & Castle helps small businesses implement 24/7 AI front desk systems. Psychology-informed design ensures your team actually adopts the technology. Based in the UK, serving trades, salons, and professional services nationwide.
             </p>
 
             <div className="flex space-x-4">
