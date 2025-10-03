@@ -75,9 +75,18 @@ const CallCaptureHome = () => {
           >
             Never Miss Another<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
-              Customer Call
+              Customer
             </span>
           </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-green-500/10 border border-white/20 rounded-full backdrop-blur-md mb-6"
+          >
+            <span className="text-white font-medium text-lg">Out-of-Hours Phone Coverage for Your Business</span>
+          </motion.div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -85,16 +94,25 @@ const CallCaptureHome = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl sm:text-2xl text-gray-300 mb-4 leading-relaxed"
           >
-            Your AI Front Desk handles calls 24/7—even when you can't.
+            Every call is answered professionally, every lead is captured, every booking is automated. 24/7—even when you can't.
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-lg text-green-400 font-semibold mb-12"
+            className="text-lg text-gray-400 mb-4"
           >
-            Out-of-hours coverage • Smart call-back system • Custom greetings • AI insights
+            Essential operational infrastructure for modern small businesses
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: visible ? 1 : 0, y: visible ? 0 : 20 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="text-base text-gray-300 mb-12"
+          >
+            Your business is now open 24/7. For less than the cost of one part-time shift weekly.
           </motion.p>
 
           <motion.div
@@ -242,79 +260,114 @@ const CallCaptureHome = () => {
         </div>
       </section>
 
-      {/* Investment */}
+      {/* Investment - 3-Tier Pricing */}
       <section className="py-20 relative">
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
               Your <span className="text-green-400">Investment</span>
             </h2>
-            <p className="text-xl text-gray-300 mb-3">Tailored pricing based on your business needs</p>
+            <p className="text-xl text-gray-300 mb-3">Transparent pricing. No hidden fees.</p>
             <p className="text-sm text-gray-400 max-w-2xl mx-auto">
-              Every business is different. We'll calculate your exact cost and ROI during your free audit.
+              One-time setup + simple monthly subscription
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            {/* Value Highlight 1 */}
-            <div className="bg-gray-900/50 border border-gray-500/30 rounded-2xl p-8 text-center">
-              <div className="text-5xl mb-4">⚡</div>
-              <h3 className="text-2xl font-bold text-white mb-3">Quick Setup</h3>
-              <p className="text-gray-400 mb-4">Live in 2 weeks or less</p>
-              <div className="text-3xl font-bold text-gray-300">Fast</div>
-            </div>
-
-            {/* Value Highlight 2 - Featured */}
-            <div className="bg-gradient-to-br from-green-500/20 to-green-600/10 border-2 border-green-500/50 rounded-2xl p-8 text-center transform md:scale-105 relative shadow-2xl shadow-green-500/20">
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {/* Essential Front Desk */}
+            <div className="bg-gradient-to-br from-green-500/20 to-green-600/10 border-2 border-green-500/50 rounded-2xl p-8 transform md:scale-105 relative shadow-2xl shadow-green-500/20">
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-black px-4 py-1 rounded-full text-xs font-bold">
                 MOST POPULAR
               </div>
-              <div className="text-5xl mb-4">💰</div>
-              <h3 className="text-2xl font-bold text-green-400 mb-3">ROI Guaranteed</h3>
-              <p className="text-gray-300 mb-4">Typical payback period</p>
-              <div className="text-3xl font-bold text-green-400">4-8 weeks</div>
-              <p className="text-xs text-gray-400 mt-3">Or we refund 50%</p>
-            </div>
+              <h3 className="text-2xl font-bold text-green-400 mb-2">Essential Front Desk</h3>
+              <p className="text-gray-300 text-sm mb-6">Mobile trades, solo consultants, small service providers</p>
 
-            {/* Value Highlight 3 */}
-            <div className="bg-gray-900/50 border border-gray-500/30 rounded-2xl p-8 text-center">
-              <div className="text-5xl mb-4">🎯</div>
-              <h3 className="text-2xl font-bold text-white mb-3">No Risk</h3>
-              <p className="text-gray-400 mb-4">Cancel anytime</p>
-              <div className="text-3xl font-bold text-gray-300">Flexible</div>
-            </div>
-          </div>
-
-          {/* What's Included */}
-          <div className="bg-gradient-to-br from-green-500/10 to-green-600/5 border border-green-500/30 rounded-3xl p-10 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold text-white mb-8 text-center">What's Always Included</h3>
-
-            <div className="grid md:grid-cols-2 gap-6 mb-10">
-              {[
-                { icon: '🤖', text: 'Full AI Front Desk setup' },
-                { icon: '🎤', text: 'Custom greetings & scripts' },
-                { icon: '📱', text: 'SMS notification system' },
-                { icon: '📊', text: 'AI insights dashboard' },
-                { icon: '🌙', text: '24/7 out-of-hours coverage' },
-                { icon: '📞', text: 'Intelligent call-back routing' },
-                { icon: '👥', text: 'Full team training' },
-                { icon: '🛡️', text: '30-day support guarantee' }
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <span className="text-2xl">{item.icon}</span>
-                  <span className="text-gray-300 font-medium">{item.text}</span>
+              <div className="mb-6">
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-4xl font-bold text-green-400">£500</span>
+                  <span className="text-gray-400 text-lg">setup</span>
                 </div>
-              ))}
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-semibold text-white">£150</span>
+                  <span className="text-gray-400">/month</span>
+                </div>
+              </div>
+
+              <ul className="space-y-3 text-gray-300 text-sm mb-8">
+                <li>✓ 24/7 call answering with natural voice</li>
+                <li>✓ Appointment booking (Google Calendar/Calendly)</li>
+                <li>✓ Basic FAQ handling (5-10 questions)</li>
+                <li>✓ Lead notification via SMS/email</li>
+                <li>✓ 2-week setup, 30-day optimisation</li>
+              </ul>
+
+              <p className="text-xs text-gray-400 italic">For solo operators & 2-3 person teams • £100k-£300k revenue</p>
+
+              <CTAButton onClick={handleCalendly} className="w-full mt-6">
+                Get Started →
+              </CTAButton>
             </div>
 
-            <div className="text-center border-t border-green-500/20 pt-8">
-              <p className="text-xl text-white font-semibold mb-6">
-                Want to know your exact price?
-              </p>
-              <CTAButton onClick={handleCalendly} className="text-xl px-12 py-5">
-                Get Your Custom Quote (Free) →
+            {/* Professional Front Desk */}
+            <div className="bg-gray-900/50 border border-gray-500/30 rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-white mb-2">Professional Front Desk</h3>
+              <p className="text-gray-300 text-sm mb-6">Growing teams, multi-location, or higher volume</p>
+
+              <div className="mb-6">
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-4xl font-bold text-white">£800</span>
+                  <span className="text-gray-400 text-lg">setup</span>
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-semibold text-white">£200</span>
+                  <span className="text-gray-400">/month</span>
+                </div>
+              </div>
+
+              <ul className="space-y-3 text-gray-300 text-sm mb-8">
+                <li>✓ Everything in Essential, plus:</li>
+                <li>✓ CRM integration (Zapier, custom API)</li>
+                <li>✓ Advanced call routing (team availability)</li>
+                <li>✓ Extended FAQ library (20+ questions)</li>
+                <li>✓ Monthly performance review & tuning</li>
+              </ul>
+
+              <p className="text-xs text-gray-400 italic">For 4-10 person teams • £300k-£750k revenue</p>
+
+              <CTAButton variant="secondary" onClick={handleCalendly} className="w-full mt-6">
+                Learn More →
               </CTAButton>
-              <p className="text-sm text-gray-400 mt-4">15-minute audit • No obligation • Instant ROI calculation</p>
+            </div>
+
+            {/* Enterprise Front Desk */}
+            <div className="bg-gray-900/50 border border-gray-500/30 rounded-2xl p-8">
+              <h3 className="text-2xl font-bold text-white mb-2">Enterprise Front Desk</h3>
+              <p className="text-gray-300 text-sm mb-6">Multi-site operations, complex workflows</p>
+
+              <div className="mb-6">
+                <div className="flex items-baseline gap-2 mb-2">
+                  <span className="text-4xl font-bold text-white">£1,200</span>
+                  <span className="text-gray-400 text-lg">setup</span>
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-2xl font-semibold text-white">£300</span>
+                  <span className="text-gray-400">/month</span>
+                </div>
+              </div>
+
+              <ul className="space-y-3 text-gray-300 text-sm mb-8">
+                <li>✓ Everything in Professional, plus:</li>
+                <li>✓ Multi-location support (unified or separate)</li>
+                <li>✓ Custom integrations & workflows</li>
+                <li>✓ Priority support (2-hour response SLA)</li>
+                <li>✓ Bi-weekly performance analytics calls</li>
+              </ul>
+
+              <p className="text-xs text-gray-400 italic">For 10+ person teams • £750k+ revenue</p>
+
+              <CTAButton variant="secondary" onClick={handleCalendly} className="w-full mt-6">
+                Contact Sales →
+              </CTAButton>
             </div>
           </div>
 
@@ -357,7 +410,7 @@ const CallCaptureHome = () => {
             {[
               {
                 q: 'How much does it actually cost?',
-                a: 'Investment depends on your call volume, features needed, and business size. Most small businesses pay back the setup within 4-8 weeks from new leads alone. We\'ll calculate your exact cost and ROI in your free audit.'
+                a: 'Essential Front Desk starts at £500 setup + £150/month. Professional is £800 + £200/month. Enterprise is £1,200 + £300/month. Most businesses pay back the setup within 4-8 weeks from new leads alone.'
               },
               {
                 q: 'How long does setup take?',
