@@ -202,42 +202,72 @@ const CallCaptureHome = () => {
             ))}
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-3xl font-bold text-white mb-8 text-center">See It In <span className="text-green-400">Action</span></h3>
-            <div className="space-y-6">
-              {[
-                { step: '1', title: 'Call Arrives', desc: 'Customer calls at 11pm on Sunday—you\'re off the clock' },
-                { step: '2', title: 'AI Answers Professionally', desc: 'Custom greeting, captures details, assesses urgency' },
-                { step: '3', title: 'You Get Instant Alert', desc: 'SMS with full lead info: name, contact, needs, urgency score' },
-                { step: '4', title: 'You Call Back & Close', desc: 'Follow up when it suits you—customer already impressed' }
-              ].map((item, idx) => (
-                <div key={idx} className="flex gap-6 items-start bg-gradient-to-r from-green-500/5 to-green-600/5 border border-green-500/30 rounded-2xl p-6">
-                  <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-r from-green-400 to-green-500 rounded-full flex items-center justify-center text-black font-bold text-2xl shadow-lg shadow-green-500/30">
-                    {item.step}
-                  </div>
-                  <div>
-                    <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
-                    <p className="text-gray-300">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <div className="max-w-4xl mx-auto mt-16">
+            <h3 className="text-3xl lg:text-4xl font-semibold text-white mb-4 text-center">How It Works</h3>
+            <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+              From missed call to captured lead in seconds—fully automated
+            </p>
 
-          <div className="mt-16 max-w-2xl mx-auto bg-gradient-to-br from-green-500/10 to-green-600/5 border border-green-500/30 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-green-400 mb-6 text-center">Proven Results</h3>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                <p className="text-white"><strong>15 leads captured</strong> in first 30 days</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                <p className="text-white"><strong>£2,250 new revenue</strong> from missed calls</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                <p className="text-white"><strong>Paid for itself in 2 weeks</strong></p>
+            <div className="relative">
+              {/* Connection Line */}
+              <div className="absolute left-8 top-12 bottom-12 w-0.5 bg-gradient-to-b from-green-500/50 via-green-500/30 to-green-500/50 hidden md:block"></div>
+
+              <div className="space-y-8">
+                {[
+                  {
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    ),
+                    title: 'Incoming Call',
+                    desc: 'Customer calls outside business hours or when your lines are busy'
+                  },
+                  {
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    ),
+                    title: 'AI Engages',
+                    desc: 'Natural voice greeting, captures enquiry details, and assesses priority level'
+                  },
+                  {
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                      </svg>
+                    ),
+                    title: 'Instant Notification',
+                    desc: 'Lead details sent to you via SMS or email within 30 seconds'
+                  },
+                  {
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                    ),
+                    title: 'You Follow Up',
+                    desc: 'Call back at your convenience with complete context—customer already impressed'
+                  }
+                ].map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    className="flex gap-6 items-start relative"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-green-500/20 to-green-600/10 backdrop-blur-xl border border-green-500/30 rounded-2xl flex items-center justify-center text-green-400 relative z-10">
+                      {item.icon}
+                    </div>
+                    <div className="flex-1 pt-3">
+                      <h4 className="text-xl font-semibold text-white mb-2">{item.title}</h4>
+                      <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
@@ -260,180 +290,180 @@ const CallCaptureHome = () => {
           <div className="grid md:grid-cols-3 gap-6 mb-16">
             {/* Essential Front Desk */}
             <motion.div
-              className="bg-gradient-to-br from-gray-900/80 via-gray-900/60 to-gray-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-500"
+              className="bg-gradient-to-br from-gray-900/80 via-gray-900/60 to-gray-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-5 sm:p-8 hover:border-white/20 transition-all duration-500"
               whileHover={{ y: -4 }}
             >
-              <h3 className="text-2xl font-semibold text-white mb-2">Essential Front Desk</h3>
-              <p className="text-gray-400 text-sm mb-6">Mobile trades, solo consultants, small service providers</p>
+              <h3 className="text-lg sm:text-2xl font-semibold text-white mb-1 sm:mb-2">Essential Front Desk</h3>
+              <p className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6">Mobile trades, solo consultants, small service providers</p>
 
-              <div className="mb-8 pb-8 border-b border-white/10">
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-5xl font-bold text-white">£500</span>
-                  <span className="text-gray-500">setup</span>
+              <div className="mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-white/10">
+                <div className="flex items-baseline gap-1 sm:gap-2 mb-1 sm:mb-2">
+                  <span className="text-3xl sm:text-5xl font-bold text-white">£500</span>
+                  <span className="text-gray-500 text-sm sm:text-base">setup</span>
                 </div>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-semibold text-gray-300">£150</span>
-                  <span className="text-gray-500">/month</span>
+                <div className="flex items-baseline gap-1 sm:gap-2">
+                  <span className="text-xl sm:text-2xl font-semibold text-gray-300">£150</span>
+                  <span className="text-gray-500 text-sm sm:text-base">/month</span>
                 </div>
               </div>
 
-              <ul className="space-y-4 text-gray-300 text-sm mb-8">
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <ul className="space-y-2 sm:space-y-4 text-gray-300 text-xs sm:text-sm mb-6 sm:mb-8">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>24/7 call answering with natural voice</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>Appointment booking (Google Calendar/Calendly)</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>Basic FAQ handling (5-10 questions)</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>Lead notification via SMS/email</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>2-week setup, 30-day optimisation</span>
                 </li>
               </ul>
 
-              <p className="text-xs text-gray-500 mb-6">Solo operators & 2-3 person teams • £100k-£300k revenue</p>
+              <p className="text-[10px] sm:text-xs text-gray-500 mb-4 sm:mb-6">Solo operators & 2-3 person teams • £100k-£300k revenue</p>
 
-              <CTAButton variant="secondary" onClick={handleCalendly} className="w-full">
+              <CTAButton variant="secondary" onClick={handleCalendly} className="w-full text-sm sm:text-base">
                 Get Started →
               </CTAButton>
             </motion.div>
 
             {/* Professional Front Desk */}
             <motion.div
-              className="bg-gradient-to-br from-green-500/15 via-green-600/10 to-green-500/15 backdrop-blur-xl border-2 border-green-500/30 rounded-3xl p-8 transform md:scale-105 relative shadow-2xl shadow-green-500/10 hover:border-green-500/50 transition-all duration-500"
+              className="bg-gradient-to-br from-green-500/15 via-green-600/10 to-green-500/15 backdrop-blur-xl border-2 border-green-500/30 rounded-3xl p-5 sm:p-8 transform md:scale-105 relative shadow-2xl shadow-green-500/10 hover:border-green-500/50 transition-all duration-500"
               whileHover={{ y: -6, boxShadow: "0 25px 50px -12px rgba(34, 197, 94, 0.25)" }}
             >
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-400 to-green-500 text-black px-6 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+              <div className="absolute -top-3 sm:-top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-400 to-green-500 text-black px-4 sm:px-6 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-semibold shadow-lg">
                 MOST POPULAR
               </div>
-              <h3 className="text-2xl font-semibold text-green-400 mb-2">Professional Front Desk</h3>
-              <p className="text-gray-300 text-sm mb-6">Growing teams, multi-location, or higher volume</p>
+              <h3 className="text-lg sm:text-2xl font-semibold text-green-400 mb-1 sm:mb-2">Professional Front Desk</h3>
+              <p className="text-gray-300 text-xs sm:text-sm mb-4 sm:mb-6">Growing teams, multi-location, or higher volume</p>
 
-              <div className="mb-8 pb-8 border-b border-green-500/20">
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-5xl font-bold text-green-400">£800</span>
-                  <span className="text-gray-500">setup</span>
+              <div className="mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-green-500/20">
+                <div className="flex items-baseline gap-1 sm:gap-2 mb-1 sm:mb-2">
+                  <span className="text-3xl sm:text-5xl font-bold text-green-400">£800</span>
+                  <span className="text-gray-500 text-sm sm:text-base">setup</span>
                 </div>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-semibold text-white">£200</span>
-                  <span className="text-gray-500">/month</span>
+                <div className="flex items-baseline gap-1 sm:gap-2">
+                  <span className="text-xl sm:text-2xl font-semibold text-white">£200</span>
+                  <span className="text-gray-500 text-sm sm:text-base">/month</span>
                 </div>
               </div>
 
-              <ul className="space-y-4 text-gray-200 text-sm mb-8">
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <ul className="space-y-2 sm:space-y-4 text-gray-200 text-xs sm:text-sm mb-6 sm:mb-8">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>Everything in Essential, plus:</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>CRM integration (Zapier, custom API)</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>Advanced call routing (team availability)</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>Extended FAQ library (20+ questions)</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>Monthly performance review & tuning</span>
                 </li>
               </ul>
 
-              <p className="text-xs text-gray-400 mb-6">4-10 person teams • £300k-£750k revenue</p>
+              <p className="text-[10px] sm:text-xs text-gray-400 mb-4 sm:mb-6">4-10 person teams • £300k-£750k revenue</p>
 
-              <CTAButton onClick={handleCalendly} className="w-full">
+              <CTAButton onClick={handleCalendly} className="w-full text-sm sm:text-base">
                 Get Started →
               </CTAButton>
             </motion.div>
 
             {/* Enterprise Front Desk */}
             <motion.div
-              className="bg-gradient-to-br from-gray-900/80 via-gray-900/60 to-gray-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 hover:border-white/20 transition-all duration-500"
+              className="bg-gradient-to-br from-gray-900/80 via-gray-900/60 to-gray-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-5 sm:p-8 hover:border-white/20 transition-all duration-500"
               whileHover={{ y: -4 }}
             >
-              <h3 className="text-2xl font-semibold text-white mb-2">Enterprise Front Desk</h3>
-              <p className="text-gray-400 text-sm mb-6">Multi-site operations, complex workflows</p>
+              <h3 className="text-lg sm:text-2xl font-semibold text-white mb-1 sm:mb-2">Enterprise Front Desk</h3>
+              <p className="text-gray-400 text-xs sm:text-sm mb-4 sm:mb-6">Multi-site operations, complex workflows</p>
 
-              <div className="mb-8 pb-8 border-b border-white/10">
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-5xl font-bold text-white">£1,200</span>
-                  <span className="text-gray-500">setup</span>
+              <div className="mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-white/10">
+                <div className="flex items-baseline gap-1 sm:gap-2 mb-1 sm:mb-2">
+                  <span className="text-3xl sm:text-5xl font-bold text-white">£1,200</span>
+                  <span className="text-gray-500 text-sm sm:text-base">setup</span>
                 </div>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-2xl font-semibold text-gray-300">£300</span>
-                  <span className="text-gray-500">/month</span>
+                <div className="flex items-baseline gap-1 sm:gap-2">
+                  <span className="text-xl sm:text-2xl font-semibold text-gray-300">£300</span>
+                  <span className="text-gray-500 text-sm sm:text-base">/month</span>
                 </div>
               </div>
 
-              <ul className="space-y-4 text-gray-300 text-sm mb-8">
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <ul className="space-y-2 sm:space-y-4 text-gray-300 text-xs sm:text-sm mb-6 sm:mb-8">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>Everything in Professional, plus:</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>Multi-location support (unified or separate)</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>Custom integrations & workflows</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>Priority support (2-hour response SLA)</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <li className="flex items-start gap-2 sm:gap-3">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
                   </svg>
                   <span>Bi-weekly performance analytics calls</span>
                 </li>
               </ul>
 
-              <p className="text-xs text-gray-500 mb-6">10+ person teams • £750k+ revenue</p>
+              <p className="text-[10px] sm:text-xs text-gray-500 mb-4 sm:mb-6">10+ person teams • £750k+ revenue</p>
 
-              <CTAButton variant="secondary" onClick={handleCalendly} className="w-full">
+              <CTAButton variant="secondary" onClick={handleCalendly} className="w-full text-sm sm:text-base">
                 Contact Sales →
               </CTAButton>
             </motion.div>
