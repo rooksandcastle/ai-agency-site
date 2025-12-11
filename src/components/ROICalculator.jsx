@@ -1,373 +1,313 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { fadeInUp, hoverScale } from './AnimationWrapper';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const ROICalculator = () => {
-  const [inputs, setInputs] = useState({
-    employees: 10,
-    avgHourlyWage: 25,
-    hoursPerWeekManual: 15,
-    implementationCost: 5000,
-    monthlyCost: 200,
-    productivityIncrease: 30,
-    errorReduction: 80,
-    avgErrorCost: 100
-  });
+  const [missedCallsPerWeek, setMissedCallsPerWeek] = useState(10);
+  const [avgJobValue, setAvgJobValue] = useState(150);
+  const [conversionRate, setConversionRate] = useState(40); // % of calls that convert to sales
+  const [monthlyLoss, setMonthlyLoss] = useState(0);
+  const [yearlyLoss, setYearlyLoss] = useState(0);
+  const [isCalculating, setIsCalculating] = useState(false);
 
-  const [results, setResults] = useState({
-    annualSavings: 0,
-    monthlyROI: 0,
-    paybackPeriod: 0,
-    threeYearValue: 0,
-    hoursReclaimed: 0,
-    errorsSaved: 0
-  });
-
-  const [showResults, setShowResults] = useState(false);
-
+  // Calculate ROI with counting animation
   useEffect(() => {
-    calculateROI();
-  }, [inputs]);
+    setIsCalculating(true);
+    // Apply conversion rate to calculate realistic loss
+    const calculatedMonthlyLoss = missedCallsPerWeek * avgJobValue * 4.33 * (conversionRate / 100); // 4.33 weeks per month average
+    const calculatedYearlyLoss = calculatedMonthlyLoss * 12;
 
-  const calculateROI = () => {
-    const {
-      employees,
-      avgHourlyWage,
-      hoursPerWeekManual,
-      implementationCost,
-      monthlyCost,
-      productivityIncrease,
-      errorReduction,
-      avgErrorCost
-    } = inputs;
+    // Animate counting up
+    const duration = 800; // ms
+    const steps = 30;
+    const increment = calculatedMonthlyLoss / steps;
+    const yearlyIncrement = calculatedYearlyLoss / steps;
+    let currentStep = 0;
 
-    // Weekly time savings
-    const weeklyHoursSaved = employees * hoursPerWeekManual * (productivityIncrease / 100);
-    const weeklyLaborSavings = weeklyHoursSaved * avgHourlyWage;
+    const timer = setInterval(() => {
+      currentStep++;
+      setMonthlyLoss(Math.round(increment * currentStep));
+      setYearlyLoss(Math.round(yearlyIncrement * currentStep));
 
-    // Annual savings
-    const annualLaborSavings = weeklyLaborSavings * 52;
-    const annualErrorSavings = (employees * avgErrorCost * 52) * (errorReduction / 100);
-    const annualSavings = annualLaborSavings + annualErrorSavings;
+      if (currentStep >= steps) {
+        clearInterval(timer);
+        setMonthlyLoss(Math.round(calculatedMonthlyLoss));
+        setYearlyLoss(Math.round(calculatedYearlyLoss));
+        setIsCalculating(false);
+      }
+    }, duration / steps);
 
-    // Total costs
-    const annualOperationalCost = monthlyCost * 12;
-    const totalFirstYearCost = implementationCost + annualOperationalCost;
-
-    // ROI calculations
-    const netAnnualSavings = annualSavings - annualOperationalCost;
-    const paybackPeriod = implementationCost / (netAnnualSavings / 12);
-    const monthlyROI = ((netAnnualSavings / 12) / totalFirstYearCost) * 100;
-
-    // Three-year value
-    const threeYearSavings = annualSavings * 3;
-    const threeYearCosts = implementationCost + (annualOperationalCost * 3);
-    const threeYearValue = threeYearSavings - threeYearCosts;
-
-    // Hours and errors
-    const annualHoursReclaimed = weeklyHoursSaved * 52;
-    const errorsPerYear = employees * 2; // Assume 2 errors per employee per year
-    const errorsSaved = errorsPerYear * (errorReduction / 100);
-
-    setResults({
-      annualSavings: Math.round(annualSavings),
-      monthlyROI: Math.round(monthlyROI * 100) / 100,
-      paybackPeriod: Math.round(paybackPeriod * 10) / 10,
-      threeYearValue: Math.round(threeYearValue),
-      hoursReclaimed: Math.round(annualHoursReclaimed),
-      errorsSaved: Math.round(errorsSaved)
-    });
-  };
-
-  const handleInputChange = (field, value) => {
-    setInputs(prev => ({
-      ...prev,
-      [field]: parseFloat(value) || 0
-    }));
-  };
-
-  const formatCurrency = (amount) => {
-    return new Intl.NumberFormat('en-GB', {
-      style: 'currency',
-      currency: 'GBP',
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
-
-  const inputFields = [
-    {
-      key: 'employees',
-      label: 'Number of Employees',
-      type: 'number',
-      min: 1,
-      max: 1000,
-      suffix: 'people'
-    },
-    {
-      key: 'avgHourlyWage',
-      label: 'Average Hourly Wage',
-      type: 'number',
-      min: 10,
-      max: 200,
-      prefix: '£',
-      suffix: 'per hour'
-    },
-    {
-      key: 'hoursPerWeekManual',
-      label: 'Hours/Week on Manual Tasks',
-      type: 'number',
-      min: 1,
-      max: 40,
-      suffix: 'hours per employee'
-    },
-    {
-      key: 'implementationCost',
-      label: 'Implementation Cost',
-      type: 'number',
-      min: 1000,
-      max: 100000,
-      prefix: '£',
-      suffix: 'one-time'
-    },
-    {
-      key: 'monthlyCost',
-      label: 'Monthly Running Cost',
-      type: 'number',
-      min: 50,
-      max: 5000,
-      prefix: '£',
-      suffix: 'per month'
-    },
-    {
-      key: 'productivityIncrease',
-      label: 'Productivity Increase',
-      type: 'number',
-      min: 10,
-      max: 80,
-      suffix: '% efficiency gain'
-    },
-    {
-      key: 'errorReduction',
-      label: 'Error Reduction',
-      type: 'number',
-      min: 20,
-      max: 95,
-      suffix: '% fewer mistakes'
-    },
-    {
-      key: 'avgErrorCost',
-      label: 'Average Cost per Error',
-      type: 'number',
-      min: 10,
-      max: 1000,
-      prefix: '£',
-      suffix: 'per error'
-    }
-  ];
+    return () => clearInterval(timer);
+  }, [missedCallsPerWeek, avgJobValue, conversionRate]);
 
   return (
-    <section className="py-20 bg-gradient-to-br from-cyber-black to-gray-900 min-h-screen">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          variants={fadeInUp}
-          initial="initial"
-          animate="animate"
-        >
-          <h1 className="text-4xl lg:text-6xl font-black text-white mb-6">
-            AI ROI <span className="text-green-400">Calculator</span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Calculate the potential return on investment for AI automation in your business.
-            Get personalised projections based on your specific metrics.
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Input Form */}
-          <motion.div
-            className="bg-gray-900/30 backdrop-blur-xl border border-gray-800/50 rounded-3xl p-8"
-            variants={fadeInUp}
-            initial="initial"
-            animate="animate"
+    <section className="py-20 relative bg-brand-bg" id="roi-calculator">
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-12">
+          <motion.h2
+            className="text-4xl lg:text-5xl font-bold text-text-primary mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl font-bold text-white mb-8">
-              Business Inputs
-            </h2>
-
-            <div className="space-y-6">
-              {inputFields.map((field, idx) => (
-                <motion.div
-                  key={field.key}
-                  className="space-y-2"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                >
-                  <label
-                    htmlFor={`input-${field.key}`}
-                    className="block text-sm font-semibold text-green-400"
-                  >
-                    {field.label}
-                  </label>
-                  <div className="relative">
-                    {field.prefix && (
-                      <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-                        {field.prefix}
-                      </span>
-                    )}
-                    <input
-                      id={`input-${field.key}`}
-                      type={field.type}
-                      min={field.min}
-                      max={field.max}
-                      value={inputs[field.key]}
-                      onChange={(e) => handleInputChange(field.key, e.target.value)}
-                      className={`w-full p-4 bg-gray-800/50 border border-gray-700 rounded-xl text-white focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20 ${
-                        field.prefix ? 'pl-8' : ''
-                      }`}
-                      aria-describedby={field.suffix ? `${field.key}-suffix` : undefined}
-                      placeholder={`Enter ${field.label.toLowerCase()}`}
-                    />
-                    {field.suffix && (
-                      <span
-                        id={`${field.key}-suffix`}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm"
-                        aria-hidden="true"
-                      >
-                        {field.suffix}
-                      </span>
-                    )}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.button
-              className="w-full mt-8 px-6 py-4 bg-gradient-to-r from-green-400 to-green-500 text-black font-bold text-lg rounded-xl shadow-2xl shadow-green-500/25"
-              {...hoverScale}
-              onClick={() => setShowResults(true)}
-            >
-              Calculate ROI
-            </motion.button>
-          </motion.div>
-
-          {/* Results */}
-          <motion.div
-            className="bg-gray-900/30 backdrop-blur-xl border border-green-500/30 rounded-3xl p-8"
-            variants={fadeInUp}
-            initial="initial"
-            animate="animate"
-            transition={{ delay: 0.2 }}
+            Calculate Your <span className="text-premium-green">Revenue Loss</span>
+          </motion.h2>
+          <motion.p
+            className="text-xl text-text-secondary max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h2 className="text-2xl font-bold text-white mb-8">
-              ROI Projections
-            </h2>
-
-            <div className="space-y-6">
-              {/* Key Metrics */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-green-500/10 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-black text-green-400 mb-2">
-                    {formatCurrency(results.annualSavings)}
-                  </div>
-                  <div className="text-sm text-gray-300">Annual Savings</div>
-                </div>
-
-                <div className="bg-green-500/10 rounded-xl p-6 text-center">
-                  <div className="text-3xl font-black text-green-400 mb-2">
-                    {results.paybackPeriod}
-                  </div>
-                  <div className="text-sm text-gray-300">Months to Payback</div>
-                </div>
-              </div>
-
-              {/* Detailed Results */}
-              <div className="space-y-4">
-                <div className="flex justify-between items-center p-4 bg-gray-800/30 rounded-xl">
-                  <span className="text-gray-300">Monthly ROI</span>
-                  <span className="text-white font-semibold">{results.monthlyROI}%</span>
-                </div>
-
-                <div className="flex justify-between items-center p-4 bg-gray-800/30 rounded-xl">
-                  <span className="text-gray-300">3-Year Value</span>
-                  <span className="text-white font-semibold">{formatCurrency(results.threeYearValue)}</span>
-                </div>
-
-                <div className="flex justify-between items-center p-4 bg-gray-800/30 rounded-xl">
-                  <span className="text-gray-300">Hours Reclaimed/Year</span>
-                  <span className="text-white font-semibold">{results.hoursReclaimed.toLocaleString()}</span>
-                </div>
-
-                <div className="flex justify-between items-center p-4 bg-gray-800/30 rounded-xl">
-                  <span className="text-gray-300">Errors Prevented/Year</span>
-                  <span className="text-white font-semibold">{results.errorsSaved}</span>
-                </div>
-              </div>
-
-              {/* ROI Breakdown */}
-              <div className="border-t border-gray-700 pt-6">
-                <h3 className="text-lg font-semibold text-white mb-4">Investment Breakdown</h3>
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Implementation Cost:</span>
-                    <span className="text-gray-300">{formatCurrency(inputs.implementationCost)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-gray-400">Annual Operating Cost:</span>
-                    <span className="text-gray-300">{formatCurrency(inputs.monthlyCost * 12)}</span>
-                  </div>
-                  <div className="flex justify-between border-t border-gray-700 pt-3">
-                    <span className="text-green-400 font-semibold">Net Annual Benefit:</span>
-                    <span className="text-green-400 font-semibold">
-                      {formatCurrency(results.annualSavings - (inputs.monthlyCost * 12))}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* CTA */}
-            <motion.div className="mt-8 p-6 bg-gradient-to-r from-green-500/10 to-green-400/10 rounded-xl border border-green-500/20">
-              <p className="text-white mb-4">
-                Ready to achieve these results? Let's discuss your AI automation strategy.
-              </p>
-              <motion.button
-                className="w-full px-6 py-3 bg-gradient-to-r from-green-400 to-green-500 text-black font-semibold rounded-xl"
-                {...hoverScale}
-                onClick={() => {
-                  // Scroll to assessment or contact
-                  const assessment = document.getElementById('assessment');
-                  if (assessment) {
-                    assessment.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-              >
-                Start Free Assessment
-              </motion.button>
-            </motion.div>
-          </motion.div>
+            Every missed call is a lost customer. See exactly how much it's costing you.
+          </motion.p>
         </div>
 
-        {/* Disclaimer */}
         <motion.div
-          className="mt-16 text-center"
-          variants={fadeInUp}
-          initial="initial"
-          animate="animate"
-          transition={{ delay: 0.4 }}
+          className="bg-brand-surface/80 backdrop-blur-xl border border-brand-border rounded-3xl p-8 lg:p-12 shadow-premium"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="bg-gray-900/20 rounded-xl p-6 max-w-4xl mx-auto">
-            <p className="text-gray-400 text-sm leading-relaxed">
-              <strong className="text-gray-300">Disclaimer:</strong> This calculator provides estimates based on industry averages and your inputs.
-              Actual results may vary depending on implementation complexity, team adoption rates, and specific business processes.
-              For a personalised assessment with more accurate projections, book a free consultation with our team.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Input Side */}
+            <div className="space-y-8">
+              <h3 className="text-2xl font-semibold text-text-primary mb-6">Your Business Numbers</h3>
+
+              {/* Missed Calls Input */}
+              <div>
+                <label className="flex items-center justify-between mb-4">
+                  <span className="text-text-secondary font-medium">Missed calls per week</span>
+                  <motion.span
+                    className="text-3xl font-bold text-text-primary bg-brand-bg px-4 py-2 rounded-lg border border-brand-border"
+                    key={missedCallsPerWeek}
+                    initial={{ scale: 1.2, color: '#10B981' }}
+                    animate={{ scale: 1, color: '#F9FAFB' }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {missedCallsPerWeek}
+                  </motion.span>
+                </label>
+                <motion.input
+                  type="range"
+                  min="1"
+                  max="50"
+                  value={missedCallsPerWeek}
+                  onChange={(e) => setMissedCallsPerWeek(Number(e.target.value))}
+                  className="w-full h-3 bg-brand-bg border border-brand-border rounded-lg appearance-none cursor-pointer slider focus:outline-none focus:ring-2 focus:ring-premium-green"
+                  whileFocus={{ scale: 1.01 }}
+                  style={{
+                    background: `linear-gradient(to right, #10B981 0%, #10B981 ${(missedCallsPerWeek / 50) * 100}%, #1A1A1A ${(missedCallsPerWeek / 50) * 100}%, #1A1A1A 100%)`
+                  }}
+                />
+                <div className="flex justify-between text-xs text-text-tertiary mt-2">
+                  <span>1 call</span>
+                  <span>50 calls</span>
+                </div>
+              </div>
+
+              {/* Average Job Value Input */}
+              <div>
+                <label className="flex items-center justify-between mb-4">
+                  <span className="text-text-secondary font-medium">Average job value (£)</span>
+                  <motion.span
+                    className="text-3xl font-bold text-text-primary bg-brand-bg px-4 py-2 rounded-lg border border-brand-border"
+                    key={avgJobValue}
+                    initial={{ scale: 1.2, color: '#10B981' }}
+                    animate={{ scale: 1, color: '#F9FAFB' }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    £{avgJobValue}
+                  </motion.span>
+                </label>
+                <motion.input
+                  type="range"
+                  min="50"
+                  max="2000"
+                  step="10"
+                  value={avgJobValue}
+                  onChange={(e) => setAvgJobValue(Number(e.target.value))}
+                  className="w-full h-3 bg-brand-bg border border-brand-border rounded-lg appearance-none cursor-pointer slider focus:outline-none focus:ring-2 focus:ring-premium-green"
+                  whileFocus={{ scale: 1.01 }}
+                  style={{
+                    background: `linear-gradient(to right, #10B981 0%, #10B981 ${((avgJobValue - 50) / 1950) * 100}%, #1A1A1A ${((avgJobValue - 50) / 1950) * 100}%, #1A1A1A 100%)`
+                  }}
+                />
+                <div className="flex justify-between text-xs text-text-tertiary mt-2">
+                  <span>£50</span>
+                  <span>£2,000+</span>
+                </div>
+              </div>
+
+              {/* Conversion Rate Input */}
+              <div>
+                <label className="flex items-center justify-between mb-4">
+                  <span className="text-text-secondary font-medium">Call conversion rate (%)</span>
+                  <motion.span
+                    className="text-3xl font-bold text-text-primary bg-brand-bg px-4 py-2 rounded-lg border border-brand-border"
+                    key={conversionRate}
+                    initial={{ scale: 1.2, color: '#10B981' }}
+                    animate={{ scale: 1, color: '#F9FAFB' }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {conversionRate}%
+                  </motion.span>
+                </label>
+                <motion.input
+                  type="range"
+                  min="10"
+                  max="100"
+                  step="5"
+                  value={conversionRate}
+                  onChange={(e) => setConversionRate(Number(e.target.value))}
+                  className="w-full h-3 bg-brand-bg border border-brand-border rounded-lg appearance-none cursor-pointer slider focus:outline-none focus:ring-2 focus:ring-premium-green"
+                  whileFocus={{ scale: 1.01 }}
+                  style={{
+                    background: `linear-gradient(to right, #10B981 0%, #10B981 ${((conversionRate - 10) / 90) * 100}%, #1A1A1A ${((conversionRate - 10) / 90) * 100}%, #1A1A1A 100%)`
+                  }}
+                />
+                <div className="flex justify-between text-xs text-text-tertiary mt-2">
+                  <span>10% (Conservative)</span>
+                  <span>100% (Every call converts)</span>
+                </div>
+              </div>
+
+              <div className="bg-brand-bg/50 border border-brand-border rounded-2xl p-6">
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  <strong className="text-text-primary">Industry Average:</strong> UK small businesses miss 30-40% of incoming calls during peak hours.
+                  67% of callers won't leave a voicemail and will call your competitor instead. That's where missed call recovery with an AI receptionist becomes essential.
+                </p>
+              </div>
+            </div>
+
+            {/* Results Side */}
+            <div className="flex flex-col justify-center">
+              <div className="bg-brand-bg border-2 border-premium-green/30 rounded-3xl p-8 shadow-green">
+                <h3 className="text-xl font-semibold text-text-primary mb-8 text-center">Your Estimated Loss</h3>
+
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`${missedCallsPerWeek}-${avgJobValue}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className="space-y-6"
+                  >
+                    {/* Monthly Loss */}
+                    <div className="text-center pb-6 border-b border-brand-border">
+                      <div className="text-sm text-text-tertiary mb-2 uppercase tracking-wide">Monthly</div>
+                      <motion.div
+                        className="text-5xl lg:text-6xl font-black text-premium-green"
+                        animate={isCalculating ? { scale: [1, 1.05, 1] } : {}}
+                        transition={{ duration: 0.3 }}
+                      >
+                        £{monthlyLoss.toLocaleString()}
+                      </motion.div>
+                      <div className="text-sm text-text-tertiary mt-2">in lost revenue</div>
+                    </div>
+
+                    {/* Yearly Loss */}
+                    <div className="text-center">
+                      <div className="text-sm text-text-tertiary mb-2 uppercase tracking-wide">Yearly</div>
+                      <motion.div
+                        className="text-4xl lg:text-5xl font-black text-premium-green-light"
+                        animate={isCalculating ? { scale: [1, 1.05, 1] } : {}}
+                        transition={{ duration: 0.3, delay: 0.1 }}
+                      >
+                        £{yearlyLoss.toLocaleString()}
+                      </motion.div>
+                      <div className="text-sm text-text-tertiary mt-2">annually</div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* ROI Comparison */}
+                <div className="mt-8 pt-6 border-t border-premium-green/20">
+                  <div className="bg-premium-green/10 border border-premium-green/30 rounded-2xl p-4">
+                    <div className="text-center">
+                      <div className="text-sm text-premium-green font-semibold mb-2">AI Front Desk Investment</div>
+                      <div className="text-2xl font-bold text-text-primary">£50-£150/month</div>
+                      <div className="text-xs text-text-secondary mt-2">
+                        Pays for itself by capturing just {Math.ceil((150 / (avgJobValue * (conversionRate / 100))) * 100) / 100} more calls per month
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <motion.div
+                className="mt-6 text-center"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+              >
+                <p className="text-sm text-text-secondary mb-4">
+                  Ready to stop losing money?
+                </p>
+                <motion.a
+                  href="#pricing"
+                  className="inline-block px-8 py-4 bg-green-gradient text-black font-bold rounded-xl hover:shadow-green-lg transition-all duration-300 relative overflow-hidden group"
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="relative z-10">See Pricing & Get Started →</span>
+                  <motion.div
+                    className="absolute inset-0 bg-premium-green-dark"
+                    initial={{ x: '-100%' }}
+                    whileHover={{ x: 0 }}
+                    transition={{ duration: 0.4, ease: 'easeOut' }}
+                  />
+                </motion.a>
+              </motion.div>
+            </div>
           </div>
         </motion.div>
+
+        {/* Trust Note */}
+        <motion.p
+          className="text-center text-sm text-text-tertiary mt-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+        >
+          No pressure. Our 30-day guarantee means you risk nothing.
+        </motion.p>
       </div>
+
+      <style jsx>{`
+        .slider::-webkit-slider-thumb {
+          appearance: none;
+          width: 24px;
+          height: 24px;
+          background: linear-gradient(135deg, #10B981, #059669);
+          border-radius: 50%;
+          cursor: pointer;
+          box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+          transition: all 0.3s ease;
+        }
+        .slider::-webkit-slider-thumb:hover {
+          transform: scale(1.2);
+          box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+        }
+        .slider::-moz-range-thumb {
+          width: 24px;
+          height: 24px;
+          background: linear-gradient(135deg, #10B981, #059669);
+          border-radius: 50%;
+          cursor: pointer;
+          border: none;
+          box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+          transition: all 0.3s ease;
+        }
+        .slider::-moz-range-thumb:hover {
+          transform: scale(1.2);
+          box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+        }
+      `}</style>
     </section>
   );
 };
