@@ -104,7 +104,7 @@ const ImprovedAssessment = () => {
   const submitFormData = async (finalFormData) => {
     try {
       const emailData = {
-        to: 'rooksandcastle101@gmail.com',
+        to: 'hello@rooksandcastle.co.uk',
         subject: 'New Business Assessment Submission',
         html: `
           <h2>New Assessment Form Submission</h2>

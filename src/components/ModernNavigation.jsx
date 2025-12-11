@@ -444,7 +444,7 @@ const ModernNavigation = ({ onCalendlyClick }) => {
                 <div className="border-t border-gray-700 p-6 mt-auto">
                   <div className="text-center">
                     <p className="text-gray-400 text-sm mb-2">Ready to transform your business?</p>
-                    <p className="text-green-400 font-semibold">rooksandcastle101@gmail.com</p>
+                    <p className="text-green-400 font-semibold">hello@rooksandcastle.co.uk</p>
                   </div>
                 </div>
               </motion.div>

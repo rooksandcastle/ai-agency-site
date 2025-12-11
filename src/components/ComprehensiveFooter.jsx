@@ -237,7 +237,7 @@ const ComprehensiveFooter = () => {
               <h5 className="text-white font-semibold mb-3">Contact</h5>
               <p className="text-gray-400 text-sm mb-2">
                 <span className="text-green-400">Email:</span><br />
-                hello@rooksandcastle.com
+                hello@rooksandcastle.co.uk
               </p>
               <p className="text-gray-400 text-sm">
                 <span className="text-green-400">Phone:</span><br />
