@@ -4,7 +4,9 @@
       "Bash(npm run dev:*)",
       "WebFetch(domain:brainpool.ai)",
       "Bash(npm run build:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(touch:*)",
+      "Bash(npm install:*)"
     ],
     "deny": [],
     "ask": []

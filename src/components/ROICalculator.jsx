@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import LottieAnimation from './LottieAnimation';
+import { Revenue } from '../animations';
 
 const ROICalculator = () => {
   const [missedCallsPerWeek, setMissedCallsPerWeek] = useState(10);
@@ -40,20 +42,20 @@ const ROICalculator = () => {
   }, [missedCallsPerWeek, avgJobValue, conversionRate]);
 
   return (
-    <section className="py-20 relative bg-brand-bg" id="roi-calculator">
-      <div className="max-w-5xl mx-auto px-6 relative z-10">
+    <section className="py-24 lg:py-32 relative bg-gray-900" id="roi-calculator">
+      <div className="container mx-auto px-6 max-w-5xl relative z-10">
         <div className="text-center mb-12">
           <motion.h2
-            className="text-4xl lg:text-5xl font-bold text-text-primary mb-4"
+            className="text-4xl lg:text-5xl font-bold text-white mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Calculate Your <span className="text-premium-green">Revenue Loss</span>
+            Calculate Your <span className="text-emerald-400">Revenue Loss</span>
           </motion.h2>
           <motion.p
-            className="text-xl text-text-secondary max-w-2xl mx-auto"
+            className="text-xl text-gray-300 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -64,7 +66,7 @@ const ROICalculator = () => {
         </div>
 
         <motion.div
-          className="bg-brand-surface/80 backdrop-blur-xl border border-brand-border rounded-3xl p-8 lg:p-12 shadow-premium"
+          className="border border-gray-700 shadow-xl rounded-3xl p-8 backdrop-blur-xl"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}

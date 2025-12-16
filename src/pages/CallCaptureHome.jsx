@@ -8,6 +8,10 @@ import WhyChooseUs from '../components/WhyChooseUs';
 import SocialProof from '../components/SocialProof';
 import FollowUpService from '../components/FollowUpService';
 import Navigation from '../components/Navigation';
+import LottieAnimation from '../components/LottieAnimation';
+
+// Import animations
+import { VoiceCallHeader, LOTTIE_ANIMATIONS } from '../animations';
 
 // Premium Animated Background - More Subtle
 const AnimatedBackground = () => (
@@ -46,83 +50,21 @@ const AnimatedBackground = () => (
   </div>
 );
 
-// Animated Phone Icon - Missed to Answered
+// Animated Phone Icon - Lottie Version
 const AnimatedPhoneIcon = () => {
-  const [state, setState] = useState('missed'); // missed -> ringing -> answered
-
-  useEffect(() => {
-    const sequence = ['missed', 'ringing', 'answered'];
-    let currentIndex = 0;
-
-    const interval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % sequence.length;
-      setState(sequence[currentIndex]);
-    }, 2500);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="relative w-24 h-24 mx-auto mb-8">
-      <AnimatePresence mode="wait">
-        {state === 'missed' && (
-          <motion.div
-            key="missed"
-            className="absolute inset-0 flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="relative">
-              <PhoneMissed className="w-16 h-16 text-text-tertiary" />
-              <motion.div
-                className="absolute -top-2 -right-2 w-6 h-6 bg-text-tertiary rounded-full flex items-center justify-center text-brand-bg text-xs font-bold"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 1, repeat: Infinity }}
-              >
-                3
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-
-        {state === 'ringing' && (
-          <motion.div
-            key="ringing"
-            className="absolute inset-0 flex items-center justify-center"
-            initial={{ opacity: 0, rotate: -15 }}
-            animate={{
-              opacity: 1,
-              rotate: [0, 15, -15, 0],
-            }}
-            exit={{ opacity: 0 }}
-            transition={{ rotate: { duration: 0.5, repeat: 3 }, opacity: { duration: 0.3 } }}
-          >
-            <PhoneOff className="w-16 h-16 text-premium-green-light" />
-          </motion.div>
-        )}
-
-        {state === 'answered' && (
-          <motion.div
-            key="answered"
-            className="absolute inset-0 flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.2 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="relative">
-              <Phone className="w-16 h-16 text-premium-green" />
-              <motion.div
-                className="absolute inset-0 bg-premium-green rounded-full opacity-20"
-                animate={{ scale: [1, 1.5], opacity: [0.2, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <div className="w-32 h-32 mx-auto mb-8">
+      <LottieAnimation
+        animationData={VoiceCallHeader}
+        loop={true}
+        autoplay={true}
+        withMotion={true}
+        motionProps={{
+          initial: { opacity: 0, scale: 0.8 },
+          animate: { opacity: 1, scale: 1 },
+          transition: { duration: 0.6, ease: 'easeOut' }
+        }}
+      />
     </div>
   );
 };
@@ -145,16 +87,14 @@ const CTAButton = ({ children, variant = 'primary', onClick, className = '' }) =
       {variant === 'primary' && (
         <>
           {/* Static background */}
-          <div className="absolute inset-0 bg-green-gradient"></div>
+          <div className="absolute inset-0 bg-emerald-600 rounded-xl"></div>
           {/* Hover fill effect */}
           <motion.div
-            className="absolute inset-0 bg-premium-green-dark"
+            className="absolute inset-0 bg-emerald-700 rounded-xl"
             initial={{ x: '-100%' }}
             whileHover={{ x: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
           />
-          {/* Green glow */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-green-lg"></div>
         </>
       )}
 
@@ -162,10 +102,10 @@ const CTAButton = ({ children, variant = 'primary', onClick, className = '' }) =
       {variant === 'secondary' && (
         <>
           {/* Border and bg */}
-          <div className="absolute inset-0 border border-brand-border bg-brand-surface/50 backdrop-blur-sm rounded-xl"></div>
+          <div className="absolute inset-0 border border-gray-700 bg-gray-800/50 backdrop-blur-sm rounded-xl"></div>
           {/* Hover fill effect */}
           <motion.div
-            className="absolute inset-0 bg-premium-green/10 rounded-xl"
+            className="absolute inset-0 bg-emerald-600/10 rounded-xl"
             initial={{ x: '-100%' }}
             whileHover={{ x: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -283,11 +223,11 @@ const CallCaptureHome = () => {
       </section>
 
       {/* Problem - Hidden Cost of Missed Calls */}
-      <section className="py-12 md:py-20 relative bg-brand-bg">
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-8 md:mb-16">
+      <section className="py-24 lg:py-32 relative bg-gray-900">
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+          <div className="text-center mb-12">
             <motion.h2
-              className="text-4xl lg:text-5xl font-bold text-text-primary mb-6"
+              className="text-4xl lg:text-5xl font-bold text-white mb-12"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -305,15 +245,14 @@ const CallCaptureHome = () => {
             ].map((item, idx) => (
               <motion.div
                 key={idx}
-                className="bg-brand-surface/80 backdrop-blur-xl border border-brand-border rounded-2xl p-8 text-center hover:border-red-400/30 transition-all duration-300"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="border border-gray-700 shadow-xl rounded-2xl p-8 text-center hover:border-red-400/30 transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: idx * 0.15 }}
               >
                 <div className="text-5xl font-black text-red-400 mb-4">{item.stat}</div>
-                <div className="text-lg font-semibold text-text-primary mb-2">{item.label}</div>
-                <div className="text-sm text-text-secondary">{item.detail}</div>
+                <div className="text-lg font-semibold text-white mb-2">{item.label}</div>
+                <div className="text-sm text-gray-300">{item.detail}</div>
               </motion.div>
             ))}
           </div>
@@ -321,20 +260,19 @@ const CallCaptureHome = () => {
       </section>
 
       {/* What Your AI Receptionist Can Handle */}
-      <section className="py-12 md:py-20 bg-brand-bg relative">
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-8 md:mb-16">
+      <section className="py-24 lg:py-32 bg-gray-900 relative">
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+          <div className="text-center mb-12">
             <motion.h2
-              className="text-4xl lg:text-5xl font-bold text-text-primary mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              className="text-4xl lg:text-5xl font-bold text-white mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              What Your <span className="text-premium-green">AI Receptionist Can Handle</span>
+              What Your <span className="text-emerald-400">AI Receptionist Can Handle</span>
             </motion.h2>
             <motion.p
-              className="text-xl text-text-secondary max-w-3xl mx-auto"
+              className="text-xl text-gray-300 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -396,20 +334,20 @@ const CallCaptureHome = () => {
       </section>
 
       {/* How It Works - With Industry Examples */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-brand-bg via-brand-surface/20 to-brand-bg relative" id="how-it-works">
-        <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <section className="py-24 lg:py-32 bg-gray-900 relative" id="how-it-works">
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
           <div className="max-w-4xl mx-auto">
             <motion.h2
-              className="text-4xl lg:text-5xl font-bold text-text-primary mb-4 text-center"
+              className="text-4xl lg:text-5xl font-bold text-white mb-12 text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              How It <span className="text-premium-green">Works</span>
+              How It <span className="text-emerald-400">Works</span>
             </motion.h2>
             <motion.p
-              className="text-text-secondary text-center mb-16 max-w-2xl mx-auto"
+              className="text-gray-300 text-center mb-12 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -793,20 +731,19 @@ const CallCaptureHome = () => {
       </div>
 
       {/* Your Investment - Pricing */}
-      <section className="py-12 md:py-20 relative bg-brand-bg" id="pricing">
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-8 md:mb-16">
+      <section className="py-24 lg:py-32 relative bg-gray-900" id="pricing">
+        <div className="container mx-auto px-6 max-w-7xl relative z-10">
+          <div className="text-center mb-12">
             <motion.h2
-              className="text-4xl lg:text-5xl font-bold text-text-primary mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              className="text-4xl lg:text-5xl font-bold text-white mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              Your <span className="text-premium-green">Investment</span>
+              Your <span className="text-emerald-400">Investment</span>
             </motion.h2>
             <motion.p
-              className="text-xl text-text-secondary mb-3"
+              className="text-xl text-gray-300 mb-3 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -1036,21 +973,20 @@ const CallCaptureHome = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-12 md:py-20 bg-brand-bg relative">
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-8 md:mb-16">
+      <section className="py-24 lg:py-32 bg-gray-900 relative">
+        <div className="container mx-auto px-6 max-w-4xl relative z-10">
+          <div className="text-center mb-12">
             <motion.h2
-              className="text-4xl lg:text-5xl font-bold text-text-primary mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              className="text-4xl lg:text-5xl font-bold text-white mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              Common <span className="text-premium-green">Questions</span>
+              Common <span className="text-emerald-400">Questions</span>
             </motion.h2>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-8">
             {[
               {
                 q: 'What\'s your 30-day money-back guarantee?',
@@ -1083,16 +1019,15 @@ const CallCaptureHome = () => {
             ].map((item, idx) => (
               <motion.div
                 key={idx}
-                className={`bg-brand-surface/80 backdrop-blur-xl border border-brand-border rounded-2xl p-6 hover:border-premium-green/50 transition-all duration-300 ${
+                className={`border border-gray-700 shadow-xl rounded-2xl p-8 hover:border-emerald-600/50 transition-all duration-300 ${
                   idx >= 4 ? 'hidden md:block' : ''
                 }`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
               >
-                <h3 className="text-xl font-bold text-text-primary mb-3">{item.q}</h3>
-                <p className="text-text-secondary">{item.a}</p>
+                <h3 className="text-xl font-bold text-white mb-3">{item.q}</h3>
+                <p className="text-gray-300">{item.a}</p>
               </motion.div>
             ))}
           </div>
@@ -1100,26 +1035,24 @@ const CallCaptureHome = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-12 md:py-20 relative bg-brand-bg">
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+      <section className="py-24 lg:py-32 relative bg-gray-900">
+        <div className="container mx-auto px-6 max-w-4xl text-center relative z-10">
           <motion.div
-            className="bg-gradient-to-br from-premium-green/10 to-premium-green-dark/5 border border-premium-green/30 rounded-3xl p-12"
+            className="bg-gradient-to-br from-emerald-600/10 to-emerald-900/5 border border-emerald-600/30 rounded-3xl p-8"
             initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
           >
             <motion.h2
-              className="text-4xl lg:text-5xl font-bold text-text-primary mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              className="text-4xl lg:text-5xl font-bold text-white mb-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               Stop Losing Money to Missed Calls with AI Receptionist
             </motion.h2>
             <motion.p
-              className="text-xl text-text-secondary mb-8"
+              className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -1153,6 +1086,24 @@ const CallCaptureHome = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Robot Animation - Bottom Decorative Element */}
+      <div className="relative bg-gray-900 py-12 overflow-hidden">
+        <div className="container mx-auto px-6 max-w-md">
+          <LottieAnimation
+            dotLottieSrc={LOTTIE_ANIMATIONS.robotFuturistic}
+            loop={true}
+            autoplay={true}
+            withMotion={true}
+            motionProps={{
+              initial: { opacity: 0, y: 50 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true },
+              transition: { duration: 0.8 }
+            }}
+          />
+        </div>
+      </div>
 
       {/* Enhanced WhatsApp Floating Button with Pulse Effect */}
       <motion.div
