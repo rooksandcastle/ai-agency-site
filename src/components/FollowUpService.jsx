@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { MessageCircle, Phone, Calendar, TrendingUp } from 'lucide-react';
+import GlowButton from './motion/GlowButton';
 
 const FollowUpService = () => {
   return (
@@ -165,12 +166,9 @@ const FollowUpService = () => {
           <p className="text-text-secondary mb-6">
             Included with Professional and Enterprise Front Desk plans
           </p>
-          <a
-            href="#pricing"
-            className="inline-block px-8 py-4 bg-green-gradient text-black font-bold rounded-xl hover:shadow-green-lg transition-all duration-300"
-          >
-            See Pricing & Get Started →
-          </a>
+          <GlowButton as="a" href="#services" className="px-8 py-4 inline-flex">
+            Explore Services & Get Started →
+          </GlowButton>
         </motion.div>
       </div>
     </section>

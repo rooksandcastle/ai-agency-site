@@ -43,7 +43,7 @@ const WhatWeDoPage = () => {
               <div className="grid md:grid-cols-3 gap-8 mb-12">
                 <div className="bg-gray-800/50 rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-white mb-4">Starter Package</h3>
-                  <div className="text-green-400 text-2xl font-bold mb-4">£10-50/month</div>
+                  <div className="text-green-400 text-2xl font-bold mb-4">Support Included</div>
                   <ul className="text-gray-300 space-y-2 text-sm">
                     <li>• Basic workflow automation</li>
                     <li>• Email & communication setup</li>
@@ -54,7 +54,7 @@ const WhatWeDoPage = () => {
 
                 <div className="bg-gray-800/50 rounded-2xl p-6 border border-green-500/30">
                   <h3 className="text-xl font-bold text-white mb-4">Growth Package</h3>
-                  <div className="text-green-400 text-2xl font-bold mb-4">£200-800/month</div>
+                  <div className="text-green-400 text-2xl font-bold mb-4">Tailored Scope</div>
                   <ul className="text-gray-300 space-y-2 text-sm">
                     <li>• Advanced AI agents</li>
                     <li>• Customer service automation</li>
@@ -65,7 +65,7 @@ const WhatWeDoPage = () => {
 
                 <div className="bg-gray-800/50 rounded-2xl p-6">
                   <h3 className="text-xl font-bold text-white mb-4">Enterprise Package</h3>
-                  <div className="text-green-400 text-2xl font-bold mb-4">Custom Pricing</div>
+                  <div className="text-green-400 text-2xl font-bold mb-4">Custom Engagement</div>
                   <ul className="text-gray-300 space-y-2 text-sm">
                     <li>• Full digital transformation</li>
                     <li>• Custom AI development</li>
@@ -76,7 +76,7 @@ const WhatWeDoPage = () => {
               </div>
 
               <p className="text-gray-300 text-lg leading-relaxed text-center">
-                All packages include our psychology-informed implementation approach, ensuring your team actually adopts and benefits from the AI tools we implement. No black boxes, complete transparency in pricing and processes.
+                All packages include our psychology-informed implementation approach, ensuring your team actually adopts and benefits from the AI tools we implement. No black boxes, complete transparency in engagement terms and processes.
               </p>
             </div>
 
@@ -158,10 +158,10 @@ const WhatWeDoPage = () => {
               </p>
             </div>
 
-            {/* Pricing & ROI */}
+            {
             <div className="bg-gray-900/30 backdrop-blur-xl border border-green-500/20 rounded-3xl p-8 lg:p-12">
               <div className="text-6xl mb-6 text-center">💰</div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-green-400 mb-8 text-center">Pricing & ROI Information</h2>
+              <h2 className="text-3xl lg:text-4xl font-bold text-green-400 mb-8 text-center">Engagement & ROI Information</h2>
 
               <div className="grid md:grid-cols-2 gap-8 mb-8">
                 <div className="bg-gray-800/50 rounded-xl p-6">

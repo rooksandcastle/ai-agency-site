@@ -22,7 +22,6 @@ const App = () => {
         <EthicsSection />            {/* Keep existing */}
         <EnhancedProcess />          {/* Replace ProcessSection */}
         <AboutSection />             {/* Keep existing */}
-        <PricingSection />           {/* Keep existing */}
         <AssessmentSection />        {/* Keep existing */}
         <ProjectsSection />          {/* Keep existing */}
         <ContactSection />           {/* Keep existing */}

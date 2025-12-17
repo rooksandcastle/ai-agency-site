@@ -95,7 +95,7 @@ className="hover:scale-105 transition-transform"
 ### **3. Trust Building**
 - **Social proof** - Client testimonials and logos
 - **Credibility indicators** - Certifications, awards
-- **Transparent pricing** - Clear value propositions
+- **Transparent engagement terms** - Clear value propositions
 
 ---
 
@@ -165,4 +165,4 @@ src/
 ### **Business Results**
 - **Higher quality leads** - Premium design attracts premium clients
 - **Better positioning** - Compete with high-end agencies
-- **Increased pricing power** - Justify premium pricing with premium experience
+- **Stronger engagement value** - Justify premium positioning with premium experience

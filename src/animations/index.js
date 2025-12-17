@@ -1,8 +1,8 @@
 // Centralized animation imports
 // JSON format animations
-import VoiceCallHeader from '../../Assets/Animations/Voice call header.json';
-import AiLoadingModel from '../../Assets/Animations/Ai loading model.json';
-import Revenue from '../../Assets/Animations/Revenue.json';
+import VoiceCallHeader from '../Assets/Animations/Voice call header.json';
+import AiLoadingModel from '../Assets/Animations/Ai loading model.json';
+import Revenue from '../Assets/Animations/Revenue.json';
 
 // Lottie format animations paths (loaded dynamically)
 export const LOTTIE_ANIMATIONS = {

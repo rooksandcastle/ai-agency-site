@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LottieAnimation from './LottieAnimation';
 import { Revenue } from '../animations';
+import GlowButton from './motion/GlowButton';
 
 const ROICalculator = () => {
   const [missedCallsPerWeek, setMissedCallsPerWeek] = useState(10);
@@ -185,6 +186,16 @@ const ROICalculator = () => {
 
             {/* Results Side */}
             <div className="flex flex-col justify-center">
+              <div className="flex justify-center mb-8" aria-hidden="true">
+                <div className="w-40 h-40 md:w-48 md:h-48">
+                  <LottieAnimation
+                    animationData={Revenue}
+                    className="w-full h-full"
+                    speed={0.8}
+                    withMotion={false}
+                  />
+                </div>
+              </div>
               <div className="bg-brand-bg border-2 border-premium-green/30 rounded-3xl p-8 shadow-green">
                 <h3 className="text-xl font-semibold text-text-primary mb-8 text-center">Your Estimated Loss</h3>
 
@@ -228,8 +239,8 @@ const ROICalculator = () => {
                 <div className="mt-8 pt-6 border-t border-premium-green/20">
                   <div className="bg-premium-green/10 border border-premium-green/30 rounded-2xl p-4">
                     <div className="text-center">
-                      <div className="text-sm text-premium-green font-semibold mb-2">AI Front Desk Investment</div>
-                      <div className="text-2xl font-bold text-text-primary">£50-£150/month</div>
+                      <div className="text-sm text-premium-green font-semibold mb-2">AI Systems Engagement</div>
+                      <div className="text-2xl font-bold text-text-primary">Tailored to your scope</div>
                       <div className="text-xs text-text-secondary mt-2">
                         Pays for itself by capturing just {Math.ceil((150 / (avgJobValue * (conversionRate / 100))) * 100) / 100} more calls per month
                       </div>
@@ -249,20 +260,9 @@ const ROICalculator = () => {
                 <p className="text-sm text-text-secondary mb-4">
                   Ready to stop losing money?
                 </p>
-                <motion.a
-                  href="#pricing"
-                  className="inline-block px-8 py-4 bg-green-gradient text-black font-bold rounded-xl hover:shadow-green-lg transition-all duration-300 relative overflow-hidden group"
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10">See Pricing & Get Started →</span>
-                  <motion.div
-                    className="absolute inset-0 bg-premium-green-dark"
-                    initial={{ x: '-100%' }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.4, ease: 'easeOut' }}
-                  />
-                </motion.a>
+                <GlowButton as="a" href="#services" className="px-8 py-4 inline-flex">
+                  Explore Services & Get Started →
+                </GlowButton>
               </motion.div>
             </div>
           </div>
@@ -285,29 +285,29 @@ const ROICalculator = () => {
           appearance: none;
           width: 24px;
           height: 24px;
-          background: linear-gradient(135deg, #10B981, #059669);
+          background: linear-gradient(135deg, #2563EB, #3B82F6);
           border-radius: 50%;
           cursor: pointer;
-          box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+          box-shadow: 0 0 20px rgba(37, 99, 235, 0.35);
           transition: all 0.3s ease;
         }
         .slider::-webkit-slider-thumb:hover {
           transform: scale(1.2);
-          box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+          box-shadow: 0 0 30px rgba(37, 99, 235, 0.55);
         }
         .slider::-moz-range-thumb {
           width: 24px;
           height: 24px;
-          background: linear-gradient(135deg, #10B981, #059669);
+          background: linear-gradient(135deg, #2563EB, #3B82F6);
           border-radius: 50%;
           cursor: pointer;
           border: none;
-          box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+          box-shadow: 0 0 20px rgba(37, 99, 235, 0.35);
           transition: all 0.3s ease;
         }
         .slider::-moz-range-thumb:hover {
           transform: scale(1.2);
-          box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+          box-shadow: 0 0 30px rgba(37, 99, 235, 0.55);
         }
       `}</style>
     </section>

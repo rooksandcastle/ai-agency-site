@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { hoverScale } from './AnimationWrapper';
+import brandLogo from '../brand/rooks-castle-mark.svg';
 
 const ComprehensiveFooter = () => {
   const [email, setEmail] = useState('');
@@ -28,13 +29,13 @@ const ComprehensiveFooter = () => {
       { name: 'About Us', href: '#about' },
       { name: 'Our Process', href: '#process' },
       { name: 'Case Studies', href: '#projects' },
-      { name: 'Ethical Framework', href: '#pricing' },
+      { name: 'Ethical Framework', href: '#about' },
     ],
     resources: [
       { name: 'Free Assessment', href: '#assessment' },
       { name: 'AI Readiness Guide', href: '/resources' },
       { name: 'Implementation Checklist', href: '/resources' },
-      { name: 'ROI Calculator', href: '/resources' },
+      { name: 'Value Calculator', href: '/resources' },
     ],
     legal: [
       { name: 'Privacy Policy', href: '/privacy' },
@@ -132,22 +133,20 @@ const ComprehensiveFooter = () => {
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Company Info */}
           <div className="col-span-2">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-green-400/20 to-green-600/20 rounded-2xl flex items-center justify-center">
-                <img
-                  src="/logo.png"
-                  alt="Rooks & Castle"
-                  className="w-8 h-8 object-contain"
-                />
-              </div>
-              <div>
-                <h3 className="text-white font-bold text-xl">Rooks & Castle</h3>
-                <p className="text-green-400 text-sm">Ethical AI Consulting</p>
+            <div className="mb-6">
+              <div className="inline-flex items-center gap-4 rounded-3xl border border-white/15 bg-white/5 px-5 py-4 backdrop-blur-2xl shadow-[0_30px_60px_-35px_rgba(27,255,183,0.55)]">
+                <div className="relative h-11 w-11 rounded-[14px] border border-white/20 bg-gradient-to-br from-white/5 via-[#0f2d22]/60 to-[#03140f]/65 flex items-center justify-center">
+                  <img src={brandLogo} alt="Rooks & Castle" className="h-8 w-8 object-contain" />
+                </div>
+                <div>
+                  <p className="text-white font-semibold text-xl tracking-tight">Rooks & Castle</p>
+                  <p className="text-white/65 text-[11px] uppercase tracking-[0.4em]">AI-powered automation</p>
+                </div>
               </div>
             </div>
 
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Rooks & Castle helps small businesses implement 24/7 AI front desk systems. Psychology-informed design ensures your team actually adopts the technology. Based in the UK, serving trades, salons, and professional services nationwide.
+              Rooks & Castle helps small businesses implement AI systems that answer calls, capture leads, and streamline operations. Psychology-informed design ensures your team actually adopts the technology. Based in the UK, serving trades, salons, and professional services nationwide.
             </p>
 
             <div className="flex space-x-4">

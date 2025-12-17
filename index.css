@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rooks & Castle - Ethical AI Consulting for Modern Businesses</title>
     <meta name="description" content="We help education institutions, healthcare providers, and small businesses save time and scale through psychology-informed AI automation — without sacrificing ethics or trust." />
@@ -12,14 +12,14 @@
     <meta property="og:url" content="https://rooksandcastle.netlify.app/" />
     <meta property="og:title" content="Rooks & Castle - Ethical AI Consulting" />
     <meta property="og:description" content="Psychology-informed AI automation that your team will actually use." />
-    <meta property="og:image" content="/logo.png" />
+    <meta property="og:image" content="/og-image.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://rooksandcastle.netlify.app/" />
     <meta property="twitter:title" content="Rooks & Castle - Ethical AI Consulting" />
     <meta property="twitter:description" content="Psychology-informed AI automation that your team will actually use." />
-    <meta property="twitter:image" content="/logo.png" />
+    <meta property="twitter:image" content="/og-image.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

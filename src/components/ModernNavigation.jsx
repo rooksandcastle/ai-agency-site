@@ -13,7 +13,7 @@ const ModernNavigation = ({ onCalendlyClick }) => {
       setIsScrolled(window.scrollY > 50);
 
       // Update active section based on scroll position
-      const sections = ['home', 'process', 'about', 'pricing', 'contact'];
+      const sections = ['home', 'process', 'about', 'contact'];
       const currentSection = sections.find(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -72,8 +72,8 @@ const ModernNavigation = ({ onCalendlyClick }) => {
 
   // Homepage section navigation items
   const sectionNavItems = [
-    { id: 'about', label: 'About Us' },
-    { id: 'pricing', label: 'Pricing' }
+    { id: 'about', label: 'About Us', type: 'section', icon: '👥', description: 'Our story and team' },
+    { id: 'consult', label: 'Book Consultation', type: 'cta', icon: '🤝', description: 'Talk through next steps' }
   ];
 
   // Direct navigation items for homepage sections
@@ -143,28 +143,23 @@ const ModernNavigation = ({ onCalendlyClick }) => {
                 <motion.button
                   key={item.id}
                   className={`px-3 py-2 font-medium transition-colors ${
-                    activeSection === item.id
+                    item.type === 'section' && activeSection === item.id
                       ? 'text-green-400'
                       : 'text-gray-300 hover:text-white'
                   }`}
                   onClick={() => {
-                    if (item.id === 'pricing') {
-                      // For pricing, trigger Calendly modal since there's no pricing page
-                      if (onCalendlyClick) {
-                        onCalendlyClick();
-                      }
+                    if (item.type === 'cta') {
+                      onCalendlyClick?.();
                     } else if (location.pathname !== '/') {
-                      // If not on homepage, navigate to homepage first then scroll
                       window.location.href = `/#${item.id}`;
                     } else {
-                      // If on homepage, scroll to section
                       scrollToSection(item.id);
                     }
                   }}
                   whileHover={{ y: -2 }}
                   whileTap={{ y: 0 }}
                 >
-                  {item.id === 'pricing' ? 'Pricing' : item.label}
+                  {item.label}
                 </motion.button>
               ))}
             </div>
@@ -327,7 +322,7 @@ const ModernNavigation = ({ onCalendlyClick }) => {
                     <motion.div
                       key={item.id}
                       className={`w-full p-5 bg-gradient-to-r from-gray-800/80 to-gray-700/80 border border-gray-600 rounded-2xl text-left hover:from-green-500/10 hover:to-green-400/10 hover:border-green-500/50 transition-all duration-300 group cursor-pointer ${
-                        activeSection === item.id ? 'border-green-500/50 bg-green-500/5' : ''
+                        item.type === 'section' && activeSection === item.id ? 'border-green-500/50 bg-green-500/5' : ''
                       }`}
                       initial={{ opacity: 0, x: 50 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -335,16 +330,11 @@ const ModernNavigation = ({ onCalendlyClick }) => {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => {
-                        if (item.id === 'pricing') {
-                          // For pricing, trigger Calendly modal
-                          if (onCalendlyClick) {
-                            onCalendlyClick();
-                          }
+                        if (item.type === 'cta') {
+                          onCalendlyClick?.();
                         } else if (location.pathname !== '/') {
-                          // If not on homepage, navigate to homepage first then scroll
                           window.location.href = `/#${item.id}`;
                         } else {
-                          // If on homepage, scroll to section
                           scrollToSection(item.id);
                         }
                         setIsMobileMenuOpen(false);
@@ -352,16 +342,16 @@ const ModernNavigation = ({ onCalendlyClick }) => {
                     >
                       <div className="flex items-center space-x-4">
                         <div className="text-2xl">
-                          {item.id === 'about' ? '👥' : '💰'}
+                          {item.icon}
                         </div>
                         <div className="flex-1">
                           <h4 className={`font-bold text-lg transition-colors ${
-                            activeSection === item.id ? 'text-green-400' : 'text-white group-hover:text-green-400'
+                            item.type === 'section' && activeSection === item.id ? 'text-green-400' : 'text-white group-hover:text-green-400'
                           }`}>
-                            {item.id === 'pricing' ? 'Get Pricing' : item.label}
+                            {item.label}
                           </h4>
                           <p className="text-gray-400 text-sm">
-                            {item.id === 'about' ? 'Our story and team' : 'Book consultation for pricing'}
+                            {item.description}
                           </p>
                         </div>
                         <svg

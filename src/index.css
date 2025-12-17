@@ -9,6 +9,14 @@
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
+:root {
+  --accent: 245 158 11;
+  --accent-bg: rgba(245, 158, 11, 0.18);
+  --accent-border: rgba(245, 158, 11, 0.35);
+  --accent-text: #FDE68A;
+  --accent-glow: 0 0 24px rgba(245, 158, 11, 0.22);
+}
+
 /* Custom radial gradient */
 .bg-radial-gradient {
   background: radial-gradient(circle at center, var(--tw-gradient-stops));
@@ -78,6 +86,22 @@
 }
 
 /* Smooth text rendering */
+
+video::-webkit-media-controls-overlay-play-button,
+video::-webkit-media-controls,
+video::-webkit-media-controls-enclosure,
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.ambient-video::-webkit-media-controls-panel,
+.ambient-video::-webkit-media-controls-play-button,
+.ambient-video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

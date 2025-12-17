@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import brandLogo from './brand/rooks-castle-mark.svg';
 
 // Premium Components
 import PremiumHero from './components/PremiumHero';
@@ -13,6 +14,20 @@ import CalendlyBooking from './components/CalendlyBooking';
 
 // Pages
 import CallCaptureHome from './pages/CallCaptureHome';
+import SolutionsOverview from './pages/Services';
+import SolutionAiDesk from './pages/SolutionAiDesk';
+import SolutionSystems from './pages/SolutionSystems';
+import Industries from './pages/Industries';
+import IndustriesTrades from './pages/IndustriesTrades';
+import IndustriesProperty from './pages/IndustriesProperty';
+import IndustriesRestaurants from './pages/IndustriesRestaurants';
+import About from './pages/About';
+import AboutProcess from './pages/AboutProcess';
+import AboutTechStack from './pages/AboutTechStack';
+import Research from './pages/Research';
+import Contact from './pages/Contact';
+import AiFrontDesk from './pages/AiFrontDesk';
+import AppFooter from './components/AppFooter';
 // import Homepage from './pages/Homepage';
 // import WhatWeThinkPageFixed from './pages/WhatWeThinkPageFixed';
 // import WhoWeArePageFixed from './pages/WhoWeArePageFixed';
@@ -48,20 +63,18 @@ const Logo = ({ size = 'normal' }) => {
 
   return (
     <div className={`flex items-center ${sizes[size]} group cursor-pointer`}>
-      {/* Your Classical Logo with Futuristic Glow */}
-      <div className="relative">
-        <div className="bg-gradient-to-br from-green-400/20 via-green-500/20 to-green-600/20 p-3 rounded-2xl shadow-2xl shadow-green-500/30 group-hover:shadow-green-500/50 transition-all duration-500 transform group-hover:rotate-1">
-          {/* Your Actual Logo Image */}
-          <img 
-            src="/logo.png" 
-            alt="Rooks & Castle Logo" 
-            className={`${
-              size === 'small' ? 'w-6 h-8' : 
-              size === 'normal' ? 'w-8 h-10' : 
-              'w-12 h-16'
-            } object-contain filter drop-shadow-lg`}
-          />
-        </div>
+          <div className="relative">
+            <div className="bg-gradient-to-br from-green-400/20 via-green-500/20 to-green-600/20 p-3 rounded-2xl shadow-2xl shadow-green-500/30 group-hover:shadow-green-500/50 transition-all duration-500 transform group-hover:rotate-1">
+              <img 
+                src={brandLogo} 
+                alt="Rooks & Castle Logo" 
+                className={`${
+                  size === 'small' ? 'w-6 h-6' : 
+                  size === 'normal' ? 'w-8 h-8' : 
+                  'w-12 h-12'
+                } object-contain filter drop-shadow-lg`}
+              />
+            </div>
         {/* Futuristic glow effect */}
         <div className="absolute inset-0 bg-gradient-to-br from-green-400/30 to-green-600/30 rounded-2xl blur-lg opacity-40 group-hover:opacity-60 transition-all duration-500"></div>
         {/* Scanning line effect */}
@@ -153,7 +166,7 @@ const Navigation = () => {
             <div className="relative">
               <div className="bg-gradient-to-br from-green-400/25 via-green-500/25 to-green-600/25 p-2 sm:p-2.5 lg:p-3 rounded-2xl shadow-2xl shadow-green-500/30 group-hover:shadow-green-500/50 transition-all duration-500">
                 <img
-                  src="/logo.png"
+                  src={brandLogo}
                   alt="Rooks & Castle Logo"
                   className="w-6 h-7 sm:w-7 sm:h-9 lg:w-8 lg:h-10 object-contain filter drop-shadow-lg"
                 />
@@ -693,7 +706,7 @@ const WhoWeHelpSection = () => {
       title: "Professional Services",
       description: "Consultants, accountants, small law firms",
       pain: "Professional image on small budget",
-      result: "Enterprise-level front desk at fraction of cost",
+      result: "Enterprise-level response at a fraction of the cost",
       stat: "<£200",
       statLabel: "per month for professional receptionist 24/7",
       icon: "💼",
@@ -733,7 +746,7 @@ const WhoWeHelpSection = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            AI Front Desk built for small businesses who can't afford to miss calls
+            AI systems built for small businesses who can't afford to miss calls
           </p>
         </motion.div>
 
@@ -940,207 +953,6 @@ const BusinessNecessitySection = () => (
   </section>
 );
 
-// Pricing Section
-const PricingSection = () => (
-  <section id="pricing" className="py-20 relative">
-    <div className="max-w-7xl mx-auto px-4">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-          Simple, Transparent <span className="text-green-400">Pricing</span>
-        </h2>
-        <p className="text-xl text-gray-300 mb-4">
-          24/7 AI Front Desk — Essential Business Infrastructure
-        </p>
-        <p className="text-sm text-gray-400 max-w-2xl mx-auto">
-          Choose the package that fits your team size. All tiers include psychology-informed design and guaranteed ROI tracking.
-        </p>
-      </div>
-
-      <div className="grid md:grid-cols-3 gap-8 mb-12">
-        {/* Essential Front Desk */}
-        <GlowCard className="border-green-500/50 hover:border-green-400/70 transition-all duration-300 transform md:scale-105 relative">
-          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-black px-4 py-1 rounded-full text-xs font-bold">
-            MOST POPULAR
-          </div>
-          <div className="p-8">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-2xl font-bold text-green-400">Essential Front Desk</h3>
-            </div>
-            <p className="text-gray-300 text-sm mb-6">Mobile trades, solo consultants, small service providers</p>
-
-            <div className="mb-6">
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-4xl font-bold text-green-400">£500</span>
-                <span className="text-gray-400 text-lg">setup</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-semibold text-white">£150</span>
-                <span className="text-gray-400">/month</span>
-              </div>
-            </div>
-
-            <ul className="space-y-3 text-gray-300 text-sm mb-8">
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2">✓</span>
-                <span>24/7 call answering with natural voice</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2">✓</span>
-                <span>Appointment booking (Google Calendar/Calendly)</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2">✓</span>
-                <span>Basic FAQ handling (5-10 questions)</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2">✓</span>
-                <span>Lead notification via SMS/email</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2">✓</span>
-                <span>2-week setup, 30-day optimisation</span>
-              </li>
-            </ul>
-
-            <p className="text-xs text-gray-400 italic">For solo operators & 2-3 person teams • £100k-£300k revenue</p>
-          </div>
-        </GlowCard>
-
-        {/* Professional Front Desk */}
-        <GlowCard className="border-gray-500/30 hover:border-gray-400/50 transition-all duration-300">
-          <div className="p-8">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-2xl font-bold text-gray-300">Professional Front Desk</h3>
-            </div>
-            <p className="text-gray-400 text-sm mb-6">Salons, small clinics, multi-person trades, local professional services</p>
-
-            <div className="mb-6">
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-4xl font-bold text-white">£800</span>
-                <span className="text-gray-400 text-lg">setup</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-semibold text-white">£200</span>
-                <span className="text-gray-400">/month</span>
-              </div>
-            </div>
-
-            <ul className="space-y-3 text-gray-300 text-sm mb-8">
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>Everything in Essential, PLUS:</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>Advanced FAQs (20+ responses, price quotes)</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>Booking confirmations & 24hr reminders</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>Cancellation & rescheduling handling</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>Post-service follow-ups & feedback</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>Multiple staff booking & coordination</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>3-week setup, 60-day optimisation</span>
-              </li>
-            </ul>
-
-            <p className="text-xs text-gray-500 italic">For 3-7 person teams • £250k-£500k revenue</p>
-          </div>
-        </GlowCard>
-
-        {/* Enterprise Front Desk */}
-        <GlowCard className="border-gray-500/30 hover:border-gray-400/50 transition-all duration-300">
-          <div className="p-8">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-2xl font-bold text-gray-300">Enterprise Front Desk</h3>
-            </div>
-            <p className="text-gray-400 text-sm mb-6">Multi-location clinics, established service chains, professional firms</p>
-
-            <div className="mb-6">
-              <div className="flex items-baseline gap-2 mb-2">
-                <span className="text-4xl font-bold text-white">£1,200</span>
-                <span className="text-gray-400 text-lg">setup</span>
-              </div>
-              <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-semibold text-white">£300</span>
-                <span className="text-gray-400">/month</span>
-              </div>
-            </div>
-
-            <ul className="space-y-3 text-gray-300 text-sm mb-8">
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>Everything in Professional, PLUS:</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>Platform integration (Fresha, Jobber, HubSpot, etc.)</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>Multi-location support & routing</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>Lead scoring & VIP identification</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>Real-time analytics dashboard</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>Monthly strategy reviews & priority support</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-gray-400 mr-2">✓</span>
-                <span>4-6 week setup, 90-day optimisation</span>
-              </li>
-            </ul>
-
-            <p className="text-xs text-gray-500 italic">For 5-15 person teams • £500k-£1M+ revenue</p>
-          </div>
-        </GlowCard>
-      </div>
-
-      {/* ROI Guarantee */}
-      <GlowCard className="border-green-500/30 max-w-4xl mx-auto">
-        <div className="p-8 text-center">
-          <h3 className="text-2xl font-bold text-green-400 mb-4">Guaranteed ROI or We Fix It</h3>
-          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Every package includes ROI tracking. You'll see exactly how many calls captured, appointments booked, and revenue recovered. If you're not seeing results, we optimise until you do.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6 text-left max-w-3xl mx-auto mt-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-green-400 mb-2">95%</div>
-              <p className="text-sm text-gray-300">Calls captured even when busy</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-green-400 mb-2">40%</div>
-              <p className="text-sm text-gray-300">Reduction in no-shows</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-green-400 mb-2">12+</div>
-              <p className="text-sm text-gray-300">Hours saved weekly on admin</p>
-            </div>
-          </div>
-        </div>
-      </GlowCard>
-    </div>
-  </section>
-);
 
 // Assessment Quiz Component
 const AssessmentQuiz = () => {
@@ -1458,7 +1270,7 @@ const BlogSection = () => (
 // Contact Section
 const ContactSection = ({ onCalendlyClick }) => {
   const handleWhatsAppClick = () => {
-    const message = encodeURIComponent("Hi! I'm interested in learning more about the AI Front Desk for my business. Can we schedule a strategy call?");
+    const message = encodeURIComponent("Hi! I'm interested in learning more about your AI systems for my business. Can we schedule a strategy call?");
     const whatsappNumber = "447533595684";
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
   };
@@ -1471,7 +1283,7 @@ const ContactSection = ({ onCalendlyClick }) => {
             Ready to Stop <span className="text-green-400">Missing Customers?</span>
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-gray-300 max-w-2xl mx-auto px-2">
-            Book a free 15-minute strategy call. We'll calculate exactly how much revenue you're losing to missed calls and show you how AI Front Desk solves it.
+            Book a free 15-minute strategy call. We'll calculate exactly how much revenue you're losing to missed calls and show you how our AI systems solve it.
           </p>
         </div>
 
@@ -1484,7 +1296,7 @@ const ContactSection = ({ onCalendlyClick }) => {
             </p>
             <div className="bg-gray-900/50 rounded-xl p-4 sm:p-6 text-center border border-green-500/20">
               <p className="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">On this call we'll:</p>
-              <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">• Calculate your current missed revenue<br/>• Show you how AI Front Desk works<br/>• Design your custom implementation<br/>• Answer all your questions</p>
+              <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">• Calculate your current missed revenue<br/>• Show you how our AI systems work<br/>• Design your custom implementation<br/>• Answer all your questions</p>
               <div className="text-green-400 text-2xl sm:text-4xl mb-3 sm:mb-4">📅</div>
               <FuturisticButton onClick={onCalendlyClick} className="w-full sm:w-auto">
                 Book Strategy Call
@@ -1618,7 +1430,6 @@ export {
   AIResponsibilitySection,
   BusinessNecessitySection,
   EthicsSection,
-  PricingSection,
   AssessmentSection,
   ContactSection,
   ProjectsSection,
@@ -1629,9 +1440,26 @@ export {
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<CallCaptureHome />} />
-      </Routes>
+      <>
+        <Routes>
+          <Route path="/" element={<CallCaptureHome />} />
+          <Route path="/solutions" element={<SolutionsOverview />} />
+          <Route path="/services" element={<SolutionsOverview />} />
+          <Route path="/solutions/ai-desk" element={<SolutionAiDesk />} />
+          <Route path="/solutions/systems" element={<SolutionSystems />} />
+          <Route path="/industries" element={<Industries />} />
+          <Route path="/industries/trades" element={<IndustriesTrades />} />
+          <Route path="/industries/property" element={<IndustriesProperty />} />
+          <Route path="/industries/restaurants" element={<IndustriesRestaurants />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/about/process" element={<AboutProcess />} />
+          <Route path="/about/tech-stack" element={<AboutTechStack />} />
+          <Route path="/research" element={<Research />} />
+          <Route path="/ai-front-desk" element={<AiFrontDesk />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+        <AppFooter />
+      </>
     </Router>
   );
 };

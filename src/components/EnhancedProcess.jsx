@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { scrollReveal, staggerContainer, cardStagger, hoverScale } from './AnimationWrapper';
+import { Icons } from '../icons';
 
 const EnhancedProcess = () => {
   const processes = [
@@ -15,7 +16,7 @@ const EnhancedProcess = () => {
         "Calculate ROI specific to your business",
         "Design for team adoption (not just tech)"
       ],
-      icon: "📋",
+      icon: Icons.Checklist,
       duration: "Week 1",
       deliverables: "Process map, ROI projection, implementation plan"
     },
@@ -23,16 +24,16 @@ const EnhancedProcess = () => {
       step: "02",
       title: "Implementation",
       subtitle: "Ethical AI Deployment",
-      description: "We build your custom AI front desk and integrate it with your calendar and systems. Then we train your team to work alongside it smoothly.",
+      description: "We build your custom AI system and integrate it with your calendar and tools. Then we train your team to work alongside it smoothly.",
       features: [
-        "Build your custom AI front desk",
+        "Build your custom AI system",
         "Integrate with your calendar/systems",
         "Train your team for smooth adoption",
         "Test with real scenarios from your business"
       ],
-      icon: "⚙️",
+      icon: Icons.Operations,
       duration: "Weeks 2-4",
-      deliverables: "Live AI front desk, team training, documentation"
+      deliverables: "Live AI system, team training, documentation"
     },
     {
       step: "03",
@@ -45,7 +46,7 @@ const EnhancedProcess = () => {
         "Guaranteed ROI or we fix it",
         "Monthly reports on calls captured & revenue saved"
       ],
-      icon: "📈",
+      icon: Icons.Insight,
       duration: "Ongoing",
       deliverables: "ROI tracking, monthly optimisations, performance reports"
     }
@@ -87,7 +88,7 @@ const EnhancedProcess = () => {
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             From discovery to deployment to optimisation—we handle everything.
             <br />
-            <span className="text-green-400 font-semibold">You focus on your business, we make sure your AI Front Desk delivers results</span>
+            <span className="text-green-400 font-semibold">You focus on your business, we make sure your AI systems deliver results</span>
           </p>
         </motion.div>
 
@@ -132,8 +133,8 @@ const EnhancedProcess = () => {
                       {process.step}
                     </motion.div>
 
-                    <div className="text-3xl opacity-50 group-hover:opacity-100 transition-opacity duration-300">
-                      {process.icon}
+                    <div className="opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                      <process.icon className="w-6 h-6 text-premium-green" />
                     </div>
                   </div>
 

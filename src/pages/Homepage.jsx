@@ -16,7 +16,6 @@ import {
   AIResponsibilitySection,
   BusinessNecessitySection,
   EthicsSection,
-  PricingSection,
   AssessmentSection,
   ContactSection,
   WhatsAppButton
@@ -32,7 +31,6 @@ const Homepage = () => {
         <PremiumHero onCalendlyClick={() => setShowCalendlyModal(true)} />
         <WhoWeHelpSection />
         <EnhancedProcess />
-        <PricingSection />
         <AboutSection />
         <AIResponsibilitySection />
         <EthicsSection />

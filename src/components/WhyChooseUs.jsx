@@ -153,7 +153,7 @@ const WhyChooseUs = () => {
           <div className="bg-gradient-to-r from-green-500/10 via-blue-500/5 to-green-500/10 border border-green-500/20 rounded-2xl p-8 max-w-4xl mx-auto">
             <p className="text-lg text-gray-300 leading-relaxed mb-4">
               <strong className="text-white">Unlike US competitors,</strong> we understand UK business culture,
-              employment law, and data protection standards. Your AI front desk isn't just compliantit's
+              employment law, and data protection standards. Your AI systems aren't just compliant—they're
               built for how UK businesses actually work.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mt-6">

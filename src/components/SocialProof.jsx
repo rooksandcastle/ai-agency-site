@@ -82,7 +82,7 @@ const SocialProof = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
         >
-          Be among the first to experience AI front desk built for UK businesses.
+          Be among the first to experience AI systems built for UK businesses.
         </motion.p>
       </div>
     </section>
