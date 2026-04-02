@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from '../components/Navigation';
 import GlowButton from '../components/motion/GlowButton';
 import Reveal from '../components/motion/Reveal';
+import VapiDemo from '../components/VapiDemo';
 
 const SectionCard = ({ title, children }) => (
   <div className="bg-brand-surface/70 border border-white/5 rounded-3xl p-6 space-y-3">
@@ -43,8 +44,8 @@ const IndustriesProperty = () => (
         </SectionCard>
       </Reveal>
 
-      <Reveal className="rounded-3xl border border-dashed border-white/15 bg-white/5 h-64 flex items-center justify-center text-sm text-white/40">
-        Visual placeholder
+      <Reveal>
+        <VapiDemo />
       </Reveal>
 
       <Reveal className="text-center space-y-4">

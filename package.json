@@ -11,6 +11,7 @@
     "@carbon/react": "^1.97.0",
     "@carbon/styles": "^1.96.0",
     "@lottiefiles/dotlottie-react": "^0.17.10",
+    "@vapi-ai/web": "^2.5.2",
     "framer-motion": "^10.12.16",
     "gif2webp-bin": "^5.0.0",
     "lottie-react": "^2.4.1",
