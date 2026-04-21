@@ -10,17 +10,12 @@ const Section = ({ title, children }) => (
   </Reveal>
 );
 
-const ImageSlot = () => (
-  <div className="w-full h-64 rounded-2xl bg-white/5 border border-dashed border-white/20 flex items-center justify-center text-sm text-white/40">
-    Future illustration
-  </div>
-);
-
 const SolutionAiDesk = () => {
   return (
     <div className="min-h-screen bg-brand-bg text-text-primary">
       <Navigation />
       <main className="pt-28 pb-20 space-y-16 max-w-6xl mx-auto px-6 md:px-10">
+        {/* Hero — text left, dashboard image right */}
         <Reveal className="grid md:grid-cols-2 gap-10 items-center">
           <div className="space-y-5">
             <p className="text-xs tracking-[0.35em] text-premium-green uppercase">Solutions</p>
@@ -30,7 +25,13 @@ const SolutionAiDesk = () => {
             </p>
             <GlowButton as="a" href="/contact">Book a consultation</GlowButton>
           </div>
-          <ImageSlot />
+          <div className="w-full h-72 rounded-2xl overflow-hidden">
+            <img
+              src="/media/ai-dashboard.webp"
+              alt="AI Desk dashboard"
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
         </Reveal>
 
         <Section title="The Problem & Solution">
@@ -44,7 +45,13 @@ const SolutionAiDesk = () => {
               <p className="text-text-secondary text-sm">AI Desk answers instantly, captures detail, and hands over qualified leads with context.</p>
             </div>
           </div>
-          <ImageSlot />
+          <div className="w-full h-64 rounded-2xl overflow-hidden">
+            <img
+              src="/media/thinker.webp"
+              alt="Problem and solution"
+              className="w-full h-full object-cover object-top"
+            />
+          </div>
         </Section>
 
         <Section title="Features">
@@ -55,7 +62,13 @@ const SolutionAiDesk = () => {
               </div>
             ))}
           </div>
-          <ImageSlot />
+          <div className="w-full h-64 rounded-2xl overflow-hidden">
+            <img
+              src="/media/ai-network.webp"
+              alt="AI network features"
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
         </Section>
 
         <Section title="Use cases">
@@ -67,7 +80,13 @@ const SolutionAiDesk = () => {
               </li>
             ))}
           </ul>
-          <ImageSlot />
+          <div className="w-full h-64 rounded-2xl overflow-hidden">
+            <img
+              src="/media/Abstract/ai-creation.jpg"
+              alt="AI and human collaboration"
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
         </Section>
 
         <Reveal className="text-center space-y-4">

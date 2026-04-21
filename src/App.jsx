@@ -53,41 +53,14 @@ const AnimatedBackground = () => {
   );
 };
 
-// Your Real Logo with Futuristic Enhancement
 const Logo = ({ size = 'normal' }) => {
-  const sizes = {
-    small: 'h-10',
-    normal: 'h-14', 
-    large: 'h-20'
-  };
-
+  const imgSize = size === 'small' ? 'h-8' : size === 'large' ? 'h-14' : 'h-11';
   return (
-    <div className={`flex items-center ${sizes[size]} group cursor-pointer`}>
-          <div className="relative">
-            <div className="bg-gradient-to-br from-green-400/20 via-green-500/20 to-green-600/20 p-3 rounded-2xl shadow-2xl shadow-green-500/30 group-hover:shadow-green-500/50 transition-all duration-500 transform group-hover:rotate-1">
-              <img 
-                src={brandLogo} 
-                alt="Rooks & Castle Logo" 
-                className={`${
-                  size === 'small' ? 'w-6 h-6' : 
-                  size === 'normal' ? 'w-8 h-8' : 
-                  'w-12 h-12'
-                } object-contain filter drop-shadow-lg`}
-              />
-            </div>
-        {/* Futuristic glow effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-green-400/30 to-green-600/30 rounded-2xl blur-lg opacity-40 group-hover:opacity-60 transition-all duration-500"></div>
-        {/* Scanning line effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-green-300/30 to-transparent rounded-2xl animate-pulse"></div>
-      </div>
-      
-      <div className="ml-4">
-        <div className="text-white font-bold text-2xl tracking-tight leading-none">
-          Rooks & Castle
-        </div>
-        <div className="text-green-400 text-sm font-medium tracking-wide">
-          Ethical AI Consulting
-        </div>
+    <div className="flex items-center gap-4 cursor-pointer">
+      <img src={brandLogo} alt="Rooks & Castle Logo" className={`${imgSize} w-auto object-contain`} />
+      <div>
+        <div className="text-white font-bold text-2xl tracking-tight leading-none">Rooks & Castle</div>
+        <div className="text-green-400 text-sm font-medium tracking-wide">Ethical AI Consulting</div>
       </div>
     </div>
   );
@@ -162,24 +135,11 @@ const Navigation = () => {
     }`}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 xl:px-16 py-4 sm:py-6 lg:py-8">
         <div className="flex items-center justify-between">
-          <div className="flex items-center h-10 sm:h-12 lg:h-14 group cursor-pointer">
-            <div className="relative">
-              <div className="bg-gradient-to-br from-green-400/25 via-green-500/25 to-green-600/25 p-2 sm:p-2.5 lg:p-3 rounded-2xl shadow-2xl shadow-green-500/30 group-hover:shadow-green-500/50 transition-all duration-500">
-                <img
-                  src={brandLogo}
-                  alt="Rooks & Castle Logo"
-                  className="w-6 h-7 sm:w-7 sm:h-9 lg:w-8 lg:h-10 object-contain filter drop-shadow-lg"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-br from-green-400/40 to-green-600/40 rounded-2xl blur-xl opacity-40 group-hover:opacity-70 transition-all duration-500"></div>
-            </div>
-            <div className="ml-3 sm:ml-4">
-              <div className="font-black text-lg sm:text-xl lg:text-2xl tracking-tight leading-none text-white">
-                Rooks & Castle
-              </div>
-              <div className="text-green-400 text-xs sm:text-sm lg:text-base font-medium tracking-wide">
-                AI Made Simple
-              </div>
+          <div className="flex items-center gap-3 cursor-pointer">
+            <img src={brandLogo} alt="Rooks & Castle Logo" className="h-11 w-auto object-contain" />
+            <div>
+              <div className="font-black text-lg sm:text-xl lg:text-2xl tracking-tight leading-none text-white">Rooks & Castle</div>
+              <div className="text-green-400 text-xs sm:text-sm font-medium tracking-wide">AI Made Simple</div>
             </div>
           </div>
 

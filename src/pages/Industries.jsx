@@ -33,7 +33,7 @@ const industries = [
       'Cancellation handling',
       'Loyalty follow-ups',
     ],
-    href: '/industries/restaurants',
+    href: '/contact',
   },
   {
     title: 'Restaurants & Cafés',
@@ -78,7 +78,7 @@ const industries = [
       'Treatment enquiries',
       'GDPR-compliant flows',
     ],
-    href: '/industries/trades',
+    href: '/contact',
   },
   {
     title: 'Trades & Home Services',
@@ -100,16 +100,16 @@ const industries = [
 const IndustryCard = ({ industry, index }) => (
   <Reveal delay={index * 0.07}>
     <motion.div
-      className="bg-brand-surface border border-brand-border rounded-2xl overflow-hidden hover:-translate-y-1 transition-transform duration-300 flex flex-col"
+      className="group bg-brand-surface border border-brand-border rounded-2xl overflow-hidden hover:-translate-y-1 transition-transform duration-300 flex flex-col"
       whileHover={{ y: -4 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
       {/* Image with gradient overlay */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-[280px] overflow-hidden">
         <img
           src={industry.image}
           alt={industry.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
         />
         {/* Gradient overlay for text legibility */}

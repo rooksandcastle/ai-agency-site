@@ -9,7 +9,7 @@ const footerLinks = [
   { label: 'Contact', href: '/contact' },
   { label: 'How it works', href: '/#how-it-works' },
   { label: 'About', href: '/#about' },
-  { label: 'Book a free consultation', href: '/book' },
+  { label: 'Book a free consultation', href: '/contact' },
 ];
 
 const socialLinks = [

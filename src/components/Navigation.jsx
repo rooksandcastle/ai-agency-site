@@ -12,7 +12,6 @@ const Navigation = ({ onCalendlyClick }) => {
   const [mobileDropdowns, setMobileDropdowns] = useState({});
   const triggerRefs = useRef({});
   const menuRefs = useRef({});
-  const [logoError, setLogoError] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -250,22 +249,11 @@ const Navigation = ({ onCalendlyClick }) => {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
-                <div className="relative h-11 w-11 rounded-[14px] border border-white/20 bg-gradient-to-br from-white/5 via-[#0a231c]/60 to-[#04160f]/70 backdrop-blur-2xl shadow-[0_22px_55px_-35px_rgba(34,197,94,0.7)]">
-                  <div className="pointer-events-none absolute inset-0 rounded-[14px] bg-gradient-to-br from-white/25 via-transparent to-transparent opacity-70" aria-hidden="true" />
-                  <div className="pointer-events-none absolute -inset-1 rounded-[18px] bg-[#1be8b0]/45 blur-[28px] opacity-80" aria-hidden="true" />
-                  <div className="relative flex h-full w-full items-center justify-center rounded-[14px] p-1.5">
-                    {!logoError ? (
-                      <img
-                        src={brandLogo}
-                        alt="Rooks & Castle logo"
-                        className="h-8 w-8 object-contain"
-                        onError={() => setLogoError(true)}
-                      />
-                    ) : (
-                      <span className="text-base font-black tracking-wide text-[#00a67e]">RC</span>
-                    )}
-                  </div>
-                </div>
+                <img
+                  src={brandLogo}
+                  alt="Rooks & Castle logo"
+                  className="h-11 w-auto object-contain"
+                />
                 <div className="text-left leading-tight">
                   <p className="text-base font-semibold text-white tracking-tight">Rooks & Castle</p>
                   <p className="text-[10px] uppercase tracking-[0.3em] text-white/65">AI-powered automation</p>
@@ -403,10 +391,8 @@ const Navigation = ({ onCalendlyClick }) => {
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--nav-active-text)]/70 via-[var(--nav-cta-bg)]/50 to-[var(--nav-active-text)]/70"></div>
 
               <div className="p-6 space-y-6">
-                <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-xl shadow-[0_25px_50px_-35px_rgba(34,197,94,0.6)]">
-                  <div className="relative h-10 w-10 rounded-[15px] border border-white/20 bg-gradient-to-br from-white/10 via-[#0c2c22]/70 to-[#041c13]/70 flex items-center justify-center">
-                    <img src={brandLogo} alt="Rooks & Castle logo" className="h-6 w-6 object-contain" />
-                  </div>
+                <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xl">
+                  <img src={brandLogo} alt="Rooks & Castle logo" className="h-9 w-auto object-contain" />
                   <div className="text-left">
                     <p className="text-sm font-semibold text-white">Rooks & Castle</p>
                     <p className="text-[11px] uppercase tracking-[0.3em] text-white/60">AI-powered automation</p>

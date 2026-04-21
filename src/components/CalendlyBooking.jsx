@@ -151,7 +151,7 @@ const CalendlyBooking = ({ isModal = false, onClose = null }) => {
             className="px-6 py-3 bg-green-500/10 border border-green-500/30 text-green-400 rounded-xl hover:bg-green-500/20 transition-colors"
             onClick={() => {
               const message = encodeURIComponent("Hi! I'd like to learn more about booking a consultation for my business.");
-              window.open(`https://wa.me/447123456789?text=${message}`, '_blank');
+              window.open(`https://wa.me/447533595684?text=${message}`, '_blank');
             }}
             {...hoverScale}
           >

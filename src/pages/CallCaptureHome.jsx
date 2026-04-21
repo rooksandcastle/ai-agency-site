@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import Navigation from "../components/Navigation";
@@ -129,7 +129,6 @@ const faqs = [
 // ---------------------------------------------------------------------------
 const CallCaptureHome = () => {
   const calendlyLink = "https://calendly.com/rooksandcastle101/30min";
-  const ambientVideoRef = useRef(null);
   const location = useLocation();
 
   const handleCalendly = () => {
@@ -150,37 +149,6 @@ const CallCaptureHome = () => {
     }
   }, [location.hash]);
 
-  // Robust ambient video autoplay
-  useEffect(() => {
-    const videoEl = ambientVideoRef.current;
-    if (!videoEl) return;
-
-    const tryPlay = () => {
-      const playPromise = videoEl.play();
-      if (playPromise && typeof playPromise.catch === "function") {
-        playPromise.catch(() => {});
-      }
-    };
-
-    tryPlay();
-
-    const handleInteraction = () => {
-      tryPlay();
-      window.removeEventListener("click", handleInteraction);
-      window.removeEventListener("touchstart", handleInteraction);
-      window.removeEventListener("scroll", handleInteraction);
-    };
-
-    window.addEventListener("click", handleInteraction);
-    window.addEventListener("touchstart", handleInteraction);
-    window.addEventListener("scroll", handleInteraction);
-
-    return () => {
-      window.removeEventListener("click", handleInteraction);
-      window.removeEventListener("touchstart", handleInteraction);
-      window.removeEventListener("scroll", handleInteraction);
-    };
-  }, []);
 
   return (
     <div className="min-h-screen bg-brand-bg text-text-primary font-body">
@@ -212,103 +180,93 @@ const CallCaptureHome = () => {
             <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-brand-bg via-transparent to-transparent" />
           </div>
 
-          <div className="relative w-full max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
-            <div className="grid md:grid-cols-12 gap-12 items-center">
-              {/* ── Left column ── */}
-              <motion.div
-                className="md:col-span-6 space-y-8"
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-              >
-                {/* Eyebrow badge */}
-                <div className="inline-flex items-center gap-2.5 bg-premium-green/10 border border-premium-green/25 rounded-full px-4 py-2">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-premium-green opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-premium-green" />
-                  </span>
-                  <span className="text-premium-green text-xs font-semibold tracking-wide">
-                    Out-of-hours AI coverage
-                  </span>
-                </div>
+          <div className="relative w-full max-w-5xl mx-auto px-6 md:px-10 py-24 md:py-32 text-center">
+            {/* Eyebrow badge */}
+            <motion.div
+              className="inline-flex items-center gap-2.5 bg-premium-green/10 border border-premium-green/25 rounded-full px-4 py-2 mb-8"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-premium-green opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-premium-green" />
+              </span>
+              <span className="text-premium-green text-xs font-semibold tracking-wide">
+                Out-of-hours phone coverage for your business
+              </span>
+            </motion.div>
 
-                {/* Display headline — Playfair Display */}
-                <h1
-                  className="text-[42px] sm:text-[54px] lg:text-[64px] leading-[1.1] tracking-tight text-text-primary"
-                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            {/* Display headline */}
+            <motion.h1
+              className="text-[clamp(52px,7vw,96px)] leading-[.92] tracking-[-0.04em] text-text-primary mb-4"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 900 }}
+              initial={{ opacity: 0, y: 28 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.05 }}
+            >
+              <span className="block">Never miss</span>
+              <span className="block">another</span>
+              <span className="block text-premium-green">customer.</span>
+            </motion.h1>
+
+            {/* Italic subline */}
+            <motion.p
+              className="text-[clamp(18px,2.5vw,30px)] italic text-text-secondary tracking-[-0.02em] mb-8"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700 }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.12 }}
+            >
+              Even when you can't answer.
+            </motion.p>
+
+            {/* Description */}
+            <motion.p
+              className="text-[17px] font-light leading-[1.75] text-text-secondary max-w-[520px] mx-auto mb-11"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.18 }}
+            >
+              Every call answered. Every lead captured. Every booking automated — 24/7, for less than the cost of a part-time shift weekly.
+            </motion.p>
+
+            {/* CTAs */}
+            <motion.div
+              className="flex gap-3 flex-wrap justify-center mb-14"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.22 }}
+            >
+              <CTAButton onClick={() => scrollToSection("how-it-works")}>
+                See how it works →
+              </CTAButton>
+              <CTAButton variant="secondary" onClick={handleCalendly}>
+                Book free strategy call
+              </CTAButton>
+            </motion.div>
+
+            {/* Stats bar */}
+            <motion.div
+              className="inline-flex border border-premium-green/20 rounded-2xl overflow-hidden bg-brand-surface"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.28 }}
+            >
+              {stats.map((stat, idx) => (
+                <div
+                  key={stat.label}
+                  className={`px-6 py-5 text-center ${idx < stats.length - 1 ? 'border-r border-premium-green/15' : ''}`}
                 >
-                  Never miss another
-                  <br />
-                  <span className="text-premium-green">customer</span>
-                </h1>
-
-                {/* Sub-headline — Manrope light */}
-                <p className="text-lg sm:text-xl text-text-secondary font-light leading-relaxed max-w-md">
-                  Even when you can't answer — your AI front desk captures
-                  every call, qualifies every lead, and books every appointment.
-                </p>
-
-                {/* CTA row */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <CTAButton onClick={() => scrollToSection("how-it-works")}>
-                    See how it works
-                  </CTAButton>
-                  <CTAButton variant="secondary" onClick={handleCalendly}>
-                    Book free strategy call
-                  </CTAButton>
-                </div>
-
-                {/* Stats bar */}
-                <div className="flex flex-wrap gap-x-8 gap-y-4 pt-2 border-t border-white/8">
-                  {stats.map((stat) => (
-                    <div key={stat.label} className="flex flex-col gap-0.5">
-                      <span className="text-2xl font-bold text-premium-green leading-none">
-                        {stat.value}
-                      </span>
-                      <span className="text-xs text-text-secondary tracking-wide">
-                        {stat.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* ── Right column — ambient video card ── */}
-              <motion.div
-                className="md:col-span-6 w-full"
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: "easeOut", delay: 0.12 }}
-              >
-                <div className="relative rounded-[32px] bg-white/5 backdrop-blur-2xl p-1.5 shadow-[0_45px_90px_-60px_rgba(16,185,129,0.55)]">
-                  <div className="relative h-[360px] sm:h-[460px] lg:h-[520px] rounded-[28px] overflow-hidden">
-                    <motion.div
-                      className="absolute inset-0 rounded-[28px] overflow-hidden"
-                      initial={{ scale: 1 }}
-                      animate={{ scale: 1.02 }}
-                      transition={{
-                        duration: 16,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                        ease: "easeInOut",
-                      }}
-                    >
-                      <video
-                        ref={ambientVideoRef}
-                        className="h-full w-full object-cover rounded-[28px]"
-                        src="/video/claude_login.mp4"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="auto"
-                        style={{ filter: "saturate(1.05) contrast(1.05)" }}
-                      />
-                    </motion.div>
+                  <div className="text-2xl font-extrabold text-premium-green leading-none tracking-[-0.02em]">
+                    {stat.value}
+                  </div>
+                  <div className="text-[11px] text-text-secondary mt-1 font-medium tracking-wide">
+                    {stat.label}
                   </div>
                 </div>
-              </motion.div>
-            </div>
+              ))}
+            </motion.div>
           </div>
         </section>
 
@@ -373,6 +331,83 @@ const CallCaptureHome = () => {
         </section>
 
         {/* ================================================================
+            EDITORIAL STRIP 1 — Bellhop / 24/7 promise
+        ================================================================ */}
+        <div className="relative h-[420px] overflow-hidden">
+          <img
+            src="/media/carousel-bellhop.png"
+            alt="Hospitality AI"
+            className="w-full h-full object-cover object-center"
+            style={{ filter: 'brightness(0.45) saturate(0.5)' }}
+            loading="lazy"
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(90deg, rgba(8,12,9,0.95) 0%, rgba(8,12,9,0.4) 50%, rgba(8,12,9,0.8) 100%)' }}
+          />
+          <div className="absolute inset-0 flex items-center px-10 sm:px-20">
+            <div className="max-w-[560px]">
+              <p
+                className="text-[clamp(26px,3vw,40px)] font-extrabold italic leading-[1.2] text-text-primary mb-4 tracking-tight"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              >
+                "Your business is now open 24 hours a day, seven days a week."
+              </p>
+              <p className="text-[11px] font-semibold tracking-[0.1em] uppercase text-premium-green">
+                The Rooks &amp; Castle promise
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* ================================================================
+            SPLIT ROW 1 — Why AI / Dials (image left, content right)
+        ================================================================ */}
+        <div className="grid md:grid-cols-2 min-h-[480px]">
+          <div className="overflow-hidden min-h-[300px] md:min-h-0">
+            <img
+              src="/media/carousel-dials.png"
+              alt="Control systems"
+              className="w-full h-full object-cover object-center transition-[filter] duration-[600ms] hover:brightness-75"
+              style={{ filter: 'brightness(0.65) saturate(0.6)' }}
+              loading="lazy"
+            />
+          </div>
+          <div
+            className="flex flex-col justify-center px-10 sm:px-14 py-16"
+            style={{ background: '#121a13' }}
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-5 h-px bg-premium-green" />
+              <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-premium-green">
+                Why AI — now
+              </p>
+            </div>
+            <h3
+              className="text-[clamp(28px,3vw,42px)] font-black leading-[1.1] tracking-tight text-text-primary mb-4"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            >
+              Your competitors are<br />already{' '}
+              <span className="text-premium-green">using it</span>
+            </h3>
+            <p className="text-[15px] font-light leading-[1.8] text-text-secondary mb-4">
+              62% of calls to small businesses go unanswered. Every missed call is a missed customer — a lead that went to your competitor instead of you.
+            </p>
+            <p className="text-[15px] font-light leading-[1.8] text-text-secondary mb-4">
+              AI solves this for{' '}
+              <strong className="text-text-primary font-semibold">less than a part-time wage</strong>.
+              {' '}No bad days, no sick days, no lunch breaks. Just consistent, professional handling of every enquiry.
+            </p>
+            <a
+              href="#how-it-works"
+              className="inline-flex items-center gap-2 text-[13px] font-bold text-premium-green mt-2 transition-all duration-200 hover:gap-4"
+            >
+              See how it works →
+            </a>
+          </div>
+        </div>
+
+        {/* ================================================================
             HOW IT WORKS — 3-step process
         ================================================================ */}
         <section id="how-it-works" className={sectionWrapper}>
@@ -422,6 +457,83 @@ const CallCaptureHome = () => {
         </section>
 
         {/* ================================================================
+            SPLIT ROW 2 — About (content left, image right — reversed)
+        ================================================================ */}
+        <div id="about" className="grid md:grid-cols-2 min-h-[480px]">
+          <div
+            className="flex flex-col justify-center px-10 sm:px-14 py-16 order-2 md:order-1"
+            style={{ background: '#121a13' }}
+          >
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-5 h-px bg-premium-green" />
+              <p className="text-[10px] font-bold tracking-[0.14em] uppercase text-premium-green">
+                About Rooks &amp; Castle
+              </p>
+            </div>
+            <h3
+              className="text-[clamp(28px,3vw,42px)] font-black leading-[1.1] tracking-tight text-text-primary mb-4"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            >
+              Calm. Confident.<br />
+              <span className="text-premium-green">Human.</span>
+            </h3>
+            <p className="text-[15px] font-light leading-[1.8] text-text-secondary mb-4">
+              We build practical AI systems for real-world service businesses. We don't sell technology for technology's sake — we solve operational problems that cost you time, money, and customers.
+            </p>
+            <p className="text-[15px] font-light leading-[1.8] text-text-secondary mb-4">
+              Based in the UK, working with trades, salons, restaurants, clinics, and property businesses. Our approach is{' '}
+              <strong className="text-text-primary font-semibold">psychology-informed</strong>{' '}
+              — we design for how people actually work.
+            </p>
+            <a
+              href="/industries"
+              className="inline-flex items-center gap-2 text-[13px] font-bold text-premium-green mt-2 transition-all duration-200 hover:gap-4"
+            >
+              View all industries →
+            </a>
+          </div>
+          <div className="overflow-hidden min-h-[300px] md:min-h-0 order-1 md:order-2">
+            <img
+              src="/media/carousel-falling.png"
+              alt="Abstract motion"
+              className="w-full h-full object-cover object-center transition-[filter] duration-[600ms] hover:brightness-75"
+              style={{ filter: 'brightness(0.65) saturate(0.6)' }}
+              loading="lazy"
+            />
+          </div>
+        </div>
+
+        {/* ================================================================
+            EDITORIAL STRIP 2 — Child phone / final quote
+        ================================================================ */}
+        <div className="relative h-[420px] overflow-hidden">
+          <img
+            src="/media/carousel-child-phone.png"
+            alt="Communication"
+            className="w-full h-full object-cover object-center"
+            style={{ filter: 'brightness(0.45) saturate(0.5)' }}
+            loading="lazy"
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(90deg, rgba(8,12,9,0.95) 0%, rgba(8,12,9,0.4) 50%, rgba(8,12,9,0.8) 100%)' }}
+          />
+          <div className="absolute inset-0 flex items-center justify-end px-10 sm:px-20">
+            <div className="max-w-[560px] text-right">
+              <p
+                className="text-[clamp(26px,3vw,40px)] font-extrabold italic leading-[1.2] text-text-primary mb-4 tracking-tight"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              >
+                "Every missed call is a missed customer. We make sure that never happens."
+              </p>
+              <p className="text-[11px] font-semibold tracking-[0.1em] uppercase text-premium-green">
+                Rooks &amp; Castle — Founded in the UK
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* ================================================================
             FAQ SECTION
         ================================================================ */}
         <section id="faqs" className={`${sectionWrapper} bg-brand-surface/30`}>
@@ -456,33 +568,6 @@ const CallCaptureHome = () => {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* ================================================================
-            ABOUT BLURB
-        ================================================================ */}
-        <section id="about" className={sectionWrapper}>
-          <div className="max-w-3xl mx-auto px-6 md:px-10 text-center space-y-5">
-            <p className="text-xs font-semibold tracking-[0.3em] uppercase text-premium-green">
-              Who we are
-            </p>
-            <h2
-              className="text-3xl sm:text-4xl font-bold text-text-primary"
-              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
-            >
-              About Rooks &amp; Castle
-            </h2>
-            <p className="text-text-secondary leading-relaxed">
-              We're a UK-based AI systems team for service businesses that don't
-              have time — or patience — for jargon-heavy agencies. You get
-              practical build-outs, clear documentation, and systems your team
-              can actually run with.
-            </p>
-            <p className="text-text-secondary leading-relaxed">
-              Built for trades, HVAC, clinics, estate agents, consultants, and
-              any business that needs enquiries handled with zero drama.
-            </p>
           </div>
         </section>
 
