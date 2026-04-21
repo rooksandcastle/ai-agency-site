@@ -10,9 +10,11 @@ export default {
       colors: {
         // Premium Black & Green Color System
         'brand': {
-          'bg': '#0F0F0F',           // Primary background
-          'surface': '#1A1A1A',      // Cards, sections, elevated surfaces
-          'border': '#2A2A2A',       // Subtle borders
+          'bg': '#0F0F0F',
+          'surface': '#1A1A1A',
+          'surface-2': '#222222',
+          'border': '#2A2A2A',
+          'border-light': 'rgba(255,255,255,0.08)',
         },
         'premium': {
           'green': '#10B981',        // Primary green (Emerald-500)
@@ -40,10 +42,10 @@ export default {
         },
       },
       fontFamily: {
-        'display': ['Playfair Display', 'serif'],
-        'body': ['Inter', 'sans-serif'],
-        'accent': ['Montserrat', 'sans-serif'],
-        'orbitron': ['Orbitron', 'monospace'], // Futuristic font option
+        'display': ['Playfair Display', 'Georgia', 'serif'],
+        'body': ['Manrope', 'system-ui', '-apple-system', 'sans-serif'],
+        'accent': ['Montserrat', 'Manrope', 'sans-serif'],
+        'orbitron': ['Orbitron', 'monospace'],
       },
       animation: {
         'shimmer': 'shimmer 2s linear infinite',

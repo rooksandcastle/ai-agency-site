@@ -1,13 +1,18 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
+import Navigation from "../components/Navigation";
 
-
-const CTAButton = ({ children, variant = 'primary', onClick, className = '' }) => {
+// ---------------------------------------------------------------------------
+// Reusable button component
+// ---------------------------------------------------------------------------
+const CTAButton = ({ children, variant = "primary", onClick, className = "" }) => {
   const base =
-    'px-6 py-3 rounded-[16px] font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-premium-green focus-visible:ring-offset-2 focus-visible:ring-offset-brand-bg';
+    "px-6 py-3 rounded-full font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-premium-green focus-visible:ring-offset-2 focus-visible:ring-offset-brand-bg";
   const styles =
-    variant === 'secondary'
-      ? 'border border-white/15 text-white/80 bg-transparent hover:border-premium-green/60 hover:text-white'
-      : 'bg-green-gradient text-gray-900 shadow-[0_18px_40px_-22px_rgba(34,197,94,0.85)] hover:shadow-[0_25px_55px_-25px_rgba(34,197,94,0.9)]';
+    variant === "secondary"
+      ? "border border-white/20 text-white/80 bg-transparent hover:border-premium-green/60 hover:text-white"
+      : "bg-green-gradient text-gray-900 shadow-[0_18px_40px_-22px_rgba(16,185,129,0.85)] hover:shadow-[0_25px_55px_-25px_rgba(16,185,129,0.9)]";
 
   return (
     <motion.button
@@ -21,41 +26,138 @@ const CTAButton = ({ children, variant = 'primary', onClick, className = '' }) =
   );
 };
 
-const sectionWrapper = 'py-10 sm:py-12';
+// ---------------------------------------------------------------------------
+// Static layout constants
+// ---------------------------------------------------------------------------
+const sectionWrapper = "py-16 sm:py-20";
 
+const stats = [
+  { value: "24/7", label: "AI coverage" },
+  { value: "95%", label: "Team adoption" },
+  { value: "15h+", label: "Saved weekly" },
+  { value: "2–6w", label: "Time to live" },
+];
+
+const services = [
+  {
+    number: "01",
+    title: "AI Front Desk",
+    subtitle: "24/7 Phone Coverage",
+    features: [
+      "Answers every inbound call, day or night",
+      "Books appointments directly into your calendar",
+      "Qualifies leads and routes urgent calls to your team",
+      "Recovers missed enquiries with automatic follow-up",
+    ],
+    cta: "Learn more →",
+    href: "/ai-front-desk",
+  },
+  {
+    number: "02",
+    title: "Workflow Automation",
+    subtitle: "Operations on Autopilot",
+    features: [
+      "Auto-replies, reminders, and quote workflows",
+      "Lead qualification, routing, and team notifications",
+      "CRM integration with your existing tools",
+      "Admin bottleneck removal so your team stays focused",
+    ],
+    cta: "Learn more →",
+    href: "/solutions/systems",
+  },
+  {
+    number: "03",
+    title: "Property Co-hosting",
+    subtitle: "Short-Let Management",
+    features: [
+      "Guest communication handled around the clock",
+      "Automated check-in instructions and key handover",
+      "Dynamic pricing and listing optimisation",
+      "Maintenance co-ordination and review management",
+    ],
+    cta: "Learn more →",
+    href: "/industries/property",
+  },
+];
+
+const steps = [
+  {
+    step: "01",
+    title: "Free strategy call",
+    description:
+      "A focused 30-minute session to understand how you currently handle calls, where leads are slipping away, and what outcome matters most to you.",
+  },
+  {
+    step: "02",
+    title: "We build the system",
+    description:
+      "We configure your AI front desk, automations, and integrations end-to-end. You review each stage, we refine, then we go live together.",
+  },
+  {
+    step: "03",
+    title: "We keep it sharp",
+    description:
+      "We monitor performance, tune responses, and support your team as your business grows — so the system keeps delivering results long-term.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Will it actually answer like a real person?",
+    a: "Yes. The AI is trained on your business, uses your tone, and handles the most common call scenarios without sounding robotic. Most callers can't tell the difference.",
+  },
+  {
+    q: "What happens to calls the AI can't handle?",
+    a: "It escalates to a real team member or takes a message with the caller's details. No call is dropped or left without a response.",
+  },
+  {
+    q: "How long does setup take?",
+    a: "Most clients are live within 2–6 weeks. The timeline depends on the complexity of your call flows and how many integrations we connect.",
+  },
+  {
+    q: "Can it work with our existing booking or CRM system?",
+    a: "Yes. We integrate with the tools you already use — or recommend simple, proven alternatives if you're starting from scratch.",
+  },
+  {
+    q: "Is there a long-term contract?",
+    a: "No lock-in. We earn your business month to month because the system keeps delivering value, not because of a contract.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// Page component
+// ---------------------------------------------------------------------------
 const CallCaptureHome = () => {
-  const calendlyLink = 'https://calendly.com/rooksandcastle101/30min';
+  const calendlyLink = "https://calendly.com/rooksandcastle101/30min";
   const ambientVideoRef = useRef(null);
+  const location = useLocation();
 
   const handleCalendly = () => {
-    window.open(calendlyLink, '_blank');
-  };
-
-  const handleBookRoute = () => {
-    window.location.href = '/book';
+    window.open(calendlyLink, "_blank");
   };
 
   const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
-  const location = useLocation();
 
+  // Scroll to hash on navigation
   useEffect(() => {
     if (location.hash) {
       const element = document.getElementById(location.hash.substring(1));
       if (element) {
-        setTimeout(() => element.scrollIntoView({ behavior: 'smooth' }), 0);
+        setTimeout(() => element.scrollIntoView({ behavior: "smooth" }), 0);
       }
     }
   }, [location.hash]);
 
+  // Robust ambient video autoplay
   useEffect(() => {
     const videoEl = ambientVideoRef.current;
     if (!videoEl) return;
 
     const tryPlay = () => {
       const playPromise = videoEl.play();
-      if (playPromise && typeof playPromise.catch === 'function') {
+      if (playPromise && typeof playPromise.catch === "function") {
         playPromise.catch(() => {});
       }
     };
@@ -64,155 +166,132 @@ const CallCaptureHome = () => {
 
     const handleInteraction = () => {
       tryPlay();
-      window.removeEventListener('click', handleInteraction);
-      window.removeEventListener('touchstart', handleInteraction);
-      window.removeEventListener('scroll', handleInteraction);
+      window.removeEventListener("click", handleInteraction);
+      window.removeEventListener("touchstart", handleInteraction);
+      window.removeEventListener("scroll", handleInteraction);
     };
 
-    window.addEventListener('click', handleInteraction);
-    window.addEventListener('touchstart', handleInteraction);
-    window.addEventListener('scroll', handleInteraction);
+    window.addEventListener("click", handleInteraction);
+    window.addEventListener("touchstart", handleInteraction);
+    window.addEventListener("scroll", handleInteraction);
 
     return () => {
-      window.removeEventListener('click', handleInteraction);
-      window.removeEventListener('touchstart', handleInteraction);
-      window.removeEventListener('scroll', handleInteraction);
+      window.removeEventListener("click", handleInteraction);
+      window.removeEventListener("touchstart", handleInteraction);
+      window.removeEventListener("scroll", handleInteraction);
     };
   }, []);
 
-  const services = [
-    {
-      title: 'Get Found',
-      subtitle: 'Make it obvious and easy to contact you',
-      cta: 'Discuss your foundation →',
-      bullet: [
-        'Website or landing page designed to convert',
-        'Professional domain, email, and contact routes',
-        'Google Business Profile, Yelp, and local directories set up correctly',
-        'On-page SEO and schema basics for service businesses',
-      ],
-    },
-    {
-      title: 'Get Leads',
-      subtitle: 'Generate and capture enquiries consistently',
-      cta: 'Discuss your growth →',
-      bullet: [
-        'Local and targeted lead generation campaigns',
-        'Landing pages optimised for calls and quote requests',
-        'Call, form, and quote capture tied into a simple CRM pipeline',
-        "Follow-up and reminders so enquiries don't go cold",
-      ],
-    },
-    {
-      title: 'Run Smoothly',
-      subtitle: 'Automate the "busy work" with AI',
-      cta: 'Discuss your operations →',
-      bullet: [
-        'AI voice and chat options for missed calls and website visitors',
-        'Auto replies, reminders, and quote/booking workflows',
-        'Lead qualification, routing, and notifications for you and your team',
-        'Insanely practical ops automation that removes admin bottlenecks',
-      ],
-    },
-  ];
-
-  const aiFrontDeskTeaser = {
-    title: 'AI Front Desk (AI Receptionist)',
-    description: 'A dedicated 24/7 AI receptionist that answers calls, books appointments, and recovers missed enquiries for UK service businesses.',
-  };
-
-  const steps = [
-    {
-      title: 'Free consultation',
-      description: '15-minute call where we learn how you get work today, what blockers you have, and what outcome you want.',
-    },
-    {
-      title: 'We build the system',
-      description: 'We set up your website, listings, lead capture, and automations end-to-end. You review, we refine, then launch.',
-    },
-    {
-      title: 'We improve it',
-      description: 'We monitor, tweak, and support your system as enquiries come in so you keep getting results.',
-    },
-  ];
-
-  const faqs = [
-    {
-      q: 'Do I need to understand SEO or AI?',
-      a: 'No. We set everything up and explain it in plain English, so you focus on running the business.',
-    },
-    {
-      q: 'What kind of businesses do you help?',
-      a: 'HVAC, trades, dental and private clinics, estate agents, consultants, and other service businesses that rely on enquiries.',
-    },
-    {
-      q: 'How fast can we get results?',
-      a: 'Most clients have their website, listings, and capture systems live within a few weeks.',
-    },
-    {
-      q: 'Can you work with our existing tools?',
-      a: 'Yes. We integrate with CRMs, phones, and booking tools you already use—or recommend simple ones if you prefer.',
-    },
-    {
-      q: 'Is there a long-term contract?',
-      a: 'No long-term lock-in. We stay on only if the systems keep delivering value.',
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-brand-bg text-text-primary">
+    <div className="min-h-screen bg-brand-bg text-text-primary font-body">
       <Navigation onCalendlyClick={handleCalendly} />
+
       <main className="pt-0">
+        {/* ================================================================
+            HERO SECTION
+        ================================================================ */}
         <section
           id="home"
-          className={`${sectionWrapper} hero-noise relative overflow-hidden min-h-[70vh]`}
+          className="relative overflow-hidden min-h-screen flex items-center"
+          style={{ background: "#0F0F0F" }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-bg via-gray-900 to-brand-bg" aria-hidden="true"></div>
-          <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[620px] bg-gradient-to-b from-premium-green/20 via-transparent to-brand-bg blur-[220px]" aria-hidden="true"></div>
-          <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-brand-bg via-transparent to-transparent" aria-hidden="true"></div>
-          <div className="relative max-w-6xl mx-auto px-6 md:px-10 py-14 flex items-center min-h-[70vh]">
-            <div className="grid md:grid-cols-12 gap-10 items-start w-full">
+          {/* Radial green gradient blob */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            aria-hidden="true"
+          >
+            <div
+              className="absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(16,185,129,0.18) 0%, rgba(16,185,129,0.06) 40%, transparent 70%)",
+                filter: "blur(60px)",
+              }}
+            />
+            {/* subtle top vignette */}
+            <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-brand-bg via-transparent to-transparent" />
+          </div>
+
+          <div className="relative w-full max-w-6xl mx-auto px-6 md:px-10 py-20 md:py-28">
+            <div className="grid md:grid-cols-12 gap-12 items-center">
+              {/* ── Left column ── */}
               <motion.div
-                className="md:col-span-7 xl:col-span-6 space-y-6 text-center md:text-left"
-                initial={{ opacity: 0, y: 25 }}
+                className="md:col-span-6 space-y-8"
+                initial={{ opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
               >
-                <p className="text-xs sm:text-sm font-semibold tracking-[0.35em] text-premium-green uppercase">
-                  SYSTEMS FOR REAL-WORLD SERVICE BUSINESSES
-                </p>
-                <h1 className="text-[36px] sm:text-[46px] lg:text-[54px] font-semibold leading-tight text-white/95 tracking-tight">
-                  Automations that helps small businesses
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-premium-green via-premium-green-light to-white">
-                    get found, get chosen, and get paid.
+                {/* Eyebrow badge */}
+                <div className="inline-flex items-center gap-2.5 bg-premium-green/10 border border-premium-green/25 rounded-full px-4 py-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-premium-green opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-premium-green" />
                   </span>
+                  <span className="text-premium-green text-xs font-semibold tracking-wide">
+                    Out-of-hours AI coverage
+                  </span>
+                </div>
+
+                {/* Display headline — Playfair Display */}
+                <h1
+                  className="text-[42px] sm:text-[54px] lg:text-[64px] leading-[1.1] tracking-tight text-text-primary"
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                >
+                  Never miss another
+                  <br />
+                  <span className="text-premium-green">customer</span>
                 </h1>
-                <p className="text-base sm:text-lg text-white/70 max-w-2xl md:max-w-xl mx-auto md:mx-0 leading-relaxed md:leading-[1.9]">
-                  We set up your website, automate social media marketing, local SEO listings, lead capture, and AI automation — so customers reach you fast and you look professional.
+
+                {/* Sub-headline — Manrope light */}
+                <p className="text-lg sm:text-xl text-text-secondary font-light leading-relaxed max-w-md">
+                  Even when you can't answer — your AI front desk captures
+                  every call, qualifies every lead, and books every appointment.
                 </p>
-                <div className="flex flex-col sm:flex-row sm:justify-start gap-4 sm:gap-5">
-                  <CTAButton onClick={handleCalendly} className="shadow-[0_25px_60px_-30px_rgba(34,197,94,0.8)]">
-                    Book a free consultation
+
+                {/* CTA row */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <CTAButton onClick={() => scrollToSection("how-it-works")}>
+                    See how it works
                   </CTAButton>
-                  <CTAButton variant="secondary" onClick={() => scrollToSection('services')} className="backdrop-blur-sm">
-                    See what we do
+                  <CTAButton variant="secondary" onClick={handleCalendly}>
+                    Book free strategy call
                   </CTAButton>
+                </div>
+
+                {/* Stats bar */}
+                <div className="flex flex-wrap gap-x-8 gap-y-4 pt-2 border-t border-white/8">
+                  {stats.map((stat) => (
+                    <div key={stat.label} className="flex flex-col gap-0.5">
+                      <span className="text-2xl font-bold text-premium-green leading-none">
+                        {stat.value}
+                      </span>
+                      <span className="text-xs text-text-secondary tracking-wide">
+                        {stat.label}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
 
+              {/* ── Right column — ambient video card ── */}
               <motion.div
-                className="md:col-span-5 xl:col-span-6 w-full"
-                initial={{ opacity: 0, y: 25 }}
+                className="md:col-span-6 w-full"
+                initial={{ opacity: 0, y: 28 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.9, ease: 'easeOut', delay: 0.1 }}
+                transition={{ duration: 0.9, ease: "easeOut", delay: 0.12 }}
               >
-                <div className="relative rounded-[32px] bg-white/5 backdrop-blur-2xl p-1 sm:p-2 shadow-[0_45px_90px_-60px_rgba(7,255,176,0.65)]">
+                <div className="relative rounded-[32px] bg-white/5 backdrop-blur-2xl p-1.5 shadow-[0_45px_90px_-60px_rgba(16,185,129,0.55)]">
                   <div className="relative h-[360px] sm:h-[460px] lg:h-[520px] rounded-[28px] overflow-hidden">
                     <motion.div
                       className="absolute inset-0 rounded-[28px] overflow-hidden"
                       initial={{ scale: 1 }}
                       animate={{ scale: 1.02 }}
-                      transition={{ duration: 16, repeat: Infinity, repeatType: 'reverse', ease: 'easeInOut' }}
+                      transition={{
+                        duration: 16,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                        ease: "easeInOut",
+                      }}
                     >
                       <video
                         ref={ambientVideoRef}
@@ -223,7 +302,7 @@ const CallCaptureHome = () => {
                         muted
                         playsInline
                         preload="auto"
-                        style={{ filter: 'saturate(1.05) contrast(1.05)' }}
+                        style={{ filter: "saturate(1.05) contrast(1.05)" }}
                       />
                     </motion.div>
                   </div>
@@ -232,168 +311,217 @@ const CallCaptureHome = () => {
             </div>
           </div>
         </section>
-        <section id="services" className={`${sectionWrapper} bg-gray-900/30`}>
+
+        {/* ================================================================
+            SERVICES SECTION — 3 numbered cards
+        ================================================================ */}
+        <section id="services" className={`${sectionWrapper} bg-brand-surface/30`}>
           <div className="max-w-6xl mx-auto px-6 md:px-10">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold mb-3">What we do</h2>
-              <p className="text-text-secondary max-w-3xl mx-auto">
-                We build the only three systems a service business needs: be found, be trusted, and respond faster than the competition.
+            <div className="text-center mb-12">
+              <p className="text-xs font-semibold tracking-[0.3em] uppercase text-premium-green mb-3">
+                What we do
+              </p>
+              <h2
+                className="text-3xl sm:text-4xl font-bold text-text-primary mb-4"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              >
+                Three systems, one result
+              </h2>
+              <p className="text-text-secondary max-w-2xl mx-auto leading-relaxed">
+                Every service we offer is built to remove the gaps where customers
+                fall through — phone, operations, and property.
               </p>
             </div>
-            <div className="mb-8">
-              <div className="bg-brand-surface/70 border border-white/5 rounded-2xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div>
-                  <p className="text-sm text-text-tertiary uppercase tracking-wide">Featured system</p>
-                  <h3 className="text-2xl font-semibold text-white mt-1">{aiFrontDeskTeaser.title}</h3>
-                  <p className="text-sm text-text-secondary mt-2 max-w-2xl">{aiFrontDeskTeaser.description}</p>
-                </div>
-                <a
-                  href="/ai-front-desk"
-                  className="px-5 py-3 border border-premium-green/40 rounded-xl text-sm font-semibold text-premium-green hover:text-premium-green-light hover:border-premium-green transition-colors text-center"
-                >
-                  View AI Front Desk →
-                </a>
-              </div>
-            </div>
+
             <div className="grid md:grid-cols-3 gap-6">
               {services.map((service) => (
                 <motion.div
-                  key={service.title}
-                  className="bg-brand-surface/70 border border-white/5 rounded-2xl p-6 flex flex-col"
+                  key={service.number}
+                  className="bg-brand-surface border border-brand-border rounded-2xl p-7 flex flex-col"
                   whileHover={{ y: -4 }}
+                  transition={{ duration: 0.2 }}
                 >
-                  <p className="text-premium-green text-sm font-semibold mb-2">{service.subtitle}</p>
-                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                  <ul className="text-sm text-text-secondary space-y-2 flex-1">
-                    {service.bullet.map((item) => (
-                      <li key={item} className="flex gap-2">
-                        <span className="w-1.5 h-1.5 mt-2 rounded-full bg-premium-green" />
-                        <span>{item}</span>
+                  <div className="flex items-start justify-between mb-5">
+                    <span className="text-4xl font-bold text-premium-green/20 leading-none select-none">
+                      {service.number}
+                    </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-text-primary mb-1">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-premium-green font-medium mb-5">
+                    {service.subtitle}
+                  </p>
+                  <ul className="flex-1 space-y-2.5 text-sm text-text-secondary">
+                    {service.features.map((feat) => (
+                      <li key={feat} className="flex gap-2.5 items-start">
+                        <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-premium-green flex-shrink-0" />
+                        <span>{feat}</span>
                       </li>
                     ))}
                   </ul>
-                  <CTAButton
-                    variant="secondary"
-                    className="mt-5 text-sm self-start"
-                    onClick={handleBookRoute}
+                  <a
+                    href={service.href}
+                    className="mt-6 self-start text-sm font-semibold text-premium-green hover:text-premium-green-light transition-colors"
                   >
                     {service.cta}
-                  </CTAButton>
+                  </a>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="industries" className={sectionWrapper}>
+        {/* ================================================================
+            HOW IT WORKS — 3-step process
+        ================================================================ */}
+        <section id="how-it-works" className={sectionWrapper}>
           <div className="max-w-6xl mx-auto px-6 md:px-10">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-3">Who it's for (and not for)</h2>
-              <p className="text-text-secondary max-w-3xl mx-auto">
-                We're built for small and medium-sized service businesses who need customers to call, enquire, or book. If you want a
-                slick website or a one-off marketing trick, this isn't it.
+            <div className="text-center mb-12">
+              <p className="text-xs font-semibold tracking-[0.3em] uppercase text-premium-green mb-3">
+                The process
+              </p>
+              <h2
+                className="text-3xl sm:text-4xl font-bold text-text-primary mb-4"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              >
+                How it works
+              </h2>
+              <p className="text-text-secondary max-w-2xl mx-auto leading-relaxed">
+                A calm, structured process — no jargon, no surprises, and no lock-in
+                until you're happy.
               </p>
             </div>
-            <div className="grid md:grid-cols-2 gap-5">
-              {[
-                {
-                  title: 'Best for',
-                  color: 'text-premium-green',
-                  border: 'border-premium-green/40',
-                  items: [
-                    'Busy owners who need direct leads instead of subcontracting work',
-                    "Teams missing calls because they're on the tools or in appointments",
-                    'Service businesses that want systems, not just campaigns',
-                  ],
-                },
-                {
-                  title: 'Not for',
-                  color: 'text-red-300',
-                  border: 'border-red-500/40',
-                  items: [
-                    'People looking for a "quick hack" or a one-off marketing stunt',
-                    'Businesses unwilling to follow up enquiries or invest in systems',
-                  ],
-                },
-              ].map((block) => (
-                <div
-                  key={block.title}
-                  className="bg-brand-surface/60 border border-white/5 rounded-2xl p-6"
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {steps.map((step, idx) => (
+                <motion.div
+                  key={step.step}
+                  className="bg-brand-surface border border-brand-border rounded-2xl p-7"
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  /* stagger */
+                  style={{ transitionDelay: `${idx * 80}ms` }}
                 >
-                  <div className="text-xs text-text-tertiary uppercase tracking-wide mb-3">
-                    {block.title === 'Best for' ? 'Ideal fit' : 'Important note'}
+                  <div className="text-4xl font-bold text-premium-green/20 leading-none mb-5 select-none">
+                    {step.step}
                   </div>
-                  <h3 className={`text-2xl font-semibold mb-4 ${block.color}`}>{block.title}</h3>
-                  <ul className="text-text-secondary space-y-3 text-sm leading-relaxed">
-                    {block.items.map((item) => (
-                      <li key={item} className="flex gap-2">
-                        <span className={`w-1.5 h-1.5 mt-2 rounded-full ${block.title === 'Best for' ? 'bg-premium-green' : 'bg-red-400'}`} />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  <h3 className="text-xl font-bold text-text-primary mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-sm text-text-secondary leading-relaxed">
+                    {step.description}
+                  </p>
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="how-it-works" className={`${sectionWrapper} bg-gray-900/30`}>
-          <div className="max-w-6xl mx-auto px-6 md:px-10 text-center mb-10">
-            <h2 className="text-3xl font-bold mb-3">How it works</h2>
-            <p className="text-text-secondary max-w-3xl mx-auto">
-              We run a calm, structured process. No templates, no jargon, no surprises.
-            </p>
-          </div>
-          <div className="max-w-6xl mx-auto px-6 md:px-10 grid md:grid-cols-3 gap-6">
-            {steps.map((step, idx) => (
-              <motion.div key={step.title} className="border border-white/5 rounded-2xl p-6 bg-brand-surface/60" whileHover={{ y: -4 }}>
-                <div className="text-sm font-semibold text-premium-green mb-2">Step {idx + 1}</div>
-                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className="text-sm text-text-secondary">{step.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        <section id="faqs" className={sectionWrapper}>
-          <div className="max-w-6xl mx-auto px-6 md:px-10">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold mb-3">FAQs</h2>
-              <p className="text-text-secondary max-w-2xl mx-auto">Short answers to common questions.</p>
+        {/* ================================================================
+            FAQ SECTION
+        ================================================================ */}
+        <section id="faqs" className={`${sectionWrapper} bg-brand-surface/30`}>
+          <div className="max-w-3xl mx-auto px-6 md:px-10">
+            <div className="text-center mb-12">
+              <p className="text-xs font-semibold tracking-[0.3em] uppercase text-premium-green mb-3">
+                Questions
+              </p>
+              <h2
+                className="text-3xl sm:text-4xl font-bold text-text-primary mb-4"
+                style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+              >
+                FAQs
+              </h2>
+              <p className="text-text-secondary leading-relaxed">
+                Short answers to the things most people ask before getting started.
+              </p>
             </div>
-            <div className="space-y-6">
+
+            <div className="space-y-4">
               {faqs.map((faq) => (
-                <div key={faq.q} className="border border-white/5 rounded-2xl p-6 bg-brand-surface/60">
-                  <h3 className="text-lg font-semibold mb-2">{faq.q}</h3>
-                  <p className="text-sm text-text-secondary">{faq.a}</p>
+                <div
+                  key={faq.q}
+                  className="bg-brand-surface border border-brand-border rounded-2xl p-6"
+                >
+                  <h3 className="text-base font-semibold text-text-primary mb-2">
+                    {faq.q}
+                  </h3>
+                  <p className="text-sm text-text-secondary leading-relaxed">
+                    {faq.a}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section id="about" className={`${sectionWrapper} bg-gray-900/30`}>
-          <div className="max-w-6xl mx-auto px-6 md:px-10 text-center space-y-4">
-            <h2 className="text-3xl font-bold">About Rooks & Castle</h2>
-            <p className="text-text-secondary text-sm max-w-3xl mx-auto">
-              We're a UK-based AI systems team for service businesses that don't have time (or patience) for jargon-heavy agencies.
-              You get practical build-outs, clear documentation, and systems your team can actually run with.
+        {/* ================================================================
+            ABOUT BLURB
+        ================================================================ */}
+        <section id="about" className={sectionWrapper}>
+          <div className="max-w-3xl mx-auto px-6 md:px-10 text-center space-y-5">
+            <p className="text-xs font-semibold tracking-[0.3em] uppercase text-premium-green">
+              Who we are
             </p>
-            <p className="text-text-secondary text-sm max-w-3xl mx-auto">
-              Built for plumbers, HVAC, clinics, property pros, consultants, and anyone who needs enquiries managed with zero drama.
+            <h2
+              className="text-3xl sm:text-4xl font-bold text-text-primary"
+              style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            >
+              About Rooks &amp; Castle
+            </h2>
+            <p className="text-text-secondary leading-relaxed">
+              We're a UK-based AI systems team for service businesses that don't
+              have time — or patience — for jargon-heavy agencies. You get
+              practical build-outs, clear documentation, and systems your team
+              can actually run with.
+            </p>
+            <p className="text-text-secondary leading-relaxed">
+              Built for trades, HVAC, clinics, estate agents, consultants, and
+              any business that needs enquiries handled with zero drama.
             </p>
           </div>
         </section>
 
-        <section className={sectionWrapper}>
+        {/* ================================================================
+            FINAL CTA SECTION
+        ================================================================ */}
+        <section className={`${sectionWrapper} bg-brand-surface/30`}>
           <div className="max-w-6xl mx-auto px-6 md:px-10">
-            <div className="max-w-4xl mx-auto text-center bg-brand-surface/75 border border-white/5 rounded-3xl p-8 sm:p-10">
-            <h2 className="text-3xl font-bold mb-4">Let's set your business up properly.</h2>
-            <p className="text-text-secondary mb-6 max-w-2xl mx-auto">
-              Book a free consultation and we'll recommend the simplest setup to help you get found, capture enquiries, and look more professional online.
-            </p>
-            <CTAButton onClick={handleCalendly}>Book a free consultation</CTAButton>
+            <div className="relative max-w-4xl mx-auto text-center bg-brand-surface border border-brand-border rounded-3xl p-10 sm:p-14 overflow-hidden">
+              {/* subtle glow */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                aria-hidden="true"
+              >
+                <div
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] rounded-full"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse, rgba(16,185,129,0.12) 0%, transparent 70%)",
+                    filter: "blur(40px)",
+                  }}
+                />
+              </div>
+
+              <div className="relative space-y-6">
+                <h2
+                  className="text-3xl sm:text-4xl font-bold text-text-primary"
+                  style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+                >
+                  Let's set your business up properly.
+                </h2>
+                <p className="text-text-secondary max-w-xl mx-auto leading-relaxed">
+                  Book a free strategy call and we'll map out the simplest system
+                  to stop you missing customers — starting this week.
+                </p>
+                <CTAButton onClick={handleCalendly}>
+                  Book free strategy call
+                </CTAButton>
+              </div>
             </div>
           </div>
         </section>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { background: var(--color-bg); margin: 0; padding: 24px 28px; font-family: var(--font-body); }
+  .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 20px; }
+  .label { font-family: var(--font-accent); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-green); margin-bottom: 10px; }
+  hr { border: none; border-top: 1px solid var(--color-border); margin: 16px 0; }
+</style>
+</head><body>
+  <div class="label">Primary</div>
+  <div class="row">
+    <button class="btn-primary">Book a call</button>
+    <button class="btn-primary" style="background:var(--color-green-light);box-shadow:var(--shadow-green)">Hover state</button>
+    <button class="btn-primary" style="background:var(--color-green-dark);transform:scale(0.97)">Pressed</button>
+    <button class="btn-primary" style="opacity:0.4;cursor:not-allowed">Disabled</button>
+  </div>
+  <hr>
+  <div class="label">Outline</div>
+  <div class="row">
+    <button class="btn-outline">See how it works</button>
+    <button class="btn-outline" style="border-color:var(--color-green);background:rgba(16,185,129,0.08)">Hover state</button>
+  </div>
+  <hr>
+  <div class="label">Sizes</div>
+  <div class="row">
+    <button class="btn-primary" style="padding:8px 16px;font-size:13px;border-radius:8px">Small</button>
+    <button class="btn-primary">Default</button>
+    <button class="btn-primary" style="padding:16px 32px;font-size:18px;border-radius:16px">Large</button>
+  </div>
+</body></html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #080808; font-family: var(--font-body); padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+
+  .section-label {
+    font-family: var(--font-accent); font-size: 9px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: #34d399;
+    margin-bottom: 8px;
+  }
+
+  /* ── Carousel / editorial ── */
+  .carousel-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .carousel-cell { border-radius: 10px; overflow: hidden; position: relative; aspect-ratio: 1; }
+  .carousel-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .carousel-cell .tag {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 24px 8px 6px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    font-size: 9px; color: rgba(255,255,255,0.6); font-family: monospace;
+    line-height: 1.3;
+  }
+
+  /* ── Industry characters ── */
+  .industry-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+  .industry-cell { border-radius: 10px; overflow: hidden; position: relative; aspect-ratio: 3/4; }
+  .industry-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .industry-cell .tag {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 20px 6px 6px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    font-size: 9px; color: rgba(255,255,255,0.6); font-family: monospace;
+    text-align: center;
+  }
+
+  /* ── Lifestyle / abstract ── */
+  .misc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .misc-cell { border-radius: 10px; overflow: hidden; position: relative; aspect-ratio: 16/9; }
+  .misc-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .misc-cell .tag {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 20px 8px 6px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    font-size: 9px; color: rgba(255,255,255,0.6); font-family: monospace;
+  }
+
+  /* ── Divider ── */
+  .divider { border: none; border-top: 1px solid #1a1a1a; }
+</style>
+</head><body>
+
+  <!-- Carousel / editorial -->
+  <div>
+    <div class="section-label">Editorial &amp; Carousel — warm orange palette</div>
+    <div class="carousel-grid">
+      <div class="carousel-cell">
+        <img src="../assets/carousel-bellhop.png" alt="Bellhop">
+        <div class="tag">carousel-bellhop.png<br>Hospitality / service</div>
+      </div>
+      <div class="carousel-cell">
+        <img src="../assets/carousel-dials.png" alt="Dials">
+        <div class="tag">carousel-dials.png<br>Control / automation</div>
+      </div>
+      <div class="carousel-cell">
+        <img src="../assets/carousel-falling.png" alt="Falling">
+        <div class="tag">carousel-falling.png<br>Abstract / motion</div>
+      </div>
+      <div class="carousel-cell">
+        <img src="../assets/carousel-child-phone.png" alt="Child phone">
+        <div class="tag">carousel-child-phone.png<br>Communication</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Industry characters -->
+  <div>
+    <div class="section-label">Industry Characters — 3D avatar set</div>
+    <div class="industry-grid">
+      <div class="industry-cell">
+        <img src="../assets/industry-trades.png" alt="Trades">
+        <div class="tag">Trades</div>
+      </div>
+      <div class="industry-cell">
+        <img src="../assets/industry-salon.png" alt="Salon">
+        <div class="tag">Salon</div>
+      </div>
+      <div class="industry-cell">
+        <img src="../assets/industry-restaurant.png" alt="Restaurant">
+        <div class="tag">Restaurant</div>
+      </div>
+      <div class="industry-cell">
+        <img src="../assets/industry-property.png" alt="Property">
+        <div class="tag">Property</div>
+      </div>
+      <div class="industry-cell">
+        <img src="../assets/industry-dental.png" alt="Dental">
+        <div class="tag">Dental/Clinic</div>
+      </div>
+      <div class="industry-cell">
+        <img src="../assets/industry-reception.png" alt="Reception">
+        <div class="tag">Reception</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Lifestyle / abstract -->
+  <div>
+    <div class="section-label">Lifestyle &amp; Abstract</div>
+    <div class="misc-grid">
+      <div class="misc-cell">
+        <img src="../assets/thinker.webp" alt="Thinker">
+        <div class="tag">thinker.webp — editorial</div>
+      </div>
+      <div class="misc-cell">
+        <img src="../assets/ai-network.webp" alt="AI Network">
+        <div class="tag">ai-network.webp — abstract tech</div>
+      </div>
+      <div class="misc-cell">
+        <img src="../assets/research.webp" alt="Research">
+        <div class="tag">research.webp — editorial</div>
+      </div>
+      <div class="misc-cell">
+        <img src="../assets/lifestyle-working.png" alt="Lifestyle">
+        <div class="tag">lifestyle-working.png — human</div>
+      </div>
+    </div>
+  </div>
+
+</body></html>

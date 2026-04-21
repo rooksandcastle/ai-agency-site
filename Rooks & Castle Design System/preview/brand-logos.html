@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #080808; font-family: var(--font-body); padding: 20px; }
+
+  .layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; margin-bottom: 14px; }
+  .col-right { display: flex; flex-direction: column; gap: 14px; }
+
+  .cell { background: #0f0f0f; border: 1px solid #1e1e1e; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+  .stage { flex: 1; display: flex; align-items: center; justify-content: center; padding: 28px; position: relative; min-height: 120px; }
+  .foot { border-top: 1px solid #1a1a1a; padding: 10px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .foot-title { font-size: 11px; font-weight: 700; color: #e5e7eb; font-family: var(--font-accent); letter-spacing: 0.07em; text-transform: uppercase; }
+  .foot-sub { font-size: 10px; color: #4b5563; font-family: monospace; margin-top: 1px; }
+  .badge { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 99px; background: rgba(16,185,129,0.1); color: #34d399; border: 1px solid rgba(16,185,129,0.2); white-space: nowrap; }
+
+  /* Primary hero */
+  .logo-hero {
+    height: 120px; object-fit: contain;
+    filter: drop-shadow(0 0 24px rgba(31,241,167,0.22));
+  }
+
+  /* Wordmark: RC logo + text */
+  .wordmark { display: flex; align-items: center; gap: 14px; }
+  .wm-mark { width: 52px; height: 52px; object-fit: contain; flex-shrink: 0; filter: drop-shadow(0 0 12px rgba(31,241,167,0.3)); }
+  .wm-name { font-size: 20px; font-weight: 800; color: #f9fafb; letter-spacing: -0.02em; line-height: 1.1; }
+  .wm-tag { font-size: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.38em; color: rgba(255,255,255,0.38); margin-top: 5px; }
+  .wm-divider { width: 1px; height: 34px; background: linear-gradient(180deg, transparent, rgba(255,255,255,0.12), transparent); margin: 0 2px; }
+
+  /* Sizes */
+  .sizes { display: flex; align-items: flex-end; gap: 20px; justify-content: center; }
+  .sz { text-align: center; }
+  .sz img { display: block; object-fit: contain; margin: 0 auto 6px; }
+  .sz-label { font-size: 9px; color: #4b5563; font-family: monospace; }
+  .sz-min { color: #f87171; }
+
+  /* Rules */
+  .rules-bar { display: flex; background: #0f0f0f; border: 1px solid #1a1a1a; border-radius: 12px; overflow: hidden; }
+  .rules-col { flex: 1; padding: 10px 14px; font-size: 9.5px; font-family: monospace; color: #4b5563; line-height: 1.9; border-right: 1px solid #1a1a1a; }
+  .rules-col:last-child { border-right: none; }
+  .ok { color: #34d399; } .no { color: #f87171; }
+</style>
+</head><body>
+
+<div class="layout">
+
+  <!-- Hero: mark on black, as designed -->
+  <div class="cell">
+    <div class="stage" style="background:#000;padding:24px 40px">
+      <img class="logo-hero" src="../assets/rc-logo-mark.png" alt="RC logo mark" style="height:140px">
+    </div>
+    <div class="foot">
+      <div>
+        <div class="foot-title">RC Mark — Primary</div>
+        <div class="foot-sub">rc-logo-mark.png · black/dark bg only</div>
+      </div>
+      <span class="badge">Primary</span>
+    </div>
+  </div>
+
+  <div class="col-right">
+
+    <!-- Horizontal wordmark -->
+    <div class="cell" style="flex:1">
+      <div class="stage" style="background:radial-gradient(ellipse 80% 70% at 50% 50%, rgba(16,185,129,0.07) 0%, transparent 70%)">
+        <div class="wordmark">
+          <img class="wm-mark" src="../assets/rc-logo-mark.png" alt="RC">
+          <div class="wm-divider"></div>
+          <div>
+            <div class="wm-name">Rooks &amp; Castle</div>
+            <div class="wm-tag">AI Automations Agency</div>
+          </div>
+        </div>
+      </div>
+      <div class="foot">
+        <div>
+          <div class="foot-title">Wordmark</div>
+          <div class="foot-sub">RC mark + type · nav · header · email</div>
+        </div>
+        <span class="badge">Nav</span>
+      </div>
+    </div>
+
+    <!-- Size scale -->
+    <div class="cell" style="flex:1">
+      <div class="stage" style="background:#0a0a0a;padding:20px 16px">
+        <div class="sizes">
+          <div class="sz">
+            <img src="../assets/rc-logo-mark.png" style="width:56px;height:56px">
+            <div class="sz-label">56px<br>hero</div>
+          </div>
+          <div class="sz">
+            <img src="../assets/rc-logo-mark.png" style="width:40px;height:40px">
+            <div class="sz-label">40px<br>nav</div>
+          </div>
+          <div class="sz">
+            <img src="../assets/rc-logo-mark.png" style="width:28px;height:28px">
+            <div class="sz-label">28px<br>small</div>
+          </div>
+          <div class="sz">
+            <img src="../assets/rc-logo-mark.png" style="width:18px;height:18px">
+            <div class="sz-label">18px<br><span class="sz-min">min</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="foot">
+        <div>
+          <div class="foot-title">Size Scale</div>
+          <div class="foot-sub">Minimum 18px · do not go smaller</div>
+        </div>
+        <span class="badge">Sizes</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Rules -->
+<div class="rules-bar">
+  <div class="rules-col">
+    <span class="ok">✓</span> Black or very dark backgrounds only<br>
+    <span class="ok">✓</span> Preserve aspect ratio always<br>
+    <span class="ok">✓</span> Minimum 1× mark height clear space
+  </div>
+  <div class="rules-col">
+    <span class="no">✗</span> Never recolour the mark<br>
+    <span class="no">✗</span> No CSS filters or extra shadows<br>
+    <span class="no">✗</span> No stretching, skewing or rotation
+  </div>
+  <div class="rules-col">
+    <span class="no">✗</span> Never on white or light backgrounds<br>
+    <span class="no">✗</span> Never redraw or recreate<br>
+    <span class="no">✗</span> Always use rc-logo-mark.png source file
+  </div>
+</div>
+
+</body></html>

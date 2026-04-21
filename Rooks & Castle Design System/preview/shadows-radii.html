@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { background: var(--color-bg); margin: 0; padding: 24px; font-family: var(--font-body); }
+  .row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+  .box { width: 100px; height: 60px; background: var(--color-surface); border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: center; }
+  .label { font-size: 10px; color: var(--color-text-tertiary); font-family: monospace; margin-top: 6px; text-align: center; }
+  .item { display: flex; flex-direction: column; align-items: center; }
+  .section-label { font-family: var(--font-accent); font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-green); margin-bottom: 12px; }
+</style>
+</head><body>
+  <div class="section-label">Border Radius</div>
+  <div class="row">
+    <div class="item"><div class="box" style="border-radius:6px"></div><div class="label">--radius-sm<br>6px</div></div>
+    <div class="item"><div class="box" style="border-radius:12px"></div><div class="label">--radius-md<br>12px</div></div>
+    <div class="item"><div class="box" style="border-radius:16px"></div><div class="label">--radius-lg<br>16px</div></div>
+    <div class="item"><div class="box" style="border-radius:24px"></div><div class="label">--radius-xl<br>24px</div></div>
+    <div class="item"><div class="box" style="border-radius:9999px"></div><div class="label">--radius-pill<br>9999px</div></div>
+  </div>
+  <div class="section-label">Shadow System</div>
+  <div class="row">
+    <div class="item"><div class="box" style="border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.5)"></div><div class="label">--shadow-card</div></div>
+    <div class="item"><div class="box" style="border-radius:12px;box-shadow:0 0 20px rgba(16,185,129,0.3)"></div><div class="label">--shadow-green</div></div>
+    <div class="item"><div class="box" style="border-radius:12px;box-shadow:0 0 30px rgba(16,185,129,0.4)"></div><div class="label">--shadow-green-lg</div></div>
+    <div class="item"><div class="box" style="border-radius:12px;background:rgba(26,26,26,0.6);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08)"></div><div class="label">--glass</div></div>
+  </div>
+</body></html>

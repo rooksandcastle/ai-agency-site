@@ -228,8 +228,8 @@ const Navigation = ({ onCalendlyClick }) => {
   const navShellClasses =
     'pointer-events-auto relative overflow-visible rounded-[999px] px-4 sm:px-5 py-1.5 transition-all duration-300 backdrop-blur-[22px] border ' +
     (isScrolled
-      ? 'border-white/20 bg-[#041b16]/90 shadow-[0_25px_70px_-35px_rgba(10,255,191,0.75)]'
-      : 'border-white/15 bg-[#030f0c]/80 shadow-[0_35px_80px_-45px_rgba(12,255,191,0.8)]');
+      ? 'border-white/15 bg-[#0F0F0F]/90 shadow-[0_4px_24px_rgba(0,0,0,0.6)]'
+      : 'border-white/10 bg-[#0F0F0F]/75 shadow-[0_8px_32px_rgba(0,0,0,0.4)]');
 
   return (
     <>
@@ -241,7 +241,7 @@ const Navigation = ({ onCalendlyClick }) => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#02130f]/90 via-[#062219]/70 to-[#031711]/85" aria-hidden="true" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0F0F0F]/95 via-[#141414]/80 to-[#0F0F0F]/90" aria-hidden="true" />
             <div className="pointer-events-none absolute inset-[2px] rounded-[999px] border border-white/10 shadow-[inset_0_1px_12px_rgba(255,255,255,0.12)]" aria-hidden="true" />
             <div className="relative flex items-center justify-between gap-4 whitespace-nowrap">
               <motion.button
@@ -290,7 +290,7 @@ const Navigation = ({ onCalendlyClick }) => {
                           onKeyDown={(event) => handleTriggerKeyDown(event, item.id)}
                           className={`flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 ${
                             active
-                              ? 'text-[var(--blue-soft)] bg-[var(--blue-faint)] border border-[var(--blue-border)] shadow-[var(--blue-glow)]'
+                              ? 'text-[var(--nav-active-text)] bg-[var(--nav-active-bg)] border border-[var(--nav-active-border)] shadow-[var(--nav-active-glow)]'
                               : 'text-white/75 border border-transparent hover:text-white hover:bg-white/5'
                           }`}
                         >
@@ -343,7 +343,7 @@ const Navigation = ({ onCalendlyClick }) => {
                       onClick={() => handleNavClick(item)}
                       className={`relative px-3 py-1 rounded-full text-sm font-medium tracking-wide whitespace-nowrap transition-all duration-200 ${
                         isActive(item)
-                          ? 'text-[var(--blue-soft)] bg-[var(--blue-faint)] border border-[var(--blue-border)] shadow-[var(--blue-glow)]'
+                          ? 'text-[var(--nav-active-text)] bg-[var(--nav-active-bg)] border border-[var(--nav-active-border)] shadow-[var(--nav-active-glow)]'
                           : 'text-white/75 border border-transparent hover:text-white hover:bg-white/5'
                       }`}
                       initial={{ opacity: 0, y: -10 }}
@@ -355,7 +355,7 @@ const Navigation = ({ onCalendlyClick }) => {
                   );
                 })}
                 <button
-                  className="hidden lg:inline-flex items-center px-4 py-2 rounded-[16px] border border-[var(--blue-border)] bg-[var(--blue-strong)] text-white font-semibold shadow-[var(--blue-glow)] hover:bg-[var(--blue-soft)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--blue-soft)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+                  className="hidden lg:inline-flex items-center px-4 py-2 rounded-[16px] border border-[var(--nav-active-border)] bg-[var(--nav-cta-bg)] text-white font-semibold shadow-[var(--nav-active-glow)] hover:bg-[var(--nav-active-text)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--nav-active-text)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
                   onClick={() => navigate('/contact')}
                 >
                   Contact
@@ -400,7 +400,7 @@ const Navigation = ({ onCalendlyClick }) => {
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             >
               {/* Elegant gradient accent */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--blue-soft)]/70 via-[var(--blue-strong)]/50 to-[var(--blue-soft)]/70"></div>
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--nav-active-text)]/70 via-[var(--nav-cta-bg)]/50 to-[var(--nav-active-text)]/70"></div>
 
               <div className="p-6 space-y-6">
                 <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-xl shadow-[0_25px_50px_-35px_rgba(34,197,94,0.6)]">
@@ -470,7 +470,7 @@ const Navigation = ({ onCalendlyClick }) => {
                         onClick={() => handleNavClick(item)}
                         className={`w-full text-left px-4 py-3 rounded-xl text-base font-medium transition-all duration-200 border ${
                           isActive(item)
-                            ? 'text-[var(--blue-soft)] border-[var(--blue-border)] bg-[var(--blue-faint)] shadow-[var(--blue-glow)]'
+                            ? 'text-[var(--nav-active-text)] border-[var(--nav-active-border)] bg-[var(--nav-active-bg)] shadow-[var(--nav-active-glow)]'
                             : 'text-white/80 border-transparent hover:border-white/20 hover:bg-white/5'
                         }`}
                         initial={{ opacity: 0, x: 20 }}
@@ -483,7 +483,7 @@ const Navigation = ({ onCalendlyClick }) => {
                   })}
                 </div>
                 <button
-                  className="w-full inline-flex justify-center px-4 py-3 rounded-[16px] border border-[var(--blue-border)] bg-[var(--blue-strong)] text-white font-semibold shadow-[var(--blue-glow)] hover:bg-[var(--blue-soft)] transition-all duration-200"
+                  className="w-full inline-flex justify-center px-4 py-3 rounded-[16px] border border-[var(--nav-active-border)] bg-[var(--nav-cta-bg)] text-white font-semibold shadow-[var(--nav-active-glow)] hover:bg-[var(--nav-active-text)] transition-all duration-200"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
                     navigate('/contact');

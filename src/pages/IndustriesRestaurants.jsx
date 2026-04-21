@@ -31,8 +31,12 @@ const IndustriesRestaurants = () => (
             <p>Helps guests confirm dietary notes, deposits, and private dining requests without staff interruption.</p>
           </div>
         </div>
-        <div className="h-64 rounded-3xl border border-dashed border-white/15 bg-white/5 flex items-center justify-center text-white/40 text-sm">
-          Photo placeholder
+        <div className="h-64 rounded-3xl overflow-hidden">
+          <img
+            src="/media/Industries/restaurant-ai-agent.png"
+            alt="Restaurant AI voice agent handling bookings and reservations"
+            className="w-full h-full object-cover object-top"
+          />
         </div>
       </Reveal>
 

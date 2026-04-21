@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rooks & Castle — AI Automations Agency</title>
+<link rel="icon" type="image/png" href="../../assets/favicon.png">
+<style>
+@font-face{font-family:'Manrope';src:url('../../fonts/Manrope-ExtraLight.ttf') format('truetype');font-weight:200;font-display:swap;}
+@font-face{font-family:'Manrope';src:url('../../fonts/Manrope-Light.ttf') format('truetype');font-weight:300;font-display:swap;}
+@font-face{font-family:'Manrope';src:url('../../fonts/Manrope-Regular.ttf') format('truetype');font-weight:400;font-display:swap;}
+@font-face{font-family:'Manrope';src:url('../../fonts/Manrope-Medium.ttf') format('truetype');font-weight:500;font-display:swap;}
+@font-face{font-family:'Manrope';src:url('../../fonts/Manrope-SemiBold.ttf') format('truetype');font-weight:600;font-display:swap;}
+@font-face{font-family:'Manrope';src:url('../../fonts/Manrope-Bold.ttf') format('truetype');font-weight:700;font-display:swap;}
+@font-face{font-family:'Manrope';src:url('../../fonts/Manrope-ExtraBold.ttf') format('truetype');font-weight:800;font-display:swap;}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,800&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#080c09;color:#F0F4F1;font-family:'Manrope',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+:root{
+  --green:#10B981;
+  --green-light:#34D399;
+  --green-dark:#059669;
+  --green-dim:#0d9668;
+  --bg:#080c09;
+  --bg-2:#0e1510;
+  --surface:#121a13;
+  --surface-2:#182019;
+  --border:rgba(16,185,129,0.12);
+  --border-2:rgba(255,255,255,0.07);
+  --text-1:#F0F4F1;
+  --text-2:#8fa896;
+  --text-3:#4d6655;
+  --ease-out:cubic-bezier(0,0,0.2,1);
+}
+
+/* ── NAV ── */
+.nav-wrap{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:center;padding:16px 24px;pointer-events:none;}
+.nav-inner{pointer-events:all;display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1120px;padding:9px 20px;background:rgba(8,12,9,0.9);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:9999px;gap:16px;transition:all .3s;}
+.nav-inner.scrolled{background:rgba(8,14,10,0.97);border-color:rgba(16,185,129,0.2);box-shadow:0 20px 60px -20px rgba(16,185,129,0.15);}
+.nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none;flex-shrink:0;}
+.nav-logo img{width:42px;height:42px;object-fit:contain;background:#040604;border-radius:5px;}
+.nav-logo .name{font-size:15px;font-weight:700;color:#f0f4f1;letter-spacing:-.01em;}
+.nav-logo .tag{font-size:8.5px;text-transform:uppercase;letter-spacing:.38em;color:var(--text-3);}
+.nav-links{display:flex;align-items:center;gap:2px;list-style:none;}
+.nav-links a{display:block;padding:6px 13px;font-size:13px;font-weight:500;color:var(--text-2);text-decoration:none;border-radius:9999px;border:1px solid transparent;transition:all .2s;font-family:'Manrope',sans-serif;}
+.nav-links a:hover{color:var(--text-1);background:rgba(16,185,129,0.06);}
+.nav-links a.active{color:var(--green-light);background:rgba(16,185,129,0.08);border-color:var(--border);}
+.nav-actions{display:flex;gap:8px;flex-shrink:0;}
+.btn-nav-ghost{padding:7px 15px;font-size:13px;font-weight:600;font-family:'Manrope',sans-serif;color:var(--text-2);background:transparent;border:1px solid var(--border-2);border-radius:9px;cursor:pointer;transition:all .2s;}
+.btn-nav-ghost:hover{color:var(--text-1);border-color:rgba(255,255,255,0.18);}
+.btn-nav-cta{padding:7px 18px;font-size:13px;font-weight:700;font-family:'Manrope',sans-serif;color:#fff;background:var(--green-dark);border:1px solid rgba(16,185,129,0.5);border-radius:9px;cursor:pointer;transition:all .2s;}
+.btn-nav-cta:hover{background:var(--green);box-shadow:0 0 20px rgba(16,185,129,0.25);}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:140px 48px 100px;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 90% at 50% 40%,rgba(16,185,129,0.09) 0%,transparent 65%),radial-gradient(ellipse 50% 60% at 100% 20%,rgba(5,150,105,0.05) 0%,transparent 60%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(16,185,129,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,0.04) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 100% 100% at 50% 50%,black 30%,transparent 80%);}
+.hero-inner{position:relative;z-index:2;max-width:860px;margin:0 auto;width:100%;text-align:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:9px;padding:6px 16px;background:rgba(16,185,129,0.06);border:1px solid var(--border);border-radius:9999px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:32px;font-family:'Manrope',sans-serif;justify-content:center;}
+.hero-eyebrow .dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(60px,7vw,100px);font-weight:900;line-height:.92;letter-spacing:-.04em;color:var(--text-1);margin-bottom:12px;}
+.hero-h1 span{display:block;}
+.hero-h1 .accent{color:var(--green-light);}
+.hero-sub-line{display:inline-block;font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,38px);font-weight:700;font-style:italic;color:var(--text-2);margin-bottom:36px;letter-spacing:-.02em;}
+.hero-desc{font-size:17px;font-weight:300;line-height:1.75;color:var(--text-2);max-width:520px;margin:0 auto 44px;}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:64px;justify-content:center;}
+.btn-hero-primary{display:inline-flex;align-items:center;gap:8px;padding:15px 32px;background:var(--green);color:#050c07;font-size:15px;font-weight:800;font-family:'Manrope',sans-serif;border:none;border-radius:12px;cursor:pointer;box-shadow:0 8px 32px -8px rgba(16,185,129,0.45);transition:all .2s var(--ease-out);}
+.btn-hero-primary:hover{background:var(--green-light);transform:translateY(-2px);box-shadow:0 14px 40px -8px rgba(16,185,129,0.6);}
+.btn-hero-outline{display:inline-flex;align-items:center;gap:8px;padding:15px 32px;background:transparent;color:var(--text-1);font-size:15px;font-weight:600;font-family:'Manrope',sans-serif;border:1px solid var(--border-2);border-radius:12px;cursor:pointer;transition:all .2s;}
+.btn-hero-outline:hover{border-color:rgba(16,185,129,0.3);color:var(--green-light);}
+.hero-stats{display:inline-flex;gap:0;border:1px solid var(--border);border-radius:14px;background:var(--surface);overflow:hidden;max-width:560px;}
+.hero-stat{flex:1;padding:18px 24px;border-right:1px solid var(--border);}
+.hero-stat:last-child{border-right:none;}
+.hero-stat-num{font-size:24px;font-weight:800;color:var(--green-light);letter-spacing:-.02em;font-family:'Manrope',sans-serif;}
+.hero-stat-label{font-size:11px;color:var(--text-3);margin-top:2px;font-weight:500;font-family:'Manrope',sans-serif;}
+
+/* ── SHARED ── */
+.section-wrap{padding:96px 48px;}
+.section-inner{max-width:1120px;margin:0 auto;}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green);font-family:'Manrope',sans-serif;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--green);}
+.section-h2{font-family:'Playfair Display',serif;font-size:clamp(36px,4vw,56px);font-weight:900;line-height:1.05;letter-spacing:-.03em;color:var(--text-1);margin-bottom:16px;}
+.section-h2 em{font-style:normal;color:var(--green-light);}
+.section-desc{font-size:16px;font-weight:300;line-height:1.8;color:var(--text-2);}
+
+/* ── EDITORIAL STRIP 1 — full width image break ── */
+.editorial-strip{position:relative;height:420px;overflow:hidden;margin:0;}
+.editorial-strip img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.45) saturate(0.5);}
+.editorial-strip .overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,12,9,0.95) 0%,rgba(8,12,9,0.4) 50%,rgba(8,12,9,0.8) 100%);}
+.editorial-strip .content{position:absolute;inset:0;display:flex;align-items:center;padding:0 80px;}
+.editorial-strip .quote{max-width:560px;}
+.editorial-strip .quote-text{font-family:'Playfair Display',serif;font-size:clamp(26px,3vw,40px);font-weight:800;font-style:italic;line-height:1.2;color:var(--text-1);margin-bottom:16px;letter-spacing:-.02em;}
+.editorial-strip .quote-attr{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-family:'Manrope',sans-serif;}
+
+/* ── SERVICES ── */
+#services{background:var(--bg-2);}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-top:52px;}
+.service-card{background:var(--surface);padding:32px;transition:background .3s;}
+.service-card:hover{background:var(--surface-2);}
+.service-num{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:20px;font-family:'Manrope',sans-serif;}
+.service-title{font-size:20px;font-weight:800;color:var(--text-1);margin-bottom:10px;letter-spacing:-.01em;font-family:'Manrope',sans-serif;}
+.service-desc{font-size:14px;line-height:1.75;color:var(--text-2);margin-bottom:22px;}
+.service-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.service-list li{font-size:13px;color:var(--text-2);display:flex;align-items:flex-start;gap:8px;line-height:1.5;}
+.service-list li::before{content:'';flex-shrink:0;margin-top:7px;width:4px;height:4px;background:var(--green);border-radius:50%;}
+
+/* ── SPLIT EDITORIAL ROWS ── */
+.split-row{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:480px;}
+.split-row.reverse{direction:rtl;}
+.split-row.reverse>*{direction:ltr;}
+.split-image{overflow:hidden;}
+.split-image img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.65) saturate(0.6);transition:filter .6s;}
+.split-image:hover img{filter:brightness(0.75) saturate(0.7);}
+.split-content{background:var(--surface);padding:64px 56px;display:flex;flex-direction:column;justify-content:center;}
+.split-content .eyebrow{margin-bottom:18px;}
+.split-content h3{font-family:'Playfair Display',serif;font-size:clamp(28px,3vw,42px);font-weight:900;line-height:1.1;letter-spacing:-.02em;color:var(--text-1);margin-bottom:16px;}
+.split-content h3 em{font-style:normal;color:var(--green-light);}
+.split-content p{font-size:15px;font-weight:300;line-height:1.8;color:var(--text-2);margin-bottom:16px;}
+.split-content p strong{color:var(--text-1);font-weight:600;}
+.split-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--green);text-decoration:none;margin-top:8px;transition:gap .2s;font-family:'Manrope',sans-serif;}
+.split-link:hover{gap:14px;}
+
+/* ── PROCESS ── */
+#process{background:var(--bg);}
+.process-list{display:flex;flex-direction:column;gap:0;margin-top:52px;border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+.process-item{display:grid;grid-template-columns:80px 1fr 1fr;gap:0;border-bottom:1px solid var(--border);background:var(--surface);transition:background .3s;}
+.process-item:last-child{border-bottom:none;}
+.process-item:hover{background:var(--surface-2);}
+.process-num-col{display:flex;align-items:center;justify-content:center;padding:32px 0;border-right:1px solid var(--border);}
+.process-num{width:44px;height:44px;background:linear-gradient(135deg,var(--green-light),var(--green));border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#050c07;font-family:'Manrope',sans-serif;}
+.process-main{padding:32px 36px;border-right:1px solid var(--border);}
+.process-title{font-size:20px;font-weight:800;color:var(--text-1);margin-bottom:6px;letter-spacing:-.01em;font-family:'Manrope',sans-serif;}
+.process-sub{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-bottom:12px;font-family:'Manrope',sans-serif;}
+.process-desc{font-size:14px;line-height:1.75;color:var(--text-2);}
+.process-meta{padding:32px 36px;display:flex;flex-direction:column;justify-content:center;gap:12px;}
+.process-duration{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--green);font-family:'Manrope',sans-serif;}
+.process-dur-dot{width:5px;height:5px;background:var(--green);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;}
+.process-deliverables{font-size:12px;color:var(--text-3);line-height:1.6;}
+.process-deliverables strong{color:var(--text-2);display:block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;font-family:'Manrope',sans-serif;}
+
+/* Stats bar */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-top:32px;background:var(--surface);}
+.stat-item{padding:28px;border-right:1px solid var(--border);text-align:center;}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-size:36px;font-weight:900;color:var(--green-light);letter-spacing:-.03em;font-family:'Manrope',sans-serif;}
+.stat-label{font-size:13px;font-weight:600;color:var(--text-1);margin-top:4px;font-family:'Manrope',sans-serif;}
+.stat-sub{font-size:11px;color:var(--text-3);margin-top:3px;}
+
+/* ── CTA ── */
+#cta{background:var(--bg-2);padding:96px 48px;}
+.cta-inner{max-width:800px;margin:0 auto;text-align:center;}
+.cta-inner h2{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,60px);font-weight:900;line-height:1.05;letter-spacing:-.03em;color:var(--text-1);margin-bottom:16px;}
+.cta-inner h2 em{font-style:normal;color:var(--green-light);}
+.cta-inner p{font-size:16px;font-weight:300;line-height:1.8;color:var(--text-2);max-width:440px;margin:0 auto 36px;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+/* ── FOOTER ── */
+footer{background:var(--bg);border-top:1px solid var(--border);}
+.footer-nl{border-bottom:1px solid var(--border);padding:48px;}
+.footer-nl-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.footer-nl h3{font-size:20px;font-weight:700;color:var(--text-1);margin-bottom:6px;font-family:'Manrope',sans-serif;}
+.footer-nl p{font-size:14px;color:var(--text-2);line-height:1.6;}
+.nl-form{display:flex;gap:9px;}
+.nl-form input{flex:1;padding:11px 15px;background:var(--surface);border:1px solid var(--border);border-radius:9px;color:var(--text-1);font-size:13.5px;font-family:'Manrope',sans-serif;outline:none;transition:border-color .2s;}
+.nl-form input:focus{border-color:rgba(16,185,129,0.4);}
+.nl-form input::placeholder{color:var(--text-3);}
+.nl-form button{padding:11px 20px;background:var(--green-dark);color:#050c07;font-size:13.5px;font-weight:700;font-family:'Manrope',sans-serif;border:none;border-radius:9px;cursor:pointer;white-space:nowrap;transition:background .2s;}
+.nl-form button:hover{background:var(--green);}
+.footer-main{max-width:1120px;margin:0 auto;padding:52px 48px;display:grid;grid-template-columns:2.2fr 1fr 1fr 1fr 1fr;gap:40px;}
+.footer-brand .chip{display:inline-flex;align-items:center;gap:11px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:16px;}
+.footer-brand .chip img{width:32px;height:32px;object-fit:contain;background:#040604;border-radius:4px;}
+.footer-brand .chip .name{font-size:14px;font-weight:700;color:var(--text-1);font-family:'Manrope',sans-serif;}
+.footer-brand .chip .tag{font-size:8px;text-transform:uppercase;letter-spacing:.35em;color:var(--text-3);font-family:'Manrope',sans-serif;}
+.footer-brand p{font-size:13px;line-height:1.75;color:var(--text-2);margin-bottom:18px;}
+.footer-social{display:flex;gap:8px;}
+.footer-social a{width:34px;height:34px;background:var(--surface);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-3);transition:all .2s;text-decoration:none;}
+.footer-social a:hover{color:var(--green);border-color:var(--border);}
+.footer-social svg{width:15px;height:15px;fill:currentColor;}
+.footer-col h4{font-size:13px;font-weight:700;color:var(--text-1);margin-bottom:18px;font-family:'Manrope',sans-serif;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-col ul li a{font-size:13px;color:var(--text-2);text-decoration:none;transition:color .2s;font-family:'Manrope',sans-serif;}
+.footer-col ul li a:hover{color:var(--green-light);}
+.footer-contact{margin-top:20px;font-size:12.5px;color:var(--text-2);line-height:1.8;}
+.footer-contact .lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--green);font-family:'Manrope',sans-serif;}
+.footer-bottom{border-top:1px solid var(--border);padding:18px 48px;}
+.footer-bottom-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--text-3);gap:12px;flex-wrap:wrap;font-family:'Manrope',sans-serif;}
+.footer-bottom-inner a{color:var(--text-3);text-decoration:none;}
+.footer-bottom-inner a:hover{color:var(--green);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out);}
+.reveal.visible{opacity:1;transform:none;}
+.rd1{transition-delay:.08s;}.rd2{transition-delay:.16s;}.rd3{transition-delay:.24s;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-wrap">
+  <nav class="nav-inner" id="mainNav">
+    <a class="nav-logo" href="#hero">
+      <img src="../../assets/rc-logo-mark.png" alt="RC">
+      <div><div class="name">Rooks &amp; Castle</div><div class="tag">AI Automations Agency</div></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services" class="active">Services</a></li>
+      <li><a href="#process">How it works</a></li>
+      <li><a href="industries.html">Industries</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="btn-nav-ghost">Sign in</button>
+      <button class="btn-nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Book a call</button>
+    </div>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span class="dot"></span>Out-of-hours phone coverage for your business</div>
+    <h1 class="hero-h1">
+      <span>Never miss</span>
+      <span>another</span>
+      <span class="accent">customer.</span>
+    </h1>
+    <div class="hero-sub-line">Even when you can't answer.</div>
+    <p class="hero-desc">Every call answered. Every lead captured. Every booking automated — 24/7, for less than the cost of a part-time shift weekly.</p>
+    <div class="hero-ctas">
+      <button class="btn-hero-primary" onclick="document.getElementById('process').scrollIntoView({behavior:'smooth'})">See how it works →</button>
+      <button class="btn-hero-outline" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Book free strategy call</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-num">24/7</div><div class="hero-stat-label">AI coverage</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">95%</div><div class="hero-stat-label">Team adoption</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">15h+</div><div class="hero-stat-label">Saved weekly</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">2–6w</div><div class="hero-stat-label">Time to live</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section-wrap" id="services" style="background:var(--bg-2)">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="eyebrow">What we do</div>
+      <h2 class="section-h2">Practical AI systems for<br><em>real businesses</em></h2>
+      <p class="section-desc" style="max-width:520px">We don't do sci-fi. We build the infrastructure that keeps your business running when you're not there.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-num">01 — AI Front Desk</div>
+        <h3 class="service-title">24/7 Phone Coverage</h3>
+        <p class="service-desc">Your AI receptionist answers every call, books appointments, and captures leads — even at 2am on a Sunday.</p>
+        <ul class="service-list"><li>Natural conversation handling</li><li>Calendar integration & booking</li><li>Lead capture & CRM sync</li><li>Call summaries in your inbox</li></ul>
+      </div>
+      <div class="service-card reveal rd1">
+        <div class="service-num">02 — Workflow Automation</div>
+        <h3 class="service-title">Operations on Autopilot</h3>
+        <p class="service-desc">From lead follow-up to invoice generation — we automate the repetitive work so your team focuses on what matters.</p>
+        <ul class="service-list"><li>Multi-step workflow design</li><li>Tool & API integrations</li><li>Automated follow-up sequences</li><li>Real-time status dashboards</li></ul>
+      </div>
+      <div class="service-card reveal rd2">
+        <div class="service-num">03 — Property Co-hosting</div>
+        <h3 class="service-title">Short-Let Management</h3>
+        <p class="service-desc">AI-assisted Airbnb co-hosting — automated guest messaging, dynamic pricing, and operational oversight.</p>
+        <ul class="service-list"><li>Guest communication automation</li><li>Dynamic pricing optimisation</li><li>Maintenance coordination</li><li>Performance reporting</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL IMAGE 1 — Bellhop / Hospitality -->
+<div class="editorial-strip reveal">
+  <img src="../../assets/carousel-bellhop.png" alt="Hospitality">
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="quote">
+      <div class="quote-text">"Your business is now open 24 hours a day, seven days a week."</div>
+      <div class="quote-attr">The Rooks &amp; Castle promise</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY AI — Split row: image left, text right -->
+<div class="split-row reveal" id="why-ai">
+  <div class="split-image">
+    <img src="../../assets/carousel-dials.png" alt="Control">
+  </div>
+  <div class="split-content">
+    <div class="eyebrow">Why AI — now</div>
+    <h3>Your competitors are<br>already <em>using it</em></h3>
+    <p>62% of calls to small businesses go unanswered. Every missed call is a missed customer — a lead that went to your competitor instead of you.</p>
+    <p>AI solves this for <strong>less than a part-time wage</strong>. No bad days, no sick days, no lunch breaks. Just consistent, professional handling of every enquiry.</p>
+    <a class="split-link" href="#process">See how it works →</a>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="section-wrap" id="process" style="background:var(--bg)">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto 0;">
+      <div class="eyebrow" style="justify-content:center">Simple 3-step process</div>
+      <h2 class="section-h2">How <em>it works</em></h2>
+      <p class="section-desc">From discovery to deployment to optimisation — we handle everything. You focus on your business.</p>
+    </div>
+    <div class="process-list reveal" style="margin-top:48px">
+      <div class="process-item">
+        <div class="process-num-col"><div class="process-num">01</div></div>
+        <div class="process-main">
+          <div class="process-title">Assessment</div>
+          <div class="process-sub">Psychology-Informed Discovery</div>
+          <p class="process-desc">We map your current call and booking process to identify where AI saves the most time, then calculate your specific ROI before we start.</p>
+        </div>
+        <div class="process-meta">
+          <div class="process-duration"><span class="process-dur-dot"></span>Week 1</div>
+          <div class="process-deliverables"><strong>Deliverables</strong>Process map, ROI projection, implementation plan</div>
+        </div>
+      </div>
+      <div class="process-item">
+        <div class="process-num-col"><div class="process-num">02</div></div>
+        <div class="process-main">
+          <div class="process-title">Implementation</div>
+          <div class="process-sub">Ethical AI Deployment</div>
+          <p class="process-desc">We build your custom AI system and integrate it with your calendar and tools. Then we train your team to work alongside it smoothly.</p>
+        </div>
+        <div class="process-meta">
+          <div class="process-duration"><span class="process-dur-dot"></span>Weeks 2–4</div>
+          <div class="process-deliverables"><strong>Deliverables</strong>Live AI system, team training, full documentation</div>
+        </div>
+      </div>
+      <div class="process-item">
+        <div class="process-num-col"><div class="process-num">03</div></div>
+        <div class="process-main">
+          <div class="process-title">Optimisation</div>
+          <div class="process-sub">Continuous Improvement</div>
+          <p class="process-desc">We monitor performance, optimise based on real data, and guarantee ROI — or we troubleshoot until it works. No excuses.</p>
+        </div>
+        <div class="process-meta">
+          <div class="process-duration"><span class="process-dur-dot"></span>Ongoing</div>
+          <div class="process-deliverables"><strong>Deliverables</strong>ROI tracking, monthly optimisations, performance reports</div>
+        </div>
+      </div>
+    </div>
+    <div class="stats-bar reveal">
+      <div class="stat-item"><div class="stat-num">95%</div><div class="stat-label">Team Adoption</div><div class="stat-sub">Average across all clients</div></div>
+      <div class="stat-item"><div class="stat-num">15+</div><div class="stat-label">Hours Saved</div><div class="stat-sub">Per week per employee</div></div>
+      <div class="stat-item"><div class="stat-num">2–6w</div><div class="stat-label">Time to Live</div><div class="stat-sub">Average implementation</div></div>
+      <div class="stat-item"><div class="stat-num">24/7</div><div class="stat-label">AI Monitoring</div><div class="stat-sub">Continuous optimisation</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL IMAGE 2 — Split row: text left, image right -->
+<div class="split-row reverse reveal" id="about">
+  <div class="split-image">
+    <img src="../../assets/carousel-falling.png" alt="Abstract motion">
+  </div>
+  <div class="split-content">
+    <div class="eyebrow">About Rooks &amp; Castle</div>
+    <h3>Calm. Confident.<br><em>Human.</em></h3>
+    <p>We build practical AI systems for real-world service businesses. We don't sell technology for technology's sake — we solve operational problems that cost you time, money, and customers.</p>
+    <p>Based in the UK, working with trades, salons, restaurants, clinics, and property businesses. Our approach is <strong>psychology-informed</strong> — we design for how people actually work.</p>
+    <a class="split-link" href="industries.html">View all industries →</a>
+  </div>
+</div>
+
+<!-- EDITORIAL IMAGE 3 — full strip -->
+<div class="editorial-strip reveal">
+  <img src="../../assets/carousel-child-phone.png" alt="Communication">
+  <div class="overlay"></div>
+  <div class="content" style="justify-content:flex-end;padding:0 80px">
+    <div class="quote" style="text-align:right">
+      <div class="quote-text">"Every missed call is a missed customer. We make sure that never happens."</div>
+      <div class="quote-attr">Rooks &amp; Castle — Founded in the UK</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section id="cta" style="background:var(--bg-2);padding:96px 48px">
+  <div class="cta-inner reveal">
+    <div class="eyebrow" style="justify-content:center">Get started</div>
+    <h2>Your business is now<br>open <em>24/7.</em></h2>
+    <p>For less than the cost of one part-time shift weekly.</p>
+    <div class="cta-btns">
+      <button class="btn-hero-primary">Book your free strategy call →</button>
+      <button class="btn-hero-outline">See pricing</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-nl">
+    <div class="footer-nl-inner">
+      <div>
+        <h3>Stay updated with AI insights</h3>
+        <p>Exclusive tips, case studies, and AI strategies — monthly. No spam.</p>
+      </div>
+      <form class="nl-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Subscribed!'">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <div class="chip">
+        <img src="../../assets/rc-logo-mark.png" alt="RC">
+        <div><div class="name">Rooks &amp; Castle</div><div class="tag">AI Automations Agency</div></div>
+      </div>
+      <p>Rooks &amp; Castle helps small businesses implement AI systems that answer calls, capture leads, and streamline operations. Based in the UK.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+        <a href="#" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="#">AI Front Desk</a></li><li><a href="#">Workflow Automation</a></li><li><a href="#">Team Training</a></li><li><a href="#">System Integration</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="#about">About Us</a></li><li><a href="#process">Our Process</a></li><li><a href="#">Case Studies</a></li><li><a href="#">Ethical Framework</a></li></ul></div>
+    <div class="footer-col"><h4>Industries</h4><ul><li><a href="industries.html">All Industries</a></li><li><a href="industries.html">Trades</a></li><li><a href="industries.html">Salon</a></li><li><a href="industries.html">Property</a></li></ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li></ul><div class="footer-contact"><span class="lbl">Email</span><br>hello@rooksandcastle.co.uk</div></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span>© 2026 Rooks &amp; Castle Ltd. All rights reserved.</span>
+      <span>🇬🇧 United Kingdom · GDPR Compliant · EU AI Act Compliant</span>
+      <span><a href="#">Sitemap</a> · <a href="#">Accessibility</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => document.getElementById('mainNav').classList.toggle('scrolled', scrollY > 60));
+const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const saved = localStorage.getItem('rc-home-scroll');
+if(saved) window.scrollTo(0, parseInt(saved));
+window.addEventListener('scroll', () => localStorage.setItem('rc-home-scroll', scrollY));
+</script>
+</body>
+</html>

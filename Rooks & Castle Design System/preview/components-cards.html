@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  body { background: var(--color-bg); margin: 0; padding: 24px; font-family: var(--font-body); }
+  .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 20px; }
+  .card-glass { background: rgba(26,26,26,0.6); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-lg); padding: 20px; }
+  .card-feature { background: var(--color-surface); border: 1px solid rgba(16,185,129,0.25); border-radius: var(--radius-xl); padding: 20px; box-shadow: var(--shadow-green); }
+  .icon { width: 36px; height: 36px; background: rgba(16,185,129,0.12); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+  .dot { width: 16px; height: 16px; border-radius: 3px; background: var(--color-green); opacity: 0.7; }
+  h4 { font-size: 15px; font-weight: 600; color: var(--color-text-primary); margin: 0 0 6px; }
+  p { font-size: 12px; color: var(--color-text-secondary); margin: 0; line-height: 1.6; }
+</style>
+</head><body>
+<div class="row">
+  <div class="card">
+    <div class="icon"><div class="dot"></div></div>
+    <h4>Standard Card</h4>
+    <p>Surface #1A1A1A · Border #2A2A2A · Radius 16px</p>
+  </div>
+  <div class="card-glass">
+    <div class="icon"><div class="dot"></div></div>
+    <h4>Glass Card</h4>
+    <p>backdrop-filter: blur(20px) · rgba(26,26,26,0.6)</p>
+  </div>
+  <div class="card-feature">
+    <div class="icon"><div class="dot"></div></div>
+    <h4>Feature Card</h4>
+    <p>Green border glow · box-shadow green · Radius 24px</p>
+  </div>
+</div>
+</body></html>

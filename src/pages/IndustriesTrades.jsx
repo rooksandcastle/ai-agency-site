@@ -34,8 +34,12 @@ const IndustriesTrades = () => (
             ].map(bullet)}
           </ul>
         </div>
-        <div className="rounded-3xl bg-white/5 border border-dashed border-white/15 h-64 flex items-center justify-center text-white/40 text-sm">
-          Image / workflow placeholder
+        <div className="rounded-3xl overflow-hidden h-64">
+          <img
+            src="/media/Industries/trades-ai-agent.png"
+            alt="Tradesman using AI voice agent to manage calls on the job"
+            className="w-full h-full object-cover object-top"
+          />
         </div>
       </Reveal>
 

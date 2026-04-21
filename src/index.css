@@ -1,144 +1,304 @@
-/* Premium Typography & Spacing */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* Manrope — local self-hosted */
+@font-face { font-family: 'Manrope'; src: url('/fonts/Manrope-ExtraLight.ttf') format('truetype'); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('/fonts/Manrope-Light.ttf') format('truetype'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('/fonts/Manrope-Regular.ttf') format('truetype'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('/fonts/Manrope-Medium.ttf') format('truetype'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('/fonts/Manrope-SemiBold.ttf') format('truetype'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('/fonts/Manrope-Bold.ttf') format('truetype'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('/fonts/Manrope-ExtraBold.ttf') format('truetype'); font-weight: 800; font-style: normal; font-display: swap; }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-}
-
+/* ── Design system tokens ───────────────────────────── */
 :root {
-  --accent: 245 158 11;
-  --accent-bg: rgba(245, 158, 11, 0.18);
-  --accent-border: rgba(245, 158, 11, 0.35);
-  --accent-text: #FDE68A;
-  --accent-glow: 0 0 24px rgba(245, 158, 11, 0.22);
+  /* Colours */
+  --color-bg:           #0F0F0F;
+  --color-surface:      #1A1A1A;
+  --color-surface-2:    #222222;
+  --color-border:       #2A2A2A;
+  --color-border-light: rgba(255,255,255,0.08);
+
+  --color-green:        #10B981;
+  --color-green-light:  #34D399;
+  --color-green-dark:   #059669;
+  --color-green-glow:   rgba(16, 185, 129, 0.25);
+  --color-green-email:  #2E7D52;
+
+  --color-text-primary:   #F9FAFB;
+  --color-text-secondary: #9CA3AF;
+  --color-text-tertiary:  #6B7280;
+  --color-text-inverse:   #0F0F0F;
+
+  /* Semantic */
+  --color-cta-bg:      var(--color-green);
+  --color-cta-hover:   var(--color-green-light);
+  --color-cta-pressed: var(--color-green-dark);
+  --color-cta-text:    var(--color-text-inverse);
+  --color-card-bg:     var(--color-surface);
+  --color-card-border: var(--color-border);
+  --color-nav-bg:      rgba(15, 15, 15, 0.85);
+  --color-nav-blur:    20px;
+
+  /* Shadows */
+  --shadow-card:      0 10px 40px rgba(0, 0, 0, 0.5);
+  --shadow-green:     0 0 20px rgba(16, 185, 129, 0.3);
+  --shadow-green-lg:  0 0 30px rgba(16, 185, 129, 0.4);
+  --shadow-green-xl:  0 0 40px rgba(16, 185, 129, 0.5);
+
+  /* Border radius */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-pill: 9999px;
+
+  /* Motion */
+  --duration-ui:      200ms;
+  --duration-reveal:  600ms;
+  --duration-ambient: 12000ms;
+  --ease-out:         cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-in-out:      cubic-bezier(0.4, 0.0, 0.2, 1);
+
+  /* Navigation green tokens (replaces previous --blue-* vars) */
+  --nav-active-text:   #34D399;
+  --nav-active-bg:     rgba(16, 185, 129, 0.10);
+  --nav-active-border: rgba(16, 185, 129, 0.30);
+  --nav-active-glow:   0 0 12px rgba(16, 185, 129, 0.25);
+  --nav-cta-bg:        #10B981;
+  --nav-cta-hover:     #34D399;
 }
 
-/* Custom radial gradient */
-.bg-radial-gradient {
-  background: radial-gradient(circle at center, var(--tw-gradient-stops));
+/* ── Base ───────────────────────────────────────────── */
+* {
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
 }
 
-/* Premium scrollbar styles */
-.scrollbar-thin {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(34, 197, 94, 0.6) #111827;
-}
-
-.scrollbar-thin::-webkit-scrollbar {
-  width: 8px;
-}
-
-.scrollbar-thin::-webkit-scrollbar-track {
-  background: #111827;
-  border-radius: 4px;
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb {
-  background: rgba(34, 197, 94, 0.6);
-  border-radius: 4px;
-  border: 1px solid #111827;
-}
-
-.scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: rgba(34, 197, 94, 0.8);
-}
-
-/* MacBook Pro optimizations */
-@media (min-width: 1400px) {
-  .container {
-    max-width: 1400px;
-  }
-}
-
-@media (min-width: 1600px) {
-  .container {
-    max-width: 1600px;
-  }
-}
-
-/* iPhone 15 Pro Max optimizations */
-@media (max-width: 430px) {
-  .text-hero-mobile {
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    line-height: 0.9;
-  }
-}
-
-/* Premium animations */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Enhanced glow effects */
-.glow-green {
-  box-shadow: 0 0 20px rgba(34, 197, 94, 0.3),
-              0 0 40px rgba(34, 197, 94, 0.2),
-              0 0 80px rgba(34, 197, 94, 0.1);
-}
-
-/* Smooth text rendering */
-
-video::-webkit-media-controls-overlay-play-button,
-video::-webkit-media-controls,
-video::-webkit-media-controls-enclosure,
-video::-webkit-media-controls-start-playback-button {
-  display: none !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-.ambient-video::-webkit-media-controls-panel,
-.ambient-video::-webkit-media-controls-play-button,
-.ambient-video::-webkit-media-controls-start-playback-button {
-  display: none !important;
-  -webkit-appearance: none;
-}
 body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-/* Premium button effects */
+/* ── Design system utility classes ─────────────────── */
+.t-display {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-size: clamp(2.5rem, 6vw, 6rem);
+}
+
+.t-h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+}
+
+.t-h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+}
+
+.t-h3 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.t-body {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.t-body-lg {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+.t-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.t-caption {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.t-gradient {
+  background: linear-gradient(135deg, var(--color-green), var(--color-green-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.glass {
+  background: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border-light);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.05) inset;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-cta-bg);
+  color: var(--color-cta-text);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: background var(--duration-ui) var(--ease-out), box-shadow var(--duration-ui) var(--ease-out), transform var(--duration-ui) var(--ease-out);
+}
+
+.btn-primary:hover {
+  background: var(--color-cta-hover);
+  box-shadow: var(--shadow-green-lg);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: var(--color-green-light);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: border-color var(--duration-ui) var(--ease-out), color var(--duration-ui) var(--ease-out);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-green);
+  color: var(--color-text-primary);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: var(--radius-pill);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: var(--color-green-light);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Scrollbar ──────────────────────────────────────── */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(16, 185, 129, 0.5) #1A1A1A;
+}
+.scrollbar-thin::-webkit-scrollbar { width: 8px; }
+.scrollbar-thin::-webkit-scrollbar-track { background: #1A1A1A; border-radius: 4px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(16, 185, 129, 0.5); border-radius: 4px; }
+.scrollbar-thin::-webkit-scrollbar-thumb:hover { background: rgba(16, 185, 129, 0.75); }
+
+/* ── Layout helpers ─────────────────────────────────── */
+.bg-radial-gradient {
+  background: radial-gradient(circle at center, var(--tw-gradient-stops));
+}
+
+.section-padding { padding-top: 5rem; padding-bottom: 5rem; }
+.section-padding-hero { padding-top: 8rem; padding-bottom: 8rem; }
+
+/* ── Container sizes ────────────────────────────────── */
+@media (min-width: 1400px) { .container { max-width: 1400px; } }
+@media (min-width: 1600px) { .container { max-width: 1600px; } }
+
+/* ── Animations ─────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+.animate-pulse-dot { animation: pulse-dot 1.8s ease-in-out infinite; }
+
+/* ── Glow ───────────────────────────────────────────── */
+.glow-green {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3),
+              0 0 40px rgba(16, 185, 129, 0.15),
+              0 0 80px rgba(16, 185, 129, 0.08);
+}
+
+/* ── Button shine effect ────────────────────────────── */
 .btn-premium {
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #10b981, #059669);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s var(--ease-out);
 }
-
 .btn-premium::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.6s;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transition: left 0.5s;
 }
+.btn-premium:hover::before { left: 100%; }
 
-.btn-premium:hover::before {
-  left: 100%;
-}
-
-/* Mobile menu optimizations */
+/* ── Mobile menu ────────────────────────────────────── */
 #mobile-menu {
   position: fixed !important;
-  top: 0 !important;
-  right: 0 !important;
-  bottom: 0 !important;
+  top: 0 !important; right: 0 !important; bottom: 0 !important;
   z-index: 9999 !important;
-  height: 100vh !important;
-  width: 100% !important;
+  height: 100vh !important; width: 100% !important;
   backdrop-filter: blur(20px);
+}
+
+/* ── Hide video controls ────────────────────────────── */
+video::-webkit-media-controls-overlay-play-button,
+video::-webkit-media-controls,
+video::-webkit-media-controls-enclosure,
+video::-webkit-media-controls-start-playback-button { display: none !important; opacity: 0 !important; pointer-events: none !important; }
+.ambient-video::-webkit-media-controls-panel,
+.ambient-video::-webkit-media-controls-play-button,
+.ambient-video::-webkit-media-controls-start-playback-button { display: none !important; -webkit-appearance: none; }
+
+/* ── iPhone 15 Pro Max hero text ────────────────────── */
+@media (max-width: 430px) {
+  .text-hero-mobile { font-size: clamp(2.5rem, 8vw, 4rem); line-height: 0.9; }
 }

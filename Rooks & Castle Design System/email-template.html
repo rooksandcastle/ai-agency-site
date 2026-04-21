@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Rooks & Castle — Email Template</title>
+<style>
+  /* ── RESET ── */
+  body,table,td,a{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+  table,td{mso-table-lspace:0pt;mso-table-rspace:0pt;}
+  img{-ms-interpolation-mode:bicubic;border:0;line-height:100%;outline:none;text-decoration:none;}
+  body{margin:0!important;padding:0!important;background-color:#0a0a0a;font-family:Manrope,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;}
+  
+  /* ── WRAPPER ── */
+  .email-wrapper{background:#0a0a0a;padding:40px 20px;}
+  .email-container{max-width:600px;margin:0 auto;}
+  
+  /* ── HEADER ── */
+  .header{background:#0F0F0F;border:1px solid #1e1e1e;border-bottom:none;border-radius:16px 16px 0 0;padding:28px 36px;text-align:left;}
+  .header-inner{display:flex;align-items:center;gap:12px;}
+  .logo-area{display:inline-flex;align-items:center;gap:12px;}
+  .logo-name{font-size:17px;font-weight:700;color:#f9fafb;letter-spacing:-.01em;}
+  .logo-tag{font-size:9px;text-transform:uppercase;letter-spacing:.35em;color:rgba(255,255,255,0.4);}
+  
+  /* ── GREEN BANNER ── */
+  .green-banner{background:linear-gradient(135deg,#2E7D52 0%,#1a5c3a 100%);padding:20px 36px;display:flex;align-items:center;justify-content:space-between;}
+  .banner-text{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,0.9);}
+  .banner-dot{width:8px;height:8px;background:#1FF1A7;border-radius:50%;display:inline-block;margin-right:8px;}
+  
+  /* ── BODY ── */
+  .email-body{background:#111;border:1px solid #1e1e1e;border-top:none;padding:40px 36px;}
+  .greeting{font-size:15px;font-weight:400;color:#9CA3AF;margin-bottom:28px;line-height:1.6;}
+  .headline{font-size:28px;font-weight:800;color:#f9fafb;line-height:1.2;letter-spacing:-.02em;margin-bottom:20px;}
+  .headline em{font-style:normal;color:#34D399;}
+  .body-text{font-size:15px;font-weight:300;color:#9CA3AF;line-height:1.8;margin-bottom:18px;}
+  .body-text strong{color:#f9fafb;font-weight:600;}
+  
+  /* ── DIVIDER ── */
+  .divider{border:none;border-top:1px solid #1e1e1e;margin:28px 0;}
+  
+  /* ── FEATURE LIST ── */
+  .feature-list{list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:12px;}
+  .feature-item{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:#9CA3AF;line-height:1.6;}
+  .feature-dot{flex-shrink:0;width:20px;height:20px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+  .feature-dot svg{width:10px;height:10px;stroke:#34D399;stroke-width:2.5;fill:none;}
+  .feature-item strong{color:#f9fafb;font-weight:600;}
+  
+  /* ── STAT ROW ── */
+  .stat-row{background:#0F0F0F;border:1px solid #1e1e1e;border-radius:12px;padding:20px 24px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:28px 0;text-align:center;}
+  .stat-num{font-size:24px;font-weight:900;color:#34D399;letter-spacing:-.02em;}
+  .stat-label{font-size:11px;color:#6B7280;margin-top:3px;font-weight:500;}
+  
+  /* ── CTA BUTTON ── */
+  .cta-wrap{text-align:center;margin:32px 0 8px;}
+  .cta-btn{display:inline-block;padding:14px 36px;background:linear-gradient(135deg,#10B981,#059669);color:#0F0F0F!important;font-size:15px;font-weight:700;text-decoration:none;border-radius:12px;letter-spacing:-.01em;}
+  .cta-sub{text-align:center;font-size:12px;color:#6B7280;margin-top:10px;}
+  
+  /* ── FOOTER ── */
+  .email-footer{background:#0F0F0F;border:1px solid #1e1e1e;border-top:none;border-radius:0 0 16px 16px;padding:24px 36px;}
+  .sig-name{font-size:15px;font-weight:700;color:#f9fafb;}
+  .sig-title{font-size:12px;color:#6B7280;margin-top:2px;}
+  .sig-divider{border:none;border-top:1px solid #1e1e1e;margin:16px 0;}
+  .sig-logo-row{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;background:#111;border:1px solid #1e1e1e;border-radius:10px;}
+  .sig-logo-name{font-size:13px;font-weight:700;color:#f9fafb;}
+  .sig-logo-tag{font-size:8px;text-transform:uppercase;letter-spacing:.3em;color:rgba(255,255,255,0.35);}
+  .sig-contact{font-size:12px;color:#6B7280;margin-top:14px;line-height:1.8;}
+  .sig-contact a{color:#34D399;text-decoration:none;}
+  .legal{font-size:11px;color:#4B5563;margin-top:20px;line-height:1.7;border-top:1px solid #1a1a1a;padding-top:16px;}
+
+  /* ── PREVIEW CHROME ── */
+  .preview-label{text-align:center;font-size:11px;font-family:monospace;color:#4B5563;margin-bottom:16px;letter-spacing:.05em;text-transform:uppercase;}
+</style>
+</head>
+<body>
+<div class="email-wrapper">
+  <div class="preview-label">📧 Rooks &amp; Castle — Client Outreach Email Template</div>
+  <div class="email-container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="logo-area">
+        <img src="../../assets/rc-logo-mark.png" alt="RC" width="44" height="44" style="border-radius:6px;background:#0a0a0a;">
+        <div>
+          <div class="logo-name">Rooks &amp; Castle</div>
+          <div class="logo-tag">AI Automations Agency</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GREEN BANNER -->
+    <div class="green-banner">
+      <span class="banner-text"><span class="banner-dot"></span>Free Strategy Call — No Obligation</span>
+      <span style="font-size:11px;color:rgba(255,255,255,0.6);font-weight:500;">Limited availability</span>
+    </div>
+
+    <!-- BODY -->
+    <div class="email-body">
+      <p class="greeting">Hi [First Name],</p>
+      <h1 class="headline">Stop losing customers<br>to <em>missed calls</em></h1>
+      <p class="body-text">I noticed [Company Name] is doing great work in [sector/area] — but like most [trades/salons/restaurants], you're probably missing calls when you're busy, after hours, or simply can't get to the phone.</p>
+      <p class="body-text">We install an <strong>AI phone system</strong> that answers every call, books appointments, and captures leads 24/7 — for less than the cost of a part-time shift per week.</p>
+      
+      <hr class="divider">
+      
+      <ul class="feature-list">
+        <li class="feature-item">
+          <div class="feature-dot"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <span><strong>24/7 coverage</strong> — every call answered, even at 2am on a Sunday</span>
+        </li>
+        <li class="feature-item">
+          <div class="feature-dot"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <span><strong>Bookings automated</strong> — syncs directly with your calendar</span>
+        </li>
+        <li class="feature-item">
+          <div class="feature-dot"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <span><strong>Guaranteed ROI</strong> — we calculate your return before we start</span>
+        </li>
+        <li class="feature-item">
+          <div class="feature-dot"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <span><strong>Live in 2–4 weeks</strong> — no long contracts, no upfront fee</span>
+        </li>
+      </ul>
+
+      <!-- STATS -->
+      <div class="stat-row">
+        <div><div class="stat-num">95%</div><div class="stat-label">Team adoption rate</div></div>
+        <div><div class="stat-num">15h+</div><div class="stat-label">Saved per week</div></div>
+        <div><div class="stat-num">24/7</div><div class="stat-label">Always on</div></div>
+      </div>
+
+      <p class="body-text">I'd love to show you a quick demo tailored to [Company Name] — takes 20 minutes and you'll leave with a clear picture of what's possible.</p>
+
+      <!-- CTA -->
+      <div class="cta-wrap">
+        <a href="https://rooksandcastle.co.uk/book" class="cta-btn">Book your free 20-minute call →</a>
+        <p class="cta-sub">No pressure. No commitment. Just a clear picture of what's possible.</p>
+      </div>
+    </div>
+
+    <!-- FOOTER / SIGNATURE -->
+    <div class="email-footer">
+      <div class="sig-name">[Your Name]</div>
+      <div class="sig-title">Founder · Rooks &amp; Castle</div>
+      <hr class="sig-divider">
+      <div class="sig-logo-row">
+        <img src="../../assets/rc-logo-mark.png" alt="RC" width="32" height="32" style="border-radius:4px;background:#0a0a0a;">
+        <div>
+          <div class="sig-logo-name">Rooks &amp; Castle</div>
+          <div class="sig-logo-tag">AI Automations Agency</div>
+        </div>
+      </div>
+      <div class="sig-contact">
+        <a href="mailto:hello@rooksandcastle.co.uk">hello@rooksandcastle.co.uk</a><br>
+        <a href="https://rooksandcastle.co.uk">rooksandcastle.co.uk</a><br>
+        United Kingdom
+      </div>
+      <div class="legal">
+        You're receiving this because [reason — e.g. we connected on LinkedIn / you opted in at X]. 
+        <a href="#" style="color:#4B5563;text-decoration:underline;">Unsubscribe</a> at any time.<br>
+        Rooks &amp; Castle Ltd · Registered in England &amp; Wales
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
