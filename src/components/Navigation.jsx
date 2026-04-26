@@ -23,7 +23,7 @@ const Navigation = ({ onCalendlyClick }) => {
       type: 'dropdown',
       links: [
         { label: 'Overview', href: '/solutions', description: 'Full systems playbook' },
-        { label: 'AI Desk', href: '/solutions/ai-desk', description: '24/7 receptionist' },
+        { label: 'AI Desk', href: '/ai-front-desk', description: '24/7 receptionist' },
         { label: 'Systems', href: '/solutions/systems', description: 'Get Found / Chosen / Paid' },
       ],
     },

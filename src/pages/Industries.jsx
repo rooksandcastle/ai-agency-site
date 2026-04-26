@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
 import GlowButton from '../components/motion/GlowButton';
 import Reveal from '../components/motion/Reveal';
+import VisualPanel from '../components/VisualPanel';
 
 const industries = [
   {
     title: 'Hospitality',
     subtitle: 'Hotels & Guest Services',
     tag: 'HOSPITALITY',
-    image: '/media/Industries/industry-reception.png',
     description:
       'Automated reservation handling, guest FAQ, check-in coordination, and review requests.',
     features: [
@@ -24,7 +24,6 @@ const industries = [
     title: 'Beauty & Wellness',
     subtitle: 'Salons & Barbers',
     tag: 'BEAUTY & WELLNESS',
-    image: '/media/Industries/industry-salon.png',
     description:
       'Online & phone booking, appointment reminders, cancellation handling, and loyalty follow-ups.',
     features: [
@@ -39,7 +38,6 @@ const industries = [
     title: 'Restaurants & Cafés',
     subtitle: null,
     tag: 'RESTAURANTS',
-    image: '/media/Industries/industry-restaurant.png',
     description:
       'Reservation & table management, dietary enquiries, event bookings, and review requests.',
     features: [
@@ -54,7 +52,6 @@ const industries = [
     title: 'Property & Co-hosting',
     subtitle: 'Estate Agents & Short-Let',
     tag: 'PROPERTY',
-    image: '/media/Industries/industry-property.png',
     description:
       'Viewing bookings, tenant & guest communication, Airbnb management, and maintenance routing.',
     features: [
@@ -69,7 +66,6 @@ const industries = [
     title: 'Dental & Healthcare',
     subtitle: null,
     tag: 'HEALTHCARE',
-    image: '/media/Industries/industry-dental.png',
     description:
       'New patient registration, appointment reminders & recalls, treatment enquiries, and GDPR compliance.',
     features: [
@@ -84,7 +80,6 @@ const industries = [
     title: 'Trades & Home Services',
     subtitle: null,
     tag: 'TRADES',
-    image: '/media/Industries/industry-trades.png',
     description:
       'Call capture for busy tradespeople, quote follow-ups, job scheduling, and out-of-hours coverage.',
     features: [
@@ -105,16 +100,12 @@ const IndustryCard = ({ industry, index }) => (
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
       {/* Image with gradient overlay */}
-      <div className="relative h-[280px] overflow-hidden">
-        <img
-          src={industry.image}
-          alt={industry.title}
-          className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
-        {/* Gradient overlay for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-      </div>
+      <VisualPanel
+        title={industry.title}
+        subtitle={industry.subtitle || industry.tag}
+        tone={index % 3 === 0 ? 'emerald' : index % 3 === 1 ? 'cyan' : 'violet'}
+        className="h-[280px] rounded-none border-x-0 border-t-0 group-hover:brightness-110 transition-[filter] duration-300"
+      />
 
       {/* Card content */}
       <div className="p-5 flex flex-col flex-1 space-y-3">

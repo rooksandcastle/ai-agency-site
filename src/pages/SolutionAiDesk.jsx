@@ -2,6 +2,7 @@ import React from 'react';
 import GlowButton from '../components/motion/GlowButton';
 import Reveal from '../components/motion/Reveal';
 import Navigation from '../components/Navigation';
+import VisualPanel from '../components/VisualPanel';
 
 const Section = ({ title, children }) => (
   <Reveal className="bg-brand-surface/80 border border-white/5 rounded-3xl p-8 space-y-4">
@@ -25,13 +26,12 @@ const SolutionAiDesk = () => {
             </p>
             <GlowButton as="a" href="/contact">Book a consultation</GlowButton>
           </div>
-          <div className="w-full h-72 rounded-2xl overflow-hidden">
-            <img
-              src="/media/ai-dashboard.webp"
-              alt="AI Desk dashboard"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
+          <VisualPanel
+            title="AI Desk dashboard"
+            subtitle="Capture, route, and follow up from one system"
+            tone="emerald"
+            className="w-full h-72"
+          />
         </Reveal>
 
         <Section title="The Problem & Solution">
@@ -45,13 +45,12 @@ const SolutionAiDesk = () => {
               <p className="text-text-secondary text-sm">AI Desk answers instantly, captures detail, and hands over qualified leads with context.</p>
             </div>
           </div>
-          <div className="w-full h-64 rounded-2xl overflow-hidden">
-            <img
-              src="/media/thinker.webp"
-              alt="Problem and solution"
-              className="w-full h-full object-cover object-top"
-            />
-          </div>
+          <VisualPanel
+            title="Problem to solution"
+            subtitle="From missed calls to structured lead handling"
+            tone="cyan"
+            className="w-full h-64"
+          />
         </Section>
 
         <Section title="Features">
@@ -62,13 +61,12 @@ const SolutionAiDesk = () => {
               </div>
             ))}
           </div>
-          <div className="w-full h-64 rounded-2xl overflow-hidden">
-            <img
-              src="/media/ai-network.webp"
-              alt="AI network features"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
+          <VisualPanel
+            title="Feature network"
+            subtitle="Call flows, scheduling, and CRM sync"
+            tone="violet"
+            className="w-full h-64"
+          />
         </Section>
 
         <Section title="Use cases">
@@ -80,13 +78,12 @@ const SolutionAiDesk = () => {
               </li>
             ))}
           </ul>
-          <div className="w-full h-64 rounded-2xl overflow-hidden">
-            <img
-              src="/media/Abstract/ai-creation.jpg"
-              alt="AI and human collaboration"
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
+          <VisualPanel
+            title="AI + human collaboration"
+            subtitle="Designed to support your team, not replace it"
+            tone="amber"
+            className="w-full h-64"
+          />
         </Section>
 
         <Reveal className="text-center space-y-4">

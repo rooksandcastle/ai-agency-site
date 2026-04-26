@@ -15,7 +15,6 @@ import CalendlyBooking from './components/CalendlyBooking';
 // Pages
 import CallCaptureHome from './pages/CallCaptureHome';
 import SolutionsOverview from './pages/Services';
-import SolutionAiDesk from './pages/SolutionAiDesk';
 import SolutionSystems from './pages/SolutionSystems';
 import Industries from './pages/Industries';
 import IndustriesTrades from './pages/IndustriesTrades';
@@ -27,6 +26,8 @@ import AboutTechStack from './pages/AboutTechStack';
 import Research from './pages/Research';
 import Contact from './pages/Contact';
 import AiFrontDesk from './pages/AiFrontDesk';
+import Privacy from './pages/Privacy';
+import Accessibility from './pages/Accessibility';
 import AppFooter from './components/AppFooter';
 // import Homepage from './pages/Homepage';
 // import WhatWeThinkPageFixed from './pages/WhatWeThinkPageFixed';
@@ -1405,7 +1406,7 @@ const App = () => {
           <Route path="/" element={<CallCaptureHome />} />
           <Route path="/solutions" element={<SolutionsOverview />} />
           <Route path="/services" element={<SolutionsOverview />} />
-          <Route path="/solutions/ai-desk" element={<SolutionAiDesk />} />
+          <Route path="/solutions/ai-desk" element={<AiFrontDesk />} />
           <Route path="/solutions/systems" element={<SolutionSystems />} />
           <Route path="/industries" element={<Industries />} />
           <Route path="/industries/trades" element={<IndustriesTrades />} />
@@ -1417,6 +1418,8 @@ const App = () => {
           <Route path="/research" element={<Research />} />
           <Route path="/ai-front-desk" element={<AiFrontDesk />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/accessibility" element={<Accessibility />} />
         </Routes>
         <AppFooter />
       </>

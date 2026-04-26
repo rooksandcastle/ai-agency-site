@@ -2,16 +2,20 @@ import React from 'react';
 import GlowButton from '../components/motion/GlowButton';
 import Reveal from '../components/motion/Reveal';
 import Navigation from '../components/Navigation';
+import VisualPanel from '../components/VisualPanel';
 
-const SystemBlock = ({ title, description, align = 'left', image, imageAlt }) => (
+const SystemBlock = ({ title, description, align = 'left', tone = 'emerald' }) => (
   <Reveal className={`grid md:grid-cols-2 gap-10 items-center ${align === 'right' ? 'md:flex-row-reverse' : ''}`}>
     <div className="space-y-3">
       <h2 className="text-3xl font-semibold text-white">{title}</h2>
       <p className="text-text-secondary text-sm">{description}</p>
     </div>
-    <div className="w-full h-64 rounded-3xl overflow-hidden">
-      <img src={image} alt={imageAlt} className="w-full h-full object-cover object-top" />
-    </div>
+    <VisualPanel
+      title={title}
+      subtitle="Structured systems tailored to your business"
+      tone={tone}
+      className="w-full h-64"
+    />
   </Reveal>
 );
 
@@ -31,21 +35,18 @@ const SolutionSystems = () => (
         <SystemBlock
           title="Get Found"
           description="Landing pages, listings, and local SEO tuned so people find you first."
-          image="/media/Abstract/ai-creation.jpg"
-          imageAlt="AI connecting with businesses to get found online"
+          tone="emerald"
         />
         <SystemBlock
           title="Get Chosen"
           description="Proof, follow-up, and trust builders that keep enquiries warm."
           align="right"
-          image="/media/Industries/property-ai-agent.png"
-          imageAlt="AI voice agent helping property business get chosen"
+          tone="cyan"
         />
         <SystemBlock
           title="Get Paid"
           description="Automated quoting, reminders, and payment nudges tied into your workflows."
-          image="/media/Industries/welcome-ai-agent.png"
-          imageAlt="AI agent managing bookings and payments"
+          tone="violet"
         />
       </div>
 

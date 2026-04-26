@@ -2,6 +2,7 @@ import React from 'react';
 import Navigation from '../components/Navigation';
 import GlowButton from '../components/motion/GlowButton';
 import Reveal from '../components/motion/Reveal';
+import VisualPanel from '../components/VisualPanel';
 
 const IndustriesRestaurants = () => (
   <div className="min-h-screen bg-brand-bg text-text-primary">
@@ -31,13 +32,12 @@ const IndustriesRestaurants = () => (
             <p>Helps guests confirm dietary notes, deposits, and private dining requests without staff interruption.</p>
           </div>
         </div>
-        <div className="h-64 rounded-3xl overflow-hidden">
-          <img
-            src="/media/Industries/restaurant-ai-agent.png"
-            alt="Restaurant AI voice agent handling bookings and reservations"
-            className="w-full h-full object-cover object-top"
-          />
-        </div>
+        <VisualPanel
+          title="Reservation-ready AI desk"
+          subtitle="Bookings, dietary notes, and guest follow-up"
+          tone="amber"
+          className="h-64"
+        />
       </Reveal>
 
       <Reveal className="text-center space-y-4">

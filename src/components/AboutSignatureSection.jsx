@@ -1,4 +1,5 @@
 import React from 'react';
+import VisualPanel from './VisualPanel';
 
 const AboutSignatureSection = ({ className = '' }) => (
   <div className={`grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] items-center ${className}`}>
@@ -33,14 +34,12 @@ const AboutSignatureSection = ({ className = '' }) => (
       <p className="text-xs text-text-secondary/80">Best fit: trades, property teams, clinics, and hospitality.</p>
     </div>
 
-    <div className="relative h-full min-h-[240px] rounded-2xl border border-white/10 overflow-hidden">
-      <img
-        src="/media/About/generated-image.webp"
-        alt="AI connecting businesses and people"
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0f2d24]/40 via-transparent to-[#04150f]/40 pointer-events-none" aria-hidden="true" />
-    </div>
+    <VisualPanel
+      title="Built for real operations"
+      subtitle="Clarity, trust, and practical systems that scale with your team"
+      tone="emerald"
+      className="h-full min-h-[240px]"
+    />
   </div>
 );
 

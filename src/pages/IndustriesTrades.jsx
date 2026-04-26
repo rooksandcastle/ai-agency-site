@@ -2,6 +2,7 @@ import React from 'react';
 import GlowButton from '../components/motion/GlowButton';
 import Reveal from '../components/motion/Reveal';
 import Navigation from '../components/Navigation';
+import VisualPanel from '../components/VisualPanel';
 
 const bullet = (copy) => (
   <li key={copy} className="flex gap-3 text-sm text-text-secondary">
@@ -34,13 +35,12 @@ const IndustriesTrades = () => (
             ].map(bullet)}
           </ul>
         </div>
-        <div className="rounded-3xl overflow-hidden h-64">
-          <img
-            src="/media/Industries/trades-ai-agent.png"
-            alt="Tradesman using AI voice agent to manage calls on the job"
-            className="w-full h-full object-cover object-top"
-          />
-        </div>
+        <VisualPanel
+          title="Trades call capture"
+          subtitle="AI support while your team is on-site"
+          tone="emerald"
+          className="h-64"
+        />
       </Reveal>
 
       <Reveal className="grid md:grid-cols-2 gap-6">

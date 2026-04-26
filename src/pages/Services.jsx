@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import GlowButton from '../components/motion/GlowButton';
 import Reveal from '../components/motion/Reveal';
@@ -57,6 +58,7 @@ const serviceBlocks = [
 ];
 
 const SolutionsOverview = () => {
+  const navigate = useNavigate();
   const calendlyLink = 'https://calendly.com/rooksandcastle101/30min';
 
   const handleCalendly = () => {
@@ -69,9 +71,11 @@ const SolutionsOverview = () => {
       <main className="pt-24 pb-16">
         <section className="max-w-6xl mx-auto px-6 md:px-10 text-center space-y-5 mb-14">
           <Reveal>
-            <h1 className="text-4xl sm:text-[46px] font-bold leading-tight">Services built for busy owners</h1>
-            <p className="text-text-secondary text-lg max-w-3xl mx-auto">
-              We handle the tech and marketing setup end-to-end — you focus on the work.
+            <p className="text-xs tracking-[0.35em] uppercase text-premium-green">Solutions</p>
+            <h1 className="text-4xl sm:text-[46px] font-bold leading-tight font-display">Systems built for busy owners</h1>
+            <p className="text-text-secondary text-lg max-w-3xl mx-auto leading-relaxed">
+              Calm, practical AI systems that help you get found, get chosen, and get paid
+              without adding complexity for your team.
             </p>
             <CTAButton onClick={handleCalendly} className="inline-flex justify-center">
               Book a free consultation
@@ -80,24 +84,28 @@ const SolutionsOverview = () => {
         </section>
 
         <section className="max-w-6xl mx-auto px-6 md:px-10 space-y-10">
-          <Reveal className="bg-brand-surface/80 border border-premium-green/30 rounded-2xl p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <Reveal className="bg-brand-surface/80 border border-premium-green/30 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="flex items-start gap-4">
               <Icons.Call className="w-8 h-8 text-premium-green" />
               <div className="text-left">
                 <p className="text-xs tracking-[0.4em] uppercase text-premium-green">{featuredAiService.label}</p>
-                <h3 className="text-2xl font-semibold text-white mt-1">{featuredAiService.title}</h3>
-                <p className="text-sm text-text-secondary mt-2">
+                <h3 className="text-2xl font-semibold text-white mt-1 font-display">{featuredAiService.title}</h3>
+                <p className="text-sm text-text-secondary mt-2 leading-relaxed">
                   {featuredAiService.headline} Learn how it works for your business in our detailed overview.
                 </p>
               </div>
             </div>
-            <CTAButton variant="secondary" onClick={() => window.location.assign('/ai-front-desk')}>
+            <CTAButton variant="secondary" onClick={() => navigate('/ai-front-desk')}>
               View AI Front Desk
             </CTAButton>
           </Reveal>
 
-          <div className="text-center">
-            <h2 className="text-3xl font-bold mb-2">Three simple systems</h2>
+          <div className="text-center space-y-3">
+            <h2 className="text-3xl font-bold mb-2 font-display">Three simple systems</h2>
+            <p className="text-text-secondary max-w-2xl mx-auto">
+              Pick the area that hurts most right now. We can deploy one system first,
+              then layer in the others as you grow.
+            </p>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {serviceBlocks.map((system, idx) => {
@@ -106,26 +114,26 @@ const SolutionsOverview = () => {
                 <Reveal
                   key={system.title}
                   delay={idx * 0.05}
-                  className="bg-brand-surface/80 border border-brand-border rounded-2xl p-6 flex flex-col hover:-translate-y-1 transition-transform duration-300"
+                  className="bg-brand-surface/85 border border-brand-border rounded-3xl p-6 flex flex-col hover:-translate-y-1 transition-transform duration-300"
                 >
-                  <div className="flex items-center gap-3 text-premium-green mb-3">
+                  <div className="flex items-center gap-3 text-premium-green mb-4">
                     <ServiceIcon className="w-5 h-5 text-premium-green" />
-                    <p className="text-xs tracking-[0.35em] uppercase text-white/60">{system.title}</p>
+                    <p className="text-xs tracking-[0.32em] uppercase text-white/60">{system.title}</p>
                   </div>
-                <ul className="text-text-secondary text-sm space-y-2 flex-1">
-                  {system.bullets.map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span className="w-1.5 h-1.5 mt-2 rounded-full bg-premium-green" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={handleCalendly}
-                  className="mt-5 text-sm font-semibold text-premium-green hover:text-premium-green-light transition-colors inline-flex items-center gap-2"
-                >
-                  {system.cta}
-                </button>
+                  <ul className="text-text-secondary text-sm space-y-2.5 flex-1 leading-relaxed">
+                    {system.bullets.map((item) => (
+                      <li key={item} className="flex gap-2.5">
+                        <span className="w-1.5 h-1.5 mt-2 rounded-full bg-premium-green" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <button
+                    onClick={handleCalendly}
+                    className="mt-5 text-sm font-semibold text-premium-green hover:text-premium-green-light transition-colors inline-flex items-center gap-2"
+                  >
+                    {system.cta}
+                  </button>
                 </Reveal>
               );
             })}
@@ -133,7 +141,7 @@ const SolutionsOverview = () => {
         </section>
 
         <section className="max-w-4xl mx-auto px-6 md:px-10 mt-16 bg-brand-surface/80 border border-brand-border rounded-3xl p-8 text-center">
-          <h3 className="text-3xl font-bold mb-4">Not sure where to start?</h3>
+          <h3 className="text-3xl font-bold mb-4 font-display">Not sure where to start?</h3>
           <p className="text-text-secondary mb-6">
             Book a free consultation and we'll recommend the simplest next step.
           </p>

@@ -8,7 +8,7 @@ export default function Hero() {
         Welcome to AI Agency
       </motion.h1>
       <p className="mt-4 text-lg">We help businesses adopt AI successfully.</p>
-      <a href="/bookings" className="mt-6 inline-block px-6 py-3 bg-blue-600 text-white rounded-xl">
+      <a href="/contact" className="mt-6 inline-block px-6 py-3 bg-blue-600 text-white rounded-xl">
         Book a Consultation
       </a>
     </section>

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import Navigation from "../components/Navigation";
+import VisualPanel from "../components/VisualPanel";
 
 // ---------------------------------------------------------------------------
 // Reusable button component
@@ -334,17 +335,13 @@ const CallCaptureHome = () => {
             EDITORIAL STRIP 1 — Bellhop / 24/7 promise
         ================================================================ */}
         <div className="relative h-[420px] overflow-hidden">
-          <img
-            src="/media/carousel-bellhop.png"
-            alt="Hospitality AI"
-            className="w-full h-full object-cover object-center"
-            style={{ filter: 'brightness(0.45) saturate(0.5)' }}
-            loading="lazy"
+          <VisualPanel
+            title="Your business is now open 24/7"
+            subtitle="Always-on call coverage for busy service teams"
+            tone="emerald"
+            className="h-full rounded-none border-0"
           />
-          <div
-            className="absolute inset-0"
-            style={{ background: 'linear-gradient(90deg, rgba(8,12,9,0.95) 0%, rgba(8,12,9,0.4) 50%, rgba(8,12,9,0.8) 100%)' }}
-          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,12,9,0.92)_0%,rgba(8,12,9,0.45)_50%,rgba(8,12,9,0.85)_100%)]" />
           <div className="absolute inset-0 flex items-center px-10 sm:px-20">
             <div className="max-w-[560px]">
               <p
@@ -364,15 +361,12 @@ const CallCaptureHome = () => {
             SPLIT ROW 1 — Why AI / Dials (image left, content right)
         ================================================================ */}
         <div className="grid md:grid-cols-2 min-h-[480px]">
-          <div className="overflow-hidden min-h-[300px] md:min-h-0">
-            <img
-              src="/media/carousel-dials.png"
-              alt="Control systems"
-              className="w-full h-full object-cover object-center transition-[filter] duration-[600ms] hover:brightness-75"
-              style={{ filter: 'brightness(0.65) saturate(0.6)' }}
-              loading="lazy"
-            />
-          </div>
+          <VisualPanel
+            title="Control without complexity"
+            subtitle="Systems built around your day-to-day workflow"
+            tone="cyan"
+            className="min-h-[300px] md:min-h-0 h-full rounded-none border-y-0 border-l-0"
+          />
           <div
             className="flex flex-col justify-center px-10 sm:px-14 py-16"
             style={{ background: '#121a13' }}
@@ -492,32 +486,25 @@ const CallCaptureHome = () => {
               View all industries →
             </a>
           </div>
-          <div className="overflow-hidden min-h-[300px] md:min-h-0 order-1 md:order-2">
-            <img
-              src="/media/carousel-falling.png"
-              alt="Abstract motion"
-              className="w-full h-full object-cover object-center transition-[filter] duration-[600ms] hover:brightness-75"
-              style={{ filter: 'brightness(0.65) saturate(0.6)' }}
-              loading="lazy"
-            />
-          </div>
+          <VisualPanel
+            title="Human-first automation"
+            subtitle="Practical AI that your team actually uses"
+            tone="violet"
+            className="order-1 md:order-2 min-h-[300px] md:min-h-0 h-full rounded-none border-y-0 border-r-0"
+          />
         </div>
 
         {/* ================================================================
             EDITORIAL STRIP 2 — Child phone / final quote
         ================================================================ */}
         <div className="relative h-[420px] overflow-hidden">
-          <img
-            src="/media/carousel-child-phone.png"
-            alt="Communication"
-            className="w-full h-full object-cover object-center"
-            style={{ filter: 'brightness(0.45) saturate(0.5)' }}
-            loading="lazy"
+          <VisualPanel
+            title="Every lead gets handled"
+            subtitle="No missed calls, no dropped enquiries"
+            tone="amber"
+            className="h-full rounded-none border-0"
           />
-          <div
-            className="absolute inset-0"
-            style={{ background: 'linear-gradient(90deg, rgba(8,12,9,0.95) 0%, rgba(8,12,9,0.4) 50%, rgba(8,12,9,0.8) 100%)' }}
-          />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,12,9,0.95)_0%,rgba(8,12,9,0.4)_50%,rgba(8,12,9,0.8)_100%)]" />
           <div className="absolute inset-0 flex items-center justify-end px-10 sm:px-20">
             <div className="max-w-[560px] text-right">
               <p
