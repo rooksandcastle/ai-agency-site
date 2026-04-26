@@ -4,31 +4,22 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import brandLogo from './brand/rooks-castle-mark.svg';
 
-// Premium Components
-import PremiumHero from './components/PremiumHero';
-import ModernNavigation from './components/ModernNavigation';
-import EnhancedProcess from './components/EnhancedProcess';
-import ImprovedAssessment from './components/ImprovedAssessment';
-import ComprehensiveFooter from './components/ComprehensiveFooter';
-import CalendlyBooking from './components/CalendlyBooking';
-
 // Pages
 import CallCaptureHome from './pages/CallCaptureHome';
 import SolutionsOverview from './pages/Services';
-import SolutionSystems from './pages/SolutionSystems';
 import Industries from './pages/Industries';
 import IndustriesTrades from './pages/IndustriesTrades';
-import IndustriesProperty from './pages/IndustriesProperty';
-import IndustriesRestaurants from './pages/IndustriesRestaurants';
-import About from './pages/About';
-import AboutProcess from './pages/AboutProcess';
-import AboutTechStack from './pages/AboutTechStack';
-import Research from './pages/Research';
-import Contact from './pages/Contact';
+import IndustriesSalons from './pages/IndustriesSalons';
+import IndustriesConsultants from './pages/IndustriesConsultants';
 import AiFrontDesk from './pages/AiFrontDesk';
+import WorkflowAutomation from './pages/WorkflowAutomation';
+import SmartFollowUp from './pages/SmartFollowUp';
 import Privacy from './pages/Privacy';
 import Accessibility from './pages/Accessibility';
+import Contact from './pages/Contact';
+import Research from './pages/Research';
 import AppFooter from './components/AppFooter';
+import ContactFloater from './components/ContactFloater';
 // import Homepage from './pages/Homepage';
 // import WhatWeThinkPageFixed from './pages/WhatWeThinkPageFixed';
 // import WhoWeArePageFixed from './pages/WhoWeArePageFixed';
@@ -1404,24 +1395,26 @@ const App = () => {
       <>
         <Routes>
           <Route path="/" element={<CallCaptureHome />} />
-          <Route path="/solutions" element={<SolutionsOverview />} />
+          {/* Services */}
           <Route path="/services" element={<SolutionsOverview />} />
-          <Route path="/solutions/ai-desk" element={<AiFrontDesk />} />
-          <Route path="/solutions/systems" element={<SolutionSystems />} />
+          <Route path="/services/ai-front-desk" element={<AiFrontDesk />} />
+          <Route path="/services/workflow-automation" element={<WorkflowAutomation />} />
+          <Route path="/services/smart-follow-up" element={<SmartFollowUp />} />
+          {/* Legacy aliases */}
+          <Route path="/ai-front-desk" element={<AiFrontDesk />} />
+          {/* Industries */}
           <Route path="/industries" element={<Industries />} />
           <Route path="/industries/trades" element={<IndustriesTrades />} />
-          <Route path="/industries/property" element={<IndustriesProperty />} />
-          <Route path="/industries/restaurants" element={<IndustriesRestaurants />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/about/process" element={<AboutProcess />} />
-          <Route path="/about/tech-stack" element={<AboutTechStack />} />
-          <Route path="/research" element={<Research />} />
-          <Route path="/ai-front-desk" element={<AiFrontDesk />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/industries/salons" element={<IndustriesSalons />} />
+          <Route path="/industries/consultants" element={<IndustriesConsultants />} />
+          {/* Legal */}
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/accessibility" element={<Accessibility />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/research" element={<Research />} />
         </Routes>
         <AppFooter />
+        <ContactFloater />
       </>
     </Router>
   );

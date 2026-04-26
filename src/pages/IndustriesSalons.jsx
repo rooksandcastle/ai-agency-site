@@ -16,52 +16,52 @@ const CTAButton = ({ children, onClick, className = '' }) => (
 );
 
 const painPoints = [
-  `You're on a job and a customer rings about an emergency — they move on before you can call back`,
-  `You're spending evenings writing quotes that never get followed up`,
-  `You miss calls at 7am and 7pm because that's when customers actually ring`,
-  'You rely on lead platforms that take 10–15% and send you price-shopping customers',
+  'Calls during peak hours go unanswered — and peak hours are when everyone wants to book',
+  'No-shows waste appointment slots you could have filled',
+  'Following up on enquiries means staying late or forgetting entirely',
+  'A receptionist costs £25,000+ a year — not realistic for most salons',
 ];
 
 const whatWeBuilt = [
   {
-    title: 'AI Front Desk',
-    body: 'Answers every call in your name. Takes job details, captures urgency, books you in, and texts you a summary. Works 24/7 including weekends.',
+    title: 'AI Receptionist',
+    body: `Answers calls in your salon's name. Books into your existing system. Handles common questions about pricing, availability, and services — without you or your staff having to stop.`,
   },
   {
-    title: 'Quote & Invoice Automation',
-    body: `Job done — invoice goes out. No chasing, no late nights. Automatic reminders follow if payment doesn't arrive on time.`,
+    title: 'No-Show Reduction',
+    body: 'Automated reminders go out 24 hours before every appointment. Simple to confirm or cancel. Cancellations free up the slot so you can fill it.',
   },
   {
-    title: 'Smart Follow-Up',
-    body: 'Enquiry went cold? The system sends a professional follow-up at the right time. You close more jobs without lifting a finger.',
+    title: 'Rebooking & Follow-Up',
+    body: 'After every appointment, a follow-up goes out. Feedback, rebooking prompt, or a loyalty offer — whatever fits your business. Clients feel looked after. You fill the diary.',
   },
 ];
 
 const stages = [
   {
     step: '01',
-    title: 'Audit (Week 1)',
-    body: 'We look at how calls and enquiries currently reach you, where jobs are being lost, and what your busiest hours are. Free, no obligation.',
+    title: 'Discovery (Week 1)',
+    body: 'We find out how you handle bookings, where enquiries fall through, and what your busiest periods look like. We map it before building anything.',
   },
   {
     step: '02',
-    title: 'Build (Weeks 2–3)',
-    body: 'We set up your AI with your exact services, hours, and tone. We build quote and follow-up automations. You test everything before it goes live.',
+    title: 'Build & Test (Weeks 2–3)',
+    body: 'We set up the AI receptionist with your services, prices, and tone. Connect it to your booking system. Test everything with you before a single real call is handled.',
   },
   {
     step: '03',
-    title: 'Live + Optimise (Ongoing)',
-    body: `Your system goes live. We monitor calls, refine responses, and tune performance monthly. You get a regular summary of what it's doing for your business.`,
+    title: 'Live & Grow (Ongoing)',
+    body: 'Go live. We monitor performance, tune responses, and report back monthly. As your business grows, the system grows with it.',
   },
 ];
 
 const stats = [
-  { value: '67%', label: "Of callers won't leave a voicemail — they ring the next person" },
-  { value: '£1,500+', label: 'Lost weekly for a typical trades business from missed calls' },
-  { value: '2–3w', label: 'Typical setup time from first call to going live' },
+  { value: '40%', label: 'Fewer no-shows with automated reminders (industry average)' },
+  { value: '12+', label: 'Hours saved weekly on booking admin for a 3–5 chair salon' },
+  { value: '3', label: 'Calls answered, 2 booked — while you were mid-appointment' },
 ];
 
-const IndustriesTrades = () => {
+const IndustriesSalons = () => {
   const handleCalendly = () => window.open(CALENDLY, '_blank');
 
   return (
@@ -71,7 +71,7 @@ const IndustriesTrades = () => {
       <main className="pt-0">
         {/* Header image */}
         <div className="relative overflow-hidden" style={{ height: "clamp(300px,44vw,520px)" }}>
-          <img src="/media/Industries/Trades_1.png" alt="Trades and Home Services"
+          <img src="/media/Industries/Salon_1.png" alt="Salons and Personal Services"
             className="absolute inset-0 w-full h-full object-cover object-center"
             style={{ filter: "brightness(0.72) saturate(0.55)" }} />
           <div aria-hidden className="absolute bottom-0 inset-x-0 h-36"
@@ -81,18 +81,19 @@ const IndustriesTrades = () => {
         {/* Hero */}
         <section className="py-20 md:py-28 max-w-5xl mx-auto px-6 md:px-10 text-center">
           <p className="text-xs font-semibold tracking-[0.3em] uppercase text-premium-green mb-4">
-            Trades & Home Services
+            Salons & Personal Services
           </p>
           <h1
             className="text-[clamp(40px,6vw,80px)] leading-[1] tracking-[-0.03em] text-text-primary mb-6"
             style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 900 }}
           >
-            You can't answer the phone<br />
-            <span className="text-premium-green">when you're under a sink.</span>
+            You're with a client.<br />
+            The phone rings.<br />
+            <span className="text-premium-green">You ignore it.</span>
           </h1>
           <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed mb-10">
-            But your next customer doesn't know that. They call once, hear a voicemail, and ring
-            someone who picks up. We make sure that doesn't happen.
+            That's the right call — your client deserves your full attention. But the person who just
+            rang? They booked somewhere else. We make sure that never costs you again.
           </p>
           <CTAButton onClick={handleCalendly}>Book a Free Call →</CTAButton>
         </section>
@@ -101,9 +102,9 @@ const IndustriesTrades = () => {
         <section className="py-16 bg-brand-surface/40 border-y border-brand-border">
           <div className="max-w-3xl mx-auto px-6 md:px-10">
             <p className="text-base md:text-lg text-text-secondary leading-relaxed">
-              You're good at the job. The van's full, the diary's busy, you're earning. But every day
-              you miss 2 or 3 calls you never know about. At £150 a job, that's £300–£450 walking out
-              the door — every single day.
+              You're running back-to-back appointments. The desk is busy, you can't always get to the
+              phone, and you're not about to ask a junior to start handling bookings. So calls get
+              missed, slots stay empty, and you don't even know how many people tried.
             </p>
           </div>
         </section>
@@ -135,7 +136,7 @@ const IndustriesTrades = () => {
               className="text-3xl sm:text-4xl font-bold text-text-primary mb-12"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
-              Three systems built for trades
+              Three systems built for salons
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {whatWeBuilt.map((f) => (
@@ -194,10 +195,10 @@ const IndustriesTrades = () => {
               className="text-3xl sm:text-4xl font-bold text-text-primary mb-4"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
-              Your competitors are missing these calls too. Be the one who answers.
+              Your chair is your most valuable asset. Stop leaving it empty.
             </h2>
             <p className="text-text-secondary mb-8 leading-relaxed">
-              30 minutes. No pressure. We'll show you exactly how it works for your trade.
+              30 minutes. No pressure. We'll show you exactly how it works for your salon.
             </p>
             <CTAButton onClick={handleCalendly}>Book a Free Call →</CTAButton>
           </div>
@@ -207,4 +208,4 @@ const IndustriesTrades = () => {
   );
 };
 
-export default IndustriesTrades;
+export default IndustriesSalons;

@@ -16,51 +16,51 @@ const CTAButton = ({ children, onClick, className = '' }) => (
 );
 
 const stats = [
-  { value: '67%', label: "Of callers won't leave a voicemail — they ring someone else" },
-  { value: '£150', label: 'Average job value — 10 missed calls is £1,500 gone' },
-  { value: '40%', label: 'Of calls to trades businesses go unanswered during working hours' },
+  { value: '11hrs', label: 'Average weekly admin for small business owners' },
+  { value: '30%', label: 'Of quotes never get followed up — no time' },
+  { value: '1 in 4', label: 'Invoices paid late without automatic reminders' },
 ];
 
-const whatItDoes = [
+const features = [
   {
-    title: 'Answers every call',
-    body: 'Day, night, weekend. No voicemail. No missed opportunity. Your AI picks up with your name, your tone, your script.',
+    title: 'Quotes and invoices, sent automatically',
+    body: `Job finished? Quote or invoice goes out without you having to remember. Reminders follow if payment doesn't arrive.`,
   },
   {
-    title: 'Books the appointment',
-    body: 'It checks your calendar, offers available slots, and confirms the booking — without you touching your phone.',
+    title: 'Lead follow-up on autopilot',
+    body: `Someone enquired but went quiet? The system chases them — professionally, at the right time — so you don't have to.`,
   },
   {
-    title: 'Keeps you in the loop',
-    body: 'The moment a call ends, you get a text summary. Name, number, what they need, how urgent. You stay in control.',
+    title: 'Your tools, connected',
+    body: 'We plug into what you already use: your calendar, your CRM, your inbox. No new software to learn unless you need it.',
   },
 ];
 
 const steps = [
   {
     step: '01',
-    title: 'We set it up',
-    body: 'We learn your business: your services, your hours, your most common questions. We build and test the system. You approve it.',
+    title: 'We map your workflow',
+    body: 'We look at where your time goes and where things fall through the gaps. Quoting, chasing, invoicing, confirming — we spot what to automate first.',
   },
   {
     step: '02',
-    title: 'You go live',
-    body: 'Calls forward to your AI. It answers, handles the conversation, and books or takes a message. You get a summary every time.',
+    title: 'We build and connect',
+    body: 'We set up the automations and link them to your existing tools. You test it, we refine it, then we go live.',
   },
   {
     step: '03',
-    title: 'We keep it sharp',
-    body: `We monitor how it performs, update responses, and tune it as your business grows. You're never left to figure it out alone.`,
+    title: 'It runs in the background',
+    body: 'Once live, it just works. You get notified when something needs your attention. Everything else handles itself.',
   },
 ];
 
 const whoFor = [
-  `Sole traders and small teams who can't always answer the phone`,
-  'Service businesses where every missed call is a missed job',
-  `Anyone paying for leads they can't convert because no one picks up`,
+  'Tradespeople spending evenings on quotes and invoices',
+  'Service businesses with leads that go cold because follow-up is manual',
+  'Self-employed professionals who want to look bigger than they are',
 ];
 
-const AiFrontDesk = () => {
+const WorkflowAutomation = () => {
   const handleCalendly = () => window.open(CALENDLY, '_blank');
 
   return (
@@ -70,7 +70,7 @@ const AiFrontDesk = () => {
       <main className="pt-0">
         {/* Hero — image behind the text */}
         <section className="relative overflow-hidden">
-          <img src="/media/Services/AI%20FRONT%20DESK%20HEADER.jpg" alt="" aria-hidden
+          <img src="/media/Services/Workflow%20Automation.webp" alt="" aria-hidden
             className="absolute inset-0 w-full h-full object-cover object-center"
             style={{ filter: "brightness(0.28) saturate(0.35)" }} />
           <div aria-hidden className="absolute inset-0" style={{ background: "rgba(10,10,10,0.45)" }} />
@@ -78,24 +78,24 @@ const AiFrontDesk = () => {
             style={{ background: "linear-gradient(to top, #0F0F0F 0%, transparent 100%)" }} />
           <div className="relative max-w-5xl mx-auto px-6 md:px-10 text-center pt-28 md:pt-36 pb-20 md:pb-28">
             <p className="text-xs font-semibold tracking-[0.3em] uppercase text-premium-green mb-4">
-              AI Front Desk
+              Workflow Automation
             </p>
             <h1
               className="text-[clamp(40px,6vw,80px)] leading-[1] tracking-[-0.03em] text-text-primary mb-6"
               style={{ fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 900 }}
             >
-              Every call answered.<br />
-              <span className="text-premium-green">Every enquiry captured.</span>
+              Stop doing the same<br />
+              <span className="text-premium-green">admin tasks twice.</span>
             </h1>
             <p className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed mb-10">
-              When you're on the job, with a client, or just done for the day — your phone keeps working.
-              Our AI answers calls, takes details, and books directly into your calendar.
+              Quotes, invoices, reminders, lead follow-ups — the things eating your evenings.
+              We build the systems that handle them automatically, so you can focus on actual work.
             </p>
             <CTAButton onClick={handleCalendly}>Book a Free Call →</CTAButton>
           </div>
         </section>
 
-        {/* Stats strip */}
+        {/* Stats */}
         <section className="bg-brand-surface/40 border-y border-brand-border py-14">
           <div className="max-w-5xl mx-auto px-6 md:px-10 grid md:grid-cols-3 gap-8 text-center">
             {stats.map((s) => (
@@ -107,17 +107,17 @@ const AiFrontDesk = () => {
           </div>
         </section>
 
-        {/* What it does */}
+        {/* What It Does */}
         <section className="py-20 max-w-5xl mx-auto px-6 md:px-10">
           <p className="text-xs font-semibold tracking-[0.3em] uppercase text-premium-green mb-3">What it does</p>
           <h2
             className="text-3xl sm:text-4xl font-bold text-text-primary mb-12"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
-            Your phone never stops working
+            Admin that handles itself
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {whatItDoes.map((f) => (
+            {features.map((f) => (
               <div key={f.title} className="bg-brand-surface border border-brand-border rounded-2xl p-7">
                 <h3 className="text-lg font-bold text-text-primary mb-3">{f.title}</h3>
                 <p className="text-sm text-text-secondary leading-relaxed">{f.body}</p>
@@ -134,7 +134,7 @@ const AiFrontDesk = () => {
               className="text-3xl sm:text-4xl font-bold text-text-primary mb-12"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
-              Live in 2–3 weeks. Managed after that.
+              Three steps to running on autopilot
             </h2>
             <div className="grid md:grid-cols-3 gap-6">
               {steps.map((s, idx) => (
@@ -162,7 +162,7 @@ const AiFrontDesk = () => {
             className="text-3xl sm:text-4xl font-bold text-text-primary mb-8"
             style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
           >
-            Built for businesses that can't afford to miss a call
+            Built for people doing everything themselves
           </h2>
           <ul className="space-y-4">
             {whoFor.map((item) => (
@@ -181,10 +181,11 @@ const AiFrontDesk = () => {
               className="text-3xl sm:text-4xl font-bold text-text-primary mb-4"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
-              Your business shouldn't go quiet at 5pm.
+              The admin isn't going to do itself.
             </h2>
             <p className="text-text-secondary mb-8 leading-relaxed">
-              30 minutes. No pressure. We`ll tell you exactly what you'd get and whether it`s right for your business.
+              We'll show you exactly where your time is going and what we'd automate first.
+              30 minutes. No pressure.
             </p>
             <CTAButton onClick={handleCalendly}>Book a Free Call →</CTAButton>
           </div>
@@ -194,4 +195,4 @@ const AiFrontDesk = () => {
   );
 };
 
-export default AiFrontDesk;
+export default WorkflowAutomation;

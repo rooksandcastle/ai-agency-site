@@ -4,7 +4,7 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import brandLogo from '../brand/rooks-castle-mark.svg';
 
-const Navigation = ({ onCalendlyClick }) => {
+const Navigation = ({ onCalendlyClick, fixed = true }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
@@ -15,16 +15,17 @@ const Navigation = ({ onCalendlyClick }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const CALENDLY = "https://calendly.com/rooksandcastle101/30min";
+
   const navItems = [
-    { id: 'home', label: 'Home', href: '/', type: 'route' },
     {
-      id: 'solutions',
-      label: 'Solutions',
+      id: 'services',
+      label: 'Services',
       type: 'dropdown',
       links: [
-        { label: 'Overview', href: '/solutions', description: 'Full systems playbook' },
-        { label: 'AI Desk', href: '/ai-front-desk', description: '24/7 receptionist' },
-        { label: 'Systems', href: '/solutions/systems', description: 'Get Found / Chosen / Paid' },
+        { label: 'AI Front Desk', href: '/services/ai-front-desk', description: '24/7 call answering & booking' },
+        { label: 'Workflow Automation', href: '/services/workflow-automation', description: 'Quotes, invoices & reminders' },
+        { label: 'Smart Follow-Up', href: '/services/smart-follow-up', description: 'Leads, payments & win-back' },
       ],
     },
     {
@@ -32,23 +33,13 @@ const Navigation = ({ onCalendlyClick }) => {
       label: 'Industries',
       type: 'dropdown',
       links: [
-        { label: 'Overview', href: '/industries', description: 'Who we serve' },
         { label: 'Trades & Home Services', href: '/industries/trades', description: 'Plumbers, electricians, HVAC' },
-        { label: 'Property & Co-hosting', href: '/industries/property', description: 'Estate agents, co-hosts' },
-        { label: 'Restaurants & Hospitality', href: '/industries/restaurants', description: 'Booking-led venues' },
+        { label: 'Salons & Personal Services', href: '/industries/salons', description: 'Hair, beauty, wellness' },
+        { label: 'Consultants & Professionals', href: '/industries/consultants', description: 'Independent, self-employed' },
       ],
     },
-    {
-      id: 'about',
-      label: 'About',
-      type: 'dropdown',
-      links: [
-        { label: 'Company', href: '/about', description: 'Who we are' },
-        { label: 'Process', href: '/about/process', description: 'How it works' },
-        { label: 'Tech Stack', href: '/about/tech-stack', description: 'Tools & platforms' },
-      ],
-    },
-    { id: 'research', label: 'Research', href: '/research', type: 'route' },
+    { id: 'how-it-works', label: 'How It Works', href: '/#how-it-works', type: 'hash' },
+    { id: 'contact', label: 'Contact', href: '/contact', type: 'route' },
   ];
 
   // Handle scroll effects
@@ -128,7 +119,15 @@ const Navigation = ({ onCalendlyClick }) => {
 
   const handleNavClick = (item) => {
     setIsMobileMenuOpen(false);
-    if (item.type === 'route') {
+    if (item.type === 'hash') {
+      const [path, hash] = item.href.split('#');
+      if (location.pathname !== '/') {
+        navigate('/');
+        setTimeout(() => document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' }), 300);
+      } else {
+        document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else if (item.type === 'route') {
       navigateTo(item.href);
     }
   };
@@ -232,7 +231,7 @@ const Navigation = ({ onCalendlyClick }) => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none nav-accent">
+      <div className={`${fixed ? 'fixed top-0 left-0 right-0 z-50' : 'relative z-10'} pointer-events-none nav-accent`}>
         <div className="max-w-6xl mx-auto px-6 md:px-10 mt-4">
           <motion.nav
             className={navShellClasses}
@@ -344,9 +343,9 @@ const Navigation = ({ onCalendlyClick }) => {
                 })}
                 <button
                   className="hidden lg:inline-flex items-center px-4 py-2 rounded-[16px] border border-[var(--nav-active-border)] bg-[var(--nav-cta-bg)] text-white font-semibold shadow-[var(--nav-active-glow)] hover:bg-[var(--nav-active-text)] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--nav-active-text)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
-                  onClick={() => navigate('/contact')}
+                  onClick={() => window.open(CALENDLY, '_blank')}
                 >
-                  Contact
+                  Book a Free Call
                 </button>
               </div>
 
@@ -372,7 +371,7 @@ const Navigation = ({ onCalendlyClick }) => {
           <>
             {/* Backdrop */}
             <motion.div
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -381,7 +380,7 @@ const Navigation = ({ onCalendlyClick }) => {
 
             {/* Menu Panel */}
             <motion.div
-              className="fixed top-20 right-6 w-80 max-w-[calc(100vw-3rem)] bg-brand-surface/98 backdrop-blur-xl border border-brand-border rounded-2xl shadow-2xl z-50 md:hidden overflow-hidden"
+              className="fixed top-20 right-6 w-80 max-w-[calc(100vw-3rem)] bg-brand-surface/98 backdrop-blur-xl border border-brand-border rounded-2xl shadow-2xl z-50 lg:hidden overflow-hidden"
               initial={{ opacity: 0, x: 100, y: -20 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               exit={{ opacity: 0, x: 100, y: -20 }}
@@ -472,10 +471,10 @@ const Navigation = ({ onCalendlyClick }) => {
                   className="w-full inline-flex justify-center px-4 py-3 rounded-[16px] border border-[var(--nav-active-border)] bg-[var(--nav-cta-bg)] text-white font-semibold shadow-[var(--nav-active-glow)] hover:bg-[var(--nav-active-text)] transition-all duration-200"
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    navigate('/contact');
+                    window.open(CALENDLY, '_blank');
                   }}
                 >
-                  Contact
+                  Book a Free Call
                 </button>
               </div>
             </motion.div>
