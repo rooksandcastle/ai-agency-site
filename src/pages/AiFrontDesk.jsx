@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
+import SEO from "../components/SEO";
 
 const CALENDLY = 'https://calendly.com/rooksandcastle101/30min';
 
@@ -65,6 +66,7 @@ const AiFrontDesk = () => {
 
   return (
     <div className="min-h-screen bg-brand-bg text-text-primary font-body">
+      <SEO title="R&C — AI Front Desk" description="Never miss another customer. Our AI answers calls, books appointments, and captures leads 24/7 — built for small businesses." path="/services/ai-front-desk" />
       <Navigation onCalendlyClick={handleCalendly} />
 
       <main className="pt-0">

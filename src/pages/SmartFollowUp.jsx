@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
-
+import SEO from "../components/SEO";
 const CALENDLY = 'https://calendly.com/rooksandcastle101/30min';
 
 const CTAButton = ({ children, onClick, className = '' }) => (
@@ -65,6 +65,7 @@ const SmartFollowUp = () => {
 
   return (
     <div className="min-h-screen bg-brand-bg text-text-primary font-body">
+      <SEO title="Smart Follow-Up | Rooks & Castle" description="Stop chasing, start closing. Automated sequences that follow up with leads, send payment reminders, and re-engage past customers." path="/services/smart-follow-up" />
       <Navigation onCalendlyClick={handleCalendly} />
 
       <main className="pt-0">

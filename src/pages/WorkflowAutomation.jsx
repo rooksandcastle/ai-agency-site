@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
-
+import SEO from "../components/SEO";
 const CALENDLY = 'https://calendly.com/rooksandcastle101/30min';
 
 const CTAButton = ({ children, onClick, className = '' }) => (
@@ -65,6 +65,7 @@ const WorkflowAutomation = () => {
 
   return (
     <div className="min-h-screen bg-brand-bg text-text-primary font-body">
+      <SEO title="Workflow Automation | Rooks & Castle" description="The admin that eats your evenings — automated. Quotes, invoices, scheduling, and follow-ups that run themselves." path="/services/workflow-automation" />
       <Navigation onCalendlyClick={handleCalendly} />
 
       <main className="pt-0">

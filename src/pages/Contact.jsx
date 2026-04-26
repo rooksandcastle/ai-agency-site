@@ -3,7 +3,7 @@ import GlowButton from '../components/motion/GlowButton';
 import Navigation from '../components/Navigation';
 import { Linkedin, Twitter, Instagram, MessageCircle, X } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
-
+import SEO from "../components/SEO";
 const socialLinks = [
   { label: 'LinkedIn', href: 'https://www.linkedin.com/company/108562997/admin/dashboard/', icon: Linkedin },
   { label: 'X', href: 'https://x.com/rooksandcastle?s=21', icon: Twitter },
@@ -107,6 +107,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-brand-bg text-text-primary">
+      <SEO title="Contact Us | Rooks & Castle" description="Book a free 30-minute call and find out exactly what we would automate first in your business." path="/contact" />
       <Navigation onCalendlyClick={handleBook} />
       <main className="pt-24 pb-16 px-6">
         <div className="max-w-6xl mx-auto space-y-10">

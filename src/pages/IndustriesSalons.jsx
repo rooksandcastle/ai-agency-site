@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
-
+import SEO from "../components/SEO";
 const CALENDLY = 'https://calendly.com/rooksandcastle101/30min';
 
 const CTAButton = ({ children, onClick, className = '' }) => (
@@ -66,6 +66,7 @@ const IndustriesSalons = () => {
 
   return (
     <div className="min-h-screen bg-brand-bg text-text-primary font-body">
+      <SEO title="AI for Salons & Personal Services | Rooks & Castle" description="AI receptionist that books appointments, reduces no-shows by 40%, and fills your diary — while you focus on clients." path="/industries/salons" />
       <Navigation onCalendlyClick={handleCalendly} fixed={false} />
 
       <main className="pt-0">

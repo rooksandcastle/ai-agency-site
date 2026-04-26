@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
+import SEO from '../components/SEO';
 
 const CALENDLY = 'https://calendly.com/rooksandcastle101/30min';
 
@@ -51,6 +52,8 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-brand-bg text-text-primary font-body">
+      <SEO title="R&C — Our Services" description="Explore our AI automation services designed for small businesses. Answer calls, automate workflows, and follow up with smart systems." path="/services" />
+
       <Navigation onCalendlyClick={handleCalendly} />
 
       <main className="pt-24 pb-20">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Navigation from '../components/Navigation';
-
+import SEO from "../components/SEO";
 const CALENDLY = 'https://calendly.com/rooksandcastle101/30min';
 
 const CTAButton = ({ children, onClick, className = '' }) => (
@@ -66,6 +66,7 @@ const IndustriesTrades = () => {
 
   return (
     <div className="min-h-screen bg-brand-bg text-text-primary font-body">
+      <SEO title="AI for Trades & Home Services | Rooks & Castle" description="You can't answer the phone when you're under a sink. We make sure every call is captured, every job followed up, and every invoice gets paid." path="/industries/trades" />
       <Navigation onCalendlyClick={handleCalendly} fixed={false} />
 
       <main className="pt-0">

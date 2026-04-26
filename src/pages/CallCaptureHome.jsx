@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import { Plus } from "lucide-react";
+import SEO from '../components/SEO';
 
 const CALENDLY = "https://calendly.com/rooksandcastle101/30min";
 const E = [0.22, 1, 0.36, 1];
@@ -206,6 +207,7 @@ const CallCaptureHome = () => {
 
   return (
     <div className="min-h-screen bg-brand-bg text-text-primary font-body overflow-x-hidden">
+      <SEO title="R&C — AI Automations for Small Businesses" description="Never miss another customer. AI systems that answer calls, book appointments, and capture leads 24/7 — built for small businesses." path="/" />
       <Navigation onCalendlyClick={handleCalendly} />
 
       <main>
